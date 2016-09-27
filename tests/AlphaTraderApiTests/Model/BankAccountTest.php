@@ -5,7 +5,7 @@
  * Date: 26.09.16 01:39
  */
 
-namespace Tests;
+namespace Tests\Model;
 
 use \Alphatrader\ApiBundle\Model\BankAccount;
 use PHPUnit\Framework\TestCase;
