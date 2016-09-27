@@ -62,7 +62,7 @@ class AlphaTraderTest extends TestCase
     /**
      * @return Bankaccount
      */
-    public function test_getBankAccount()
+    /*public function test_getBankAccount()
     {
         // Setup
         $client = new BankAccountController();
@@ -73,5 +73,5 @@ class AlphaTraderTest extends TestCase
 
         // Exercise
         $client->getBankAccount();
-    }
+    }*/
 }
