@@ -5,7 +5,7 @@
  * Date: 25.09.16 23:26
  */
 
-namespace Tests;
+namespace Tests\Model;
 
 use \Alphatrader\ApiBundle\Model\AbstractPoll;
 use PHPUnit\Framework\TestCase;
@@ -14,10 +14,12 @@ use PHPUnit\Framework\TestCase;
  * Class UserProfile
  * @package Tests\Model
  * @author ljbergmann
+ * @author Tr0nYx
  */
-class AbstractPollTest extends TestCase {
-
-    public function testId(){
+class AbstractPollTest extends TestCase
+{
+    public function testId()
+    {
         $abstractPoll = $this->getAbstractPoll();
         $this->assertNull($abstractPoll->getId());
         $uuid = uniqid();
@@ -26,8 +28,8 @@ class AbstractPollTest extends TestCase {
         $this->assertEquals($uuid,$abstractPoll->getId());
     }
 
-    public function testAbstentionRule(){
-        /* @var $abstractPoll \Alphatrader\ApiBundle\Model\AbstractPoll */
+    public function testAbstentionRule()
+    {
         $abstractPoll = $this->getAbstractPoll();
         $this->assertNull($abstractPoll->getAbstentionRule());
 
@@ -36,8 +38,8 @@ class AbstractPollTest extends TestCase {
 
     }
 
-    public function testCastVotesPercentage(){
-        /* @var $abstractPoll \Alphatrader\ApiBundle\Model\AbstractPoll */
+    public function testCastVotesPercentage()
+    {
         $abstractPoll = $this->getAbstractPoll();
         $this->assertNull($abstractPoll->getCastVotesPercentage());
 
@@ -48,30 +50,50 @@ class AbstractPollTest extends TestCase {
         $this->assertTrue(is_float($percentage));
     }
 
-    public function testGroup(){
-        /* @var $abstractPoll \Alphatrader\ApiBundle\Model\AbstractPoll */
+    public function testGroup()
+    {
         $abstractPoll = $this->getAbstractPoll();
+
+        // Given
+        $username1 = $this->createMock('Alphatrader\ApiBundle\Model\UserName');
+        
+        $group1 = $this->createMock('Alphatrader\ApiBundle\Model\VoiceNumber');
+        $group1->expects($this->any())->method('setGroupMember')->will($this->returnValue($username1));
+        
+        $group2 = $this->createMock('Alphatrader\ApiBundle\Model\VoiceNumber');
+        $group2->expects($this->any())->method('setGroupMember')->will($this->returnValue($username1));
+
+        //When
+        $abstractPoll->setGroup([$group1,$group2]);
+
+        //Then
+        $this->assertCount(2, $abstractPoll->getGroup());
     }
     
-    public function testMotion(){
-        /* @var $abstractPoll \Alphatrader\ApiBundle\Model\AbstractPoll */
+    public function testMotion()
+    {
         $abstractPoll = $this->getAbstractPoll();
         $this->assertNull($abstractPoll->getMotion());
-        $motion = $this->randomString();
+        $motion = $this->getRandomString();
         
         $abstractPoll->setMotion($motion);
         $this->assertEquals($motion,$abstractPoll->getMotion());
     }
 
     
-    public function testPollInitiator(){
-        /* @var $abstractPoll \Alphatrader\ApiBundle\Model\AbstractPoll */
+    public function testPollInitiator()
+    {
         $abstractPoll = $this->getAbstractPoll();
-
+        $id = $this->getRandomString();
+        
+        $username = $this->createMock('Alphatrader\ApiBundle\Model\UserName');
+        $username->expects($this->any())->method('getId')->will($this->returnValue($id));
+        $abstractPoll->setPollInitiator($username);
+        $this->assertEquals($id,$abstractPoll->getPollInitiator()->getId());
     }
 
-    public function testResultExpireDate(){
-        /* @var $abstractPoll \Alphatrader\ApiBundle\Model\AbstractPoll */
+    public function testResultExpireDate()
+    {
         $abstractPoll = $this->getAbstractPoll();
         $this->assertNull($abstractPoll->getResultExpireDate());
         
@@ -81,8 +103,8 @@ class AbstractPollTest extends TestCase {
         $this->assertTrue(is_int($abstractPoll->getResultExpireDate()));
     }
 
-    public function testTotalNumberOfVotes(){
-        /* @var $abstractPoll \Alphatrader\ApiBundle\Model\AbstractPoll */
+    public function testTotalNumberOfVotes()
+    {
         $abstractPoll = $this->getAbstractPoll();
         $this->assertNull($abstractPoll->getTotalNumberOfVoices());
 
@@ -92,8 +114,8 @@ class AbstractPollTest extends TestCase {
         $this->assertTrue(is_int($abstractPoll->getTotalNumberOfCastVotes()));
     }
 
-    public function testTotalNumberOfVoices(){
-        /* @var $abstractPoll \Alphatrader\ApiBundle\Model\AbstractPoll */
+    public function testTotalNumberOfVoices()
+    {
         $abstractPoll = $this->getAbstractPoll();
         $this->assertNull($abstractPoll->getTotalNumberOfVoices());
 
@@ -103,8 +125,8 @@ class AbstractPollTest extends TestCase {
         $this->assertTrue(is_int($abstractPoll->getTotalNumberOfVoices()));
     }
 
-    public function testType(){
-        /* @var $abstractPoll \Alphatrader\ApiBundle\Model\AbstractPoll */
+    public function testType()
+    {
         $abstractPoll = $this->getAbstractPoll();
         
         $abstractPoll->setType('YES_NO');
@@ -112,20 +134,31 @@ class AbstractPollTest extends TestCase {
         $this->assertTrue(is_string($abstractPoll->getType()));
     }
     
-    public function testVotes(){
-        /* @var $abstractPoll \Alphatrader\ApiBundle\Model\AbstractPoll */
+    public function testVotes()
+    {
         $abstractPoll = $this->getAbstractPoll();
+        $vote1 = $this->createMock('Alphatrader\ApiBundle\Model\Vote');
+        $vote1->expects($this->any())->method('getVoices')->will($this->returnValue(3));
+
+        $vote2 = $this->createMock('Alphatrader\ApiBundle\Model\Vote');
+        $vote2->expects($this->any())->method('getVoices')->will($this->returnValue(2));
+
+        //When
+        $abstractPoll->setVotes([$vote1,$vote2]);
+        $this->assertCount(2,$abstractPoll->getVotes());
     }
-    
+
+    /**
+     * @return AbstractPoll
+     */
     protected function getAbstractPoll(){
 
         return new AbstractPoll();
     }
-
     /*
      * @param $length
      */
-    function randomString($length = 6) {
+    private function getRandomString($length = 6) {
         $str = "";
         $characters = array_merge(range('A','Z'), range('a','z'), range('0','9'));
         $max = count($characters) - 1;
