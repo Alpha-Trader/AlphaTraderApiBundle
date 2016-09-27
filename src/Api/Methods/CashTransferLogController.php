@@ -23,24 +23,24 @@ class CashTransferLogController extends ApiClient
     /**
      * @param $startDate
      * @param $endDate
-     * @param $senderBankAccountId
-     * @param $receiverBankAccountId
+     * @param $senderBankAccId
+     * @param $receiverBankAccId
      *
      * @return CashTransferLogEntry[]|Error
      */
     public function getCashTransferLogs(
         $startDate,
         $endDate,
-        $senderBankAccountId,
-        $receiverBankAccountId
+        $senderBankAccId,
+        $receiverBankAccId
     ) {
         $data = $this->get(
             'cashtransferlogs/',
             [
                 'startDate'             => $startDate,
                 'endDate'               => $endDate,
-                'senderBankAccountId'   => $senderBankAccountId,
-                'receiverBankAccountId' => $receiverBankAccountId
+                'senderBankAccountId'   => $senderBankAccId,
+                'receiverBankAccountId' => $receiverBankAccId
             ]
         );
         /** @var CashTransferLogEntry[] $oResult */

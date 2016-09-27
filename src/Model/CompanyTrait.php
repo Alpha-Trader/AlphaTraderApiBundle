@@ -309,6 +309,4 @@ trait CompanyTrait
     {
         $this->name = $name;
     }
-    
-    
 }

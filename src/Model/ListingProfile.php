@@ -9,6 +9,7 @@ use JMS\Serializer\Annotation;
  * Class ListingProfile
  * @package Alphatrader\ApiBundle\Model
  * @Annotation\ExclusionPolicy("none")
+ * @SuppressWarnings(PHPMD)
  */
 class ListingProfile
 {
@@ -341,9 +342,10 @@ class ListingProfile
         if (null !== $this->systemBond) {
             return $this->systemBond->getName();
         }
+
         return null;
     }
-    
+
     /**
      * @return string
      */
@@ -355,6 +357,7 @@ class ListingProfile
         if (null !== $this->bond) {
             return $this->getBond()->getIssuer()->getName();
         }
+
         return "Central Bank";
     }
 
@@ -366,9 +369,10 @@ class ListingProfile
         if (null !== $this->company || null !== $this->systemBond) {
             return $this->securityIdentifier;
         }
-        if (null !== $this->bond){
+        if (null !== $this->bond) {
             return $this->getBond()->getIssuer()->getListing()->getSecurityIdentifier();
         }
+
         return null;
     }
 
@@ -380,6 +384,7 @@ class ListingProfile
         if (null !== $this->bond) {
             return $this->bond;
         }
+
         return $this->systemBond;
     }
 
@@ -401,6 +406,7 @@ class ListingProfile
         if (empty($res)) {
             return "0.00";
         }
+
         return $res;
     }
 
@@ -416,6 +422,7 @@ class ListingProfile
             return null;
         }
         $lastPriceDate = $prices14d[$size - 2]->getDate();
+
         return $lastPriceDate;
     }
 
@@ -427,12 +434,15 @@ class ListingProfile
         if (empty($this->prices14d)) {
             return "";
         }
+
         return implode(
             ',',
             array_map(
                 function ($securityprice) {
-                    $date = $securityprice instanceof SecurityPrice ? $securityprice->getDate()->getTimestamp() : $securityprice['date'] / 1000;
+                    $date = $securityprice instanceof SecurityPrice
+                        ? $securityprice->getDate()->getTimestamp() : $securityprice['date'] / 1000;
                     $seconds = $date;
+
                     return '"' . date("d.m.", $seconds) . '"';
                 },
                 $this->prices14d->toArray()
@@ -448,11 +458,13 @@ class ListingProfile
         if (empty($this->prices14d)) {
             return "";
         }
+
         return implode(
             ',',
             array_map(
                 function ($securityprice) {
-                    return $securityprice instanceof SecurityPrice ? $securityprice->getValue() : $securityprice['value'];
+                    return $securityprice instanceof SecurityPrice
+                        ? $securityprice->getValue() : $securityprice['value'];
                 },
                 $this->prices14d->toArray()
             )

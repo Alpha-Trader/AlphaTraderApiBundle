@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 /**
  * Class AlphaTrader
  * @package Alphatrader\ApiBundle\Api
+ * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
 class AlphaTrader
 {
@@ -147,6 +148,7 @@ class AlphaTrader
 
     /**
      * @param bool $all
+     * @SuppressWarnings(PHPMD.BooleanArgumentFlag)
      *
      * @return \AlphaTrader\ApiBundle\Model\Company[]
      */
