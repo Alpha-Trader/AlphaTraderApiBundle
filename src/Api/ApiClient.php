@@ -3,10 +3,15 @@
 namespace Alphatrader\ApiBundle\Api;
 
 use GuzzleHttp\Client;
-use GuzzleHttp\Promise\PromiseInterface;
 use JMS\Serializer\Serializer;
 use JMS\Serializer\SerializerBuilder;
 
+/**
+ * Class ApiClient
+ * @package Alphatrader\ApiBundle\Api
+ * @author Tr0nYx
+ * @SuppressWarnings(PHPMD.NumberOfChildren)
+ */
 class ApiClient
 {
     const METHODE_GET = 'GET';

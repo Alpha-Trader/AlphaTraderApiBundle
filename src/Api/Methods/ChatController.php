@@ -10,6 +10,7 @@ use Alphatrader\ApiBundle\Model\UserAccount;
  * Class ChatController
  * @package AlphaTrader\ApiBundle\Controller
  * @author Tr0nYx <tronyx@bric.finance>
+ * @SuppressWarnings(PHPMD)
  */
 class ChatController extends ApiClient
 {
@@ -26,13 +27,10 @@ class ChatController extends ApiClient
     }
 
     /**
-     * Adds user to chat
+     * @param Chats       $iChat
+     * @param UserAccount $user
      *
-     * @param \Alphatrader\ApiBundle\Model\Chats|int       $iChat
-     * @param \Alphatrader\ApiBundle\Model\UserAccount|int $user
-     * @Method("PUT")
-     *
-     * @return
+     * @return mixed
      */
     public function addUsertoChatbyId(Chats $iChat, UserAccount $user)
     {
