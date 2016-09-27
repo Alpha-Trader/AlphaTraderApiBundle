@@ -36,7 +36,6 @@ class BankAccountTest extends TestCase{
 
         $bankAccount->setCash($cash);
         $this->assertEquals($cash,$bankAccount->getCash());
-        var_dump($bankAccount->getCash());
         $this->assertTrue(is_float($bankAccount->getCash()));
     }
     
