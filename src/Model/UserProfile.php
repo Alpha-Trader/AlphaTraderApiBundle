@@ -259,10 +259,9 @@ class UserProfile
      */
     public function getFirstEmploymentDate()
     {
-        if ($this->getEmployments() == null) {
+        if ($this->getEmployments()->first() == null) {
             return null;
         }
-
         return $this->getEmployments()->first()->getStartDate();
     }
 }

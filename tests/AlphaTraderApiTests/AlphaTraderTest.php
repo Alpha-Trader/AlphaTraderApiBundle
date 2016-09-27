@@ -3,6 +3,8 @@
 namespace Tests;
 
 use Alphatrader\ApiBundle\Api\AlphaTrader;
+use Alphatrader\ApiBundle\Api\ApiClient;
+use Alphatrader\ApiBundle\Api\Methods\BankAccountController;
 use PHPUnit\Framework\TestCase;
 
 class AlphaTraderTest extends TestCase
@@ -10,7 +12,7 @@ class AlphaTraderTest extends TestCase
     protected $client;
 
     protected $config = [
-        'apiurl'   => 'http://stable.alpha-trader.com',
+        'apiurl'   => 'http://example.com',
         'username' => 'demo',
         'password' => 'password',
         'authid'   => 'partnerid',
@@ -55,5 +57,21 @@ class AlphaTraderTest extends TestCase
         $method->setAccessible(true);
 
         return $method->invokeArgs($object, $parameters);
+    }
+
+    /**
+     * @return Bankaccount
+     */
+    public function test_getBankAccount()
+    {
+        // Setup
+        $client = new BankAccountController();
+
+        $request = $this->createMock("BankAccountController")->method('getBankAccount');
+
+        $request->method('getBankAccount')->will($this->returnValue(''));
+
+        // Exercise
+        $client->getBankAccount();
     }
 }
