@@ -44,7 +44,7 @@ class NotificationsController extends ApiClient
     /**
      * @return Notifications[]|Error
      */
-    public function listsUnreadNotifications()
+    public function getUnreadNotifications()
     {
         $data = $this->request('notifications/unread/');
         /** @var Notifications[] $oResult */

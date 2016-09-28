@@ -6,6 +6,7 @@ use Alphatrader\ApiBundle\Api\Methods\UserAccountController;
 use Alphatrader\ApiBundle\Model\BankAccount;
 use Alphatrader\ApiBundle\Model\Bond;
 use Alphatrader\ApiBundle\Model\Company;
+use Alphatrader\ApiBundle\Model\Error;
 use Alphatrader\ApiBundle\Model\Listing;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
@@ -515,6 +516,15 @@ class AlphaTrader
     {
         $controller = new Methods\NotificationsController($this->config, $this->jwt);
         return $controller->getNotifications();
+    }
+
+    /**
+     * @return \Alphatrader\ApiBundle\Model\Notifications[]|Error
+     */
+    public function getUnreadNotifications()
+    {
+        $controller = new Methods\NotificationsController($this->config, $this->jwt);
+        return $controller->getUnreadNotifications();
     }
 
     /**
