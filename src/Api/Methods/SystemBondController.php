@@ -38,7 +38,7 @@ class SystemBondController extends ApiClient
                 'numberOfBonds' => $numberOfBonds
             ]
         );
-        $oResult = $this->serializer->deserialize($data, 'Alphatrader\ApiBundle\Model\Listing', 'json');
+        $oResult = $this->getSerializer()->deserialize($data, 'Alphatrader\ApiBundle\Model\Listing', 'json');
         return $oResult;
     }
 
@@ -48,7 +48,7 @@ class SystemBondController extends ApiClient
     public function repayBond()
     {
         $data = $this->post('systembonds/');
-        $oResult = $this->serializer->deserialize($data, 'array', 'json');
+        $oResult = $this->getSerializer()->deserialize($data, 'array', 'json');
         return $oResult;
     }
 
@@ -60,7 +60,7 @@ class SystemBondController extends ApiClient
     public function getBond($bondId)
     {
         $data = $this->get('systembonds/' . $bondId);
-        $oResult = $this->serializer->deserialize($data, 'Alphatrader\ApiBundle\Model\SystemBond', 'json');
+        $oResult = $this->getSerializer()->deserialize($data, 'Alphatrader\ApiBundle\Model\SystemBond', 'json');
         return $oResult;
     }
 }

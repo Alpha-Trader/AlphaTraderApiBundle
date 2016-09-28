@@ -29,13 +29,13 @@ class ListingController extends ApiClient
     {
         $data = $this->request('search/listings/' . $secIdentPart);
         /** @var Listing[] $oResult */
-        $oResult = $this->serializer->deserialize(
+        $oResult = $this->getSerializer()->deserialize(
             $data,
             'ArrayCollection<Alphatrader\ApiBundle\Model\Listing>',
             'json'
         );
         if (!empty($oResult) && $oResult[0]->getSecurityIdentifier() == null) {
-            $oResult = $this->serializer->deserialize(
+            $oResult = $this->getSerializer()->deserialize(
                 $data,
                 'Alphatrader\ApiBundle\Model\Error',
                 'json'
@@ -53,13 +53,13 @@ class ListingController extends ApiClient
     {
         $data = $this->request('listingprofiles/' . $securityIdentifier);
         /** @var ListingProfile $oResult */
-        $oResult = $this->serializer->deserialize(
+        $oResult = $this->getSerializer()->deserialize(
             $data,
             'Alphatrader\ApiBundle\Model\ListingProfile',
             'json'
         );
         if ($oResult->getSecurityIdentifier() == null) {
-            $oResult = $this->serializer->deserialize(
+            $oResult = $this->getSerializer()->deserialize(
                 $data,
                 'Alphatrader\ApiBundle\Model\Error',
                 'json'

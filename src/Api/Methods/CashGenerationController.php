@@ -28,9 +28,9 @@ class CashGenerationController extends ApiClient
     {
         $data = $this->put('cashgeneration/', ['cashAmount' => $cashAmount]);
         /** @var BankAccount $oResult */
-        $oResult = $this->serializer->deserialize($data, 'Alphatrader\ApiBundle\Model\BankAccount', 'json');
+        $oResult = $this->getSerializer()->deserialize($data, 'Alphatrader\ApiBundle\Model\BankAccount', 'json');
         if ($oResult->getCash() == null) {
-            $oResult = $this->serializer->deserialize(
+            $oResult = $this->getSerializer()->deserialize(
                 $data,
                 'Alphatrader\ApiBundle\Model\Error',
                 'json'

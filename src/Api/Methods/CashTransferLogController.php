@@ -44,13 +44,13 @@ class CashTransferLogController extends ApiClient
             ]
         );
         /** @var CashTransferLogEntry[] $oResult */
-        $oResult = $this->serializer->deserialize(
+        $oResult = $this->getSerializer()->deserialize(
             $data,
             'ArrayCollection<Alphatrader\ApiBundle\Model\CashTransferLogEntry>',
             'json'
         );
         if (!empty($oResult) && $oResult[0]->getAmount() == null) {
-            $oResult = $this->serializer->deserialize(
+            $oResult = $this->getSerializer()->deserialize(
                 $data,
                 'Alphatrader\ApiBundle\Model\Error',
                 'json'
