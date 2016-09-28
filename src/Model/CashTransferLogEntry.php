@@ -15,7 +15,7 @@ class CashTransferLogEntry
     
     /**
      * @var int
-     * @Annotation\Type("integer")
+     * @Annotation\Type("string")
      * @Annotation\SerializedName("id")
      */
     private $id;
