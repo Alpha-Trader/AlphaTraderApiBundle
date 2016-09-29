@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
 use Alphatrader\ApiBundle\Model\Ceo;
 
 /**
- * Class AbstracPollTest
+ * Class CeoTest
  * @package Tests\Model
  * @author ljbergmann
  */
@@ -68,6 +68,7 @@ class CeoTest extends TestCase
         $this->assertEquals($gravatarHash,$ceo->getGravatarHash());
         $this->assertTrue(is_string($ceo->getGravatarHash()));
     }
+    
     /*
     * @param $length
     */
