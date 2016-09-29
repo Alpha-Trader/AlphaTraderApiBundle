@@ -29,13 +29,13 @@ class MainInterestRateController extends ApiClient
     {
         $data = $this->request('maininterestrate/');
         /** @var MainInterestRate[] $oResult */
-        $oResult = $this->serializer->deserialize(
+        $oResult = $this->getSerializer()->deserialize(
             $data,
             'ArrayCollection<Alphatrader\ApiBundle\Model\MainInterestRate>',
             'json'
         );
         if (!empty($oResult) && $oResult[0]->getId() == null) {
-            $oResult = $this->serializer->deserialize(
+            $oResult = $this->getSerializer()->deserialize(
                 $data,
                 'Alphatrader\ApiBundle\Model\Error',
                 'json'
@@ -51,13 +51,13 @@ class MainInterestRateController extends ApiClient
     {
         $data = $this->request('maininterestrate/latest/');
         /** @var MainInterestRate $oResult */
-        $oResult = $this->serializer->deserialize(
+        $oResult = $this->getSerializer()->deserialize(
             $data,
             'Alphatrader\ApiBundle\Model\MainInterestRate',
             'json'
         );
         if ($oResult->getId() == null) {
-            $oResult = $this->serializer->deserialize(
+            $oResult = $this->getSerializer()->deserialize(
                 $data,
                 'Alphatrader\ApiBundle\Model\Error',
                 'json'

@@ -23,34 +23,34 @@ class CashTransferLogController extends ApiClient
     /**
      * @param $startDate
      * @param $endDate
-     * @param $senderBankAccountId
-     * @param $receiverBankAccountId
+     * @param $senderBankAccId
+     * @param $receiverBankAccId
      *
      * @return CashTransferLogEntry[]|Error
      */
     public function getCashTransferLogs(
         $startDate,
         $endDate,
-        $senderBankAccountId,
-        $receiverBankAccountId
+        $senderBankAccId,
+        $receiverBankAccId
     ) {
         $data = $this->get(
             'cashtransferlogs/',
             [
                 'startDate'             => $startDate,
                 'endDate'               => $endDate,
-                'senderBankAccountId'   => $senderBankAccountId,
-                'receiverBankAccountId' => $receiverBankAccountId
+                'senderBankAccountId'   => $senderBankAccId,
+                'receiverBankAccountId' => $receiverBankAccId
             ]
         );
         /** @var CashTransferLogEntry[] $oResult */
-        $oResult = $this->serializer->deserialize(
+        $oResult = $this->getSerializer()->deserialize(
             $data,
             'ArrayCollection<Alphatrader\ApiBundle\Model\CashTransferLogEntry>',
             'json'
         );
         if (!empty($oResult) && $oResult[0]->getAmount() == null) {
-            $oResult = $this->serializer->deserialize(
+            $oResult = $this->getSerializer()->deserialize(
                 $data,
                 'Alphatrader\ApiBundle\Model\Error',
                 'json'

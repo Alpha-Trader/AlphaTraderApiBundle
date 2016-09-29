@@ -3,10 +3,15 @@
 namespace Alphatrader\ApiBundle\Api;
 
 use GuzzleHttp\Client;
-use GuzzleHttp\Promise\PromiseInterface;
 use JMS\Serializer\Serializer;
 use JMS\Serializer\SerializerBuilder;
 
+/**
+ * Class ApiClient
+ * @package Alphatrader\ApiBundle\Api
+ * @author Tr0nYx
+ * @SuppressWarnings(PHPMD.NumberOfChildren)
+ */
 class ApiClient
 {
     const METHODE_GET = 'GET';
@@ -39,10 +44,10 @@ class ApiClient
      */
     public function __construct(array $config = array(), $jwt = null)
     {
-        $this->serializer = SerializerBuilder::create()->build();
+        $this->setSerializer(SerializerBuilder::create()->build());
         $this->config = $config;
         $token = $jwt ?: $config['jwt'] ?: null;
-        $this->client = $this->createClient($token);
+        $this->setClient($this->createClient($token));
     }
 
     /**
@@ -86,7 +91,7 @@ class ApiClient
         $url = $url . $queryString;
 
         try {
-            $request = $this->client->request($method, $url, $data);
+            $request = $this->getClient()->request($method, $url, $data);
         } catch (\GuzzleHttp\Exception\ClientException $e) {
             $request = $e->getResponse();
         }
@@ -138,5 +143,37 @@ class ApiClient
     public function delete($url, $params = array())
     {
         return $this->request($url, self::METHODE_DELETE, array(), $params);
+    }
+
+    /**
+     * @return Client
+     */
+    public function getClient()
+    {
+        return $this->client;
+    }
+
+    /**
+     * @param Client $client
+     */
+    public function setClient($client)
+    {
+        $this->client = $client;
+    }
+
+    /**
+     * @return Serializer
+     */
+    public function getSerializer()
+    {
+        return $this->serializer;
+    }
+
+    /**
+     * @param Serializer $serializer
+     */
+    public function setSerializer($serializer)
+    {
+        $this->serializer = $serializer;
     }
 }

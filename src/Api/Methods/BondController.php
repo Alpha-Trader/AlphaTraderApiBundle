@@ -45,9 +45,9 @@ class BondController extends ApiClient
             ]
         );
         /** @var Bond $oResult */
-        $oResult = $this->serializer->deserialize($data, 'Alphatrader\ApiBundle\Model\Bond', 'json');
+        $oResult = $this->getSerializer()->deserialize($data, 'Alphatrader\ApiBundle\Model\Bond', 'json');
         if ($oResult->getListing() == null) {
-            $oResult = $this->serializer->deserialize(
+            $oResult = $this->getSerializer()->deserialize(
                 $data,
                 'Alphatrader\ApiBundle\Model\Error',
                 'json'
@@ -62,7 +62,7 @@ class BondController extends ApiClient
     public function repayBond()
     {
         $data = $this->post('bonds/');
-        $oResult = $this->serializer->deserialize($data, 'array', 'json');
+        $oResult = $this->getSerializer()->deserialize($data, 'array', 'json');
         return $oResult;
     }
 
@@ -75,9 +75,9 @@ class BondController extends ApiClient
     {
         $data = $this->get('bonds/' . $bondId);
         /** @var Bond $oResult */
-        $oResult = $this->serializer->deserialize($data, 'Alphatrader\ApiBundle\Model\Bond', 'json');
+        $oResult = $this->getSerializer()->deserialize($data, 'Alphatrader\ApiBundle\Model\Bond', 'json');
         if ($oResult->getListing() == null) {
-            $oResult = $this->serializer->deserialize(
+            $oResult = $this->getSerializer()->deserialize(
                 $data,
                 'Alphatrader\ApiBundle\Model\Error',
                 'json'

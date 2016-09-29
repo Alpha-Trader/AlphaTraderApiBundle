@@ -26,13 +26,13 @@ class NotificationsController extends ApiClient
     {
         $data = $this->request('notifications/');
         /** @var Notifications[] $oResult */
-        $oResult = $this->serializer->deserialize(
+        $oResult = $this->getSerializer()->deserialize(
             $data,
             'ArrayCollection<Alphatrader\ApiBundle\Model\Notifications>',
             'json'
         );
         if (!empty($oResult) && $oResult[0]->getId() == null) {
-            $oResult = $this->serializer->deserialize(
+            $oResult = $this->getSerializer()->deserialize(
                 $data,
                 'Alphatrader\ApiBundle\Model\Error',
                 'json'
@@ -44,17 +44,17 @@ class NotificationsController extends ApiClient
     /**
      * @return Notifications[]|Error
      */
-    public function listsUnreadNotifications()
+    public function getUnreadNotifications()
     {
         $data = $this->request('notifications/unread/');
         /** @var Notifications[] $oResult */
-        $oResult = $this->serializer->deserialize(
+        $oResult = $this->getSerializer()->deserialize(
             $data,
             'ArrayCollection<Alphatrader\ApiBundle\Model\Notifications>',
             'json'
         );
         if (!empty($oResult) && $oResult[0]->getId() == null) {
-            $oResult = $this->serializer->deserialize(
+            $oResult = $this->getSerializer()->deserialize(
                 $data,
                 'Alphatrader\ApiBundle\Model\Error',
                 'json'

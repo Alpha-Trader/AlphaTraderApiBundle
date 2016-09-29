@@ -29,9 +29,9 @@ class PortfolioController extends ApiClient
     {
         $data = $this->get('portfolios/' . $securitiesAccountId);
         /** @var Portfolio $oResult */
-        $oResult = $this->serializer->deserialize($data, 'Alphatrader\ApiBundle\Model\Portfolio', 'json');
+        $oResult = $this->getSerializer()->deserialize($data, 'Alphatrader\ApiBundle\Model\Portfolio', 'json');
         if ($oResult->getCash() == null) {
-            $oResult = $this->serializer->deserialize(
+            $oResult = $this->getSerializer()->deserialize(
                 $data,
                 'Alphatrader\ApiBundle\Model\Error',
                 'json'

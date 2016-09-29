@@ -19,11 +19,60 @@ class SecurityOrderController extends ApiClient
     public function getSecurityOrder($secIdent)
     {
         $data = $this->get('securityorders', ['securityIdentifier' => $secIdent]);
-        $oResult = $this->serializer->deserialize(
+        $oResult = $this->getSerializer()->deserialize(
             $data,
             'Alphatrader\ApiBundle\Model\SecurityOrder',
             'json'
         );
+        if ($oResult->getId() == null) {
+            $oResult = $this->getSerializer()->deserialize(
+                $data,
+                'Alphatrader\ApiBundle\Model\Error',
+                'json'
+            );
+        }
+
+        return $oResult;
+    }
+
+    /**
+     * @param $owner
+     * @param $secIdent
+     * @param $action
+     * @param $type
+     * @param $price
+     * @param $numberOfShares
+     * @param $counterparty
+     *
+     * @return SecurityOrder
+     */
+    public function createSecurityOrder($owner, $secIdent, $action, $type, $price, $numberOfShares, $counterparty)
+    {
+
+        $data = $this->post(
+            'securityorders',
+            [
+                'owner'              => $owner,
+                'securityIdentifier' => $secIdent,
+                'action'             => $action,
+                'type'               => $type,
+                'price'              => $price,
+                'numberOfShares'     => $numberOfShares,
+                'counterparty'       => $counterparty
+            ]
+        );
+        $oResult = $this->getSerializer()->deserialize(
+            $data,
+            'Alphatrader\ApiBundle\Model\SecurityOrder',
+            'json'
+        );
+        if ($oResult->getId() == null) {
+            $oResult = $this->getSerializer()->deserialize(
+                $data,
+                'Alphatrader\ApiBundle\Model\Error',
+                'json'
+            );
+        }
 
         return $oResult;
     }

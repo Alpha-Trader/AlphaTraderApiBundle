@@ -2,14 +2,15 @@
 
 namespace Tests;
 
+use Alphatrader\ApiBundle\AlphatraderApiBundle;
 use PHPUnit\Framework\TestCase;
-use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\HttpKernel\Bundle\BundleInterface;
 
 class AlphatraderApiBundleTest extends TestCase
 {
     public function test_build()
     {
-        $container = new ContainerBuilder();
-        self::assertInstanceOf(ContainerBuilder::class,$container);
+        $bundle = new AlphatraderApiBundle();
+        $this->assertInstanceOf(BundleInterface::class,$bundle);
     }
 }

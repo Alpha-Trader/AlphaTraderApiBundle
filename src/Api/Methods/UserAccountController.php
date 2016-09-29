@@ -24,7 +24,7 @@ class UserAccountController extends ApiClient
     public function getCurrentUser()
     {
         $data = $this->get('user');
-        $oResult = $this->serializer->deserialize($data, 'Alphatrader\ApiBundle\Model\UserAccount', 'json');
+        $oResult = $this->getSerializer()->deserialize($data, 'Alphatrader\ApiBundle\Model\UserAccount', 'json');
         return $oResult;
     }
 
@@ -34,7 +34,7 @@ class UserAccountController extends ApiClient
     public function getUsers()
     {
         $data = $this->get('users');
-        $oResult = $this->serializer->deserialize($data, 'Alphatrader\ApiBundle\Model\UserAccount', 'json');
+        $oResult = $this->getSerializer()->deserialize($data, 'Alphatrader\ApiBundle\Model\UserAccount', 'json');
         return $oResult;
     }
 
@@ -46,7 +46,7 @@ class UserAccountController extends ApiClient
     public function searchUsersByNamePart($part)
     {
         $data = $this->get('users/' . $part);
-        $oResult = $this->serializer->deserialize(
+        $oResult = $this->getSerializer()->deserialize(
             $data,
             'ArrayCollection<Alphatrader\ApiBundle\Model\UserAccount>',
             'json'
@@ -62,7 +62,7 @@ class UserAccountController extends ApiClient
     public function getUserByUsername($username)
     {
         $data = $this->get('users/' . $username);
-        $oResult = $this->serializer->deserialize($data, 'Alphatrader\ApiBundle\Model\UserAccount', 'json');
+        $oResult = $this->getSerializer()->deserialize($data, 'Alphatrader\ApiBundle\Model\UserAccount', 'json');
         return $oResult;
     }
 
@@ -74,7 +74,7 @@ class UserAccountController extends ApiClient
     public function getUserById($userid)
     {
         $data = $this->get('users/' . $userid);
-        $oResult = $this->serializer->deserialize($data, 'Alphatrader\ApiBundle\Model\UserAccount', 'json');
+        $oResult = $this->getSerializer()->deserialize($data, 'Alphatrader\ApiBundle\Model\UserAccount', 'json');
         return $oResult;
     }
 
@@ -86,7 +86,7 @@ class UserAccountController extends ApiClient
     public function getUserProfile($username)
     {
         $data = $this->get('userprofiles/' . $username);
-        $oResult = $this->serializer->deserialize($data, 'Alphatrader\ApiBundle\Model\UserProfile', 'json');
+        $oResult = $this->getSerializer()->deserialize($data, 'Alphatrader\ApiBundle\Model\UserProfile', 'json');
         return $oResult;
     }
 
@@ -104,7 +104,7 @@ class UserAccountController extends ApiClient
             [],
             ['username' => $username, 'emailAddress' => $email, 'password' => $password]
         );
-        $oResult = $this->serializer->deserialize($data, 'Alphatrader\ApiBundle\Model\UserAccount', 'json');
+        $oResult = $this->getSerializer()->deserialize($data, 'Alphatrader\ApiBundle\Model\UserAccount', 'json');
         return $oResult;
     }
 

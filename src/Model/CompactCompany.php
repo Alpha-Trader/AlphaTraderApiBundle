@@ -111,7 +111,7 @@ class CompactCompany
      */
     public function getSecuritiesAccountId()
     {
-        return $this->securitiesAccountId;
+        return $this->secAccId;
     }
 
     /**

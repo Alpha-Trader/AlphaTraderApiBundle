@@ -2,22 +2,20 @@
 
 namespace Alphatrader\ApiBundle\Api;
 
-use Alphatrader\ApiBundle\Api\Methods\UserAccountController;
 use Alphatrader\ApiBundle\Model\BankAccount;
 use Alphatrader\ApiBundle\Model\Bond;
 use Alphatrader\ApiBundle\Model\Company;
+use Alphatrader\ApiBundle\Model\Error;
 use Alphatrader\ApiBundle\Model\Listing;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 /**
  * Class AlphaTrader
  * @package Alphatrader\ApiBundle\Api
+ * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
-class AlphaTrader
+class AlphaTrader extends AbstractAlphaTrader
 {
-    protected $config;
-    protected $jwt;
-
     /**
      * @param                  $config
      * @param SessionInterface $session
@@ -32,22 +30,11 @@ class AlphaTrader
     }
 
     /**
-     * @param $time
-     *
-     * @return int|string
-     */
-    private function formatTimeStamp($time)
-    {
-        return $time instanceof \DateTime ? ($time->getTimestamp() * 1000) : ((int)$time * 1000);
-    }
-
-    /**
      * @return Bankaccount
      */
     public function getBankAccount()
     {
-        $controller = new Methods\BankAccountController($this->config, $this->jwt);
-        return $controller->getBankAccount();
+        return $this->getBankAccountController()->getBankAccount();
     }
 
     /**
@@ -64,7 +51,8 @@ class AlphaTrader
         $senderBankAccId = null,
         $receiverBankAccId = null
     ) {
-        $controller = new Methods\CashTransferLogController($this->config, $this->jwt);
+        $controller = $this->getCashTransferLogController();
+
         return $controller->getCashTransferLogs(
             $this->formatTimeStamp($startDate),
             $this->formatTimeStamp($endDate),
@@ -80,8 +68,7 @@ class AlphaTrader
      */
     public function generateCash($cashAmount)
     {
-        $controller = new Methods\CashGenerationController($this->config, $this->jwt);
-        return $controller->generateCash($cashAmount);
+        return $this->getCashGenerationController()->generateCash($cashAmount);
     }
 
     /**
@@ -89,8 +76,7 @@ class AlphaTrader
      */
     public function getChats()
     {
-        $controller = new Methods\ChatController($this->config, $this->jwt);
-        return $controller->getChats();
+        return $this->getChatController()->getChats();
     }
 
     /**
@@ -100,8 +86,7 @@ class AlphaTrader
      */
     public function getChat($chatID)
     {
-        $controller = new Methods\ChatController($this->config, $this->jwt);
-        return $controller->getChat($chatID);
+        return $this->getChatController()->getChat($chatID);
     }
 
     /**
@@ -109,8 +94,7 @@ class AlphaTrader
      */
     public function getCurrentUser()
     {
-        $controller = new Methods\UserAccountController($this->config, $this->jwt);
-        return $controller->getCurrentUser();
+        return $this->getUserAccountController()->getCurrentUser();
     }
 
     /**
@@ -118,9 +102,7 @@ class AlphaTrader
      */
     public function getUsers()
     {
-        /** @var UserAccountController $controller */
-        $controller = new Methods\UserAccountController($this->config, $this->jwt);
-        return $controller->getUsers();
+        return $this->getUserAccountController()->getUsers();
     }
 
     /**
@@ -130,8 +112,7 @@ class AlphaTrader
      */
     public function getUsersByNamePart($part)
     {
-        $controller = new Methods\UserAccountController($this->config, $this->jwt);
-        return $controller->searchUsersByNamePart($part);
+        return $this->getUserAccountController()->searchUsersByNamePart($part);
     }
 
     /**
@@ -141,19 +122,18 @@ class AlphaTrader
      */
     public function getUserByUsername($username)
     {
-        $controller = new Methods\UserAccountController($this->config, $this->jwt);
-        return $controller->getUserByUsername($username);
+        return $this->getUserAccountController()->getUserByUsername($username);
     }
 
     /**
      * @param bool $all
+     * @SuppressWarnings(PHPMD.BooleanArgumentFlag)
      *
      * @return \AlphaTrader\ApiBundle\Model\Company[]
      */
     public function getCompanies($all = true)
     {
-        $controller = new Methods\CompanyController($this->config, $this->jwt);
-        return $controller->getCompanies($all);
+        return $this->getCompanyController()->getCompanies($all);
     }
 
     /**
@@ -163,8 +143,7 @@ class AlphaTrader
      */
     public function getCompany($companyID)
     {
-        $controller = new Methods\CompanyController($this->config, $this->jwt);
-        return $controller->getCompany($companyID);
+        return $this->getCompanyController()->getCompany($companyID);
     }
 
     /**
@@ -174,8 +153,9 @@ class AlphaTrader
      */
     public function getCompaniesByUserId($userId)
     {
-        $controller = new Methods\CompanyController($this->config, $this->jwt);
-        return $controller->getCompanyByUserId($userId);
+        $user = $this->getUserAccountController()->getUserById($userId);
+
+        return $this->getCompanyController()->getCompanyByUserId($user);
     }
 
     /**
@@ -185,8 +165,7 @@ class AlphaTrader
      */
     public function getCompaniesByUserName($username)
     {
-        $controller = new Methods\CompanyController($this->config, $this->jwt);
-        return $controller->getCompanyByUserName($username);
+        return $this->getCompanyController()->getCompanyByUserName($username);
     }
 
     /**
@@ -196,8 +175,7 @@ class AlphaTrader
      */
     public function getCompanyBySecurityAccountId($secAccId)
     {
-        $controller = new Methods\CompanyController($this->config, $this->jwt);
-        return $controller->getCompanyBySecurityAccountId($secAccId);
+        return $this->getCompanyController()->getCompanyBySecurityAccountId($secAccId);
     }
 
     /**
@@ -207,8 +185,7 @@ class AlphaTrader
      */
     public function getCompanyBySecurityIdentifier($secIdent)
     {
-        $controller = new Methods\CompanyController($this->config, $this->jwt);
-        return $controller->getCompanyBySecurityIdentifier($secIdent);
+        return $this->getCompanyController()->getCompanyBySecurityIdentifier($secIdent);
     }
 
     /**
@@ -218,8 +195,7 @@ class AlphaTrader
      */
     public function getCompanyProfile($companyId)
     {
-        $controller = new Methods\CompanyController($this->config, $this->jwt);
-        return $controller->getCompanyProfile($companyId);
+        return $this->getCompanyController()->getCompanyProfile($companyId);
     }
 
     /**
@@ -230,8 +206,7 @@ class AlphaTrader
      */
     public function createCompany($name, $cashDeposit)
     {
-        $controller = new Methods\CompanyController($this->config, $this->jwt);
-        return $controller->createCompany($name, $cashDeposit);
+        return $this->getCompanyController()->createCompany($name, $cashDeposit);
     }
 
     /**
@@ -243,8 +218,7 @@ class AlphaTrader
      */
     public function registerUser($username, $email, $password)
     {
-        $controller = new Methods\UserAccountController($this->config, $this->jwt);
-        return $controller->registerUser($username, $email, $password);
+        return $this->getUserAccountController()->registerUser($username, $email, $password);
     }
 
     /**
@@ -255,8 +229,7 @@ class AlphaTrader
      */
     public function getUserJwt($username, $password)
     {
-        $controller = new Methods\UserAccountController($this->config, $this->jwt);
-        return $controller->getUserToken($username, $password);
+        return $this->getUserAccountController()->getUserToken($username, $password);
     }
 
     /**
@@ -266,8 +239,7 @@ class AlphaTrader
      */
     public function getUserProfile($username)
     {
-        $controller = new Methods\UserAccountController($this->config, $this->jwt);
-        return $controller->getUserProfile($username);
+        return $this->getUserAccountController()->getUserProfile($username);
     }
 
     /**
@@ -277,8 +249,7 @@ class AlphaTrader
      */
     public function getEvents(\DateTime $afterDate = null)
     {
-        $controller = new Methods\EventController($this->config, $this->jwt);
-        return $controller->getEvents($this->formatTimeStamp($afterDate));
+        return $this->getEventController()->getEvents($this->formatTimeStamp($afterDate));
     }
 
     /**
@@ -289,8 +260,7 @@ class AlphaTrader
      */
     public function getEventsByRealms($realms, \DateTime $afterDate = null)
     {
-        $controller = new Methods\EventController($this->config, $this->jwt);
-        return $controller->searchEvents($realms, $this->formatTimeStamp($afterDate));
+        return $this->getEventController()->searchEvents($realms, $this->formatTimeStamp($afterDate));
     }
 
     /**
@@ -302,8 +272,7 @@ class AlphaTrader
      */
     public function getEventsByType($eventtype, $realms = '', \DateTime $afterDate = null)
     {
-        $controller = new Methods\EventController($this->config, $this->jwt);
-        return $controller->searchEventsByType($eventtype, $realms, $this->formatTimeStamp($afterDate));
+        return $this->getEventController()->searchEventsByType($eventtype, $realms, $this->formatTimeStamp($afterDate));
     }
 
     /**
@@ -313,8 +282,7 @@ class AlphaTrader
      */
     public function getPortfolio($secAccId)
     {
-        $controller = new Methods\PortfolioController($this->config, $this->jwt);
-        return $controller->getPortfolio($secAccId);
+        return $this->getPortfolioController()->getPortfolio($secAccId);
     }
 
     /**
@@ -324,8 +292,7 @@ class AlphaTrader
      */
     public function getListing($secIdentPart)
     {
-        $controller = new Methods\ListingController($this->config, $this->jwt);
-        return $controller->getListing($secIdentPart);
+        return $this->getListingController()->getListing($secIdentPart);
     }
 
     /**
@@ -335,8 +302,7 @@ class AlphaTrader
      */
     public function getListingProfile($securityIdent)
     {
-        $controller = new Methods\ListingController($this->config, $this->jwt);
-        return $controller->getProfile($securityIdent);
+        return $this->getListingController()->getProfile($securityIdent);
     }
 
     /**
@@ -355,7 +321,8 @@ class AlphaTrader
         $buyerSecAccId = '',
         $sellerSecAccId = ''
     ) {
-        $controller = new Methods\SecurityOrderLogController($this->config, $this->jwt);
+        $controller = $this->getSecurityOrderLogController();
+
         return $controller->getSecurityOrderLogs(
             $securityIdentifier,
             $this->formatTimeStamp($startDate),
@@ -381,7 +348,8 @@ class AlphaTrader
         $interestRate,
         \DateTime $maturityDate
     ) {
-        $controller = new Methods\BondController($this->config, $this->jwt);
+        $controller = $this->getBondController();
+
         return $controller->createBond(
             $company,
             $numberOfBonds,
@@ -396,8 +364,7 @@ class AlphaTrader
      */
     public function repayBond()
     {
-        $controller = new Methods\BondController($this->config, $this->jwt);
-        return $controller->repayBond();
+        return $this->getBondController()->repayBond();
     }
 
     /**
@@ -407,8 +374,7 @@ class AlphaTrader
      */
     public function getBond($bondid)
     {
-        $controller = new Methods\BondController($this->config, $this->jwt);
-        return $controller->getBond($bondid);
+        return $this->getBondController()->getBond($bondid);
     }
 
     /**
@@ -419,7 +385,8 @@ class AlphaTrader
      */
     public function createSystemBond(Company $company, $numberOfBonds)
     {
-        $controller = new Methods\SystemBondController($this->config, $this->jwt);
+        $controller = $this->getSystemBondController();
+
         return $controller->createBond(
             $company,
             $numberOfBonds
@@ -431,8 +398,7 @@ class AlphaTrader
      */
     public function repaySystemBond()
     {
-        $controller = new Methods\SystemBondController($this->config, $this->jwt);
-        return $controller->repayBond();
+        return $this->getSystemBondController()->repayBond();
     }
 
     /**
@@ -442,8 +408,7 @@ class AlphaTrader
      */
     public function getSystemBond($bondid)
     {
-        $controller = new Methods\SystemBondController($this->config, $this->jwt);
-        return $controller->getBond($bondid);
+        return $this->getSystemBondController()->getBond($bondid);
     }
 
     /**
@@ -453,8 +418,7 @@ class AlphaTrader
      */
     public function createBankingLicense(Company $company)
     {
-        $controller = new Methods\BankingLicenseController($this->config, $this->jwt);
-        return $controller->createBankingLicense($company);
+        return $this->getBankingLicenseController()->createBankingLicense($company);
     }
 
     /**
@@ -464,8 +428,7 @@ class AlphaTrader
      */
     public function getBankingLicense(Company $company)
     {
-        $controller = new Methods\BankingLicenseController($this->config, $this->jwt);
-        return $controller->getBankingLicense($company);
+        return $this->getBankingLicenseController()->getBankingLicense($company);
     }
 
     /**
@@ -473,8 +436,7 @@ class AlphaTrader
      */
     public function getMainInterestRate()
     {
-        $controller = new Methods\MainInterestRateController($this->config, $this->jwt);
-        return $controller->getMainInterestRate();
+        return $this->getMainInterestRateController()->getMainInterestRate();
     }
 
     /**
@@ -482,8 +444,7 @@ class AlphaTrader
      */
     public function getLatestMainInterestRate()
     {
-        $controller = new Methods\MainInterestRateController($this->config, $this->jwt);
-        return $controller->getLatestMainInterestRate();
+        return $this->getMainInterestRateController()->getLatestMainInterestRate();
     }
 
     /**
@@ -493,8 +454,7 @@ class AlphaTrader
      */
     public function getCentralBankReservesById($reserveid)
     {
-        $controller = new Methods\CentralBankReservesController($this->config, $this->jwt);
-        return $controller->getReserveById($reserveid);
+        return $this->getCentralBankReservesController()->getReserveById($reserveid);
     }
 
     /**
@@ -502,8 +462,7 @@ class AlphaTrader
      */
     public function setNotificationsasRead()
     {
-        $controller = new Methods\NotificationsController($this->config, $this->jwt);
-        return $controller->markAsRead();
+        return $this->getNotificationsController()->markAsRead();
     }
 
     /**
@@ -511,8 +470,15 @@ class AlphaTrader
      */
     public function getNotifications()
     {
-        $controller = new Methods\NotificationsController($this->config, $this->jwt);
-        return $controller->getNotifications();
+        return $this->getNotificationsController()->getNotifications();
+    }
+
+    /**
+     * @return \Alphatrader\ApiBundle\Model\Notifications[]|Error
+     */
+    public function getUnreadNotifications()
+    {
+        return $this->getNotificationsController()->getUnreadNotifications();
     }
 
     /**
@@ -522,7 +488,30 @@ class AlphaTrader
      */
     public function getOrder($secIdent)
     {
-        $controller = new Methods\SecurityOrderController($this->config, $this->jwt);
-        return $controller->getSecurityOrder($secIdent);
+        return $this->getSecurityOrderContrller()->getSecurityOrder($secIdent);
+    }
+
+    /**
+     * @param $owner
+     * @param $secIdent
+     * @param $action
+     * @param $type
+     * @param $price
+     * @param $numberOfShares
+     * @param $counterparty
+     *
+     * @return \Alphatrader\ApiBundle\Model\SecurityOrder
+     */
+    public function createOrder($owner, $secIdent, $action, $type, $price, $numberOfShares, $counterparty)
+    {
+        return $this->getSecurityOrderContrller()->createSecurityOrder(
+            $owner,
+            $secIdent,
+            $action,
+            $type,
+            $price,
+            $numberOfShares,
+            $counterparty
+        );
     }
 }

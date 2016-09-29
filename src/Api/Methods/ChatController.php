@@ -10,6 +10,7 @@ use Alphatrader\ApiBundle\Model\UserAccount;
  * Class ChatController
  * @package AlphaTrader\ApiBundle\Controller
  * @author Tr0nYx <tronyx@bric.finance>
+ * @SuppressWarnings(PHPMD)
  */
 class ChatController extends ApiClient
 {
@@ -21,23 +22,24 @@ class ChatController extends ApiClient
     public function getChats()
     {
         $data = $this->request('chats');
-        $oResult = $this->serializer->deserialize($data, 'ArrayCollection<Alphatrader\ApiBundle\Model\Chats>', 'json');
+        $oResult = $this->getSerializer()->deserialize(
+            $data,
+            'ArrayCollection<Alphatrader\ApiBundle\Model\Chats>',
+            'json'
+        );
         return $oResult;
     }
 
     /**
-     * Adds user to chat
+     * @param Chats       $iChat
+     * @param UserAccount $user
      *
-     * @param \Alphatrader\ApiBundle\Model\Chats|int       $iChat
-     * @param \Alphatrader\ApiBundle\Model\UserAccount|int $user
-     * @Method("PUT")
-     *
-     * @return
+     * @return mixed
      */
     public function addUsertoChatbyId(Chats $iChat, UserAccount $user)
     {
         $data = $this->put('chats/adduser/userid', ['userId' => $user->getId(), 'chatId' => $iChat->getId()]);
-        $oResult = $this->serializer->deserialize($data, 'Alphatrader\ApiBundle\Model\Chats', 'json');
+        $oResult = $this->getSerializer()->deserialize($data, 'Alphatrader\ApiBundle\Model\Chats', 'json');
         return $oResult;
     }
 
@@ -109,15 +111,15 @@ class ChatController extends ApiClient
     /**
      * Returns chat
      *
-     * @param \Alphatrader\ApiBundle\Model\Chats $iChat
+     * @param int $iChat
      * @Method("GET")
      *
      * @return Chats
      */
-    public function getChat(Chats $iChat)
+    public function getChat($iChat)
     {
-        $data = $this->get('chats/' . $iChat->getId());
-        $oResult = $this->serializer->deserialize($data, 'Alphatrader\ApiBundle\Model\Chats', 'json');
+        $data = $this->get('chats/' . $iChat);
+        $oResult = $this->getSerializer()->deserialize($data, 'Alphatrader\ApiBundle\Model\Chats', 'json');
         return $oResult;
     }
 
