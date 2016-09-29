@@ -4,26 +4,15 @@ namespace Tests;
 
 use Alphatrader\ApiBundle\Api\AlphaTrader;
 use Alphatrader\ApiBundle\Model\Company;
-use Doctrine\Common\Annotations\AnnotationReader;
-use GuzzleHttp\Psr7\Response;
 use JMS\Serializer\Exception\RuntimeException;
-use JMS\Serializer\SerializerBuilder;
-use PHPUnit\Framework\TestCase;
+use Tests\Methods\BaseTestCase;
 
-class AlphaTraderTest extends TestCase
+class AlphaTraderTest extends BaseTestCase
 {
     /**
      * @var AlphaTrader
      */
     protected $alphatrader;
-
-    protected $config = [
-        'apiurl'   => 'http://example.com',
-        'username' => 'demo',
-        'password' => 'password',
-        'authid'   => 'partnerid',
-        'jwt'      => 'jwttoken'
-    ];
 
     /**
      * {@inheritDoc}
@@ -317,39 +306,5 @@ class AlphaTraderTest extends TestCase
     {
         $this->expectException(RuntimeException::class);
         $this->alphatrader->createOrder(1,1,1,1,1,1,1);
-    }
-    
-    /**
-     * @param $response
-     *
-     * @return ApiClient
-     */
-    public function getClient($response)
-    {
-        $apiclient = $this->createMock('Alphatrader\ApiBundle\Api\ApiClient');
-        $apiclient->method('request')->will($this->returnValue(new Response(200, [], $response)));
-        $serializer = SerializerBuilder::create();
-        $serializer->setAnnotationReader(new AnnotationReader());
-        $serializer->build();
-        $apiclient->method('getSerializer')->will($this->returnValue($serializer));
-        return $apiclient;
-    }
-    
-    /**
-     * Call protected/private method of a class.
-     *
-     * @param object &$object    Instantiated object that we will run method on.
-     * @param string $methodName Method name to call
-     * @param array  $parameters Array of parameters to pass into method.
-     *
-     * @return mixed Method return.
-     */
-    public function invokeMethod(&$object, $methodName, array $parameters = array())
-    {
-        $reflection = new \ReflectionClass(get_class($object));
-        $method = $reflection->getMethod($methodName);
-        $method->setAccessible(true);
-
-        return $method->invokeArgs($object, $parameters);
     }
 }
