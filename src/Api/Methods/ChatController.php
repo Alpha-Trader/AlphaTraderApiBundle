@@ -23,7 +23,9 @@ class ChatController extends ApiClient
     {
         $data = $this->request('chats');
         $oResult = $this->getSerializer()->deserialize(
-            $data, 'ArrayCollection<Alphatrader\ApiBundle\Model\Chats>', 'json'
+            $data,
+            'ArrayCollection<Alphatrader\ApiBundle\Model\Chats>',
+            'json'
         );
         return $oResult;
     }
