@@ -1,22 +1,23 @@
 <?php
 /**
  * User: ljbergmann
- * Date: 29.09.16 20:46
+ * Date: 29.09.16 21:02
  */
 
 namespace Tests\Model;
 
 use PHPUnit\Framework\TestCase;
-use Alphatrader\ApiBundle\Model\CompactCompany;
+use Alphatrader\ApiBundle\Model\Company;
+
 /**
- * Class CompactCompany
+ * Class CompanyTest
  * @package Tests\Model
  * @author ljbergmann
  */
-class CompactCompanyTest extends TestCase
-{
+class CompanyTest extends TestCase{
+
     public function testId(){
-        $company = new CompactCompany();
+        $company = new Company();
         $this->assertNull($company->getId());
 
         $uuid = uniqid();
@@ -26,15 +27,27 @@ class CompactCompanyTest extends TestCase
         $this->assertTrue(is_string($company->getId()));
     }
 
-    public function testCeo()
-    {
-        $company = new CompactCompany();
+    public function testBankAccount(){
+        $company = new Company();
+        $this->assertNull($company->getBankAccount());
+
+        $bankAccount = $this->createMock('Alphatrader\ApiBundle\Model\BankAccount');
+        $bankAccount->expects($this->any())->method('getId')->will($this->returnValue($this->getRandomString(12)));
+        $bankAccount->expects($this->any())->method('getCash')->will($this->returnValue(mt_rand(1,50000)+(mt_rand() / mt_getrandmax())));
+
+        $company->setBankAccount($bankAccount);
+
+        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\BankAccount',$company->getBankAccount());
+    }
+
+    public function testCeo(){
+        $company = new Company();
         $this->assertNull($company->getCeo());
 
         $date = new \DateTime();
         $ceo = $this->createMock('Alphatrader\ApiBundle\Model\UserName');
         $usercaps = $this->createMock('Alphatrader\ApiBundle\Model\UserCapabilities');
-        
+
         $usercaps->expects($this->any())->method('isLevel2User')->will($this->returnValue(true));
         $usercaps->expects($this->any())->method('getLevel2UserEndDate')->will($this->returnValue($date));
         $usercaps->expects($this->any())->method('getLocale')->will($this->returnValue('en_US'));
@@ -51,44 +64,43 @@ class CompactCompanyTest extends TestCase
         $company->setCeo($ceo);
         
         $this->assertInstanceOf('Alphatrader\ApiBundle\Model\UserName',$company->getCeo());
+
     }
     
+    public function testListing(){
+        $company = new Company();
+        $this->assertNull($company->getListing());
+        
+        $listing = $this->createMock('Alphatrader\ApiBundle\Model\Listing');
+        $listing->expects($this->any())->method('getSecurityIdentifier')->willReturn($this->getRandomString(12));
+        $listing->expects($this->any())->method('getType')->willReturn('Bond');
+
+        $company->setListing($listing);
+
+        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\Listing',$company->getListing());
+    }
+
     public function testName(){
-        $company = new CompactCompany();
+        $company = new Company();
         $this->assertNull($company->getName());
-        
-        $username = $this->getRandomString(12);
-        
-        $company->setName($username);
-        
-        $this->assertEquals($username,$company->getName());
+
+        $name = $this->getRandomString(12);
+
+        $company->setName($name);
+        $this->assertEquals($name,$company->getName());
         $this->assertTrue(is_string($company->getName()));
     }
-    
-    public function testSecurityIdentifier(){
-        $company = new CompactCompany();
-        $this->assertNull($company->getSecurityIdentifier());
 
-        $securityIdentifier = $this->getRandomString(6);
-
-        $company->setSecurityIdentifier($securityIdentifier);
-
-        $this->assertEquals($securityIdentifier,$company->getSecurityIdentifier());
-        $this->assertTrue(is_string($company->getSecurityIdentifier()));
-    }
-
-    public function testSecAccId(){
-        $company = new CompactCompany();
+    public function testSecuritiesAccountId(){
+        $company = new Company();
         $this->assertNull($company->getSecuritiesAccountId());
 
-        $secAccId = $this->getRandomString(32);
+        $uuid = uniqid();
 
-        $company->setSecuritiesAccountId($secAccId);
-
-        $this->assertEquals($secAccId,$company->getSecuritiesAccountId());
+        $company->setSecuritiesAccountId($uuid);
+        $this->assertEquals($uuid,$company->getSecuritiesAccountId());
         $this->assertTrue(is_string($company->getSecuritiesAccountId()));
     }
-
     /*
     * @param $length
     */
@@ -101,6 +113,5 @@ class CompactCompanyTest extends TestCase
             $str .= $characters[$rand];
         }
         return $str;
-    }    
-    
+    }
 }

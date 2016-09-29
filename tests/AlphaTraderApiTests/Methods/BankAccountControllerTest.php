@@ -10,7 +10,7 @@ namespace Tests\Methods;
 
 use Alphatrader\ApiBundle\Api\ApiClient;
 use Alphatrader\ApiBundle\Api\Methods\BankAccountController;
-use AlphaTrader\ApiBundle\Model\Bankaccount;
+use AlphaTrader\ApiBundle\Model\BankAccount;
 use Alphatrader\ApiBundle\Model\Error;
 use Doctrine\Common\Annotations\AnnotationReader;
 use GuzzleHttp\Psr7\Response;
