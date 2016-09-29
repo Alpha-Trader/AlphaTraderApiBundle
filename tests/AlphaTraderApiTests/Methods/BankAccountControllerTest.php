@@ -19,14 +19,6 @@ use Alphatrader\ApiBundle\Model\Error;
  */
 class BankAccountControllerTest extends BaseTestCase
 {
-    protected $config = [
-        'apiurl'   => 'http://example.com',
-        'username' => 'demo',
-        'password' => 'password',
-        'authid'   => 'partnerid',
-        'jwt'      => 'jwttoken'
-    ];
-    
     /**
      * @return Bankaccount
      */

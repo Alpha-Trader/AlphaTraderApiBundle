@@ -18,7 +18,6 @@ use Alphatrader\ApiBundle\Model\Company;
  */
 class BankingLicenseControllerTest extends BaseTestCase
 {
-
     public function test_createBankingLicenseWithError()
     {
         $expected = json_encode([]);

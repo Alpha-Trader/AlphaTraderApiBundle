@@ -36,7 +36,7 @@ class Ceo
     private $gravatarHash;
 
     /**
-     * @return int
+     * @return string
      */
     public function getId()
     {
@@ -44,7 +44,7 @@ class Ceo
     }
 
     /**
-     * @param int $id
+     * @param string $id
      */
     public function setId($id)
     {
