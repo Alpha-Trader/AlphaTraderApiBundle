@@ -2,7 +2,6 @@
 
 namespace Alphatrader\ApiBundle\Api;
 
-use Alphatrader\ApiBundle\Api\Methods\UserAccountController;
 use Alphatrader\ApiBundle\Model\BankAccount;
 use Alphatrader\ApiBundle\Model\Bond;
 use Alphatrader\ApiBundle\Model\Company;
@@ -293,9 +292,7 @@ class AlphaTrader extends AbstractAlphaTrader
      */
     public function getListing($secIdentPart)
     {
-        $controller = new Methods\ListingController($this->config, $this->jwt);
-
-        return $controller->getListing($secIdentPart);
+        return $this->getListingController()->getListing($secIdentPart);
     }
 
     /**
