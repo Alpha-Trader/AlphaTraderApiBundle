@@ -111,14 +111,14 @@ class ChatController extends ApiClient
     /**
      * Returns chat
      *
-     * @param \Alphatrader\ApiBundle\Model\Chats $iChat
+     * @param int $iChat
      * @Method("GET")
      *
      * @return Chats
      */
-    public function getChat(Chats $iChat)
+    public function getChat($iChat)
     {
-        $data = $this->get('chats/' . $iChat->getId());
+        $data = $this->get('chats/' . $iChat);
         $oResult = $this->getSerializer()->deserialize($data, 'Alphatrader\ApiBundle\Model\Chats', 'json');
         return $oResult;
     }

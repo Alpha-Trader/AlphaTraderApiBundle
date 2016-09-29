@@ -46,7 +46,7 @@ class ApiClient
     {
         $this->setSerializer(SerializerBuilder::create()->build());
         $this->config = $config;
-        $token = $jwt ?: isset($config['jwt']) ? $config['jwt'] : null;
+        $token = $jwt ?: $config['jwt'] ?: null;
         $this->setClient($this->createClient($token));
     }
 

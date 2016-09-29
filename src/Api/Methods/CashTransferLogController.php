@@ -26,7 +26,7 @@ class CashTransferLogController extends ApiClient
      * @param $senderBankAccId
      * @param $receiverBankAccId
      *
-     * @return CashTransferLogEntry[]x
+     * @return CashTransferLogEntry[]|Error
      */
     public function getCashTransferLogs(
         $startDate,
