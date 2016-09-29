@@ -24,6 +24,28 @@ class BondTest extends TestCase{
         $this->assertTrue(is_string($bond->getId()));
     }
 
+    public function testName(){
+        $bond = new Bond();
+        $this->assertNull($bond->getName());
+
+        $name = $this->getRandomString();
+
+        $bond->setName($name);
+        $this->assertEquals($name,$bond->getName());
+        $this->assertTrue(is_string($bond->getName()));
+    }
+
+    public function test_Volume(){
+        $bond = new Bond();
+        $this->assertNull($bond->getVolume());
+
+        $volume = mt_rand(1,10000);
+
+        $bond->setVolume($volume);
+        $this->assertEquals($volume,$bond->getVolume());
+        $this->assertTrue(is_int($bond->getVolume()));
+    }
+
     public function testFaceValue(){
         $bond = new Bond();
         $this->assertNull($bond->getFaceValue());
@@ -73,6 +95,34 @@ class BondTest extends TestCase{
         
         //Then
         $this->assertInstanceOf('Alphatrader\ApiBundle\Model\CompanyName',$bond->getIssuer());
+    }
+
+    public function testListing(){
+        $bond = new Bond();
+        $this->assertNull($bond->getListing());
+
+        // Given
+        $listing = $this->createMock('Alphatrader\ApiBundle\Model\Listing');
+
+        //When
+        $bond->setListing($listing);
+
+        //Then
+        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\Listing',$bond->getListing());
+    }
+
+    public function testReListing(){
+        $bond = new Bond();
+        $this->assertNull($bond->getRepurchaseListing());
+
+        // Given
+        $listing = $this->createMock('Alphatrader\ApiBundle\Model\Listing');
+
+        //When
+        $bond->setRepurchaseListing($listing);
+
+        //Then
+        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\Listing',$bond->getRepurchaseListing());
     }
     
     public function testMaturityDate(){
