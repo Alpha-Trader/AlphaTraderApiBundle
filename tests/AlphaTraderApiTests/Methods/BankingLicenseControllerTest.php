@@ -8,31 +8,16 @@
  */
 namespace Tests\Methods;
 
-use Alphatrader\ApiBundle\Api\ApiClient;
 use Alphatrader\ApiBundle\Api\Methods\BankingLicenseController;
-use Alphatrader\ApiBundle\Model\BankingLicense;
 use Alphatrader\ApiBundle\Model\Company;
-use Alphatrader\ApiBundle\Model\Error;
-use Doctrine\Common\Annotations\AnnotationReader;
-use GuzzleHttp\Psr7\Response;
-use JMS\Serializer\SerializerBuilder;
-use PHPUnit\Framework\TestCase;
 
 /**
- * Class BankingLicenseController
+ * Class BankingLicenseControllerTest
  * @package AlphaTrader\API\Controller
  * @author Tr0nYx <tronyx@bric.finance>
  */
-class BankingLicenseControllerTest extends TestCase
+class BankingLicenseControllerTest extends BaseTestCase
 {
-    protected $config = [
-        'apiurl'   => 'http://example.com',
-        'username' => 'demo',
-        'password' => 'password',
-        'authid'   => 'partnerid',
-        'jwt'      => 'jwttoken'
-    ];
-
     public function test_createBankingLicenseWithError()
     {
         $expected = json_encode([]);
@@ -61,21 +46,5 @@ class BankingLicenseControllerTest extends TestCase
         $val = $bankaccount->getBankingLicense($company);
 
         $this->assertInstanceOf('Alphatrader\ApiBundle\Model\Error', $val);
-    }
-
-    /**
-     * @param $response
-     *
-     * @return ApiClient
-     */
-    public function getClient($response)
-    {
-        $apiclient = $this->createMock('Alphatrader\ApiBundle\Api\ApiClient');
-        $apiclient->method('request')->will($this->returnValue(new Response(200, [], $response)));
-        $serializer = SerializerBuilder::create();
-        $serializer->setAnnotationReader(new AnnotationReader());
-        $serializer->build();
-        $apiclient->method('getSerializer')->will($this->returnValue($serializer));
-        return $apiclient;
     }
 }
