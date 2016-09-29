@@ -9,7 +9,7 @@
 namespace Tests\Methods;
 
 use Alphatrader\ApiBundle\Api\Methods\BankAccountController;
-use AlphaTrader\ApiBundle\Model\Bankaccount;
+use AlphaTrader\ApiBundle\Model\BankAccount;
 use Alphatrader\ApiBundle\Model\Error;
 
 /**
