@@ -65,11 +65,11 @@ class AlphaTraderTest extends TestCase
         $this->alphatrader->getCashTransferLogs(new \DateTime(),new \DateTime(),$log[0]['senderBankAccount'],$log[0]['receiverBankAccount']);
     }
 
-    public function test_generateCash()
+    /*public function test_generateCash()
     {
         $this->expectException(RuntimeException::class);
         $this->assertNull($this->alphatrader->generateCash(50000)->getMessagePrototype());
-    }
+    }*/
 
     public function test_getChats()
     {
