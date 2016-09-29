@@ -49,7 +49,7 @@ class CashTransferLogEntry
     private $senderBankAcc;
 
     /**
-     * @return int
+     * @return float
      */
     public function getAmount()
     {
@@ -57,7 +57,7 @@ class CashTransferLogEntry
     }
 
     /**
-     * @param int $amount
+     * @param float $amount
      */
     public function setAmount($amount)
     {
