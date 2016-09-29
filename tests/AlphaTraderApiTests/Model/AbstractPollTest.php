@@ -1,6 +1,5 @@
 <?php
 /**
- * Created by IntelliJ IDEA.
  * User: ljbergmann
  * Date: 25.09.16 23:26
  */
@@ -11,7 +10,7 @@ use \Alphatrader\ApiBundle\Model\AbstractPoll;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Class UserProfile
+ * Class AbstracPollTest
  * @package Tests\Model
  * @author ljbergmann
  * @author Tr0nYx
