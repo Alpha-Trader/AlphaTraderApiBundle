@@ -23,6 +23,7 @@ use Alphatrader\ApiBundle\Api\Methods\UserAccountController;
 /**
  * Class AlphaTrader
  * @package Alphatrader\ApiBundle\Api
+ * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
 abstract class AbstractAlphaTrader
 {

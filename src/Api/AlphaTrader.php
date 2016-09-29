@@ -13,6 +13,7 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 /**
  * Class AlphaTrader
  * @package Alphatrader\ApiBundle\Api
+ * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
 class AlphaTrader extends AbstractAlphaTrader
 {
