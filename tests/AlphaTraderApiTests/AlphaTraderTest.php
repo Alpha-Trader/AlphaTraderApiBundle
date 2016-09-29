@@ -67,6 +67,7 @@ class AlphaTraderTest extends TestCase
 
     public function test_generateCash()
     {
+        $this->expectException(RuntimeException::class);
         $this->assertNull($this->alphatrader->generateCash(50000)->getMessagePrototype());
     }
 
