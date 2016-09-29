@@ -53,6 +53,7 @@ class AlphaTrader extends AbstractAlphaTrader
         $receiverBankAccId = null
     ) {
         $controller = $this->getCashTransferLogController();
+
         return $controller->getCashTransferLogs(
             $this->formatTimeStamp($startDate),
             $this->formatTimeStamp($endDate),
@@ -154,6 +155,7 @@ class AlphaTrader extends AbstractAlphaTrader
     public function getCompaniesByUserId($userId)
     {
         $user = $this->getUserAccountController()->getUserById($userId);
+
         return $this->getCompanyController()->getCompanyByUserId($user);
     }
 
@@ -292,6 +294,7 @@ class AlphaTrader extends AbstractAlphaTrader
     public function getListing($secIdentPart)
     {
         $controller = new Methods\ListingController($this->config, $this->jwt);
+
         return $controller->getListing($secIdentPart);
     }
 
@@ -322,6 +325,7 @@ class AlphaTrader extends AbstractAlphaTrader
         $sellerSecAccId = ''
     ) {
         $controller = $this->getSecurityOrderLogController();
+
         return $controller->getSecurityOrderLogs(
             $securityIdentifier,
             $this->formatTimeStamp($startDate),
@@ -348,6 +352,7 @@ class AlphaTrader extends AbstractAlphaTrader
         \DateTime $maturityDate
     ) {
         $controller = $this->getBondController();
+
         return $controller->createBond(
             $company,
             $numberOfBonds,
@@ -384,6 +389,7 @@ class AlphaTrader extends AbstractAlphaTrader
     public function createSystemBond(Company $company, $numberOfBonds)
     {
         $controller = $this->getSystemBondController();
+
         return $controller->createBond(
             $company,
             $numberOfBonds
@@ -486,5 +492,29 @@ class AlphaTrader extends AbstractAlphaTrader
     public function getOrder($secIdent)
     {
         return $this->getSecurityOrderContrller()->getSecurityOrder($secIdent);
+    }
+
+    /**
+     * @param $owner
+     * @param $secIdent
+     * @param $action
+     * @param $type
+     * @param $price
+     * @param $numberOfShares
+     * @param $counterparty
+     *
+     * @return \Alphatrader\ApiBundle\Model\SecurityOrder
+     */
+    public function createOrder($owner, $secIdent, $action, $type, $price, $numberOfShares, $counterparty)
+    {
+        return $this->getSecurityOrderContrller()->createSecurityOrder(
+            $owner,
+            $secIdent,
+            $action,
+            $type,
+            $price,
+            $numberOfShares,
+            $counterparty
+        );
     }
 }
