@@ -29,13 +29,13 @@ class EventController extends ApiClient
     {
         $data = $this->get('events/', ['afterDate' => $afterDate]);
         /** @var Events[] $oResult */
-        $oResult = $this->serializer->deserialize(
+        $oResult = $this->getSerializer()->deserialize(
             $data,
             'ArrayCollection<Alphatrader\ApiBundle\Model\Events>',
             'json'
         );
         if (!empty($oResult) && $oResult[0]->getType() == null) {
-            $oResult = $this->serializer->deserialize(
+            $oResult = $this->getSerializer()->deserialize(
                 $data,
                 'Alphatrader\ApiBundle\Model\Error',
                 'json'
@@ -54,13 +54,13 @@ class EventController extends ApiClient
     {
         $data = $this->get('events/', ['realms' => $realms, 'afterDate' => $afterDate]);
         /** @var Events[] $oResult */
-        $oResult = $this->serializer->deserialize(
+        $oResult = $this->getSerializer()->deserialize(
             $data,
             'ArrayCollection<Alphatrader\ApiBundle\Model\Events>',
             'json'
         );
         if (!empty($oResult) && $oResult[0]->getType() == null) {
-            $oResult = $this->serializer->deserialize(
+            $oResult = $this->getSerializer()->deserialize(
                 $data,
                 'Alphatrader\ApiBundle\Model\Error',
                 'json'
@@ -80,13 +80,13 @@ class EventController extends ApiClient
     {
         $data = $this->get('/api/search/events/type/' . $eventtype, ['realms' => $realms, 'afterDate' => $afterDate]);
         /** @var Events[] $oResult */
-        $oResult = $this->serializer->deserialize(
+        $oResult = $this->getSerializer()->deserialize(
             $data,
             'ArrayCollection<Alphatrader\ApiBundle\Model\Events>',
             'json'
         );
         if (!empty($oResult) && $oResult[0]->getType() == null) {
-            $oResult = $this->serializer->deserialize(
+            $oResult = $this->getSerializer()->deserialize(
                 $data,
                 'Alphatrader\ApiBundle\Model\Error',
                 'json'

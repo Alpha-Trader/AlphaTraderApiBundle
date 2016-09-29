@@ -31,9 +31,9 @@ class BankingLicenseController extends ApiClient
     {
         $data = $this->post('bankinglicense/', [], ['companyId' => $company->getId()]);
         /** @var BankingLicense $oResult */
-        $oResult = $this->serializer->deserialize($data, 'Alphatrader\ApiBundle\Model\BankingLicense', 'json');
+        $oResult = $this->getSerializer()->deserialize($data, 'Alphatrader\ApiBundle\Model\BankingLicense', 'json');
         if ($oResult->getCompany() == null) {
-            $oResult = $this->serializer->deserialize(
+            $oResult = $this->getSerializer()->deserialize(
                 $data,
                 'Alphatrader\ApiBundle\Model\Error',
                 'json'
@@ -51,9 +51,9 @@ class BankingLicenseController extends ApiClient
     {
         $data = $this->get('bankinglicense/', [], ['companyId' => $company->getId()]);
         /** @var BankingLicense $oResult */
-        $oResult = $this->serializer->deserialize($data, 'Alphatrader\ApiBundle\Model\BankingLicense', 'json');
+        $oResult = $this->getSerializer()->deserialize($data, 'Alphatrader\ApiBundle\Model\BankingLicense', 'json');
         if ($oResult->getCompany() == null) {
-            $oResult = $this->serializer->deserialize(
+            $oResult = $this->getSerializer()->deserialize(
                 $data,
                 'Alphatrader\ApiBundle\Model\Error',
                 'json'

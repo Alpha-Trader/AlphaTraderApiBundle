@@ -22,9 +22,9 @@ class CentralBankReservesController extends ApiClient
     {
         $data = $this->get('centralbankreserves' . $reserveId);
         /** @var CentralBankReserve $oResult */
-        $oResult = $this->serializer->deserialize($data, 'Alphatrader\ApiBundle\Model\CentralBankReserve', 'json');
+        $oResult = $this->getSerializer()->deserialize($data, 'Alphatrader\ApiBundle\Model\CentralBankReserve', 'json');
         if ($oResult->getId() == null) {
-            $oResult = $this->serializer->deserialize(
+            $oResult = $this->getSerializer()->deserialize(
                 $data,
                 'Alphatrader\ApiBundle\Model\Error',
                 'json'
