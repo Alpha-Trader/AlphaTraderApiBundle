@@ -34,7 +34,7 @@ class MainInterestRateController extends ApiClient
             'ArrayCollection<Alphatrader\ApiBundle\Model\MainInterestRate>',
             'json'
         );
-        if (!empty($oResult) && $oResult[0]->getId() == null) {
+        if (empty($oResult) && !isset($oResult[0])) {
             $oResult = $this->getSerializer()->deserialize(
                 $data,
                 'Alphatrader\ApiBundle\Model\Error',

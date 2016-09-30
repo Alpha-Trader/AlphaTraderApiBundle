@@ -2,17 +2,14 @@
 
 namespace Alphatrader\ApiBundle\Api;
 
-use Alphatrader\ApiBundle\Model\BankAccount;
-use Alphatrader\ApiBundle\Model\Bond;
 use Alphatrader\ApiBundle\Model\Company;
-use Alphatrader\ApiBundle\Model\Error;
-use Alphatrader\ApiBundle\Model\Listing;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 /**
  * Class AlphaTrader
  * @package Alphatrader\ApiBundle\Api
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
+ * @SuppressWarnings(PHPMD.ExcessivePublicCount)
  */
 class AlphaTrader extends AbstractAlphaTrader
 {
@@ -30,7 +27,7 @@ class AlphaTrader extends AbstractAlphaTrader
     }
 
     /**
-     * @return Bankaccount
+     * @return \Alphatrader\ApiBundle\Model\Bankaccount
      */
     public function getBankAccount()
     {
@@ -64,7 +61,7 @@ class AlphaTrader extends AbstractAlphaTrader
     /**
      * @param $cashAmount
      *
-     * @return BankAccount
+     * @return \Alphatrader\ApiBundle\Model\BankAccount
      */
     public function generateCash($cashAmount)
     {
@@ -129,7 +126,7 @@ class AlphaTrader extends AbstractAlphaTrader
      * @param bool $all
      * @SuppressWarnings(PHPMD.BooleanArgumentFlag)
      *
-     * @return \AlphaTrader\ApiBundle\Model\Company[]
+     * @return Company[]
      */
     public function getCompanies($all = true)
     {
@@ -149,7 +146,7 @@ class AlphaTrader extends AbstractAlphaTrader
     /**
      * @param int $userId
      *
-     * @return \AlphaTrader\ApiBundle\Model\Company[]
+     * @return Company[]
      */
     public function getCompaniesByUserId($userId)
     {
@@ -161,7 +158,7 @@ class AlphaTrader extends AbstractAlphaTrader
     /**
      * @param string $username
      *
-     * @return \AlphaTrader\ApiBundle\Model\Company[]
+     * @return Company[]
      */
     public function getCompaniesByUserName($username)
     {
@@ -339,7 +336,7 @@ class AlphaTrader extends AbstractAlphaTrader
      * @param           $interestRate
      * @param \DateTime $maturityDate
      *
-     * @return Bond
+     * @return \Alphatrader\ApiBundle\Model\Bond
      */
     public function createBond(
         Company $company,
@@ -370,11 +367,19 @@ class AlphaTrader extends AbstractAlphaTrader
     /**
      * @param $bondid
      *
-     * @return Bond
+     * @return \Alphatrader\ApiBundle\Model\Bond
      */
     public function getBond($bondid)
     {
         return $this->getBondController()->getBond($bondid);
+    }
+
+    /**
+     * @return \Alphatrader\ApiBundle\Model\Bond[]|\Alphatrader\ApiBundle\Model\Error
+     */
+    public function getBonds()
+    {
+        return $this->getBondController()->getBonds();
     }
 
     /**
@@ -404,7 +409,7 @@ class AlphaTrader extends AbstractAlphaTrader
     /**
      * @param $bondid
      *
-     * @return Bond
+     * @return \Alphatrader\ApiBundle\Model\Bond
      */
     public function getSystemBond($bondid)
     {
@@ -474,7 +479,7 @@ class AlphaTrader extends AbstractAlphaTrader
     }
 
     /**
-     * @return \Alphatrader\ApiBundle\Model\Notifications[]|Error
+     * @return \Alphatrader\ApiBundle\Model\Notifications[]|\Alphatrader\ApiBundle\Model\Error
      */
     public function getUnreadNotifications()
     {
