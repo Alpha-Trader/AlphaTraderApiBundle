@@ -31,7 +31,7 @@ class AlphaTraderTest extends BaseTestCase
     public function test_formatTimeStamp()
     {
         $timestamp = $this->invokeMethod($this->alphatrader, 'formatTimeStamp', array(new \DateTime()));
-        $this->assertTrue(is_int($timestamp));
+        $this->assertInstanceOf('\DateTime', $timestamp);
         $timestamp = $this->invokeMethod($this->alphatrader, 'formatTimeStamp', array(null));
         $this->assertNull($timestamp);
         $time = mt_rand(1262055681,1474823143);
