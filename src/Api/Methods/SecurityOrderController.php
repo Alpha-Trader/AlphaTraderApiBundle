@@ -18,7 +18,7 @@ class SecurityOrderController extends ApiClient
      */
     public function getSecurityOrder($secIdent)
     {
-        $data = $this->get('securityorders', ['securityIdentifier' => $secIdent]);
+        $data = $this->get('securityorders/'. $secIdent);
         $oResult = $this->getSerializer()->deserialize(
             $data,
             'Alphatrader\ApiBundle\Model\SecurityOrder',
