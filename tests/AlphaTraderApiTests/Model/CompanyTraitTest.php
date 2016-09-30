@@ -124,6 +124,12 @@ class CompanyTraitTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($url,$this->traitObject->getLogoUrl());
     }
 
+    public function testHasLogo(){
+        $this->assertFalse($this->traitObject->hasLogo());
+        $this->traitObject->setLogoUrl($this->getRandomString(255));
+        $this->assertTrue($this->traitObject->hasLogo());
+    }
+
     public function testCeo(){
 
         $this->assertNull($this->traitObject->getCeo());
