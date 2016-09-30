@@ -98,7 +98,7 @@ class BondController extends ApiClient
             'ArrayCollection<Alphatrader\ApiBundle\Model\Bond>',
             'json'
         );
-        if (empty($oResult) && !isset($oResult[0])) {
+        if (!is_array($oResult)) {
             $oResult = $this->getSerializer()->deserialize(
                 $data,
                 'Alphatrader\ApiBundle\Model\Error',

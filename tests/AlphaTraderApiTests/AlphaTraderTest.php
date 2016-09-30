@@ -4,7 +4,6 @@ namespace Tests;
 
 use Alphatrader\ApiBundle\Api\AlphaTrader;
 use Alphatrader\ApiBundle\Model\Company;
-use Alphatrader\ApiBundle\Model\Useraccount;
 use JMS\Serializer\Exception\RuntimeException;
 use Tests\Methods\BaseTestCase;
 
@@ -55,11 +54,15 @@ class AlphaTraderTest extends BaseTestCase
         $this->alphatrader->getCashTransferLogs(new \DateTime(),new \DateTime(),$log[0]['senderBankAccount'],$log[0]['receiverBankAccount']);
     }
 
-    /*public function test_generateCash()
+    public function test_generateCash()
     {
-        $this->expectException(RuntimeException::class);
-        $this->assertNull($this->alphatrader->generateCash(50000)->getMessagePrototype());
-    }*/
+        $response = ['cash'=>50000];
+        $expected = json_encode($response);
+        $myFactory = $this->getMockBuilder('Alphatrader\ApiBundle\Api\AlphaTrader', array('generateCash'))->disableOriginalConstructor()->getMock();
+        $myFactory->expects($this->any())->method('generateCash')->will($this->returnValue($expected));
+        $val = $myFactory->generateCash(50000);
+        $this->assertEquals(json_decode($val)->cash,$response['cash']);
+    }
 
     public function test_getChats()
     {
