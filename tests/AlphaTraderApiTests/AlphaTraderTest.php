@@ -4,6 +4,7 @@ namespace Tests;
 
 use Alphatrader\ApiBundle\Api\AlphaTrader;
 use Alphatrader\ApiBundle\Model\Company;
+use Alphatrader\ApiBundle\Model\Useraccount;
 use JMS\Serializer\Exception\RuntimeException;
 use Tests\Methods\BaseTestCase;
 
@@ -114,6 +115,12 @@ class AlphaTraderTest extends BaseTestCase
         $this->alphatrader->getCompaniesByUserName('demo');
     }
 
+    public function test_getCompaniesByUserId()
+    {
+        $this->expectException(RuntimeException::class);
+        return $this->alphatrader->getCompaniesByUserId(1);
+    }
+
     public function test_getCompanyBySecurityAccountId()
     {
         $this->expectException(RuntimeException::class);
@@ -218,17 +225,18 @@ class AlphaTraderTest extends BaseTestCase
         $this->alphatrader->getBond(1);
     }
 
+    public function test_getBonds()
+    {
+        $this->expectException(RuntimeException::class);
+        $this->alphatrader->getBonds();
+    }
+
     public function test_createSystemBond()
     {
         $this->expectException(RuntimeException::class);
         $company = new Company();
         $company->setId(1);
-        $this->alphatrader->getBond(1);
-
-        return $this->alphatrader->createSystemBond(
-            $company,
-            1
-        );
+        $this->alphatrader->createSystemBond($company,1);
     }
 
     public function test_repaySystemBond()
