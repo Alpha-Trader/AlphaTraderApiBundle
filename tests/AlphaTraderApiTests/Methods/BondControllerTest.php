@@ -78,6 +78,6 @@ class BondControllerTest extends BaseTestCase
         $bondcontroller->setClient($this->getClient($expected));
         $val = $bondcontroller->getBonds();
 
-        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\Error', $val);
+        $this->assertTrue(is_array($val));
     }
 }
