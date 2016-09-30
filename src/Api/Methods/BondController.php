@@ -85,4 +85,26 @@ class BondController extends ApiClient
         }
         return $oResult;
     }
+
+    /**
+     * @return Bond[]|Error
+     */
+    public function getBonds()
+    {
+        $data = $this->get('bonds/');
+        /** @var Bond[] $oResult */
+        $oResult = $this->getSerializer()->deserialize(
+            $data,
+            'ArrayCollection<Alphatrader\ApiBundle\Model\Bond>',
+            'json'
+        );
+        if (empty($oResult) && !isset($oResult[0])) {
+            $oResult = $this->getSerializer()->deserialize(
+                $data,
+                'Alphatrader\ApiBundle\Model\Error',
+                'json'
+            );
+        }
+        return $oResult;
+    }
 }
