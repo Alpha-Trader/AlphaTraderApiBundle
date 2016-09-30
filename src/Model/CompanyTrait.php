@@ -229,23 +229,7 @@ trait CompanyTrait
     {
         $this->listing = $listing;
     }
-
-    /**
-     * @return EmploymentAgreement
-     */
-    public function getCeoEmploymentAgreement()
-    {
-        return $this->ceoEmployAgree;
-    }
-
-    /**
-     * @param EmploymentAgreement $ceoEmployAgree
-     */
-    public function setCeoEmploymentAgreement(EmploymentAgreement $ceoEmployAgree)
-    {
-        $this->ceoEmployAgree = $ceoEmployAgree;
-    }
-
+    
     /**
      * @return CompanyCapabilities
      */
