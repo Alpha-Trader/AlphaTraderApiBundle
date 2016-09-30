@@ -216,7 +216,7 @@ class Bond
     }
 
     /**
-     * @return mixed
+     * @return Listing
      */
     public function getListing()
     {
@@ -224,7 +224,7 @@ class Bond
     }
 
     /**
-     * @param mixed $listing
+     * @param Listing $listing
      */
     public function setListing($listing)
     {

@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
  * Class AlphaTrader
  * @package Alphatrader\ApiBundle\Api
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
+ * @SuppressWarnings(PHPMD.ExcessivePublicCount)
  */
 class AlphaTrader extends AbstractAlphaTrader
 {

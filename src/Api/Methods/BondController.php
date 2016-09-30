@@ -93,7 +93,11 @@ class BondController extends ApiClient
     {
         $data = $this->get('bonds/');
         /** @var Bond[] $oResult */
-        $oResult = $this->getSerializer()->deserialize($data, 'ArrayCollection<Alphatrader\ApiBundle\Model\Bond>', 'json');
+        $oResult = $this->getSerializer()->deserialize(
+            $data,
+            'ArrayCollection<Alphatrader\ApiBundle\Model\Bond>',
+            'json'
+        );
         if (empty($oResult) && !isset($oResult[0])) {
             $oResult = $this->getSerializer()->deserialize(
                 $data,
