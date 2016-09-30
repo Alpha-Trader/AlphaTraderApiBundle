@@ -45,11 +45,24 @@ class BondControllerTest extends BaseTestCase
     {
         $expected = json_encode([]);
         $request = $this->createMock('Alphatrader\ApiBundle\Api\Methods\BondController');
-        $request->method('createBond')->will($this->returnValue($expected));
+        $request->method('getBond')->will($this->returnValue($expected));
 
         $bondcontroller = new BondController($this->config);
         $bondcontroller->setClient($this->getClient($expected));
         $val = $bondcontroller->getBond(1);
+
+        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\Error', $val);
+    }
+
+    public function test_getBonds()
+    {
+        $expected = json_encode([]);
+        $request = $this->createMock('Alphatrader\ApiBundle\Api\Methods\BondController');
+        $request->method('getBonds')->will($this->returnValue($expected));
+
+        $bondcontroller = new BondController($this->config);
+        $bondcontroller->setClient($this->getClient($expected));
+        $val = $bondcontroller->getBonds();
 
         $this->assertInstanceOf('Alphatrader\ApiBundle\Model\Error', $val);
     }
