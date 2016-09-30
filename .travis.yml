@@ -3,10 +3,6 @@ language: php
 matrix:
   include:
     - php: 5.6
-      env: deps=low
-    - php: 7.0
-      env: deps=low
-    - php: 5.6
     - php: 7.0
   fast_finish: true
 before-script:
@@ -15,8 +11,7 @@ before-script:
 
 install:
   - composer self-update
-  - if [ "$deps" = "no" ]; then composer --prefer-stable --no-interaction update; fi;
-  - if [ "$deps" = "low" ]; then composer --prefer-lowest --prefer-stable --no-interaction update; fi;
+  - composer --prefer-stable --no-interaction update
 
 env:
   global:
