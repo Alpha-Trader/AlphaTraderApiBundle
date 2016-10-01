@@ -21,7 +21,7 @@ class CentralBankReservesController extends ApiClient
      */
     public function getReserveById($reserveId)
     {
-        $data = $this->get('centralbankreserves' . $reserveId);
+        $data = $this->get('centralbankreserves/' . $reserveId);
         /** @var CentralBankReserve $oResult */
         $oResult = $this->getSerializer()->deserialize($data, 'Alphatrader\ApiBundle\Model\CentralBankReserve', 'json');
         if ($oResult->getId() == null) {
@@ -36,7 +36,7 @@ class CentralBankReservesController extends ApiClient
 
     public function increaseReserves(Company $company, $cashAmount)
     {
-        $data = $this->put('centralbankreserves', ['companyId'=>$company->getId(),'cashAmount'=>$cashAmount]);
+        $data = $this->put('centralbankreserves/', ['companyId'=>$company->getId(),'cashAmount'=>$cashAmount]);
         /** @var CentralBankReserve $oResult */
         $oResult = $this->getSerializer()->deserialize($data, 'Alphatrader\ApiBundle\Model\CentralBankReserve', 'json');
         if ($oResult->getId() == null) {
