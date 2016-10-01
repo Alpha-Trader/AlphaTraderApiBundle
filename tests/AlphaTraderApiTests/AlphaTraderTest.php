@@ -291,11 +291,11 @@ class AlphaTraderTest extends BaseTestCase
         $this->alphatrader->getCentralBankReservesById(1);
     }
 
-    public function test_addCentralBankReservesToCompany()
+    public function test_setCompanyCentralBankReserves()
     {
         $company = new Company();
         $company->setId(1);
-        $response = $this->alphatrader->addCentralBankReservesToCompany($company,1);
+        $response = $this->alphatrader->setCompanyCentralBankReserves($company,1);
         $this->assertInstanceOf(Error::class,$response);
     }
 

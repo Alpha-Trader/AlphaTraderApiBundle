@@ -468,7 +468,7 @@ class AlphaTrader extends AbstractAlphaTrader
      *
      * @return \Alphatrader\ApiBundle\Model\CentralBankReserve
      */
-    public function addCentralBankReservesToCompany(Company $company, $cashAmount)
+    public function setCompanyCentralBankReserves(Company $company, $cashAmount)
     {
         return $this->getCentralBankReservesController()->increaseReserves($company, $cashAmount);
     }
