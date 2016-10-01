@@ -4,6 +4,7 @@ namespace Tests;
 
 use Alphatrader\ApiBundle\Api\AlphaTrader;
 use Alphatrader\ApiBundle\Model\Company;
+use Alphatrader\ApiBundle\Model\Error;
 use JMS\Serializer\Exception\RuntimeException;
 use Tests\Methods\BaseTestCase;
 
@@ -288,6 +289,14 @@ class AlphaTraderTest extends BaseTestCase
     {
         $this->expectException(RuntimeException::class);
         $this->alphatrader->getCentralBankReservesById(1);
+    }
+
+    public function test_addCentralBankReservesToCompany()
+    {
+        $company = new Company();
+        $company->setId(1);
+        $response = $this->alphatrader->addCentralBankReservesToCompany($company,1);
+        $this->assertInstanceOf(Error::class,$response);
     }
 
     public function test_setNotificationsasRead()

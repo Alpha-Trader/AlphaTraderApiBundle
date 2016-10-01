@@ -463,6 +463,17 @@ class AlphaTrader extends AbstractAlphaTrader
     }
 
     /**
+     * @param Company $company
+     * @param         $cashAmount
+     *
+     * @return \Alphatrader\ApiBundle\Model\CentralBankReserve
+     */
+    public function addCentralBankReservesToCompany(Company $company, $cashAmount)
+    {
+        return $this->getCentralBankReservesController()->increaseReserves($company, $cashAmount);
+    }
+
+    /**
      * @return mixed
      */
     public function setNotificationsasRead()
