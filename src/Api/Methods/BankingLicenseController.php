@@ -29,7 +29,7 @@ class BankingLicenseController extends ApiClient
      */
     public function createBankingLicense(Company $company)
     {
-        $data = $this->post('bankinglicense/', [], ['companyId' => $company->getId()]);
+        $data = $this->post('bankinglicense/', ['companyId' => $company->getId()]);
         /** @var BankingLicense $oResult */
         $oResult = $this->getSerializer()->deserialize($data, 'Alphatrader\ApiBundle\Model\BankingLicense', 'json');
         if ($oResult->getCompany() == null) {

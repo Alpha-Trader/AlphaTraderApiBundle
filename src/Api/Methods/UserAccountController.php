@@ -101,7 +101,6 @@ class UserAccountController extends ApiClient
     {
         $data = $this->post(
             $this->config['apiurl'] . '/user/register',
-            [],
             ['username' => $username, 'emailAddress' => $email, 'password' => $password]
         );
         $oResult = $this->getSerializer()->deserialize($data, 'Alphatrader\ApiBundle\Model\UserAccount', 'json');
@@ -118,7 +117,6 @@ class UserAccountController extends ApiClient
     {
         $data = $this->post(
             $this->config['apiurl'] . '/user/token/',
-            [],
             ['username' => $username, 'password' => $password]
         );
         $json = json_decode($data);

@@ -197,7 +197,7 @@ class CompanyController extends ApiClient
      */
     public function createCompany($name, $cashDeposit)
     {
-        $data = $this->post('companies/', [], ['name' => $name, 'cashDeposit' => $cashDeposit]);
+        $data = $this->post('companies/', ['name' => $name, 'cashDeposit' => $cashDeposit]);
         /** @var Company $oResult */
         $oResult = $this->getSerializer()->deserialize(
             $data,
