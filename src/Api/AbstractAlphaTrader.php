@@ -38,7 +38,7 @@ abstract class AbstractAlphaTrader
      */
     protected function formatTimeStamp($time)
     {
-        return $time instanceof \DateTime ? ($time->getTimestamp() * 1000) : ((int)$time * 1000);
+        return $time ?: ($time instanceof \DateTime ? ($time->getTimestamp() * 1000) : ((int)$time * 1000)) ?: null;
     }
     
     /**

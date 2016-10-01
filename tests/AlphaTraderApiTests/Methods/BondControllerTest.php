@@ -10,6 +10,7 @@ namespace Tests\Methods;
 
 use Alphatrader\ApiBundle\Api\Methods\BondController;
 use Alphatrader\ApiBundle\Model\Company;
+use Alphatrader\ApiBundle\Model\Error;
 
 /**
  * Class BondControllerTest
@@ -54,6 +55,19 @@ class BondControllerTest extends BaseTestCase
         $this->assertInstanceOf('Alphatrader\ApiBundle\Model\Error', $val);
     }
 
+    public function test_repayBond()
+    {
+        $expected = json_encode([]);
+        $request = $this->createMock('Alphatrader\ApiBundle\Api\Methods\BondController');
+        $request->method('repayBond')->will($this->returnValue($expected));
+
+        $bondcontroller = new BondController($this->config);
+        $bondcontroller->setClient($this->getClient($expected));
+        $val = $bondcontroller->repayBond();
+
+        $this->assertTrue(is_array($val));
+    }
+
     public function test_getBonds()
     {
         $expected = json_encode([]);
@@ -64,6 +78,6 @@ class BondControllerTest extends BaseTestCase
         $bondcontroller->setClient($this->getClient($expected));
         $val = $bondcontroller->getBonds();
 
-        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\Error', $val);
+        $this->assertTrue(is_array($val));
     }
 }
