@@ -13,6 +13,7 @@ use AlphaTrader\ApiBundle\Model\Bankaccount;
 use Alphatrader\ApiBundle\Model\Bond;
 use Alphatrader\ApiBundle\Model\Company;
 use Alphatrader\ApiBundle\Model\Listing;
+use Alphatrader\ApiBundle\Model\SystemBond;
 use JMS\Serializer\SerializerBuilder;
 
 /**
@@ -37,7 +38,15 @@ class SystemBondController extends ApiClient
                 'numberOfBonds' => $numberOfBonds
             ]
         );
+        /** @var Listing $oResult */
         $oResult = $this->getSerializer()->deserialize($data, 'Alphatrader\ApiBundle\Model\Listing', 'json');
+        if ($oResult->getSecurityIdentifier() == null) {
+            $oResult = $this->getSerializer()->deserialize(
+                $data,
+                'Alphatrader\ApiBundle\Model\Error',
+                'json'
+            );
+        }
         return $oResult;
     }
 
@@ -59,7 +68,15 @@ class SystemBondController extends ApiClient
     public function getBond($bondId)
     {
         $data = $this->get('systembonds/' . $bondId);
+        /** @var SystemBond $oResult */
         $oResult = $this->getSerializer()->deserialize($data, 'Alphatrader\ApiBundle\Model\SystemBond', 'json');
+        if ($oResult->getId() == null) {
+            $oResult = $this->getSerializer()->deserialize(
+                $data,
+                'Alphatrader\ApiBundle\Model\Error',
+                'json'
+            );
+        }
         return $oResult;
     }
 }
