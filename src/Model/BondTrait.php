@@ -54,6 +54,12 @@ trait BondTrait
     private $repurchaseListing;
 
     /**
+     * @Annotation\Type("Alphatrader\ApiBundle\Model\PriceSpread")
+     * @Annotation\SerializedName("priceSpread")
+     */
+    private $priceSpread;
+
+    /**
      * @Annotation\Type("Alphatrader\ApiBundle\Model\Listing")
      * @Annotation\SerializedName("listing")
      */
@@ -207,6 +213,22 @@ trait BondTrait
     public function setListing($listing)
     {
         $this->listing = $listing;
+    }
+
+    /**
+     * @return PriceSpread
+     */
+    public function getPriceSpread()
+    {
+        return $this->priceSpread;
+    }
+
+    /**
+     * @param PriceSpread $priceSpread
+     */
+    public function setPriceSpread($priceSpread)
+    {
+        $this->priceSpread = $priceSpread;
     }
 
     /**
