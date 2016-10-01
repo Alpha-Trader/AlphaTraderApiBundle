@@ -213,4 +213,29 @@ class CompanyController extends ApiClient
         }
         return $oResult;
     }
+
+    /**
+     * @param $companyId
+     * @param $logoUrl
+     * 
+     * @return Company|Error
+     */
+    public function addLogoToCompany($companyId,$logoUrl){
+        $data = $this->put('api/companies/logo/'.$companyId,['companyId' => $companyId,'logoUrl' => $logoUrl]);
+        /** @var Company $oResult */
+        $oResult = $this->getSerializer()->deserialize(
+            $data,
+            'Alphatrader\ApiBundle\Model\Company',
+            'json'
+        );
+        
+        if ($oResult->getId() == null) {
+            $oResult = $this->getSerializer()->deserialize(
+                $data,
+                'Alphatrader\ApiBundle\Model\Error',
+                'json'
+            );
+        }
+        return $oResult;
+    }
 }
