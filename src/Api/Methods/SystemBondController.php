@@ -13,6 +13,7 @@ use AlphaTrader\ApiBundle\Model\Bankaccount;
 use Alphatrader\ApiBundle\Model\Bond;
 use Alphatrader\ApiBundle\Model\Company;
 use Alphatrader\ApiBundle\Model\Listing;
+use Alphatrader\ApiBundle\Model\SystemBond;
 use JMS\Serializer\SerializerBuilder;
 
 /**
@@ -61,7 +62,6 @@ class SystemBondController extends ApiClient
 
     /**
      * @param string $bondId
-     * TODO: Add SystemBond Model
      *
      * @return Bond
      */
