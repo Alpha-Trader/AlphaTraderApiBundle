@@ -19,6 +19,7 @@ use Alphatrader\ApiBundle\Api\Methods\SecurityOrderController;
 use Alphatrader\ApiBundle\Api\Methods\SecurityOrderLogController;
 use Alphatrader\ApiBundle\Api\Methods\SystemBondController;
 use Alphatrader\ApiBundle\Api\Methods\UserAccountController;
+use Alphatrader\ApiBundle\Api\Methods\VotingController;
 
 /**
  * Class AlphaTrader
@@ -176,5 +177,13 @@ abstract class AbstractAlphaTrader
     public function getSecurityOrderContrller()
     {
         return new SecurityOrderController($this->config, $this->jwt);
+    }
+
+    /**
+     * @return VotingController
+     */
+    public function getVotingController()
+    {
+        return new VotingController($this->config, $this->jwt);
     }
 }
