@@ -35,7 +35,6 @@ class BondController extends ApiClient
     {
         $data = $this->post(
             'bonds/',
-            [],
             [
                 'companyId'     => $company->getId(),
                 'numberOfBonds' => $numberOfBonds,

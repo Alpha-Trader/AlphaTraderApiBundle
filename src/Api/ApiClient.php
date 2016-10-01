@@ -112,24 +112,24 @@ class ApiClient
 
     /**
      * @param       $url
-     * @param array $data
      * @param array $params
+     * @param array $data
      *
      * @return string
      */
-    public function post($url, $data = array(), $params = array())
+    public function post($url, $params = array(), $data = array())
     {
         return $this->request($url, self::METHODE_POST, $data, $params);
     }
 
     /**
      * @param       $url
-     * @param array $data
      * @param array $params
+     * @param array $data
      *
      * @return string
      */
-    public function put($url, $data = array(), $params = array())
+    public function put($url, $params = array(), $data = array())
     {
         return $this->request($url, self::METHODE_PUT, $data, $params);
     }
