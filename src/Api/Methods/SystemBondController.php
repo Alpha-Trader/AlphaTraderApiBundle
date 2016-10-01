@@ -32,7 +32,6 @@ class SystemBondController extends ApiClient
     {
         $data = $this->post(
             'systembonds/',
-            [],
             [
                 'companyId'     => $company->getId(),
                 'numberOfBonds' => $numberOfBonds
