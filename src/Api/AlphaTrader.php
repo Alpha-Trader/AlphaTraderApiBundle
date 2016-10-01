@@ -565,7 +565,7 @@ class AlphaTrader extends AbstractAlphaTrader
      */
     public function setCompanyEmployCeo(Company $company, $dailyWage)
     {
-        return $this->getVotingController()->setCompanyEmployCeo($company,$dailyWage);
+        return $this->getVotingController()->setCompanyEmployCeo($company, $dailyWage);
     }
 
     /**
