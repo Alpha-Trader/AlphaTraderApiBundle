@@ -28,6 +28,6 @@ class CashTransferLogControllerTest extends BaseTestCase
         $bondcontroller->setClient($this->getClient($expected));
         $val = $bondcontroller->getCashTransferLogs( new \DateTime(), new \DateTime(),1,1);
 
-        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\Error', $val);
+        $this->assertTrue(is_array($val));
     }
 }

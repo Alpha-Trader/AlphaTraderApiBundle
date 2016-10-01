@@ -42,6 +42,13 @@ class SecurityOrderLogController extends ApiClient
             'ArrayCollection<Alphatrader\ApiBundle\Model\SecurityOrderLogEntry>',
             'json'
         );
+        if (!is_array($oResult)) {
+            $oResult = $this->getSerializer()->deserialize(
+                $data,
+                'Alphatrader\ApiBundle\Model\Error',
+                'json'
+            );
+        }
         return $oResult;
     }
 }

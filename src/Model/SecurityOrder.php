@@ -7,8 +7,8 @@ use JMS\Serializer\Annotation;
 class SecurityOrder
 {
     /**
-     * @var int
-     * @Annotation\Type("integer")
+     * @var string
+     * @Annotation\Type("string")
      */
     protected $id;
 
@@ -137,7 +137,7 @@ class SecurityOrder
     }
 
     /**
-     * @return int
+     * @return string
      */
     public function getId()
     {
@@ -145,7 +145,7 @@ class SecurityOrder
     }
 
     /**
-     * @param int $id
+     * @param string $id
      */
     public function setId($id)
     {

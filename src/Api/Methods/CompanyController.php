@@ -35,7 +35,7 @@ class CompanyController extends ApiClient
             'ArrayCollection<Alphatrader\ApiBundle\Model\Company>',
             'json'
         );
-        if (empty($oResult) && !isset($oResult[0])) {
+        if (!is_array($oResult)) {
             $oResult = $this->getSerializer()->deserialize(
                 $data,
                 'Alphatrader\ApiBundle\Model\Error',
@@ -83,7 +83,7 @@ class CompanyController extends ApiClient
             'ArrayCollection<Alphatrader\ApiBundle\Model\Company>',
             'json'
         );
-        if (empty($oResult) && !isset($oResult[0])) {
+        if (!is_array($oResult)) {
             $oResult = $this->getSerializer()->deserialize(
                 $data,
                 'Alphatrader\ApiBundle\Model\Error',
@@ -107,7 +107,7 @@ class CompanyController extends ApiClient
             'ArrayCollection<Alphatrader\ApiBundle\Model\Company>',
             'json'
         );
-        if (empty($oResult) && !isset($oResult[0])) {
+        if (!is_array($oResult)) {
             $oResult = $this->getSerializer()->deserialize(
                 $data,
                 'Alphatrader\ApiBundle\Model\Error',
