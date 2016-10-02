@@ -5,11 +5,11 @@ namespace Alphatrader\ApiBundle\Model;
 use JMS\Serializer\Annotation;
 
 /**
- * Class Bankaccounts
+ * Class UserAccounts
  * @package Alphatrader\ApiBundle\Model
  * @Annotation\ExclusionPolicy("none")
  */
-class Useraccounts
+class UserAccounts
 {
 
     /**
