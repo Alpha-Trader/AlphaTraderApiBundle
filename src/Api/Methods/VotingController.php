@@ -63,7 +63,7 @@ class VotingController extends ApiClient
      */
     public function setCompanyCashoutPoll(Company $company)
     {
-        $data = $this->post('polls/cashout', ['companyid' => $company->getId()]);
+        $data = $this->post('polls/cashout', ['companyId' => $company->getId()]);
         /** @var AbstractPoll $oResult */
         $oResult = $this->getSerializer()->deserialize($data, 'Alphatrader\ApiBundle\Model\AbstractPoll', 'json');
         if ($oResult->getId() == null) {
@@ -84,7 +84,7 @@ class VotingController extends ApiClient
      */
     public function setCompanyEmployCeo(Company $company, $dailyWage)
     {
-        $data = $this->post('polls/employceo', ['companyid' => $company->getId(), 'dailyWage' => $dailyWage]);
+        $data = $this->post('polls/employceo', ['companyId' => $company->getId(), 'dailyWage' => $dailyWage]);
         $oResult = $this->getSerializer()->deserialize($data, 'Alphatrader\ApiBundle\Model\AbstractPoll', 'json');
         if ($oResult->getId() == null) {
             $oResult = $this->getSerializer()->deserialize(
@@ -103,7 +103,7 @@ class VotingController extends ApiClient
      */
     public function setCompanyLiquidation(Company $company)
     {
-        $data = $this->post('polls/liquidation', ['companyid' => $company->getId()]);
+        $data = $this->post('polls/liquidation', ['companyId' => $company->getId()]);
         $oResult = $this->getSerializer()->deserialize($data, 'Alphatrader\ApiBundle\Model\AbstractPoll', 'json');
         if ($oResult->getId() == null) {
             $oResult = $this->getSerializer()->deserialize(
