@@ -104,6 +104,13 @@ class AbstractPoll
      * @Annotation\SerializedName("company")
      */
     private $company;
+
+    /**
+     * @var float
+     * @Annotation\Type("float")
+     * @Annotation\SerializedName("dailyWage")
+     */
+    private $dailyWage;
     
     /**
      * @return string
@@ -138,7 +145,7 @@ class AbstractPoll
     }
 
     /**
-     * @return ArrayCollection<VoiceNumber>
+     * @return VoiceNumber[]
      */
     public function getGroup()
     {
@@ -311,5 +318,21 @@ class AbstractPoll
     public function setCompany($company)
     {
         $this->company = $company;
+    }
+
+    /**
+     * @return float
+     */
+    public function getDailyWage()
+    {
+        return $this->dailyWage;
+    }
+
+    /**
+     * @param float $dailyWage
+     */
+    public function setDailyWage($dailyWage)
+    {
+        $this->dailyWage = $dailyWage;
     }
 }
