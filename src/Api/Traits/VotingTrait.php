@@ -105,5 +105,4 @@ trait VotingTrait
     {
         return new VotingController($this->config, $this->jwt);
     }
-    
 }

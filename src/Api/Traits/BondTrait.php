@@ -71,5 +71,4 @@ trait BondTrait
     {
         return new BondController($this->config, $this->jwt);
     }
-    
 }

@@ -18,5 +18,4 @@ trait TimeStampTrait
     {
         return $time ?: ($time instanceof \DateTime ? ($time->getTimestamp() * 1000) : ((int)$time * 1000)) ?: null;
     }
-    
 }

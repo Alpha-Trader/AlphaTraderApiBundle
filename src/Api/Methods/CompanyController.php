@@ -218,11 +218,12 @@ class CompanyController extends ApiClient
     /**
      * @param $companyId
      * @param $logoUrl
-     * 
+     *
      * @return Company|Error
      */
-    public function addLogo($companyId,$logoUrl){
-        $data = $this->put('companies/logo/'.$companyId,['companyId' => $companyId,'logoUrl' => $logoUrl]);
+    public function addLogo($companyId, $logoUrl)
+    {
+        $data = $this->put('companies/logo/'.$companyId, ['companyId' => $companyId,'logoUrl' => $logoUrl]);
         /** @var Company $oResult */
         $oResult = $this->getSerializer()->deserialize(
             $data,
@@ -246,20 +247,20 @@ class CompanyController extends ApiClient
      */
     public function removeLogo($companyId)
     {
-         $data = $this->delete('companies/logo/'.$companyId,['companyId' => $companyId]);
+         $data = $this->delete('companies/logo/'.$companyId, ['companyId' => $companyId]);
          /** @var Company $oResult */
          $oResult = $this->getSerializer()->deserialize(
              $data,
              'Alphatrader\ApiBundle\Model\Company',
              'json'
          );
-         if ($oResult->getId() == null) {
-             $oResult = $this->getSerializer()->deserialize(
-                 $data,
-                 'Alphatrader\ApiBundle\Model\Error',
-                 'json'
-             );
-         }
+        if ($oResult->getId() == null) {
+            $oResult = $this->getSerializer()->deserialize(
+                $data,
+                'Alphatrader\ApiBundle\Model\Error',
+                'json'
+            );
+        }
          return $oResult;
     }
 }

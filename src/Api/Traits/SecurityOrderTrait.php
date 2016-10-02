@@ -52,5 +52,4 @@ trait SecurityOrderTrait
     {
         return new SecurityOrderController($this->config, $this->jwt);
     }
-    
 }
