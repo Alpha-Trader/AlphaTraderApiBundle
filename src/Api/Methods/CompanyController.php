@@ -18,6 +18,7 @@ use Alphatrader\ApiBundle\Model\UserAccount;
  * Class CompanyController
  * @package AlphaTrader\API\Controller
  * @author Tr0nYx <tronyx@bric.finance>
+ * @author ljbergmann <l.bergmann@sky-lab.de>
  */
 class CompanyController extends ApiClient
 {
@@ -221,7 +222,7 @@ class CompanyController extends ApiClient
      * @return Company|Error
      */
     public function addLogoToCompany($companyId,$logoUrl){
-        $data = $this->put('api/companies/logo/'.$companyId,['companyId' => $companyId,'logoUrl' => $logoUrl]);
+        $data = $this->put('companies/logo/'.$companyId,['companyId' => $companyId,'logoUrl' => $logoUrl]);
         /** @var Company $oResult */
         $oResult = $this->getSerializer()->deserialize(
             $data,
