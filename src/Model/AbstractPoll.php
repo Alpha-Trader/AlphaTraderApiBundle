@@ -92,6 +92,20 @@ class AbstractPoll
     private $votes;
 
     /**
+     * @var float
+     * @Annotation\Type("float")
+     * @Annotation\SerializedName("approvalVotesPercentage")
+     */
+    private $approvalVotesPercentage;
+
+    /**
+     * @var CompanyCompactProfile
+     * @Annotation\Type("Alphatrader\ApiBundle\Model\CompanyCompactProfile")
+     * @Annotation\SerializedName("company")
+     */
+    private $company;
+    
+    /**
      * @return string
      */
     public function getAbstentionRule()
@@ -252,7 +266,7 @@ class AbstractPoll
     }
 
     /**
-     * @return ArrayCollection<Vote>
+     * @return Vote[]
      */
     public function getVotes()
     {
@@ -265,5 +279,37 @@ class AbstractPoll
     public function setVotes($votes)
     {
         $this->votes = $votes;
+    }
+
+    /**
+     * @return float
+     */
+    public function getApprovalVotesPercentage()
+    {
+        return $this->approvalVotesPercentage;
+    }
+
+    /**
+     * @param float $approvalVotesPercentage
+     */
+    public function setApprovalVotesPercentage($approvalVotesPercentage)
+    {
+        $this->approvalVotesPercentage = $approvalVotesPercentage;
+    }
+
+    /**
+     * @return CompanyCompactProfile
+     */
+    public function getCompany()
+    {
+        return $this->company;
+    }
+
+    /**
+     * @param CompanyCompactProfile $company
+     */
+    public function setCompany($company)
+    {
+        $this->company = $company;
     }
 }

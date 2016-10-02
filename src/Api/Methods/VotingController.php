@@ -15,7 +15,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 class VotingController extends ApiClient
 {
     /**
-     * @return ArrayCollection
+     * @return AbstractPoll[]
      */
     public function getMyPolls()
     {
@@ -36,7 +36,7 @@ class VotingController extends ApiClient
     }
 
     /**
-     * @return ArrayCollection
+     * @return AbstractPoll[]
      */
     public function getAllKnownPolls()
     {
