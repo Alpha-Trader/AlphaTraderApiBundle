@@ -3,6 +3,7 @@
 namespace Alphatrader\ApiBundle\Api\Traits;
 
 use Alphatrader\ApiBundle\Api\Methods\CashTransferLogController;
+use Alphatrader\ApiBundle\Model\BankAccount;
 
 /**
  * Class CashTransferLogTrait
@@ -12,26 +13,26 @@ use Alphatrader\ApiBundle\Api\Methods\CashTransferLogController;
 trait CashTransferLogTrait
 {
     /**
-     * @param \DateTime $startDate
-     * @param \DateTime $endDate
-     * @param null      $senderBankAccId
-     * @param null      $receiverBankAccId
+     * @param \DateTime   $startDate
+     * @param \DateTime   $endDate
+     * @param BankAccount $senderBankAcc
+     * @param BankAccount $receiverBankAcc
      *
      * @return \Alphatrader\ApiBundle\Model\CashTransferLogEntry[]
      */
     public function getCashTransferLogs(
         \DateTime $startDate = null,
         \DateTime $endDate = null,
-        $senderBankAccId = null,
-        $receiverBankAccId = null
+        BankAccount $senderBankAcc = null,
+        BankAccount $receiverBankAcc = null
     ) {
         $controller = $this->getCashTransferLogController();
 
         return $controller->getCashTransferLogs(
             $this->formatTimeStamp($startDate),
             $this->formatTimeStamp($endDate),
-            $senderBankAccId,
-            $receiverBankAccId
+            $senderBankAcc,
+            $receiverBankAcc
         );
     }
 
