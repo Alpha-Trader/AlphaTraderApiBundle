@@ -213,7 +213,15 @@ class AlphaTrader extends AbstractAlphaTrader
      * @return Company|\Alphatrader\ApiBundle\Model\Error
      */
     public function addLogoToCompany($companyId,$logoUrl){
-        return $this->getCompanyController()->addLogoToCompany($companyId,$logoUrl);
+        return $this->getCompanyController()->addLogo($companyId,$logoUrl);
+    }
+
+    /**
+     * @param $companyId
+     * @return Company|\Alphatrader\ApiBundle\Model\Error
+     */
+    public function removeLogoFromCompany($companyId){
+        return $this->getCompanyController()->removeLogo($companyId);
     }
 
     /**
