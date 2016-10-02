@@ -5,11 +5,11 @@ namespace Alphatrader\ApiBundle\Model;
 use JMS\Serializer\Annotation;
 
 /**
- * Class Bankaccounts
+ * Class UserAccount
  * @package Alphatrader\ApiBundle\Model
  * @Annotation\ExclusionPolicy("none")
  */
-class Useraccount
+class UserAccount
 {
 
     /**
@@ -37,6 +37,12 @@ class Useraccount
      * @Annotation\SerializedName("username")
      */
     private $username;
+
+    /**
+     * @Annotation\Type("string")
+     * @Annotation\SerializedName("gravatarHash")
+     */
+    private $gravatarHash;
 
     /**
      * @return mixed
@@ -100,5 +106,21 @@ class Useraccount
     public function setUsername($username)
     {
         $this->username = $username;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getGravatarHash()
+    {
+        return $this->gravatarHash;
+    }
+
+    /**
+     * @param mixed $gravatarHash
+     */
+    public function setGravatarHash($gravatarHash)
+    {
+        $this->gravatarHash = $gravatarHash;
     }
 }
