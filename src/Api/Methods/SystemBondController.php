@@ -39,7 +39,7 @@ class SystemBondController extends ApiClient
             ]
         );
         /** @var Listing $oResult */
-        $oResult = $this->getSerializer()->deserialize($data, 'Alphatrader\ApiBundle\Model\Listing', 'json');
+        $oResult = $this->getSerializer()->deserialize($data, 'Alphatrader\ApiBundle\Model\Bond', 'json');
         if ($oResult->getSecurityIdentifier() == null) {
             $oResult = $this->getSerializer()->deserialize(
                 $data,
