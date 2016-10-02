@@ -124,12 +124,4 @@ trait CompanyTrait
     {
         return new CompanyController($this->config, $this->jwt);
     }
-
-    /**
-     * @return UserAccountController
-     */
-    public function getUserAccountController()
-    {
-        return new UserAccountController($this->config, $this->jwt);
-    }
 }
