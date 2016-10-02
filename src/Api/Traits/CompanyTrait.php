@@ -3,6 +3,7 @@
 namespace Alphatrader\ApiBundle\Api\Traits;
 
 use Alphatrader\ApiBundle\Api\Methods\CompanyController;
+use Alphatrader\ApiBundle\Api\Methods\UserAccountController;
 use Alphatrader\ApiBundle\Model\Company;
 
 /**
@@ -116,12 +117,19 @@ trait CompanyTrait
         return $this->getCompanyController()->removeLogo($companyId);
     }
 
-
     /**
      * @return CompanyController
      */
     public function getCompanyController()
     {
         return new CompanyController($this->config, $this->jwt);
+    }
+
+    /**
+     * @return UserAccountController
+     */
+    public function getUserAccountController()
+    {
+        return new UserAccountController($this->config, $this->jwt);
     }
 }
