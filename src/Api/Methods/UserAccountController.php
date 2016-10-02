@@ -34,7 +34,11 @@ class UserAccountController extends ApiClient
     public function getUsers()
     {
         $data = $this->get('users');
-        $oResult = $this->getSerializer()->deserialize($data, 'Alphatrader\ApiBundle\Model\UserAccount', 'json');
+        $oResult = $this->getSerializer()->deserialize(
+            $data,
+            'ArrayCollection<Alphatrader\ApiBundle\Model\UserAccount>',
+            'json'
+        );
         return $oResult;
     }
 
