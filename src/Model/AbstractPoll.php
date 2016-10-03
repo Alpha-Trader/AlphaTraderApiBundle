@@ -92,6 +92,27 @@ class AbstractPoll
     private $votes;
 
     /**
+     * @var float
+     * @Annotation\Type("float")
+     * @Annotation\SerializedName("approvalVotesPercentage")
+     */
+    private $approvalVotesPercentage;
+
+    /**
+     * @var CompanyCompactProfile
+     * @Annotation\Type("Alphatrader\ApiBundle\Model\CompanyCompactProfile")
+     * @Annotation\SerializedName("company")
+     */
+    private $company;
+
+    /**
+     * @var float
+     * @Annotation\Type("float")
+     * @Annotation\SerializedName("dailyWage")
+     */
+    private $dailyWage;
+    
+    /**
      * @return string
      */
     public function getAbstentionRule()
@@ -124,7 +145,7 @@ class AbstractPoll
     }
 
     /**
-     * @return ArrayCollection<VoiceNumber>
+     * @return VoiceNumber[]
      */
     public function getGroup()
     {
@@ -252,7 +273,7 @@ class AbstractPoll
     }
 
     /**
-     * @return ArrayCollection<Vote>
+     * @return Vote[]
      */
     public function getVotes()
     {
@@ -265,5 +286,53 @@ class AbstractPoll
     public function setVotes($votes)
     {
         $this->votes = $votes;
+    }
+
+    /**
+     * @return float
+     */
+    public function getApprovalVotesPercentage()
+    {
+        return $this->approvalVotesPercentage;
+    }
+
+    /**
+     * @param float $approvalVotesPercentage
+     */
+    public function setApprovalVotesPercentage($approvalVotesPercentage)
+    {
+        $this->approvalVotesPercentage = $approvalVotesPercentage;
+    }
+
+    /**
+     * @return CompanyCompactProfile
+     */
+    public function getCompany()
+    {
+        return $this->company;
+    }
+
+    /**
+     * @param CompanyCompactProfile $company
+     */
+    public function setCompany($company)
+    {
+        $this->company = $company;
+    }
+
+    /**
+     * @return float
+     */
+    public function getDailyWage()
+    {
+        return $this->dailyWage;
+    }
+
+    /**
+     * @param float $dailyWage
+     */
+    public function setDailyWage($dailyWage)
+    {
+        $this->dailyWage = $dailyWage;
     }
 }

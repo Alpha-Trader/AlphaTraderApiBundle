@@ -14,7 +14,7 @@ use Alphatrader\ApiBundle\Model\Company;
 trait VotingTrait
 {
     /**
-     * @return \Doctrine\Common\Collections\ArrayCollection
+     * @return \Alphatrader\ApiBundle\Model\AbstractPoll[]
      */
     public function getMyPolls()
     {
@@ -22,7 +22,7 @@ trait VotingTrait
     }
 
     /**
-     * @return \Doctrine\Common\Collections\ArrayCollection
+     * @return \Alphatrader\ApiBundle\Model\AbstractPoll[]
      */
     public function getAllKnownPolls()
     {
