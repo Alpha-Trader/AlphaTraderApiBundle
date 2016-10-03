@@ -6,29 +6,6 @@ use JMS\Serializer\Annotation;
 
 class SecurityOrder
 {
-    /**
-     * @var string
-     * @Annotation\Type("string")
-     */
-    protected $id;
-
-    /**
-     * @var string
-     * @Annotation\Type("string")
-     */
-    protected $action;
-
-    /**
-     * @var float
-     * @Annotation\Type("float")
-     */
-    protected $committedCash;
-
-    /**
-     * @var string
-     * @Annotation\Type("string")
-     */
-    protected $counterParty;
 
     /**
      * @var string
@@ -37,22 +14,58 @@ class SecurityOrder
     protected $counterPartyName;
 
     /**
+     * @var string
+     * @Annotation\Type("string")
+     * @Annotation\SerializedName("ownerName")
+     */
+    protected $ownerName;
+
+    /**
+     * @var integer
+     * @Annotation\Type("integer")
+     * @Annotation\SerializedName("creationDate")
+     */
+    protected $creationDate;
+
+    /**
+     * @var string
+     * @Annotation\Type("string")
+     * @Annotation\SerializedName("securityIdentifier")
+     */
+    protected $securityIdentifier;
+
+    /**
+     * @var float
+     * @Annotation\Type("float")
+     * @Annotation\SerializedName("committedCash")
+     */
+    protected $committedCash;
+
+    /**
+     * @var string
+     * @Annotation\Type("string")
+     */
+    protected $action;
+
+    /**
+     * @var integer
+     * @Annotation\Type("integer")
+     * @Annotation\SerializedName("numberOfShares")
+     */
+    protected $numberOfShares;
+
+    /**
      * @var Listing
      * @Annotation\Type("Alphatrader\ApiBundle\Model\Listing")
      */
     protected $listing;
 
     /**
-     * @var float
-     * @Annotation\Type("float")
-     */
-    protected $numberOfShares;
-
-    /**
      * @var string
      * @Annotation\Type("string")
+     * @Annotation\SerializedName("counterParty")
      */
-    protected $owner;
+    protected $counterParty;
 
     /**
      * @var float
@@ -64,7 +77,13 @@ class SecurityOrder
      * @var string
      * @Annotation\Type("string")
      */
-    protected $securityIdentifier;
+    protected $owner;
+
+    /**
+     * @var string
+     * @Annotation\Type("string")
+     */
+    protected $id;
 
     /**
      * @var string
@@ -247,4 +266,38 @@ class SecurityOrder
     {
         $this->type = $type;
     }
+
+    /**
+     * @return string
+     */
+    public function getOwnerName()
+    {
+        return $this->ownerName;
+    }
+
+    /**
+     * @param string $ownerName
+     */
+    public function setOwnerName($ownerName)
+    {
+        $this->ownerName = $ownerName;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCreationDate()
+    {
+        return $this->creationDate;
+    }
+
+    /**
+     * @param mixed $creationDate
+     */
+    public function setCreationDate($creationDate)
+    {
+        $this->creationDate = $creationDate;
+    }
+
+
 }
