@@ -3,6 +3,7 @@
 namespace Alphatrader\ApiBundle\Api\Methods;
 
 use Alphatrader\ApiBundle\Api\ApiClient;
+use Alphatrader\ApiBundle\Model\OrderCheck;
 use Alphatrader\ApiBundle\Model\SecurityOrder;
 
 /**
@@ -67,6 +68,42 @@ class SecurityOrderController extends ApiClient
             'json'
         );
         if ($oResult->getId() == null) {
+            $oResult = $this->getSerializer()->deserialize(
+                $data,
+                'Alphatrader\ApiBundle\Model\Error',
+                'json'
+            );
+        }
+
+        return $oResult;
+    }
+
+    /**
+     * @param $owner
+     * @param $secIdent
+     * @param $numberOfShares
+     * @param $price
+     *
+     * @return OrderCheck
+     */
+    public function checkSecurityOrder($owner,$secIdent,$numberOfShares,$price)
+    {
+
+        $data = $this->get(
+            'securityorders/check/',
+            [
+                'owner'              => $owner,
+                'securityIdentifier' => $secIdent,
+                'price'              => $price,
+                'numberOfShares'     => $numberOfShares
+            ]
+        );
+        $oResult = $this->getSerializer()->deserialize(
+            $data,
+            'Alphatrader\ApiBundle\Model\OrderCheck',
+            'json'
+        );
+        if ($oResult->getNumberOfShares() === null) {
             $oResult = $this->getSerializer()->deserialize(
                 $data,
                 'Alphatrader\ApiBundle\Model\Error',
