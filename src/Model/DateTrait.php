@@ -106,4 +106,21 @@ trait DateTrait
             $this->endDate = $date;
         }
     }
+
+    /**
+     * @SuppressWarnings("unused")
+     * @Annotation\PreSerialize
+     */
+    private function preSerialization()
+    {
+        if ($this->date instanceof \DateTime) {
+            $this->date = $this->date->getTimestamp();
+        }
+        if ($this->startDate instanceof \DateTime) {
+            $this->startDate = $this->startDate->getTimestamp();
+        }
+        if ($this->endDate instanceof \DateTime) {
+            $this->endDate = $this->endDate->getTimestamp();
+        }
+    }
 }
