@@ -55,8 +55,7 @@ class EmploymentAgreementCompactCompanyTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue(is_float($eacc->getDailyWage()));
         $this->assertEquals($wage,$eacc->getDailyWage());
     }
-
-
+    
     /**
      * @param int $min
      * @param int $max
