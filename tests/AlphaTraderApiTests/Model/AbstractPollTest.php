@@ -6,7 +6,7 @@
 
 namespace Tests\Model;
 
-use \Alphatrader\ApiBundle\Model\AbstractPoll;
+use Alphatrader\ApiBundle\Model\AbstractPoll;
 use PHPUnit\Framework\TestCase;
 
 /**

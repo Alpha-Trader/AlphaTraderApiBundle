@@ -231,7 +231,7 @@ class CompanyController extends ApiClient
             'json'
         );
         
-        if ($oResult->getId() == null) {
+        if ($oResult->getId() === null) {
             $oResult = $this->getSerializer()->deserialize(
                 $data,
                 'Alphatrader\ApiBundle\Model\Error',

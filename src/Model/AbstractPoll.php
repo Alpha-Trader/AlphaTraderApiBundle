@@ -2,18 +2,17 @@
 
 namespace Alphatrader\ApiBundle\Model;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use JMS\Serializer\Annotation;
 
 /**
- * Class UserProfile
+ * Class AbstractPoll
  * @package Alphatrader\ApiBundle\Model
- * @author Tr0nYx
+ * @Annotation\ExclusionPolicy("none")
  */
 class AbstractPoll
 {
     use DateTrait;
-    
+
     /**
      * @var string
      * @Annotation\Type("string")
@@ -96,14 +95,21 @@ class AbstractPoll
      * @Annotation\Type("float")
      * @Annotation\SerializedName("approvalVotesPercentage")
      */
-    private $approvalVotesPercentage;
+    private $approvVotesPercent;
 
     /**
-     * @var CompanyCompactProfile
-     * @Annotation\Type("Alphatrader\ApiBundle\Model\CompanyCompactProfile")
+     * @var CompanyName
+     * @Annotation\Type("Alphatrader\ApiBundle\Model\CompanyName")
      * @Annotation\SerializedName("company")
      */
     private $company;
+
+    /**
+     * @var UserName
+     * @Annotation\Type("Alphatrader\ApiBundle\Model\UserName")
+     * @Annotation\SerializedName("applicant")
+     */
+    protected $applicant;
 
     /**
      * @var float
@@ -291,21 +297,21 @@ class AbstractPoll
     /**
      * @return float
      */
-    public function getApprovalVotesPercentage()
+    public function getApprovVotesPercent()
     {
-        return $this->approvalVotesPercentage;
+        return $this->approvVotesPercent;
     }
 
     /**
-     * @param float $approvalVotesPercentage
+     * @param float $approvVotesPercent
      */
-    public function setApprovalVotesPercentage($approvalVotesPercentage)
+    public function setApprovVotesPercent($approvVotesPercent)
     {
-        $this->approvalVotesPercentage = $approvalVotesPercentage;
+        $this->approvVotesPercent = $approvVotesPercent;
     }
 
     /**
-     * @return CompanyCompactProfile
+     * @return CompanyName
      */
     public function getCompany()
     {
@@ -313,11 +319,27 @@ class AbstractPoll
     }
 
     /**
-     * @param CompanyCompactProfile $company
+     * @param CompanyName $company
      */
     public function setCompany($company)
     {
         $this->company = $company;
+    }
+
+    /**
+     * @return UserName
+     */
+    public function getApplicant()
+    {
+        return $this->applicant;
+    }
+
+    /**
+     * @param UserName $applicant
+     */
+    public function setApplicant($applicant)
+    {
+        $this->applicant = $applicant;
     }
 
     /**

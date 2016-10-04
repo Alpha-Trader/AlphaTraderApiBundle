@@ -9,6 +9,7 @@
 namespace Tests\Methods;
 
 use Alphatrader\ApiBundle\Api\Methods\CashTransferLogController;
+use Alphatrader\ApiBundle\Model\BankAccount;
 
 
 /**
@@ -26,7 +27,7 @@ class CashTransferLogControllerTest extends BaseTestCase
 
         $bondcontroller = new CashTransferLogController($this->config);
         $bondcontroller->setClient($this->getClient($expected));
-        $val = $bondcontroller->getCashTransferLogs( new \DateTime(), new \DateTime(),1,1);
+        $val = $bondcontroller->getCashTransferLogs( new \DateTime(), new \DateTime(), new BankAccount(), new BankAccount());
 
         $this->assertTrue(is_array($val));
     }

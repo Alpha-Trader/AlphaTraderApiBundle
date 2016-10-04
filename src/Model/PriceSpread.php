@@ -41,6 +41,27 @@ class PriceSpread
     private $bidSize;
 
     /**
+     * @var SecurityPrice
+     * @Annotation\Type("Alphatrader\ApiBundle\Model\SecurityPrice")
+     * @Annotation\SerializedName("lastPrice")
+     */
+    private $lastPrice;
+
+    /**
+     * @var float
+     * @Annotation\Type("float")
+     * @Annotation\SerializedName("maxBidPrice")
+     */
+    private $maxBidPrice;
+
+    /**
+     * @var float
+     * @Annotation\Type("float")
+     * @Annotation\SerializedName("minAskPrice")
+     */
+    private $minAskPrice;
+
+    /**
      * @var float
      * @Annotation\Type("float")
      * @Annotation\SerializedName("spreadAbs")
@@ -148,5 +169,53 @@ class PriceSpread
     public function setSpreadPercent($spreadPercent)
     {
         $this->spreadPercent = $spreadPercent;
+    }
+
+    /**
+     * @return SecurityPrice
+     */
+    public function getLastPrice()
+    {
+        return $this->lastPrice;
+    }
+
+    /**
+     * @param SecurityPrice $lastPrice
+     */
+    public function setLastPrice($lastPrice)
+    {
+        $this->lastPrice = $lastPrice;
+    }
+
+    /**
+     * @return float
+     */
+    public function getMaxBidPrice()
+    {
+        return $this->maxBidPrice;
+    }
+
+    /**
+     * @param float $maxBidPrice
+     */
+    public function setMaxBidPrice($maxBidPrice)
+    {
+        $this->maxBidPrice = $maxBidPrice;
+    }
+
+    /**
+     * @return float
+     */
+    public function getMinAskPrice()
+    {
+        return $this->minAskPrice;
+    }
+
+    /**
+     * @param float $minAskPrice
+     */
+    public function setMinAskPrice($minAskPrice)
+    {
+        $this->minAskPrice = $minAskPrice;
     }
 }

@@ -298,6 +298,4 @@ class SecurityOrder
     {
         $this->creationDate = $creationDate;
     }
-
-
 }

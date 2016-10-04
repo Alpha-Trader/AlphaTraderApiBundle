@@ -5,6 +5,8 @@ namespace Alphatrader\ApiBundle\Api\Methods;
 use Alphatrader\ApiBundle\Api\ApiClient;
 use Alphatrader\ApiBundle\Model\AbstractPoll;
 use Alphatrader\ApiBundle\Model\Company;
+use Alphatrader\ApiBundle\Model\EmployCeoPoll;
+use Alphatrader\ApiBundle\Model\ShareholderPoll;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
