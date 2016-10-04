@@ -32,7 +32,7 @@ trait VotingTrait
     /**
      * @param Company $company
      *
-     * @return \Alphatrader\ApiBundle\Model\ShareholderPoll
+     * @return \Alphatrader\ApiBundle\Model\AbstractPoll
      */
     public function setCompanyCashoutPoll(Company $company)
     {
@@ -43,7 +43,7 @@ trait VotingTrait
      * @param Company $company
      * @param         $dailyWage
      *
-     * @return \Alphatrader\ApiBundle\Model\EmployCeoPoll
+     * @return \Alphatrader\ApiBundle\Model\AbstractPoll
      */
     public function setCompanyEmployCeo(Company $company, $dailyWage)
     {
@@ -53,7 +53,7 @@ trait VotingTrait
     /**
      * @param Company $company
      *
-     * @return \Alphatrader\ApiBundle\Model\ShareholderPoll
+     * @return \Alphatrader\ApiBundle\Model\AbstractPoll
      */
     public function setCompanyLiquidation(Company $company)
     {
