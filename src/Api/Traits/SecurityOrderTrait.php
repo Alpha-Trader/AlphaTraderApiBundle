@@ -53,7 +53,7 @@ trait SecurityOrderTrait
      *
      * @return \Alphatrader\ApiBundle\Model\OrderCheck
      */
-    public function checkOrder($owner,$securityIdentifier,$numberOfShares,$price)
+    public function checkOrder($owner, $securityIdentifier, $numberOfShares, $price = null)
     {
         return $this->getSecurityOrderController()->checkSecurityOrder(
             $owner,

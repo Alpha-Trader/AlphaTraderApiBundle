@@ -152,7 +152,7 @@ class AbstractPollTest extends TestCase
      */
     protected function getAbstractPoll(){
 
-        return new AbstractPoll();
+        return $this->getMockForAbstractClass('Alphatrader\ApiBundle\Model\AbstractPoll');
     }
     /*
      * @param $length

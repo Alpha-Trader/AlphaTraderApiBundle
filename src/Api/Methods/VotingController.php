@@ -85,7 +85,7 @@ class VotingController extends ApiClient
     public function setCompanyEmployCeo(Company $company, $dailyWage)
     {
         $data = $this->post('polls/employceo', ['companyId' => $company->getId(), 'dailyWage' => $dailyWage]);
-        $oResult = $this->getSerializer()->deserialize($data, 'Alphatrader\ApiBundle\Model\AbstractPoll', 'json');
+        $oResult = $this->getSerializer()->deserialize($data, 'Alphatrader\ApiBundle\Model\EmployCeoPoll', 'json');
         if ($oResult->getId() == null) {
             $oResult = $this->getSerializer()->deserialize(
                 $data,
