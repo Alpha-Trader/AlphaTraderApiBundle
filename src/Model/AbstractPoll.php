@@ -10,7 +10,7 @@ use JMS\Serializer\Annotation;
  * @package Alphatrader\ApiBundle\Model
  * @author Tr0nYx
  */
-abstract class AbstractPoll
+class AbstractPoll
 {
     use DateTrait;
     
