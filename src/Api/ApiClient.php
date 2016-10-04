@@ -5,6 +5,7 @@ namespace Alphatrader\ApiBundle\Api;
 use GuzzleHttp\Client;
 use JMS\Serializer\Serializer;
 use JMS\Serializer\SerializerBuilder;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 /**
  * Class ApiClient
@@ -94,6 +95,11 @@ class ApiClient
             $request = $this->getClient()->request($method, $url, $data);
         } catch (\GuzzleHttp\Exception\ClientException $e) {
             $request = $e->getResponse();
+        } catch (\GuzzleHttp\Exception\ServerException $e) {
+            $message = json_decode($e->getResponse()->getBody()->getContents());
+            throw new AccessDeniedHttpException($message['message'],null,$message['status']);
+        } catch  (\Exception $e) {
+            throw new AccessDeniedHttpException($e->getMessage());
         }
 
         return $request->getBody()->getContents();
