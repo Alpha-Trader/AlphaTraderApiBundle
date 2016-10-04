@@ -300,8 +300,12 @@ class AlphaTraderTest extends BaseTestCase
     {
         $company = new Company();
         $company->setId(1);
-        $response = $this->alphatrader->setCompanyCentralBankReserves($company,1);
-        $this->assertInstanceOf(Error::class,$response);
+        $response = ['cash'=>50000];
+        $expected = json_encode($response);
+        $myFactory = $this->getMockBuilder('Alphatrader\ApiBundle\Api\AlphaTrader', array('setCompanyCentralBankReserves'))->disableOriginalConstructor()->getMock();
+        $myFactory->expects($this->any())->method('setCompanyCentralBankReserves')->will($this->returnValue($expected));
+        $val = $myFactory->setCompanyCentralBankReserves($company,1);
+        $this->assertEquals(json_decode($val)->cash,$response['cash']);
     }
 
     public function test_setNotificationsasRead()
