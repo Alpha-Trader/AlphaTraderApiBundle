@@ -6,7 +6,7 @@
 
 namespace Tests\Model;
 
-use \Alphatrader\ApiBundle\Model\AbstractPoll;
+use Alphatrader\ApiBundle\Model\AbstractPoll;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -152,7 +152,7 @@ class AbstractPollTest extends TestCase
      */
     protected function getAbstractPoll(){
 
-        return $this->getMockForAbstractClass('Alphatrader\ApiBundle\Model\AbstractPoll');
+        return new AbstractPoll();
     }
     /*
      * @param $length
