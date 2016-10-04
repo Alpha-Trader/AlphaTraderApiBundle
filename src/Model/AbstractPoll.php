@@ -6,11 +6,11 @@ use Doctrine\Common\Collections\ArrayCollection;
 use JMS\Serializer\Annotation;
 
 /**
- * Class UserProfile
+ * Class AbstractPoll
  * @package Alphatrader\ApiBundle\Model
  * @author Tr0nYx
  */
-class AbstractPoll
+abstract class AbstractPoll
 {
     use DateTrait;
     
@@ -90,27 +90,6 @@ class AbstractPoll
      * @Annotation\SerializedName("votes")
      */
     private $votes;
-
-    /**
-     * @var float
-     * @Annotation\Type("float")
-     * @Annotation\SerializedName("approvalVotesPercentage")
-     */
-    private $approvalVotesPercentage;
-
-    /**
-     * @var CompanyCompactProfile
-     * @Annotation\Type("Alphatrader\ApiBundle\Model\CompanyCompactProfile")
-     * @Annotation\SerializedName("company")
-     */
-    private $company;
-
-    /**
-     * @var float
-     * @Annotation\Type("float")
-     * @Annotation\SerializedName("dailyWage")
-     */
-    private $dailyWage;
     
     /**
      * @return string
@@ -286,22 +265,6 @@ class AbstractPoll
     public function setVotes($votes)
     {
         $this->votes = $votes;
-    }
-
-    /**
-     * @return float
-     */
-    public function getApprovalVotesPercentage()
-    {
-        return $this->approvalVotesPercentage;
-    }
-
-    /**
-     * @param float $approvalVotesPercentage
-     */
-    public function setApprovalVotesPercentage($approvalVotesPercentage)
-    {
-        $this->approvalVotesPercentage = $approvalVotesPercentage;
     }
 
     /**

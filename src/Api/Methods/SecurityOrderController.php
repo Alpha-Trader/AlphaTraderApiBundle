@@ -86,7 +86,7 @@ class SecurityOrderController extends ApiClient
      *
      * @return OrderCheck
      */
-    public function checkSecurityOrder($owner,$secIdent,$numberOfShares,$price)
+    public function checkSecurityOrder($owner, $secIdent, $numberOfShares, $price)
     {
 
         $data = $this->get(
