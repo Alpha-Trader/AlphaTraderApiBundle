@@ -357,6 +357,8 @@ class AlphaTraderTest extends BaseTestCase
         $myFactory = $this->getMockBuilder('Alphatrader\ApiBundle\Api\AlphaTrader', array('addLogoToCompany'))->disableOriginalConstructor()->getMock();
         $myFactory->expects($this->any())->method('addLogoToCompany')->will($this->returnValue($expected));
         $val = $myFactory->addLogoToCompany($company->getId(), $logourl);
-        $this->assertEquals(json_decode($val)->cash,$response['cash']);
+        $this->assertInstanceOf(Company::class,$company);
+        $this->assertEquals($company,$response['company']);
+        $this->assertEquals(1,$company->getId());
     }
 }

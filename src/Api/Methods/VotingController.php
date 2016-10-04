@@ -5,6 +5,8 @@ namespace Alphatrader\ApiBundle\Api\Methods;
 use Alphatrader\ApiBundle\Api\ApiClient;
 use Alphatrader\ApiBundle\Model\AbstractPoll;
 use Alphatrader\ApiBundle\Model\Company;
+use Alphatrader\ApiBundle\Model\EmployCeoPoll;
+use Alphatrader\ApiBundle\Model\ShareholderPoll;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
@@ -59,13 +61,13 @@ class VotingController extends ApiClient
     /**
      * @param Company $company
      *
-     * @return AbstractPoll
+     * @return ShareholderPoll
      */
     public function setCompanyCashoutPoll(Company $company)
     {
         $data = $this->post('polls/cashout', ['companyId' => $company->getId()]);
         /** @var AbstractPoll $oResult */
-        $oResult = $this->getSerializer()->deserialize($data, 'Alphatrader\ApiBundle\Model\AbstractPoll', 'json');
+        $oResult = $this->getSerializer()->deserialize($data, 'Alphatrader\ApiBundle\Model\ShareholderPoll', 'json');
         if ($oResult->getId() == null) {
             $oResult = $this->getSerializer()->deserialize(
                 $data,
@@ -80,7 +82,7 @@ class VotingController extends ApiClient
      * @param Company $company
      * @param         $dailyWage
      *
-     * @return AbstractPoll
+     * @return EmployCeoPoll
      */
     public function setCompanyEmployCeo(Company $company, $dailyWage)
     {
@@ -99,12 +101,12 @@ class VotingController extends ApiClient
     /**
      * @param Company $company
      *
-     * @return AbstractPoll
+     * @return ShareholderPoll
      */
     public function setCompanyLiquidation(Company $company)
     {
         $data = $this->post('polls/liquidation', ['companyId' => $company->getId()]);
-        $oResult = $this->getSerializer()->deserialize($data, 'Alphatrader\ApiBundle\Model\AbstractPoll', 'json');
+        $oResult = $this->getSerializer()->deserialize($data, 'Alphatrader\ApiBundle\Model\ShareholderPoll', 'json');
         if ($oResult->getId() == null) {
             $oResult = $this->getSerializer()->deserialize(
                 $data,
