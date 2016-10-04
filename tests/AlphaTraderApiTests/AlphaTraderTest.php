@@ -344,4 +344,19 @@ class AlphaTraderTest extends BaseTestCase
         $this->expectException(RuntimeException::class);
         $this->alphatrader->checkOrder(1,1,1,1);
     }
+
+
+    public function test_addLogoToCompany()
+    {
+        //$this->expectException(RuntimeException::class);
+        $company = new Company();
+        $company->setId(1);
+        $logourl = 'http://example.com';
+        $response = ['company'=>$company,'logo'=>$logourl];
+        $expected = json_encode($response, JSON_FORCE_OBJECT);
+        $myFactory = $this->getMockBuilder('Alphatrader\ApiBundle\Api\AlphaTrader', array('addLogoToCompany'))->disableOriginalConstructor()->getMock();
+        $myFactory->expects($this->any())->method('addLogoToCompany')->will($this->returnValue($expected));
+        $val = $myFactory->addLogoToCompany($company->getId(), $logourl);
+        $this->assertEquals(json_decode($val)->cash,$response['cash']);
+    }
 }
