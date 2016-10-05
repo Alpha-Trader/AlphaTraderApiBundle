@@ -273,7 +273,7 @@ class ListingProfile
     }
 
     /**
-     * @param SecurityPrice $prices14d
+     * @param ArrayCollection<SecurityPrice> $prices14d
      */
     public function setPrices14d($prices14d)
     {
