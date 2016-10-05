@@ -14,14 +14,19 @@ use Alphatrader\ApiBundle\Model\Company;
 trait CompanyTrait
 {
     /**
-     * @param bool $all
-     * @SuppressWarnings(PHPMD.BooleanArgumentFlag)
-     *
-     * @return Company[]
+     * @return \AlphaTrader\ApiBundle\Model\Company[]|\Alphatrader\ApiBundle\Model\Error
      */
-    public function getCompanies($all = true)
+    public function getAllCompanies()
     {
-        return $this->getCompanyController()->getCompanies($all);
+        return $this->getCompanyController()->getAllCompanies();
+    }
+
+    /**
+     * @return \AlphaTrader\ApiBundle\Model\Company[]|\Alphatrader\ApiBundle\Model\Error
+     */
+    public function getMyCompanies()
+    {
+        return $this->getCompanyController()->getUserCompanies();
     }
 
     /**

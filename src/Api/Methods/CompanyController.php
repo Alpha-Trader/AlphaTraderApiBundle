@@ -23,13 +23,33 @@ use Alphatrader\ApiBundle\Model\UserAccount;
 class CompanyController extends ApiClient
 {
     /**
-     * @param $all
-     *
      * @return Company[]|Error
      */
-    public function getCompanies($all)
+    public function getAllCompanies()
     {
-        $data = $all == true ? $this->get('companies/all/') : $this->get('companies/');
+        $data = $this->get('companies/all/');
+        /** @var Company[] $oResult */
+        $oResult = $this->getSerializer()->deserialize(
+            $data,
+            'ArrayCollection<Alphatrader\ApiBundle\Model\Company>',
+            'json'
+        );
+        if (!is_array($oResult)) {
+            $oResult = $this->getSerializer()->deserialize(
+                $data,
+                'Alphatrader\ApiBundle\Model\Error',
+                'json'
+            );
+        }
+        return $oResult;
+    }
+
+    /**
+     * @return Company[]|Error
+     */
+    public function getUserCompanies()
+    {
+        $data = $this->get('companies/');
         /** @var Company[] $oResult */
         $oResult = $this->getSerializer()->deserialize(
             $data,
