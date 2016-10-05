@@ -107,7 +107,15 @@ class UserAccountController extends ApiClient
             $this->config['apiurl'] . '/user/register',
             ['username' => $username, 'emailAddress' => $email, 'password' => $password]
         );
+        /** @var UserAccount $oResult */
         $oResult = $this->getSerializer()->deserialize($data, 'Alphatrader\ApiBundle\Model\UserAccount', 'json');
+        if ($oResult->getId() == null) {
+            $oResult = $this->getSerializer()->deserialize(
+                $data,
+                'Alphatrader\ApiBundle\Model\Error',
+                'json'
+            );
+        }
         return $oResult;
     }
 
