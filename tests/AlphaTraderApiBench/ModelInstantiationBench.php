@@ -8,9 +8,8 @@ use Alphatrader\ApiBundle\Model\Bond;
 use Alphatrader\ApiBundle\Model\CashTransferLogEntry;
 use Alphatrader\ApiBundle\Model\CentralBankReserve;
 use Alphatrader\ApiBundle\Model\Ceo;
-use Alphatrader\ApiBundle\Model\Chats;
+use Alphatrader\ApiBundle\Model\Chat;
 use Alphatrader\ApiBundle\Model\CompactCompany;
-use Alphatrader\ApiBundle\Model\Company;
 use Alphatrader\ApiBundle\Model\Listing;
 use Alphatrader\ApiBundle\Model\UserCapabilities;
 use Alphatrader\ApiBundle\Model\UserName;
@@ -129,6 +128,6 @@ class ModelInstantiationBench
     
     public function benchInstantiationOfChats()
     {
-        new Chats();
+        new Chat();
     }
 }
