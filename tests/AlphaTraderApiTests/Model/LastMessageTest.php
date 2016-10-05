@@ -132,7 +132,7 @@ class LastMessageTest extends \PHPUnit_Framework_TestCase
 
         $this->assertInstanceOf('Alphatrader\ApiBundle\Model\UserName',$lastMessage->getSender());
     }
-
+    
     /*
     * @param $length
     */
