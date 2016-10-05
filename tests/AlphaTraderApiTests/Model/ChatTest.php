@@ -38,8 +38,7 @@ class ChatTest extends TestCase{
         $participants = $this->createMock('Alphatrader\ApiBundle\Model\UserName');
         $sender = $this->createMock('Alphatrader\ApiBundle\Model\UserName');
         $usercaps = $this->createMock('Alphatrader\ApiBundle\Model\UserCapabilities');
-
-
+        
         $usercaps->expects($this->any())->method('isLevel2User')->will($this->returnValue(true));
         $usercaps->expects($this->any())->method('getLevel2UserEndDate')->will($this->returnValue($date));
         $usercaps->expects($this->any())->method('getLocale')->will($this->returnValue('en_US'));
