@@ -20,7 +20,7 @@ class ListingProfileTest extends \PHPUnit_Framework_TestCase
         $this->assertNull($listingProfile->getBond());
         
         $bond   = $this->createMock('Alphatrader\ApiBundle\Model\Bond');
-        $issuer = $this->createMock('Alphatrader\ApiBundle\Model\UserName');
+        $issuer = $this->createMock('Alphatrader\ApiBundle\Model\CompanyName');
         
         $bond->expects($this->any())->method('getIssuer')->willReturn($issuer);
         $listingProfile->setBond($bond);
@@ -207,9 +207,9 @@ class ListingProfileTest extends \PHPUnit_Framework_TestCase
         $issuer = $this->createMock('Alphatrader\ApiBundle\Model\UserName');
 
         $bond->expects($this->any())->method('getIssuer')->willReturn($issuer);
-        $listingProfile->setBond($bond);
+        $listingProfile->setSystemBond($bond);
 
-        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\Bond',$listingProfile->getBond());
+        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\Bond',$listingProfile->getSystemBond());
     }
 
     public function testType(){
@@ -223,6 +223,66 @@ class ListingProfileTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($type,$listingProfile->getType());
     }
 
+    public function testIssuerName(){
+        $listingProfile = new ListingProfile();
+        $this->assertNotNull($listingProfile->getIssuerName());
+        $this->assertEquals('Central Bank',$listingProfile->getIssuerName());
+
+        $name = $this->getRandomString(12);
+
+        // Bond Set
+        $bond = $this->createMock('\Alphatrader\ApiBundle\Model\Bond');
+        $issuer = $this->createMock('\Alphatrader\ApiBundle\Model\CompanyName');
+
+        $issuer->expects($this->any())->method('getName')->willReturn($name);
+        $bond->expects($this->any())->method('getIssuer')->willReturn($issuer);
+        $listingProfile->setBond($bond);
+
+        $this->assertNotEquals('Central Bank',$listingProfile->getIssuerName());
+        $this->assertEquals($name,$listingProfile->getIssuerName());
+        $listingProfile->setBond(NULL);
+
+        //Company Set
+        $company = $this->createMock('\Alphatrader\ApiBundle\Model\CompanyCompactProfile');
+        $company->expects($this->any())->method('getName')->willReturn($name);
+        $listingProfile->setCompany($company);
+
+        $this->assertNotEquals('Central Bank',$listingProfile->getIssuerName());
+        $this->assertEquals($name,$listingProfile->getIssuerName());
+
+    }
+
+    public function testGetIssuerSecurityIdentifier(){
+        $listingProfile = new ListingProfile();
+        $this->assertNull($listingProfile->getIssuerSecurityIdentifier());
+        $secIdent = $this->getRandomString(32);
+
+        $listingProfile->setSecurityIdentifier($secIdent);
+        $company = $this->createMock('\Alphatrader\ApiBundle\Model\CompanyCompactProfile');
+        $listingProfile->setCompany($company);
+        $this->assertEquals($secIdent,$listingProfile->getIssuerSecurityIdentifier());
+        $listingProfile->setCompany(NULL);
+
+        $sBond = $this->createMock('\Alphatrader\ApiBundle\Model\SystemBond');
+        $listingProfile->setSystemBond($sBond);
+        $this->assertEquals($secIdent,$listingProfile->getIssuerSecurityIdentifier());
+        $listingProfile->setSystemBond(NULL);
+
+        $this->assertNull($listingProfile->getIssuerSecurityIdentifier());
+
+        $bond   = $this->createMock('\Alphatrader\ApiBundle\Model\Bond');
+        $cname  = $this->createMock('\Alphatrader\ApiBundle\Model\CompanyName');
+        $list   = $this->createMock('\Alphatrader\ApiBundle\Model\Listing');
+
+        $list->expects($this->any())->method('getSecurityIdentifier')->willReturn($secIdent);
+        $cname->expects($this->any())->method('getListing')->willReturn($list);
+        $bond->expects($this->any())->method('getIssuer')->willReturn($cname);
+        $listingProfile->setBond($bond);
+
+        $this->assertEquals($secIdent,$listingProfile->getIssuerSecurityIdentifier());
+        
+    }
+    
     /**
      * @param int $min
      * @param int $max
