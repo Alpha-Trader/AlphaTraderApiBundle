@@ -46,4 +46,12 @@ class AlphaTrader
             $this->jwt = $session->get('_attoken') ? : $jwt;
         }
     }
+
+    /**
+     * @param $jwt
+     */
+    public function setJwt($jwt)
+    {
+        $this->jwt = $jwt;
+    }
 }
