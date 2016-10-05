@@ -6,11 +6,11 @@ use Doctrine\Common\Collections\ArrayCollection;
 use JMS\Serializer\Annotation;
 
 /**
- * Class Chats
+ * Class Chat
  * @package Alphatrader\ApiBundle\Model
  * @Annotation\ExclusionPolicy("none")
  */
-class Chats
+class Chat
 {
     /**
      * @Annotation\Type("string")

@@ -6,9 +6,8 @@
 
 namespace Tests\Model;
 
+use Alphatrader\ApiBundle\Model\Chat;
 use PHPUnit\Framework\TestCase;
-use Alphatrader\ApiBundle\Model\Chats;
-use Doctrine\Common\Collections\ArrayCollection;
 
 
 /**
@@ -16,10 +15,10 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @package Tests\Model
  * @author ljbergmann
  */
-class ChatsTest extends TestCase{
+class ChatTest extends TestCase{
 
     public function testId(){
-        $chat = new Chats();
+        $chat = new Chat();
         $this->assertNull($chat->getId());
 
         $uuid = uniqid();
@@ -30,7 +29,7 @@ class ChatsTest extends TestCase{
     }
     
     public function testLastMessage(){
-        $chat = new Chats();
+        $chat = new Chat();
         $this->assertNull($chat->getLastMessage());
         
         $date = new \DateTime();
@@ -72,7 +71,7 @@ class ChatsTest extends TestCase{
     }
     
     public function testDateCreated(){
-        $chat = new Chats();
+        $chat = new Chat();
         $this->assertNull($chat->getDateCreated());
         
         $date = $this->getRandomString(12);
@@ -84,7 +83,7 @@ class ChatsTest extends TestCase{
     }
     
     public function testChatName(){
-        $chat = new Chats();
+        $chat = new Chat();
         $this->assertNull($chat->getChatName());
         
         $name = $this->getRandomString(12);
@@ -95,7 +94,7 @@ class ChatsTest extends TestCase{
     }
     
     public function testParticipants(){
-        $chat = new Chats();
+        $chat = new Chat();
         $this->assertNull($chat->getParticipants());
 
         $date = new \DateTime();
@@ -121,7 +120,7 @@ class ChatsTest extends TestCase{
     }
 
     public function testIsReadOnly(){
-        $chat = new Chats();
+        $chat = new Chat();
         $this->assertNull($chat->isReadonly());
 
         $readOnly = (bool)mt_rand(0,1);
@@ -131,7 +130,7 @@ class ChatsTest extends TestCase{
     }
 
     public function testOwner(){
-        $chat = new Chats();
+        $chat = new Chat();
         $this->assertNull($chat->getOwner());
 
         $date = new \DateTime();
