@@ -108,12 +108,18 @@ class AlphaTraderTest extends BaseTestCase
         $this->alphatrader->getUserByUsername('test');
     }
 
+    public function test_getMyCompanies()
+    {
+        $this->expectException(RuntimeException::class);
+        $this->alphatrader->getMyCompanies();
+    }
+
     public function test_getCompanies()
     {
         $this->expectException(RuntimeException::class);
-        $this->alphatrader->getCompanies(true);
+        $this->alphatrader->getAllCompanies();
     }
-
+    
     public function test_getCompany()
     {
         $this->expectException(RuntimeException::class);
