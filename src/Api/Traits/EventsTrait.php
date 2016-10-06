@@ -39,9 +39,9 @@ trait EventsTrait
      *
      * @return \Alphatrader\ApiBundle\Model\Events[]
      */
-    public function getEventsByType($eventtype, $realms = '', \DateTime $afterDate = null)
+    public function getEventsByType($eventtype, $realms = '', $afterDate = null)
     {
-        return $this->getEventController()->searchEventsByType($eventtype, $realms, $this->formatTimeStamp($afterDate));
+        return $this->getEventController()->searchEventsByType($eventtype, $realms, $afterDate);
     }
 
     /**
