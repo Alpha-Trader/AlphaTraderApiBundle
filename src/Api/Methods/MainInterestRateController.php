@@ -28,7 +28,7 @@ class MainInterestRateController extends ApiClient
     public function getMainInterestRate()
     {
         $data = $this->get('maininterestrate/');
-        return $this->parseResponse($data,'ArrayCollection<Alphatrader\ApiBundle\Model\MainInterestRate>');
+        return $this->parseResponse($data, 'ArrayCollection<Alphatrader\ApiBundle\Model\MainInterestRate>');
     }
 
     /**
@@ -37,6 +37,6 @@ class MainInterestRateController extends ApiClient
     public function getLatestMainInterestRate()
     {
         $data = $this->get('maininterestrate/latest/');
-        return $this->parseResponse($data,'Alphatrader\ApiBundle\Model\MainInterestRate');
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\MainInterestRate');
     }
 }

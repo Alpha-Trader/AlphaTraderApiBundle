@@ -61,7 +61,7 @@ class ApiClientTest extends TestCase
     {
         $this->expectException(\Exception::class);
         $this->expectExceptionMessage('Invalid HTTP-Method: FAILMETHOD');
-        $this->client->request($this->url,'FAILMETHOD');
+        $this->client->get($this->url,'FAILMETHOD');
     }
 
 }

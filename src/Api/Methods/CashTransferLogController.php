@@ -45,6 +45,6 @@ class CashTransferLogController extends ApiClient
                 'receiverBankAccountId' => $receiverBankAcc !== null ? $receiverBankAcc->getId() : null
             ]
         );
-        return $this->parseResponse($request,'ArrayCollection<Alphatrader\ApiBundle\Model\CashTransferLogEntry>');
+        return $this->parseResponse($request, 'ArrayCollection<Alphatrader\ApiBundle\Model\CashTransferLogEntry>');
     }
 }

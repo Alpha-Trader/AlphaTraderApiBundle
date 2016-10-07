@@ -25,6 +25,6 @@ class BankAccountController extends ApiClient
     public function getBankAccount()
     {
         $request = $this->get('bankaccounts');
-        return $this->parseResponse($request,'Alphatrader\ApiBundle\Model\BankAccount');
+        return $this->parseResponse($request, 'Alphatrader\ApiBundle\Model\BankAccount');
     }
 }

@@ -32,7 +32,7 @@ class BankingLicenseController extends ApiClient
     public function createBankingLicense(Company $company)
     {
         $request = $this->post('bankinglicense/', ['companyId' => $company->getId()]);
-        return $this->parseResponse($request,'Alphatrader\ApiBundle\Model\BankingLicense');
+        return $this->parseResponse($request, 'Alphatrader\ApiBundle\Model\BankingLicense');
     }
 
     /**
@@ -43,6 +43,6 @@ class BankingLicenseController extends ApiClient
     public function getBankingLicense(Company $company)
     {
         $request = $this->get('bankinglicense/', ['companyId' => $company->getId()]);
-        return $this->parseResponse($request,'Alphatrader\ApiBundle\Model\BankingLicense');
+        return $this->parseResponse($request, 'Alphatrader\ApiBundle\Model\BankingLicense');
     }
 }

@@ -22,7 +22,7 @@ class VotingController extends ApiClient
     public function getMyPolls()
     {
         $data = $this->get('initiatedpolls/');
-        return $this->parseResponse($data,'ArrayCollection<Alphatrader\ApiBundle\Model\AbstractPoll>');
+        return $this->parseResponse($data, 'ArrayCollection<Alphatrader\ApiBundle\Model\AbstractPoll>');
     }
 
     /**
@@ -31,7 +31,7 @@ class VotingController extends ApiClient
     public function getAllKnownPolls()
     {
         $data = $this->get('polls/');
-        return $this->parseResponse($data,'ArrayCollection<Alphatrader\ApiBundle\Model\AbstractPoll>');
+        return $this->parseResponse($data, 'ArrayCollection<Alphatrader\ApiBundle\Model\AbstractPoll>');
     }
 
     /**
@@ -42,7 +42,7 @@ class VotingController extends ApiClient
     public function setCompanyCashoutPoll(Company $company)
     {
         $data = $this->post('polls/cashout', ['companyId' => $company->getId()]);
-        return $this->parseResponse($data,'Alphatrader\ApiBundle\Model\AbstractPoll');
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\AbstractPoll');
     }
 
     /**
@@ -54,7 +54,7 @@ class VotingController extends ApiClient
     public function setCompanyEmployCeo(Company $company, $dailyWage)
     {
         $data = $this->post('polls/employceo', ['companyId' => $company->getId(), 'dailyWage' => $dailyWage]);
-        return $this->parseResponse($data,'Alphatrader\ApiBundle\Model\AbstractPoll');
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\AbstractPoll');
     }
 
     /**
@@ -65,7 +65,7 @@ class VotingController extends ApiClient
     public function setCompanyLiquidation(Company $company)
     {
         $data = $this->post('polls/liquidation', ['companyId' => $company->getId()]);
-        return $this->parseResponse($data,'Alphatrader\ApiBundle\Model\AbstractPoll');
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\AbstractPoll');
     }
 
     /**
@@ -76,7 +76,7 @@ class VotingController extends ApiClient
     public function getPoll($pollid)
     {
         $data = $this->get('polls/' . $pollid);
-        return $this->parseResponse($data,'Alphatrader\ApiBundle\Model\AbstractPoll');
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\AbstractPoll');
     }
 
     /**
@@ -105,6 +105,6 @@ class VotingController extends ApiClient
     public function votePoll($pollid, $voices, $votingType)
     {
         $data = $this->post('polls/', ['pollId' => $pollid, 'voices' => $voices, 'votingType' => $votingType]);
-        return $this->parseResponse($data,'Alphatrader\ApiBundle\Model\AbstractPoll');
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\AbstractPoll');
     }
 }

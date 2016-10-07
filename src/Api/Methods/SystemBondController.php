@@ -38,7 +38,7 @@ class SystemBondController extends ApiClient
                 'numberOfBonds' => $numberOfBonds
             ]
         );
-        return $this->parseResponse($data,'Alphatrader\ApiBundle\Model\SystemBond');
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\SystemBond');
     }
 
     /**
@@ -59,6 +59,6 @@ class SystemBondController extends ApiClient
     public function getBond($bondId)
     {
         $data = $this->get('systembonds/' . $bondId);
-        return $this->parseResponse($data,'Alphatrader\ApiBundle\Model\SystemBond');
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\SystemBond');
     }
 }

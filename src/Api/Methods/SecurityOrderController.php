@@ -20,7 +20,7 @@ class SecurityOrderController extends ApiClient
     public function getSecurityOrder($secIdent)
     {
         $data = $this->get('securityorders/'. $secIdent);
-        return $this->parseResponse($data,'Alphatrader\ApiBundle\Model\SecurityOrder');
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\SecurityOrder');
     }
 
     /**
@@ -49,7 +49,7 @@ class SecurityOrderController extends ApiClient
                 'counterparty'       => $counterparty
             ]
         );
-        return $this->parseResponse($data,'Alphatrader\ApiBundle\Model\SecurityOrder');
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\SecurityOrder');
     }
 
     /**
@@ -72,6 +72,6 @@ class SecurityOrderController extends ApiClient
                 'numberOfShares'     => $numberOfShares
             ]
         );
-        return $this->parseResponse($data,'Alphatrader\ApiBundle\Model\OrderCheck');
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\OrderCheck');
     }
 }

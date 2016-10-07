@@ -165,7 +165,7 @@ class ApiClient
         $data = $request->getBody()->getContents();
 
         $oResult = $this->getSerializer()->deserialize($data, $class, 'json');
-        if ($this->isGuiltyResponse($class,$oResult)) {
+        if ($this->isGuiltyResponse($class, $oResult)) {
             /** @var Error $oResult */
             $oResult = $this->getSerializer()->deserialize(
                 $data,
@@ -183,7 +183,7 @@ class ApiClient
         return $oResult;
     }
 
-    private function isGuiltyResponse($class,$result)
+    private function isGuiltyResponse($class, $result)
     {
         $reflectionclass = new \ReflectionObject($result);
     }

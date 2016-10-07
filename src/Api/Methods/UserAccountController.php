@@ -25,7 +25,7 @@ class UserAccountController extends ApiClient
     public function getCurrentUser()
     {
         $data = $this->get('user');
-        return $this->parseResponse($data,'Alphatrader\ApiBundle\Model\UserAccount');
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\UserAccount');
     }
 
     /**
@@ -34,7 +34,7 @@ class UserAccountController extends ApiClient
     public function getUsers()
     {
         $data = $this->get('users');
-        return $this->parseResponse($data,'ArrayCollection<Alphatrader\ApiBundle\Model\UserAccount>');
+        return $this->parseResponse($data, 'ArrayCollection<Alphatrader\ApiBundle\Model\UserAccount>');
     }
 
     /**
@@ -45,7 +45,7 @@ class UserAccountController extends ApiClient
     public function searchUsersByNamePart($part)
     {
         $data = $this->get('users/' . $part);
-        return $this->parseResponse($data,'ArrayCollection<Alphatrader\ApiBundle\Model\UserAccount>');
+        return $this->parseResponse($data, 'ArrayCollection<Alphatrader\ApiBundle\Model\UserAccount>');
     }
 
     /**
@@ -56,7 +56,7 @@ class UserAccountController extends ApiClient
     public function getUserByUsername($username)
     {
         $data = $this->get('users/' . $username);
-        return $this->parseResponse($data,'Alphatrader\ApiBundle\Model\UserAccount');
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\UserAccount');
     }
 
     /**
@@ -67,7 +67,7 @@ class UserAccountController extends ApiClient
     public function getUserById($userid)
     {
         $data = $this->get('users/' . $userid);
-        return $this->parseResponse($data,'Alphatrader\ApiBundle\Model\UserAccount');
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\UserAccount');
     }
 
     /**
@@ -78,7 +78,7 @@ class UserAccountController extends ApiClient
     public function getUserProfile($username)
     {
         $data = $this->get('userprofiles/' . $username);
-        return $this->parseResponse($data,'Alphatrader\ApiBundle\Model\UserProfile');
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\UserProfile');
     }
 
     /**
@@ -94,7 +94,7 @@ class UserAccountController extends ApiClient
             $this->config['apiurl'] . '/user/register',
             ['username' => $username, 'emailAddress' => $email, 'password' => $password]
         );
-        return $this->parseResponse($data,'Alphatrader\ApiBundle\Model\UserAccount');
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\UserAccount');
     }
 
     /**

@@ -29,6 +29,6 @@ class CashGenerationController extends ApiClient
     public function generateCash($cashAmount)
     {
         $request = $this->put('cashgeneration/', ['cashAmount' => $cashAmount]);
-        return $this->parseResponse($request,'Alphatrader\ApiBundle\Model\BankAccount');
+        return $this->parseResponse($request, 'Alphatrader\ApiBundle\Model\BankAccount');
     }
 }

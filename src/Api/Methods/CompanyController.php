@@ -29,7 +29,7 @@ class CompanyController extends ApiClient
     public function getAllCompanies()
     {
         $data = $this->get('companies/all/');
-        return $this->parseResponse($data,'ArrayCollection<Alphatrader\ApiBundle\Model\Company>');
+        return $this->parseResponse($data, 'ArrayCollection<Alphatrader\ApiBundle\Model\Company>');
     }
 
     /**
@@ -38,7 +38,7 @@ class CompanyController extends ApiClient
     public function getUserCompanies()
     {
         $data = $this->get('companies/');
-        return $this->parseResponse($data,'ArrayCollection<Alphatrader\ApiBundle\Model\Company>');
+        return $this->parseResponse($data, 'ArrayCollection<Alphatrader\ApiBundle\Model\Company>');
     }
 
     /**
@@ -49,7 +49,7 @@ class CompanyController extends ApiClient
     public function getCompany($companyid)
     {
         $data = $this->get('companies/' . $companyid);
-        return $this->parseResponse($data,'Alphatrader\ApiBundle\Model\Company');
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\Company');
     }
 
     /**
@@ -60,7 +60,7 @@ class CompanyController extends ApiClient
     public function getCompanyByUserId(UserAccount $user)
     {
         $data = $this->get('/api/companies/ceo/userid/' . $user->getId());
-        return $this->parseResponse($data,'ArrayCollection<Alphatrader\ApiBundle\Model\Company>');
+        return $this->parseResponse($data, 'ArrayCollection<Alphatrader\ApiBundle\Model\Company>');
     }
 
     /**
@@ -71,7 +71,7 @@ class CompanyController extends ApiClient
     public function getCompanyByUserName($username)
     {
         $data = $this->get('companies/ceo/username' . $username);
-        return $this->parseResponse($data,'ArrayCollection<Alphatrader\ApiBundle\Model\Company>');
+        return $this->parseResponse($data, 'ArrayCollection<Alphatrader\ApiBundle\Model\Company>');
     }
 
     /**
@@ -82,7 +82,7 @@ class CompanyController extends ApiClient
     public function getCompanyBySecurityAccountId($securityaccountid)
     {
         $data = $this->get('companies/securitiesaccount/' . $securityaccountid);
-        return $this->parseResponse($data,'Alphatrader\ApiBundle\Model\Company');
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\Company');
     }
 
     /**
@@ -93,7 +93,7 @@ class CompanyController extends ApiClient
     public function getCompanyBySecurityIdentifier($securityIdentifier)
     {
         $data = $this->get('companies/securityIdentifier/' . $securityIdentifier);
-        return $this->parseResponse($data,'Alphatrader\ApiBundle\Model\Company');
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\Company');
     }
 
     /**
@@ -104,7 +104,7 @@ class CompanyController extends ApiClient
     public function getCompanyProfile($companyId)
     {
         $data = $this->get('companyprofiles/' . $companyId);
-        return $this->parseResponse($data,'Alphatrader\ApiBundle\Model\CompanyProfile');
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\CompanyProfile');
     }
 
     /**
@@ -116,7 +116,7 @@ class CompanyController extends ApiClient
     public function createCompany($name, $cashDeposit)
     {
         $data = $this->post('companies/', ['name' => $name, 'cashDeposit' => $cashDeposit]);
-        return $this->parseResponse($data,'Alphatrader\ApiBundle\Model\Company');
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\Company');
     }
 
     /**
@@ -128,7 +128,7 @@ class CompanyController extends ApiClient
     public function addLogo($companyId, $logoUrl)
     {
         $data = $this->put('companies/logo/'.$companyId, ['companyId' => $companyId,'logoUrl' => $logoUrl]);
-        return $this->parseResponse($data,'Alphatrader\ApiBundle\Model\Company');
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\Company');
     }
 
     /**
@@ -138,6 +138,6 @@ class CompanyController extends ApiClient
     public function removeLogo($companyId)
     {
          $data = $this->delete('companies/logo/'.$companyId, ['companyId' => $companyId]);
-        return $this->parseResponse($data,'Alphatrader\ApiBundle\Model\Company');
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\Company');
     }
 }

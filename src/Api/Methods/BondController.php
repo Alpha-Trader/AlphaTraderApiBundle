@@ -45,7 +45,7 @@ class BondController extends ApiClient
                 'maturityDate' => $maturityDate
             ]
         );
-        return $this->parseResponse($request,'Alphatrader\ApiBundle\Model\Bond');
+        return $this->parseResponse($request, 'Alphatrader\ApiBundle\Model\Bond');
     }
 
     /**
@@ -68,7 +68,7 @@ class BondController extends ApiClient
     public function getBond($bondId)
     {
         $request = $this->get('bonds/' . $bondId);
-        return $this->parseResponse($request,'Alphatrader\ApiBundle\Model\Bond');
+        return $this->parseResponse($request, 'Alphatrader\ApiBundle\Model\Bond');
     }
 
     /**
@@ -78,6 +78,6 @@ class BondController extends ApiClient
     public function getBonds()
     {
         $request = $this->get('bonds/');
-        return $this->parseResponse($request,'Alphatrader\ApiBundle\Model\Bond');
+        return $this->parseResponse($request, 'Alphatrader\ApiBundle\Model\Bond');
     }
 }

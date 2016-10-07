@@ -25,7 +25,7 @@ class NotificationsController extends ApiClient
     public function getNotifications()
     {
         $data = $this->get('notifications/');
-        return $this->parseResponse($data,'ArrayCollection<Alphatrader\ApiBundle\Model\Notifications>');
+        return $this->parseResponse($data, 'ArrayCollection<Alphatrader\ApiBundle\Model\Notifications>');
     }
 
     /**
@@ -34,7 +34,7 @@ class NotificationsController extends ApiClient
     public function getUnreadNotifications()
     {
         $data = $this->get('notifications/unread/');
-        return $this->parseResponse($data,'ArrayCollection<Alphatrader\ApiBundle\Model\Notifications>');
+        return $this->parseResponse($data, 'ArrayCollection<Alphatrader\ApiBundle\Model\Notifications>');
     }
     
     /**

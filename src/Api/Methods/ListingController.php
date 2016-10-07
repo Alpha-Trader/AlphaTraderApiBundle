@@ -28,7 +28,7 @@ class ListingController extends ApiClient
     public function getListing($secIdentPart)
     {
         $data = $this->get('search/listings/' . $secIdentPart);
-        return $this->parseResponse($data,'ArrayCollection<Alphatrader\ApiBundle\Model\Listing>');
+        return $this->parseResponse($data, 'ArrayCollection<Alphatrader\ApiBundle\Model\Listing>');
     }
 
     /**
@@ -39,6 +39,6 @@ class ListingController extends ApiClient
     public function getProfile($securityIdentifier)
     {
         $data = $this->get('listingprofiles/' . $securityIdentifier);
-        return $this->parseResponse($data,'Alphatrader\ApiBundle\Model\ListingProfile');
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\ListingProfile');
     }
 }

@@ -28,7 +28,7 @@ class EventController extends ApiClient
     public function getEvents($afterDate)
     {
         $data = $this->get('events/', ['afterDate' => $afterDate]);
-        return $this->parseResponse($data,'ArrayCollection<Alphatrader\ApiBundle\Model\Events>');
+        return $this->parseResponse($data, 'ArrayCollection<Alphatrader\ApiBundle\Model\Events>');
     }
 
     /**
@@ -40,7 +40,7 @@ class EventController extends ApiClient
     public function searchEvents($realms, $afterDate)
     {
         $data = $this->get('events/', ['realms' => $realms, 'afterDate' => $afterDate]);
-        return $this->parseResponse($data,'ArrayCollection<Alphatrader\ApiBundle\Model\Events>');
+        return $this->parseResponse($data, 'ArrayCollection<Alphatrader\ApiBundle\Model\Events>');
     }
 
     /**
@@ -53,6 +53,6 @@ class EventController extends ApiClient
     public function searchEventsByType($eventtype, $realms, $afterDate)
     {
         $data = $this->get('/api/search/events/type/' . $eventtype, ['realms' => $realms, 'afterDate' => $afterDate]);
-        return $this->parseResponse($data,'ArrayCollection<Alphatrader\ApiBundle\Model\Events>');
+        return $this->parseResponse($data, 'ArrayCollection<Alphatrader\ApiBundle\Model\Events>');
     }
 }

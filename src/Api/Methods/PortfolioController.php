@@ -28,6 +28,6 @@ class PortfolioController extends ApiClient
     public function getPortfolio($securitiesAccountId)
     {
         $data = $this->get('portfolios/' . $securitiesAccountId);
-        return $this->parseResponse($data,'Alphatrader\ApiBundle\Model\Portfolio');
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\Portfolio');
     }
 }

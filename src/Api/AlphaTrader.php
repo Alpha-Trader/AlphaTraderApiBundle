@@ -52,6 +52,6 @@ class AlphaTrader
      */
     public function setJwt($jwt)
     {
-        $this->jwt = $jwt; 
+        $this->jwt = $jwt;
     }
 }

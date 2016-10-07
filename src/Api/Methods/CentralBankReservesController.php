@@ -24,7 +24,7 @@ class CentralBankReservesController extends ApiClient
     public function getReserveById($reserveId)
     {
         $request = $this->get('centralbankreserves/' . $reserveId);
-        return $this->parseResponse($request,'Alphatrader\ApiBundle\Model\CentralBankReserve');
+        return $this->parseResponse($request, 'Alphatrader\ApiBundle\Model\CentralBankReserve');
     }
 
     /**
@@ -37,6 +37,6 @@ class CentralBankReservesController extends ApiClient
     public function increaseReserves(Company $company, $cashAmount)
     {
         $request = $this->put('centralbankreserves/', ['companyId' => $company->getId(), 'cashAmount' => $cashAmount]);
-        return $this->parseResponse($request,'Alphatrader\ApiBundle\Model\CentralBankReserve');
+        return $this->parseResponse($request, 'Alphatrader\ApiBundle\Model\CentralBankReserve');
     }
 }
