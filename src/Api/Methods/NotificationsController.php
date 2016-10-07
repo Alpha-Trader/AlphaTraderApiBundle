@@ -24,21 +24,8 @@ class NotificationsController extends ApiClient
      */
     public function getNotifications()
     {
-        $data = $this->request('notifications/');
-        /** @var Notifications[] $oResult */
-        $oResult = $this->getSerializer()->deserialize(
-            $data,
-            'ArrayCollection<Alphatrader\ApiBundle\Model\Notifications>',
-            'json'
-        );
-        if (!is_array($oResult)) {
-            $oResult = $this->getSerializer()->deserialize(
-                $data,
-                'Alphatrader\ApiBundle\Model\Error',
-                'json'
-            );
-        }
-        return $oResult;
+        $data = $this->get('notifications/');
+        return $this->parseResponse($data,'ArrayCollection<Alphatrader\ApiBundle\Model\Notifications>');
     }
 
     /**
@@ -46,21 +33,8 @@ class NotificationsController extends ApiClient
      */
     public function getUnreadNotifications()
     {
-        $data = $this->request('notifications/unread/');
-        /** @var Notifications[] $oResult */
-        $oResult = $this->getSerializer()->deserialize(
-            $data,
-            'ArrayCollection<Alphatrader\ApiBundle\Model\Notifications>',
-            'json'
-        );
-        if (!is_array($oResult)) {
-            $oResult = $this->getSerializer()->deserialize(
-                $data,
-                'Alphatrader\ApiBundle\Model\Error',
-                'json'
-            );
-        }
-        return $oResult;
+        $data = $this->get('notifications/unread/');
+        return $this->parseResponse($data,'ArrayCollection<Alphatrader\ApiBundle\Model\Notifications>');
     }
     
     /**

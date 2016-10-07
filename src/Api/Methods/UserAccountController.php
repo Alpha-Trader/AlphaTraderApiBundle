@@ -9,6 +9,7 @@
 namespace Alphatrader\ApiBundle\Api\Methods;
 
 use Alphatrader\ApiBundle\Api\ApiClient;
+use Alphatrader\ApiBundle\Model\MessagePrototype;
 use Alphatrader\ApiBundle\Model\UserAccount;
 
 /**
@@ -24,8 +25,7 @@ class UserAccountController extends ApiClient
     public function getCurrentUser()
     {
         $data = $this->get('user');
-        $oResult = $this->getSerializer()->deserialize($data, 'Alphatrader\ApiBundle\Model\UserAccount', 'json');
-        return $oResult;
+        return $this->parseResponse($data,'Alphatrader\ApiBundle\Model\UserAccount');
     }
 
     /**
@@ -34,12 +34,7 @@ class UserAccountController extends ApiClient
     public function getUsers()
     {
         $data = $this->get('users');
-        $oResult = $this->getSerializer()->deserialize(
-            $data,
-            'ArrayCollection<Alphatrader\ApiBundle\Model\UserAccount>',
-            'json'
-        );
-        return $oResult;
+        return $this->parseResponse($data,'ArrayCollection<Alphatrader\ApiBundle\Model\UserAccount>');
     }
 
     /**
@@ -50,12 +45,7 @@ class UserAccountController extends ApiClient
     public function searchUsersByNamePart($part)
     {
         $data = $this->get('users/' . $part);
-        $oResult = $this->getSerializer()->deserialize(
-            $data,
-            'ArrayCollection<Alphatrader\ApiBundle\Model\UserAccount>',
-            'json'
-        );
-        return $oResult;
+        return $this->parseResponse($data,'ArrayCollection<Alphatrader\ApiBundle\Model\UserAccount>');
     }
 
     /**
@@ -66,8 +56,7 @@ class UserAccountController extends ApiClient
     public function getUserByUsername($username)
     {
         $data = $this->get('users/' . $username);
-        $oResult = $this->getSerializer()->deserialize($data, 'Alphatrader\ApiBundle\Model\UserAccount', 'json');
-        return $oResult;
+        return $this->parseResponse($data,'Alphatrader\ApiBundle\Model\UserAccount');
     }
 
     /**
@@ -78,8 +67,7 @@ class UserAccountController extends ApiClient
     public function getUserById($userid)
     {
         $data = $this->get('users/' . $userid);
-        $oResult = $this->getSerializer()->deserialize($data, 'Alphatrader\ApiBundle\Model\UserAccount', 'json');
-        return $oResult;
+        return $this->parseResponse($data,'Alphatrader\ApiBundle\Model\UserAccount');
     }
 
     /**
@@ -90,8 +78,7 @@ class UserAccountController extends ApiClient
     public function getUserProfile($username)
     {
         $data = $this->get('userprofiles/' . $username);
-        $oResult = $this->getSerializer()->deserialize($data, 'Alphatrader\ApiBundle\Model\UserProfile', 'json');
-        return $oResult;
+        return $this->parseResponse($data,'Alphatrader\ApiBundle\Model\UserProfile');
     }
 
     /**
@@ -107,16 +94,7 @@ class UserAccountController extends ApiClient
             $this->config['apiurl'] . '/user/register',
             ['username' => $username, 'emailAddress' => $email, 'password' => $password]
         );
-        /** @var UserAccount $oResult */
-        $oResult = $this->getSerializer()->deserialize($data, 'Alphatrader\ApiBundle\Model\UserAccount', 'json');
-        if ($oResult->getId() == null) {
-            $oResult = $this->getSerializer()->deserialize(
-                $data,
-                'Alphatrader\ApiBundle\Model\Error',
-                'json'
-            );
-        }
-        return $oResult;
+        return $this->parseResponse($data,'Alphatrader\ApiBundle\Model\UserAccount');
     }
 
     /**
@@ -125,13 +103,20 @@ class UserAccountController extends ApiClient
      *
      * @return mixed
      */
-    public function getUserToken($username, $password)
+    public function getUserJwt($username, $password)
     {
-        $data = $this->post(
+        $request = $this->post(
             $this->config['apiurl'] . '/user/token/',
             ['username' => $username, 'password' => $password]
         );
-        $json = json_decode($data);
-        return $json->message;
+        $data = $request->getBody()->getContents();
+        /** @var MessagePrototype $oResult */
+        $oResult = $this->getSerializer()->deserialize(
+            $data,
+            'Alphatrader\ApiBundle\Model\MessagePrototype',
+            'json'
+        );
+
+        return $oResult->getMessage();
     }
 }

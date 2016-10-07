@@ -9,6 +9,7 @@
 namespace Alphatrader\ApiBundle\Api\Methods;
 
 use Alphatrader\ApiBundle\Api\ApiClient;
+use Alphatrader\ApiBundle\Api\Exception\HttpErrorException;
 use Alphatrader\ApiBundle\Model\BankAccount;
 use Alphatrader\ApiBundle\Model\Error;
 
@@ -22,20 +23,12 @@ class CashGenerationController extends ApiClient
     /**
      * @param $cashAmount
      *
+     * @throws \Alphatrader\ApiBundle\Api\Exception\HttpErrorException
      * @return BankAccount|Error
      */
     public function generateCash($cashAmount)
     {
-        $data = $this->put('cashgeneration/', ['cashAmount' => $cashAmount]);
-        /** @var BankAccount $oResult */
-        $oResult = $this->getSerializer()->deserialize($data, 'Alphatrader\ApiBundle\Model\BankAccount', 'json');
-        if ($oResult->getCash() == null) {
-            $oResult = $this->getSerializer()->deserialize(
-                $data,
-                'Alphatrader\ApiBundle\Model\Error',
-                'json'
-            );
-        }
-        return $oResult;
+        $request = $this->put('cashgeneration/', ['cashAmount' => $cashAmount]);
+        return $this->parseResponse($request,'Alphatrader\ApiBundle\Model\BankAccount');
     }
 }

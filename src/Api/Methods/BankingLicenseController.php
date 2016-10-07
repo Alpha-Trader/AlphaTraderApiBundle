@@ -9,6 +9,8 @@
 namespace Alphatrader\ApiBundle\Api\Methods;
 
 use Alphatrader\ApiBundle\Api\ApiClient;
+use Alphatrader\ApiBundle\Api\Exception\HttpErrorException;
+use Alphatrader\ApiBundle\Api\Traits\ResponseTrait;
 use AlphaTrader\ApiBundle\Model\Bankaccount;
 use Alphatrader\ApiBundle\Model\BankingLicense;
 use Alphatrader\ApiBundle\Model\Company;
@@ -29,17 +31,8 @@ class BankingLicenseController extends ApiClient
      */
     public function createBankingLicense(Company $company)
     {
-        $data = $this->post('bankinglicense/', ['companyId' => $company->getId()]);
-        /** @var BankingLicense $oResult */
-        $oResult = $this->getSerializer()->deserialize($data, 'Alphatrader\ApiBundle\Model\BankingLicense', 'json');
-        if ($oResult->getCompany() == null) {
-            $oResult = $this->getSerializer()->deserialize(
-                $data,
-                'Alphatrader\ApiBundle\Model\Error',
-                'json'
-            );
-        }
-        return $oResult;
+        $request = $this->post('bankinglicense/', ['companyId' => $company->getId()]);
+        return $this->parseResponse($request,'Alphatrader\ApiBundle\Model\BankingLicense');
     }
 
     /**
@@ -49,16 +42,7 @@ class BankingLicenseController extends ApiClient
      */
     public function getBankingLicense(Company $company)
     {
-        $data = $this->get('bankinglicense/', ['companyId' => $company->getId()]);
-        /** @var BankingLicense $oResult */
-        $oResult = $this->getSerializer()->deserialize($data, 'Alphatrader\ApiBundle\Model\BankingLicense', 'json');
-        if ($oResult->getCompany() == null) {
-            $oResult = $this->getSerializer()->deserialize(
-                $data,
-                'Alphatrader\ApiBundle\Model\Error',
-                'json'
-            );
-        }
-        return $oResult;
+        $request = $this->get('bankinglicense/', ['companyId' => $company->getId()]);
+        return $this->parseResponse($request,'Alphatrader\ApiBundle\Model\BankingLicense');
     }
 }

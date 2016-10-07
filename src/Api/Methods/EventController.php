@@ -28,20 +28,7 @@ class EventController extends ApiClient
     public function getEvents($afterDate)
     {
         $data = $this->get('events/', ['afterDate' => $afterDate]);
-        /** @var Events[] $oResult */
-        $oResult = $this->getSerializer()->deserialize(
-            $data,
-            'ArrayCollection<Alphatrader\ApiBundle\Model\Events>',
-            'json'
-        );
-        if (!is_array($oResult)) {
-            $oResult = $this->getSerializer()->deserialize(
-                $data,
-                'Alphatrader\ApiBundle\Model\Error',
-                'json'
-            );
-        }
-        return $oResult;
+        return $this->parseResponse($data,'ArrayCollection<Alphatrader\ApiBundle\Model\Events>');
     }
 
     /**
@@ -53,20 +40,7 @@ class EventController extends ApiClient
     public function searchEvents($realms, $afterDate)
     {
         $data = $this->get('events/', ['realms' => $realms, 'afterDate' => $afterDate]);
-        /** @var Events[] $oResult */
-        $oResult = $this->getSerializer()->deserialize(
-            $data,
-            'ArrayCollection<Alphatrader\ApiBundle\Model\Events>',
-            'json'
-        );
-        if (!is_array($oResult)) {
-            $oResult = $this->getSerializer()->deserialize(
-                $data,
-                'Alphatrader\ApiBundle\Model\Error',
-                'json'
-            );
-        }
-        return $oResult;
+        return $this->parseResponse($data,'ArrayCollection<Alphatrader\ApiBundle\Model\Events>');
     }
 
     /**
@@ -79,19 +53,6 @@ class EventController extends ApiClient
     public function searchEventsByType($eventtype, $realms, $afterDate)
     {
         $data = $this->get('/api/search/events/type/' . $eventtype, ['realms' => $realms, 'afterDate' => $afterDate]);
-        /** @var Events[] $oResult */
-        $oResult = $this->getSerializer()->deserialize(
-            $data,
-            'ArrayCollection<Alphatrader\ApiBundle\Model\Events>',
-            'json'
-        );
-        if (!is_array($oResult)) {
-            $oResult = $this->getSerializer()->deserialize(
-                $data,
-                'Alphatrader\ApiBundle\Model\Error',
-                'json'
-            );
-        }
-        return $oResult;
+        return $this->parseResponse($data,'ArrayCollection<Alphatrader\ApiBundle\Model\Events>');
     }
 }

@@ -24,16 +24,7 @@ class BankAccountController extends ApiClient
      */
     public function getBankAccount()
     {
-        $data = $this->request('bankaccounts');
-        /** @var BankAccount $oResult */
-        $oResult = $this->getSerializer()->deserialize($data, 'Alphatrader\ApiBundle\Model\BankAccount', 'json');
-        if ($oResult->getCash() == null) {
-            $oResult = $this->getSerializer()->deserialize(
-                $data,
-                'Alphatrader\ApiBundle\Model\Error',
-                'json'
-            );
-        }
-        return $oResult;
+        $request = $this->get('bankaccounts');
+        return $this->parseResponse($request,'Alphatrader\ApiBundle\Model\BankAccount');
     }
 }

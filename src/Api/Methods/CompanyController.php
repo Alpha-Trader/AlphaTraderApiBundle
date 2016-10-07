@@ -9,6 +9,7 @@
 namespace Alphatrader\ApiBundle\Api\Methods;
 
 use Alphatrader\ApiBundle\Api\ApiClient;
+use Alphatrader\ApiBundle\Api\Exception\HttpErrorException;
 use AlphaTrader\ApiBundle\Model\Company;
 use Alphatrader\ApiBundle\Model\CompanyProfile;
 use Alphatrader\ApiBundle\Model\Error;
@@ -28,20 +29,7 @@ class CompanyController extends ApiClient
     public function getAllCompanies()
     {
         $data = $this->get('companies/all/');
-        /** @var Company[] $oResult */
-        $oResult = $this->getSerializer()->deserialize(
-            $data,
-            'ArrayCollection<Alphatrader\ApiBundle\Model\Company>',
-            'json'
-        );
-        if (!is_array($oResult)) {
-            $oResult = $this->getSerializer()->deserialize(
-                $data,
-                'Alphatrader\ApiBundle\Model\Error',
-                'json'
-            );
-        }
-        return $oResult;
+        return $this->parseResponse($data,'ArrayCollection<Alphatrader\ApiBundle\Model\Company>');
     }
 
     /**
@@ -50,20 +38,7 @@ class CompanyController extends ApiClient
     public function getUserCompanies()
     {
         $data = $this->get('companies/');
-        /** @var Company[] $oResult */
-        $oResult = $this->getSerializer()->deserialize(
-            $data,
-            'ArrayCollection<Alphatrader\ApiBundle\Model\Company>',
-            'json'
-        );
-        if (!is_array($oResult)) {
-            $oResult = $this->getSerializer()->deserialize(
-                $data,
-                'Alphatrader\ApiBundle\Model\Error',
-                'json'
-            );
-        }
-        return $oResult;
+        return $this->parseResponse($data,'ArrayCollection<Alphatrader\ApiBundle\Model\Company>');
     }
 
     /**
@@ -74,20 +49,7 @@ class CompanyController extends ApiClient
     public function getCompany($companyid)
     {
         $data = $this->get('companies/' . $companyid);
-        /** @var Company $oResult */
-        $oResult = $this->getSerializer()->deserialize(
-            $data,
-            'Alphatrader\ApiBundle\Model\Company',
-            'json'
-        );
-        if ($oResult->getId() == null) {
-            $oResult = $this->getSerializer()->deserialize(
-                $data,
-                'Alphatrader\ApiBundle\Model\Error',
-                'json'
-            );
-        }
-        return $oResult;
+        return $this->parseResponse($data,'Alphatrader\ApiBundle\Model\Company');
     }
 
     /**
@@ -98,20 +60,7 @@ class CompanyController extends ApiClient
     public function getCompanyByUserId(UserAccount $user)
     {
         $data = $this->get('/api/companies/ceo/userid/' . $user->getId());
-        /** @var Company[] $oResult */
-        $oResult = $this->getSerializer()->deserialize(
-            $data,
-            'ArrayCollection<Alphatrader\ApiBundle\Model\Company>',
-            'json'
-        );
-        if (!is_array($oResult)) {
-            $oResult = $this->getSerializer()->deserialize(
-                $data,
-                'Alphatrader\ApiBundle\Model\Error',
-                'json'
-            );
-        }
-        return $oResult;
+        return $this->parseResponse($data,'ArrayCollection<Alphatrader\ApiBundle\Model\Company>');
     }
 
     /**
@@ -122,20 +71,7 @@ class CompanyController extends ApiClient
     public function getCompanyByUserName($username)
     {
         $data = $this->get('companies/ceo/username' . $username);
-        /** @var Company[] $oResult */
-        $oResult = $this->getSerializer()->deserialize(
-            $data,
-            'ArrayCollection<Alphatrader\ApiBundle\Model\Company>',
-            'json'
-        );
-        if (!is_array($oResult)) {
-            $oResult = $this->getSerializer()->deserialize(
-                $data,
-                'Alphatrader\ApiBundle\Model\Error',
-                'json'
-            );
-        }
-        return $oResult;
+        return $this->parseResponse($data,'ArrayCollection<Alphatrader\ApiBundle\Model\Company>');
     }
 
     /**
@@ -146,20 +82,7 @@ class CompanyController extends ApiClient
     public function getCompanyBySecurityAccountId($securityaccountid)
     {
         $data = $this->get('companies/securitiesaccount/' . $securityaccountid);
-        /** @var Company $oResult */
-        $oResult = $this->getSerializer()->deserialize(
-            $data,
-            'Alphatrader\ApiBundle\Model\Company',
-            'json'
-        );
-        if ($oResult->getId() == null) {
-            $oResult = $this->getSerializer()->deserialize(
-                $data,
-                'Alphatrader\ApiBundle\Model\Error',
-                'json'
-            );
-        }
-        return $oResult;
+        return $this->parseResponse($data,'Alphatrader\ApiBundle\Model\Company');
     }
 
     /**
@@ -170,20 +93,7 @@ class CompanyController extends ApiClient
     public function getCompanyBySecurityIdentifier($securityIdentifier)
     {
         $data = $this->get('companies/securityIdentifier/' . $securityIdentifier);
-        /** @var Company $oResult */
-        $oResult = $this->getSerializer()->deserialize(
-            $data,
-            'Alphatrader\ApiBundle\Model\Company',
-            'json'
-        );
-        if ($oResult->getId() == null) {
-            $oResult = $this->getSerializer()->deserialize(
-                $data,
-                'Alphatrader\ApiBundle\Model\Error',
-                'json'
-            );
-        }
-        return $oResult;
+        return $this->parseResponse($data,'Alphatrader\ApiBundle\Model\Company');
     }
 
     /**
@@ -194,20 +104,7 @@ class CompanyController extends ApiClient
     public function getCompanyProfile($companyId)
     {
         $data = $this->get('companyprofiles/' . $companyId);
-        /** @var CompanyProfile $oResult */
-        $oResult = $this->getSerializer()->deserialize(
-            $data,
-            'Alphatrader\ApiBundle\Model\CompanyProfile',
-            'json'
-        );
-        if ($oResult->getId() == null) {
-            $oResult = $this->getSerializer()->deserialize(
-                $data,
-                'Alphatrader\ApiBundle\Model\Error',
-                'json'
-            );
-        }
-        return $oResult;
+        return $this->parseResponse($data,'Alphatrader\ApiBundle\Model\CompanyProfile');
     }
 
     /**
@@ -219,20 +116,7 @@ class CompanyController extends ApiClient
     public function createCompany($name, $cashDeposit)
     {
         $data = $this->post('companies/', ['name' => $name, 'cashDeposit' => $cashDeposit]);
-        /** @var Company $oResult */
-        $oResult = $this->getSerializer()->deserialize(
-            $data,
-            'Alphatrader\ApiBundle\Model\Company',
-            'json'
-        );
-        if ($oResult->getId() == null) {
-            $oResult = $this->getSerializer()->deserialize(
-                $data,
-                'Alphatrader\ApiBundle\Model\Error',
-                'json'
-            );
-        }
-        return $oResult;
+        return $this->parseResponse($data,'Alphatrader\ApiBundle\Model\Company');
     }
 
     /**
@@ -244,21 +128,7 @@ class CompanyController extends ApiClient
     public function addLogo($companyId, $logoUrl)
     {
         $data = $this->put('companies/logo/'.$companyId, ['companyId' => $companyId,'logoUrl' => $logoUrl]);
-        /** @var Company $oResult */
-        $oResult = $this->getSerializer()->deserialize(
-            $data,
-            'Alphatrader\ApiBundle\Model\Company',
-            'json'
-        );
-        
-        if ($oResult->getId() === null) {
-            $oResult = $this->getSerializer()->deserialize(
-                $data,
-                'Alphatrader\ApiBundle\Model\Error',
-                'json'
-            );
-        }
-        return $oResult;
+        return $this->parseResponse($data,'Alphatrader\ApiBundle\Model\Company');
     }
 
     /**
@@ -268,19 +138,6 @@ class CompanyController extends ApiClient
     public function removeLogo($companyId)
     {
          $data = $this->delete('companies/logo/'.$companyId, ['companyId' => $companyId]);
-         /** @var Company $oResult */
-         $oResult = $this->getSerializer()->deserialize(
-             $data,
-             'Alphatrader\ApiBundle\Model\Company',
-             'json'
-         );
-        if ($oResult->getId() == null) {
-            $oResult = $this->getSerializer()->deserialize(
-                $data,
-                'Alphatrader\ApiBundle\Model\Error',
-                'json'
-            );
-        }
-         return $oResult;
+        return $this->parseResponse($data,'Alphatrader\ApiBundle\Model\Company');
     }
 }

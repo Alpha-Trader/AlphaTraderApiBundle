@@ -9,6 +9,7 @@
 namespace Alphatrader\ApiBundle\Api\Methods;
 
 use Alphatrader\ApiBundle\Api\ApiClient;
+use Alphatrader\ApiBundle\Api\Exception\HttpErrorException;
 use Alphatrader\ApiBundle\Model\BankAccount;
 use Alphatrader\ApiBundle\Model\CashTransferLogEntry;
 use Alphatrader\ApiBundle\Model\Error;
@@ -21,11 +22,12 @@ use Alphatrader\ApiBundle\Model\Error;
 class CashTransferLogController extends ApiClient
 {
     /**
-     * @param $startDate
-     * @param $endDate
-     * @param $senderBankAcc
-     * @param $receiverBankAcc
+     * @param                                          $startDate
+     * @param                                          $endDate
+     * @param \Alphatrader\ApiBundle\Model\BankAccount $senderBankAcc
+     * @param \Alphatrader\ApiBundle\Model\BankAccount $receiverBankAcc
      *
+     * @throws HttpErrorException
      * @return CashTransferLogEntry[]|Error
      */
     public function getCashTransferLogs(
@@ -34,7 +36,7 @@ class CashTransferLogController extends ApiClient
         BankAccount $senderBankAcc = null,
         BankAccount $receiverBankAcc = null
     ) {
-        $data = $this->get(
+        $request = $this->get(
             'cashtransferlogs/',
             [
                 'startDate'             => $startDate,
@@ -43,19 +45,6 @@ class CashTransferLogController extends ApiClient
                 'receiverBankAccountId' => $receiverBankAcc !== null ? $receiverBankAcc->getId() : null
             ]
         );
-        /** @var CashTransferLogEntry[] $oResult */
-        $oResult = $this->getSerializer()->deserialize(
-            $data,
-            'ArrayCollection<Alphatrader\ApiBundle\Model\CashTransferLogEntry>',
-            'json'
-        );
-        if (!is_array($oResult)) {
-            $oResult = $this->getSerializer()->deserialize(
-                $data,
-                'Alphatrader\ApiBundle\Model\Error',
-                'json'
-            );
-        }
-        return $oResult;
+        return $this->parseResponse($request,'ArrayCollection<Alphatrader\ApiBundle\Model\CashTransferLogEntry>');
     }
 }
