@@ -14,7 +14,7 @@ License
 
 This bundle is under the MIT license. See the complete license here:
 
-    Resources/meta/LICENSE
+    src/Resources/meta/LICENSE
     
 Documentation
 -------------
