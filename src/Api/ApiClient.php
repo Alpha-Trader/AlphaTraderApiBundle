@@ -81,7 +81,7 @@ class ApiClient
      * @return mixed|null|\Psr\Http\Message\ResponseInterface
      * @throws \Exception
      */
-    private function request($url, $method = self::METHODE_GET, $data = array(), $params = null)
+    public function request($url, $method = self::METHODE_GET, $data = array(), $params = null)
     {
         if (!in_array($method, $this->validMethods)) {
             throw new \Exception('Invalid HTTP-Method: ' . $method);
@@ -172,13 +172,13 @@ class ApiClient
                 'Alphatrader\ApiBundle\Model\Error',
                 'json'
             );
-            throw new HttpErrorException(
+            /*throw new HttpErrorException(
                 $oResult->getCode() != 0 ? $oResult->getCode() : 400,
                 $oResult,
                 null,
                 $request->getHeaders(),
                 $oResult->getCode()
-            );
+            );*/
         }
         return $oResult;
     }
