@@ -165,7 +165,7 @@ class ApiClient
         $data = $request->getBody()->getContents();
 
         $oResult = $this->getSerializer()->deserialize($data, $class, 'json');
-        if ($this->isGuiltyResponse($class, $oResult)) {
+        if ($this->isGuiltyResponse($class, $oResult) == false) {
             /** @var Error $oResult */
             $oResult = $this->getSerializer()->deserialize(
                 $data,
@@ -185,7 +185,19 @@ class ApiClient
 
     private function isGuiltyResponse($class, $result)
     {
-        $reflectionclass = new \ReflectionObject($result);
+        if (preg_match('/<(.*?)>/',$class,$matches)){
+            $class = $matches[1];
+            $result = $result[0];
+        }
+        $reflectionclass = new \ReflectionClass($class);
+        foreach ($reflectionclass->getMethods() as $method) {
+            if (substr($method->name, 0, 3) == 'get') {
+                $methodname = $method->name;
+                if ($result->$methodname() !== null)
+                    return true;
+            }
+        }
+        return false;
     }
     
     /**
