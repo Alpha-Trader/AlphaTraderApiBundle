@@ -15,13 +15,32 @@ use Alphatrader\ApiBundle\Model\Error;
 class CentralBankReservesController extends ApiClient
 {
     /**
-     * @param int $reserveId
+     * @param sting $reserveId
      *
      * @return CentralBankReserve|Error
      */
     public function getReserveById($reserveId)
     {
         $data = $this->get('centralbankreserves/' . $reserveId);
+        /** @var CentralBankReserve $oResult */
+        $oResult = $this->getSerializer()->deserialize($data, 'Alphatrader\ApiBundle\Model\CentralBankReserve', 'json');
+        if ($oResult->getId() == null) {
+            $oResult = $this->getSerializer()->deserialize(
+                $data,
+                'Alphatrader\ApiBundle\Model\Error',
+                'json'
+            );
+        }
+        return $oResult;
+    }
+
+    /**
+     * @param string companyId
+     *
+     * @return CentralBankReserve|Error
+     */
+    public function getReserveByCompanyId($companyId){
+        $data = $this->get('centralbankreserves/companyId?=' . $companyId);
         /** @var CentralBankReserve $oResult */
         $oResult = $this->getSerializer()->deserialize($data, 'Alphatrader\ApiBundle\Model\CentralBankReserve', 'json');
         if ($oResult->getId() == null) {
