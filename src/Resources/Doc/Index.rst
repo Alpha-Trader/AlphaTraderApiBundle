@@ -1,5 +1,5 @@
 Getting Started With AlphatraderApiBundle
-==================================
+=========================================
 
 This Bundle provides methods for accessing the Alphatrader API.
 Till now just a few are supported.
@@ -17,7 +17,7 @@ Installation
 3. Configure your application's config.yml
 
 Step 1: Download AlphatraderApiBundle using composer
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Require the bundle with composer:
 
@@ -45,7 +45,7 @@ Enable the bundle in the kernel::
     }
 
 Step 3: Configure your application's config.yml
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Below is a minimal example of the configuration necessary to use the AlphatraderApiBundle
 in your application:
@@ -61,7 +61,7 @@ in your application:
         jwt: <jwttoken>
 
 Optional:
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~
 
 At Your UserLogin save token through:
 .. code-block:: php

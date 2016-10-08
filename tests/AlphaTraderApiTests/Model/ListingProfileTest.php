@@ -282,7 +282,87 @@ class ListingProfileTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($secIdent,$listingProfile->getIssuerSecurityIdentifier());
         
     }
+
+    public function testGetBondOrSystemBond(){
+        $listingProfile = new ListingProfile();
+        $this->assertNull($listingProfile->getBondOrSystemBond());
+
+        $bond = $this->createMock('\Alphatrader\ApiBundle\Model\Bond');
+        $listingProfile->setBond($bond);
+
+        $this->assertInstanceOf('\Alphatrader\ApiBundle\Model\Bond',$listingProfile->getBondOrSystemBond());
+        $listingProfile->setBond(NULL);
+
+        $this->assertNull($listingProfile->getBondOrSystemBond());
+
+        $sysbond = $this->createMock('\Alphatrader\ApiBundle\Model\SystemBond');
+        $listingProfile->setSystemBond($sysbond);
+
+        $this->assertInstanceOf('\Alphatrader\ApiBundle\Model\SystemBond',$listingProfile->getBondOrSystemBond());
+
+    }
     
+    public function testPriceGain(){
+        $listingProfile = new ListingProfile();
+        $this->assertEquals(0,$listingProfile->getPriceGain());
+
+        $price = $this->createMock('\Alphatrader\ApiBundle\Model\SecurityPrice');
+        $price->expects($this->any())->method('getValue')->willReturn($this->getRandomFloat(1,100));
+
+        $listingProfile->setPrices14d([$price]);
+        $this->assertEquals(0,$listingProfile->getPriceGain());
+
+        $prices = [$price,$price];
+        $listingProfile->setPrices14d($prices);
+
+        $currentPrice = $prices[0]->getValue();
+        $lastPrice = $prices[1]->getValue();
+        $res = (($currentPrice / $lastPrice) - 1) * 100;
+
+        $this->assertEquals($res,$listingProfile->getPriceGain());
+
+    }
+
+    public function testPreviousPriceDate(){
+        $listingProfile = new ListingProfile();
+        $this->assertNull($listingProfile->getPreviousPriceDate());
+
+        $date = new \DateTime('now');
+
+        $price = $this->createMock('\Alphatrader\ApiBundle\Model\SecurityPrice');
+        $price->expects($this->any())->method('getDate')->willReturn($date);
+
+        $listingProfile->setPrices14d([$price]);
+        $this->assertNull($listingProfile->getPreviousPriceDate());
+
+        $prices = [$price,$price];
+        $listingProfile->setPrices14d($prices);
+
+        $this->assertEquals($date,$listingProfile->getPreviousPriceDate());
+        
+    }
+
+    public function testGetPrices14dDates(){
+        $listingProfile = new ListingProfile();
+        $this->assertEquals('',$listingProfile->getPreviousPriceDate());
+
+        $dates[] = new \DateTime('now');
+        $dates[] = new \DateTime('- 1 Day');
+        $dates[] = new \DateTime('- 2 Day');
+
+        $price1 = $this->createMock('\Alphatrader\ApiBundle\Model\SecurityPrice');
+        $price1->expects($this->any())->method('getDate')->willReturn($dates[0]);
+
+        $price2 = $this->createMock('\Alphatrader\ApiBundle\Model\SecurityPrice');
+        $price2->expects($this->any())->method('getDate')->willReturn($dates[1]);
+
+        $price3 = $this->createMock('\Alphatrader\ApiBundle\Model\SecurityPrice');
+        $price3->expects($this->any())->method('getDate')->willReturn($dates[2]);
+
+        $prices = [$price1,$price2,$price3];
+
+    }
+
     /**
      * @param int $min
      * @param int $max
