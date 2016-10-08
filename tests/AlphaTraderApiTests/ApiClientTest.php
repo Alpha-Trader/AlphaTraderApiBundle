@@ -52,7 +52,7 @@ class ApiClientTest extends TestCase
                 $this->assertEquals(1, $crawler->filter('body')->count());
             }
             if ($method == 'delete' || $method == 'put') {
-                $this->assertEquals("", $html);
+                $this->assertEquals("", $html->getBody()->getContents());
             }
         }
     }
