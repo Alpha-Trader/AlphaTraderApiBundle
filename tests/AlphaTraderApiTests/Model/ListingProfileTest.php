@@ -346,21 +346,21 @@ class ListingProfileTest extends \PHPUnit_Framework_TestCase
         $listingProfile = new ListingProfile();
         $this->assertEquals('',$listingProfile->getPreviousPriceDate());
 
-        $dates[] = new \DateTime('now');
-        $dates[] = new \DateTime('- 1 Day');
-        $dates[] = new \DateTime('- 2 Day');
-
         $price1 = $this->createMock('\Alphatrader\ApiBundle\Model\SecurityPrice');
-        $price1->expects($this->any())->method('getDate')->willReturn($dates[0]);
+        $price1->expects($this->any())->method('getValue')->willReturn(20);
 
         $price2 = $this->createMock('\Alphatrader\ApiBundle\Model\SecurityPrice');
-        $price2->expects($this->any())->method('getDate')->willReturn($dates[1]);
+        $price2->expects($this->any())->method('getValue')->willReturn(10);
 
-        $price3 = $this->createMock('\Alphatrader\ApiBundle\Model\SecurityPrice');
-        $price3->expects($this->any())->method('getDate')->willReturn($dates[2]);
 
-        $prices = [$price1,$price2,$price3];
+        $prices = [$price1,$price2];
 
+        $priceGain = ((10/20)-1)*100;
+
+        $listingProfile->setPrices14d($prices);
+        
+        $this->assertTrue(is_float($listingProfile->getPriceGain()));
+        $this->assertEquals($priceGain,$listingProfile->getPriceGain());
     }
 
     /**
