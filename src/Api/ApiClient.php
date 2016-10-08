@@ -186,6 +186,9 @@ class ApiClient
     private function isGuiltyResponse($class, $result)
     {
         if (preg_match('/<(.*?)>/', $class, $matches)) {
+            if(empty($result)){
+               return true;
+            }
             $class = $matches[1];
             $result = $result[0];
         }
