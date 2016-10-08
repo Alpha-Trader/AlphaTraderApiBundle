@@ -3,6 +3,7 @@
 namespace Alphatrader\ApiBundle\Api\Methods;
 
 use Alphatrader\ApiBundle\Api\ApiClient;
+use Alphatrader\ApiBundle\Api\Exception\HttpErrorException;
 use Alphatrader\ApiBundle\Model\CentralBankReserve;
 use Alphatrader\ApiBundle\Model\Company;
 use Alphatrader\ApiBundle\Model\Error;
@@ -15,56 +16,27 @@ use Alphatrader\ApiBundle\Model\Error;
 class CentralBankReservesController extends ApiClient
 {
     /**
-     * @param sting $reserveId
+     * @param int $reserveId
      *
+     * @throws \Alphatrader\ApiBundle\Api\Exception\HttpErrorException
      * @return CentralBankReserve|Error
      */
     public function getReserveById($reserveId)
     {
-        $data = $this->get('centralbankreserves/' . $reserveId);
-        /** @var CentralBankReserve $oResult */
-        $oResult = $this->getSerializer()->deserialize($data, 'Alphatrader\ApiBundle\Model\CentralBankReserve', 'json');
-        if ($oResult->getId() == null) {
-            $oResult = $this->getSerializer()->deserialize(
-                $data,
-                'Alphatrader\ApiBundle\Model\Error',
-                'json'
-            );
-        }
-        return $oResult;
+        $request = $this->get('centralbankreserves/' . $reserveId);
+        return $this->parseResponse($request, 'Alphatrader\ApiBundle\Model\CentralBankReserve');
     }
 
     /**
-     * @param string companyId
+     * @param Company $company
+     * @param         $cashAmount
      *
-     * @return CentralBankReserve|Error
+     * @return CentralBankReserve
+     * @throws \Alphatrader\ApiBundle\Api\Exception\HttpErrorException
      */
-    public function getReserveByCompanyId($companyId){
-        $data = $this->get('centralbankreserves/companyId?=' . $companyId);
-        /** @var CentralBankReserve $oResult */
-        $oResult = $this->getSerializer()->deserialize($data, 'Alphatrader\ApiBundle\Model\CentralBankReserve', 'json');
-        if ($oResult->getId() == null) {
-            $oResult = $this->getSerializer()->deserialize(
-                $data,
-                'Alphatrader\ApiBundle\Model\Error',
-                'json'
-            );
-        }
-        return $oResult;
-    }
-
     public function increaseReserves(Company $company, $cashAmount)
     {
-        $data = $this->put('centralbankreserves/', ['companyId'=>$company->getId(),'cashAmount'=>$cashAmount]);
-        /** @var CentralBankReserve $oResult */
-        $oResult = $this->getSerializer()->deserialize($data, 'Alphatrader\ApiBundle\Model\CentralBankReserve', 'json');
-        if ($oResult->getId() == null) {
-            $oResult = $this->getSerializer()->deserialize(
-                $data,
-                'Alphatrader\ApiBundle\Model\Error',
-                'json'
-            );
-        }
-        return $oResult;
+        $request = $this->put('centralbankreserves/', ['companyId' => $company->getId(), 'cashAmount' => $cashAmount]);
+        return $this->parseResponse($request, 'Alphatrader\ApiBundle\Model\CentralBankReserve');
     }
 }

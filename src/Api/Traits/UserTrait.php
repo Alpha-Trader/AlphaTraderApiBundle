@@ -67,7 +67,7 @@ trait UserTrait
      */
     public function getUserJwt($username, $password)
     {
-        return $this->getUserAccountController()->getUserToken($username, $password);
+        return $this->getUserAccountController()->getUserJwt($username, $password);
     }
 
     /**

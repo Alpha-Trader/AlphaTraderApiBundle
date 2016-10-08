@@ -47,12 +47,12 @@ class ApiClientTest extends TestCase
             if ($method == 'post'){
                 $html = $this->client->$method($this->url,['test'=>'test'],['test'=>'test']);
             }
-            $crawler = new Crawler($html);
+            $crawler = new Crawler($html->getBody()->getContents());
             if ($method == 'get' || $method == 'post') {
                 $this->assertEquals(1, $crawler->filter('body')->count());
             }
             if ($method == 'delete' || $method == 'put') {
-                $this->assertEquals("", $html);
+                $this->assertEquals("", $html->getBody()->getContents());
             }
         }
     }
