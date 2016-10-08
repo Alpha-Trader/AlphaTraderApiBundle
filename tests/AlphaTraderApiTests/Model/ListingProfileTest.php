@@ -7,6 +7,7 @@
 namespace AlphaTraderApiTests\Model;
 
 use Alphatrader\ApiBundle\Model\ListingProfile;
+use phpDocumentor\Reflection\Types\This;
 
 /**
  * Class ListingProfileTest
@@ -344,23 +345,48 @@ class ListingProfileTest extends \PHPUnit_Framework_TestCase
 
     public function testGetPrices14dDates(){
         $listingProfile = new ListingProfile();
-        $this->assertEquals('',$listingProfile->getPreviousPriceDate());
+        $this->assertEquals('',$listingProfile->getPrices14dDates());
+
+        $d1 = new \DateTime('now');
+        $d2 = new \DateTime('-1 Day');
 
         $price1 = $this->createMock('\Alphatrader\ApiBundle\Model\SecurityPrice');
-        $price1->expects($this->any())->method('getValue')->willReturn(20);
+        $price1->expects($this->any())->method('getDate')->willReturn($d1);
 
         $price2 = $this->createMock('\Alphatrader\ApiBundle\Model\SecurityPrice');
-        $price2->expects($this->any())->method('getValue')->willReturn(10);
+        $price2->expects($this->any())->method('getDate')->willReturn($d2);
 
+        $dates = $this->createMock('\Doctrine\Common\Collections\ArrayCollection');
+        $dates->expects($this->any())->method('toArray')->willReturn([$price1,$price2]);
 
-        $prices = [$price1,$price2];
+        $listingProfile->setPrices14d($dates);
 
-        $priceGain = ((10/20)-1)*100;
+        $result = '"'.date("d.m.",$d1->getTimestamp()).'","'.date("d.m.",$d2->getTimestamp()).'"';
+
+        $this->assertEquals($result,$listingProfile->getPrices14dDates());
+    }
+
+    public function testGetPrices14dValues(){
+        $listingProfile = new ListingProfile();
+        $this->assertEquals('',$listingProfile->getPrices14dValues());
+
+        $p1 = $this->getRandomFloat();
+        $p2 = $this->getRandomFloat();
+
+        $price1 = $this->createMock('\Alphatrader\ApiBundle\Model\SecurityPrice');
+        $price1->expects($this->any())->method('getValue')->willReturn($p1);
+
+        $price2 = $this->createMock('\Alphatrader\ApiBundle\Model\SecurityPrice');
+        $price2->expects($this->any())->method('getValue')->willReturn($p2);
+
+        $prices = $this->createMock('\Doctrine\Common\Collections\ArrayCollection');
+        $prices->expects($this->any())->method('toArray')->willReturn([$price1,$price2]);
 
         $listingProfile->setPrices14d($prices);
-        
-        $this->assertTrue(is_float($listingProfile->getPriceGain()));
-        $this->assertEquals($priceGain,$listingProfile->getPriceGain());
+
+        $result = $p1.",".$p2;
+
+        $this->assertEquals($result,$listingProfile->getPrices14dValues());
     }
 
     /**

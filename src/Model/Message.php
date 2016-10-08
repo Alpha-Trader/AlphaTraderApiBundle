@@ -49,7 +49,7 @@ class Message
     /**
      * @var UserName
      * @Annotation\Type("Alphatrader\ApiBundle\Model\UserName")
-     * @Annotation\SerializedName("group")
+     * @Annotation\SerializedName("sender")
      */
     private $sender;
 
