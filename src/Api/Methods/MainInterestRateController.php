@@ -27,21 +27,8 @@ class MainInterestRateController extends ApiClient
      */
     public function getMainInterestRate()
     {
-        $data = $this->request('maininterestrate/');
-        /** @var MainInterestRate[] $oResult */
-        $oResult = $this->getSerializer()->deserialize(
-            $data,
-            'ArrayCollection<Alphatrader\ApiBundle\Model\MainInterestRate>',
-            'json'
-        );
-        if (!is_array($oResult)) {
-            $oResult = $this->getSerializer()->deserialize(
-                $data,
-                'Alphatrader\ApiBundle\Model\Error',
-                'json'
-            );
-        }
-        return $oResult;
+        $data = $this->get('maininterestrate/');
+        return $this->parseResponse($data, 'ArrayCollection<Alphatrader\ApiBundle\Model\MainInterestRate>');
     }
 
     /**
@@ -49,20 +36,7 @@ class MainInterestRateController extends ApiClient
      */
     public function getLatestMainInterestRate()
     {
-        $data = $this->request('maininterestrate/latest/');
-        /** @var MainInterestRate $oResult */
-        $oResult = $this->getSerializer()->deserialize(
-            $data,
-            'Alphatrader\ApiBundle\Model\MainInterestRate',
-            'json'
-        );
-        if ($oResult->getId() == null) {
-            $oResult = $this->getSerializer()->deserialize(
-                $data,
-                'Alphatrader\ApiBundle\Model\Error',
-                'json'
-            );
-        }
-        return $oResult;
+        $data = $this->get('maininterestrate/latest/');
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\MainInterestRate');
     }
 }

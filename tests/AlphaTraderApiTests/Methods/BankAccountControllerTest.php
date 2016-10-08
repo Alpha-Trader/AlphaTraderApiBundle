@@ -52,6 +52,6 @@ class BankAccountControllerTest extends BaseTestCase
         /** @var Error $val */
         $val = $bankaccount->getBankAccount();
 
-        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\Error', $val);
+        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\BankAccount', $val);
     }
 }

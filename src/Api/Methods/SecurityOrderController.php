@@ -20,20 +20,7 @@ class SecurityOrderController extends ApiClient
     public function getSecurityOrder($secIdent)
     {
         $data = $this->get('securityorders/'. $secIdent);
-        $oResult = $this->getSerializer()->deserialize(
-            $data,
-            'Alphatrader\ApiBundle\Model\SecurityOrder',
-            'json'
-        );
-        if ($oResult->getId() == null) {
-            $oResult = $this->getSerializer()->deserialize(
-                $data,
-                'Alphatrader\ApiBundle\Model\Error',
-                'json'
-            );
-        }
-
-        return $oResult;
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\SecurityOrder');
     }
 
     /**
@@ -62,20 +49,7 @@ class SecurityOrderController extends ApiClient
                 'counterparty'       => $counterparty
             ]
         );
-        $oResult = $this->getSerializer()->deserialize(
-            $data,
-            'Alphatrader\ApiBundle\Model\SecurityOrder',
-            'json'
-        );
-        if ($oResult->getId() == null) {
-            $oResult = $this->getSerializer()->deserialize(
-                $data,
-                'Alphatrader\ApiBundle\Model\Error',
-                'json'
-            );
-        }
-
-        return $oResult;
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\SecurityOrder');
     }
 
     /**
@@ -98,19 +72,6 @@ class SecurityOrderController extends ApiClient
                 'numberOfShares'     => $numberOfShares
             ]
         );
-        $oResult = $this->getSerializer()->deserialize(
-            $data,
-            'Alphatrader\ApiBundle\Model\OrderCheck',
-            'json'
-        );
-        if ($oResult->getNumberOfShares() === null) {
-            $oResult = $this->getSerializer()->deserialize(
-                $data,
-                'Alphatrader\ApiBundle\Model\Error',
-                'json'
-            );
-        }
-
-        return $oResult;
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\OrderCheck');
     }
 }

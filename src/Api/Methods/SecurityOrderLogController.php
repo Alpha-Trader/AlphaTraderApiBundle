@@ -37,18 +37,6 @@ class SecurityOrderLogController extends ApiClient
                 'sellerSecuritiesAccountId' => $sellerSecAccId
             ]
         );
-        $oResult = $this->getSerializer()->deserialize(
-            $data,
-            'ArrayCollection<Alphatrader\ApiBundle\Model\SecurityOrderLogEntry>',
-            'json'
-        );
-        if (!is_array($oResult)) {
-            $oResult = $this->getSerializer()->deserialize(
-                $data,
-                'Alphatrader\ApiBundle\Model\Error',
-                'json'
-            );
-        }
-        return $oResult;
+        return $this->parseResponse($data, 'ArrayCollection<Alphatrader\ApiBundle\Model\SecurityOrderLogEntry>');
     }
 }

@@ -22,19 +22,7 @@ class VotingController extends ApiClient
     public function getMyPolls()
     {
         $data = $this->get('initiatedpolls/');
-        $oResult = $this->getSerializer()->deserialize(
-            $data,
-            'ArrayCollection<Alphatrader\ApiBundle\Model\AbstractPoll>',
-            'json'
-        );
-        if (!is_array($oResult)) {
-            $oResult = $this->getSerializer()->deserialize(
-                $data,
-                'Alphatrader\ApiBundle\Model\Error',
-                'json'
-            );
-        }
-        return $oResult;
+        return $this->parseResponse($data, 'ArrayCollection<Alphatrader\ApiBundle\Model\AbstractPoll>');
     }
 
     /**
@@ -43,19 +31,7 @@ class VotingController extends ApiClient
     public function getAllKnownPolls()
     {
         $data = $this->get('polls/');
-        $oResult = $this->getSerializer()->deserialize(
-            $data,
-            'ArrayCollection<Alphatrader\ApiBundle\Model\AbstractPoll>',
-            'json'
-        );
-        if (!is_array($oResult)) {
-            $oResult = $this->getSerializer()->deserialize(
-                $data,
-                'Alphatrader\ApiBundle\Model\Error',
-                'json'
-            );
-        }
-        return $oResult;
+        return $this->parseResponse($data, 'ArrayCollection<Alphatrader\ApiBundle\Model\AbstractPoll>');
     }
 
     /**
@@ -66,16 +42,7 @@ class VotingController extends ApiClient
     public function setCompanyCashoutPoll(Company $company)
     {
         $data = $this->post('polls/cashout', ['companyId' => $company->getId()]);
-        /** @var AbstractPoll $oResult */
-        $oResult = $this->getSerializer()->deserialize($data, 'Alphatrader\ApiBundle\Model\AbstractPoll', 'json');
-        if ($oResult->getId() == null) {
-            $oResult = $this->getSerializer()->deserialize(
-                $data,
-                'Alphatrader\ApiBundle\Model\Error',
-                'json'
-            );
-        }
-        return $oResult;
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\AbstractPoll');
     }
 
     /**
@@ -87,15 +54,7 @@ class VotingController extends ApiClient
     public function setCompanyEmployCeo(Company $company, $dailyWage)
     {
         $data = $this->post('polls/employceo', ['companyId' => $company->getId(), 'dailyWage' => $dailyWage]);
-        $oResult = $this->getSerializer()->deserialize($data, 'Alphatrader\ApiBundle\Model\AbstractPoll', 'json');
-        if ($oResult->getId() == null) {
-            $oResult = $this->getSerializer()->deserialize(
-                $data,
-                'Alphatrader\ApiBundle\Model\Error',
-                'json'
-            );
-        }
-        return $oResult;
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\AbstractPoll');
     }
 
     /**
@@ -106,15 +65,7 @@ class VotingController extends ApiClient
     public function setCompanyLiquidation(Company $company)
     {
         $data = $this->post('polls/liquidation', ['companyId' => $company->getId()]);
-        $oResult = $this->getSerializer()->deserialize($data, 'Alphatrader\ApiBundle\Model\AbstractPoll', 'json');
-        if ($oResult->getId() == null) {
-            $oResult = $this->getSerializer()->deserialize(
-                $data,
-                'Alphatrader\ApiBundle\Model\Error',
-                'json'
-            );
-        }
-        return $oResult;
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\AbstractPoll');
     }
 
     /**
@@ -125,15 +76,7 @@ class VotingController extends ApiClient
     public function getPoll($pollid)
     {
         $data = $this->get('polls/' . $pollid);
-        $oResult = $this->getSerializer()->deserialize($data, 'Alphatrader\ApiBundle\Model\AbstractPoll', 'json');
-        if ($oResult->getId() == null) {
-            $oResult = $this->getSerializer()->deserialize(
-                $data,
-                'Alphatrader\ApiBundle\Model\Error',
-                'json'
-            );
-        }
-        return $oResult;
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\AbstractPoll');
     }
 
     /**
@@ -162,14 +105,6 @@ class VotingController extends ApiClient
     public function votePoll($pollid, $voices, $votingType)
     {
         $data = $this->post('polls/', ['pollId' => $pollid, 'voices' => $voices, 'votingType' => $votingType]);
-        $oResult = $this->getSerializer()->deserialize($data, 'Alphatrader\ApiBundle\Model\AbstractPoll', 'json');
-        if ($oResult->getId() == null) {
-            $oResult = $this->getSerializer()->deserialize(
-                $data,
-                'Alphatrader\ApiBundle\Model\Error',
-                'json'
-            );
-        }
-        return $oResult;
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\AbstractPoll');
     }
 }

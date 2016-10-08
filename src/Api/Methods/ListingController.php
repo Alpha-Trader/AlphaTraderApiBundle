@@ -27,21 +27,8 @@ class ListingController extends ApiClient
      */
     public function getListing($secIdentPart)
     {
-        $data = $this->request('search/listings/' . $secIdentPart);
-        /** @var Listing[] $oResult */
-        $oResult = $this->getSerializer()->deserialize(
-            $data,
-            'ArrayCollection<Alphatrader\ApiBundle\Model\Listing>',
-            'json'
-        );
-        if (!is_array($oResult)) {
-            $oResult = $this->getSerializer()->deserialize(
-                $data,
-                'Alphatrader\ApiBundle\Model\Error',
-                'json'
-            );
-        }
-        return $oResult;
+        $data = $this->get('search/listings/' . $secIdentPart);
+        return $this->parseResponse($data, 'ArrayCollection<Alphatrader\ApiBundle\Model\Listing>');
     }
 
     /**
@@ -51,20 +38,7 @@ class ListingController extends ApiClient
      */
     public function getProfile($securityIdentifier)
     {
-        $data = $this->request('listingprofiles/' . $securityIdentifier);
-        /** @var ListingProfile $oResult */
-        $oResult = $this->getSerializer()->deserialize(
-            $data,
-            'Alphatrader\ApiBundle\Model\ListingProfile',
-            'json'
-        );
-        if ($oResult->getSecurityIdentifier() == null) {
-            $oResult = $this->getSerializer()->deserialize(
-                $data,
-                'Alphatrader\ApiBundle\Model\Error',
-                'json'
-            );
-        }
-        return $oResult;
+        $data = $this->get('listingprofiles/' . $securityIdentifier);
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\ListingProfile');
     }
 }
