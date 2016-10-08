@@ -15,18 +15,20 @@ use Alphatrader\ApiBundle\Model\CompanyName;
 
 class CompanyNameTest extends \PHPUnit_Framework_TestCase
 {
-    public function testId(){
+    public function testId()
+    {
         $company = new CompanyName();
         $this->assertNull($company->getId());
 
         $uuid = uniqid();
 
         $company->setId($uuid);
-        $this->assertEquals($uuid,$company->getId());
+        $this->assertEquals($uuid, $company->getId());
         $this->assertTrue(is_string($company->getId()));
     }
     
-    public function testListing(){
+    public function testListing()
+    {
         $company = new CompanyName();
         $this->assertNull($company->getListing());
 
@@ -36,21 +38,23 @@ class CompanyNameTest extends \PHPUnit_Framework_TestCase
 
         $company->setListing($listing);
 
-        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\Listing',$company->getListing());
+        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\Listing', $company->getListing());
     }
 
-    public function testName(){
+    public function testName()
+    {
         $company = new CompanyName();
         $this->assertNull($company->getName());
 
         $name = $this->getRandomString(12);
 
         $company->setName($name);
-        $this->assertEquals($name,$company->getName());
+        $this->assertEquals($name, $company->getName());
         $this->assertTrue(is_string($company->getName()));
     }
 
-    public function testSecurityIdentifier(){
+    public function testSecurityIdentifier()
+    {
         $company = new CompanyName();
         $this->assertNull($company->getSecurityIdentifier());
 
@@ -58,16 +62,17 @@ class CompanyNameTest extends \PHPUnit_Framework_TestCase
 
         $company->setSecurityIdentifier($securityIdentifier);
 
-        $this->assertEquals($securityIdentifier,$company->getSecurityIdentifier());
+        $this->assertEquals($securityIdentifier, $company->getSecurityIdentifier());
         $this->assertTrue(is_string($company->getSecurityIdentifier()));
     }
 
     /*
     * @param $length
     */
-    private function getRandomString($length = 6) {
+    private function getRandomString($length = 6)
+    {
         $str = "";
-        $characters = array_merge(range('A','Z'), range('a','z'), range('0','9'));
+        $characters = array_merge(range('A', 'Z'), range('a', 'z'), range('0', '9'));
         $max = count($characters) - 1;
         for ($i = 0; $i < $length; $i++) {
             $rand = mt_rand(0, $max);

@@ -36,7 +36,7 @@ class AlphaTraderTest extends BaseTestCase
         $this->assertInstanceOf('\DateTime', $timestamp);
         $timestamp = $this->invokeMethod($this->alphatrader, 'formatTimeStamp', array(null));
         $this->assertNull($timestamp);
-        $time = mt_rand(1262055681,1474823143);
+        $time = mt_rand(1262055681, 1474823143);
         $timestamp = $this->invokeMethod($this->alphatrader, 'formatTimeStamp', array($time));
         $this->assertTrue(is_int($timestamp));
     }
@@ -58,8 +58,8 @@ class AlphaTraderTest extends BaseTestCase
         $expected = json_encode($response);
         $myFactory = $this->getMockBuilder('Alphatrader\ApiBundle\Api\AlphaTrader', array('getCashTransferLogs'))->disableOriginalConstructor()->getMock();
         $myFactory->expects($this->any())->method('getCashTransferLogs')->will($this->returnValue($expected));
-        $val = $myFactory->getCashTransferLogs(new \DateTime(),new \DateTime(),$senderBankAccount,$receiverBankAccount);
-        $this->assertEquals(json_decode($val)->cash,$response['cash']);
+        $val = $myFactory->getCashTransferLogs(new \DateTime(), new \DateTime(), $senderBankAccount, $receiverBankAccount);
+        $this->assertEquals(json_decode($val)->cash, $response['cash']);
     }
 
     public function test_generateCash()
@@ -69,7 +69,7 @@ class AlphaTraderTest extends BaseTestCase
         $myFactory = $this->getMockBuilder('Alphatrader\ApiBundle\Api\AlphaTrader', array('generateCash'))->disableOriginalConstructor()->getMock();
         $myFactory->expects($this->any())->method('generateCash')->will($this->returnValue($expected));
         $val = $myFactory->generateCash(50000);
-        $this->assertEquals(json_decode($val)->cash,$response['cash']);
+        $this->assertEquals(json_decode($val)->cash, $response['cash']);
     }
 
     public function test_getChats()
@@ -159,13 +159,13 @@ class AlphaTraderTest extends BaseTestCase
     public function test_createCompany()
     {
         $this->expectException(RuntimeException::class);
-        $this->alphatrader->createCompany('test',50000);
+        $this->alphatrader->createCompany('test', 50000);
     }
 
     public function test_registerUser()
     {
         $this->expectException(RuntimeException::class);
-        $this->alphatrader->registerUser('test','test@test.xyz','password');
+        $this->alphatrader->registerUser('test', 'test@test.xyz', 'password');
     }
 
     /*public function test_getUserJwt()
@@ -195,7 +195,7 @@ class AlphaTraderTest extends BaseTestCase
     public function test_getEventsByType()
     {
         $this->expectException(RuntimeException::class);
-        $this->alphatrader->getEventsByType('test','', new \DateTime());
+        $this->alphatrader->getEventsByType('test', '', new \DateTime());
     }
 
     public function test_getPortfolio()
@@ -219,7 +219,7 @@ class AlphaTraderTest extends BaseTestCase
     public function test_getSecurityOrderLogs()
     {
         $this->expectException(RuntimeException::class);
-        $this->alphatrader->getSecurityOrderLogs(1, new \DateTime(), new \DateTime(),2,3);
+        $this->alphatrader->getSecurityOrderLogs(1, new \DateTime(), new \DateTime(), 2, 3);
     }
 
     public function test_createBond()
@@ -227,7 +227,7 @@ class AlphaTraderTest extends BaseTestCase
         $this->expectException(RuntimeException::class);
         $company = new Company();
         $company->setId(1);
-        $this->alphatrader->createBond($company, 1,1,1,new \DateTime());
+        $this->alphatrader->createBond($company, 1, 1, 1, new \DateTime());
     }
 
     public function test_repayBond()
@@ -253,7 +253,7 @@ class AlphaTraderTest extends BaseTestCase
         $this->expectException(RuntimeException::class);
         $company = new Company();
         $company->setId(1);
-        $this->alphatrader->createSystemBond($company,1);
+        $this->alphatrader->createSystemBond($company, 1);
     }
 
     public function test_repaySystemBond()
@@ -310,8 +310,8 @@ class AlphaTraderTest extends BaseTestCase
         $expected = json_encode($response);
         $myFactory = $this->getMockBuilder('Alphatrader\ApiBundle\Api\AlphaTrader', array('setCompanyCentralBankReserves'))->disableOriginalConstructor()->getMock();
         $myFactory->expects($this->any())->method('setCompanyCentralBankReserves')->will($this->returnValue($expected));
-        $val = $myFactory->setCompanyCentralBankReserves($company,1);
-        $this->assertEquals(json_decode($val)->cash,$response['cash']);
+        $val = $myFactory->setCompanyCentralBankReserves($company, 1);
+        $this->assertEquals(json_decode($val)->cash, $response['cash']);
     }
 
     public function test_setNotificationsasRead()
@@ -342,13 +342,13 @@ class AlphaTraderTest extends BaseTestCase
     public function test_createOrder()
     {
         $this->expectException(RuntimeException::class);
-        $this->alphatrader->createOrder(1,1,1,1,1,1,1);
+        $this->alphatrader->createOrder(1, 1, 1, 1, 1, 1, 1);
     }
 
     public function test_checkOrder()
     {
         $this->expectException(RuntimeException::class);
-        $this->alphatrader->checkOrder(1,1,1,1);
+        $this->alphatrader->checkOrder(1, 1, 1, 1);
     }
 
 
@@ -363,8 +363,8 @@ class AlphaTraderTest extends BaseTestCase
         $myFactory = $this->getMockBuilder('Alphatrader\ApiBundle\Api\AlphaTrader', array('addLogoToCompany'))->disableOriginalConstructor()->getMock();
         $myFactory->expects($this->any())->method('addLogoToCompany')->will($this->returnValue($expected));
         $val = $myFactory->addLogoToCompany($company->getId(), $logourl);
-        $this->assertInstanceOf(Company::class,$company);
-        $this->assertEquals($company,$response['company']);
-        $this->assertEquals(1,$company->getId());
+        $this->assertInstanceOf(Company::class, $company);
+        $this->assertEquals($company, $response['company']);
+        $this->assertEquals(1, $company->getId());
     }
 }

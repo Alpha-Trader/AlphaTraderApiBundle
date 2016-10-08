@@ -15,31 +15,35 @@ use PHPUnit\Framework\TestCase;
  * @package Tests\Model
  * @author ljbergmann
  */
-class BankAccountTest extends TestCase{
+class BankAccountTest extends TestCase
+{
     
-    public function testId(){
+    public function testId()
+    {
         $bankAccount = $this->getBankAccount();
         $this->assertNull($bankAccount->getId());
 
         $uuid = uniqid();
         
         $bankAccount->setId($uuid);
-        $this->assertEquals($uuid,$bankAccount->getId());
+        $this->assertEquals($uuid, $bankAccount->getId());
         $this->assertTrue(is_string($bankAccount->getId()));
     }
     
-    public function testCash(){
+    public function testCash()
+    {
         $bankAccount = $this->getBankAccount();
         $this->assertNull($bankAccount->getCash());
         
         $cash = mt_rand() / mt_getrandmax();
 
         $bankAccount->setCash($cash);
-        $this->assertEquals($cash,$bankAccount->getCash());
+        $this->assertEquals($cash, $bankAccount->getCash());
         $this->assertTrue(is_float($bankAccount->getCash()));
     }
     
-    private function getBankAccount(){
+    private function getBankAccount()
+    {
         return new BankAccount();
     }
 }

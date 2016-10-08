@@ -11,6 +11,6 @@ class AlphatraderApiBundleTest extends TestCase
     public function test_build()
     {
         $bundle = new AlphatraderApiBundle();
-        $this->assertInstanceOf(BundleInterface::class,$bundle);
+        $this->assertInstanceOf(BundleInterface::class, $bundle);
     }
 }

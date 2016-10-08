@@ -28,6 +28,17 @@ class CentralBankReservesController extends ApiClient
     }
 
     /**
+     * @param string companyId
+     *
+     * @return CentralBankReserve|Error
+     */
+    public function getReserveByCompanyId($companyId)
+    {
+        $data = $this->get('centralbankreserves/', ['companyId' => $companyId]);
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\CentralBankReserve');
+    }
+
+    /**
      * @param Company $company
      * @param         $cashAmount
      *

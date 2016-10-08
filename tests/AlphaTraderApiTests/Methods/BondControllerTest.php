@@ -37,7 +37,7 @@ class BondControllerTest extends BaseTestCase
         $company->setId(1);
         $bondcontroller = new BondController($this->config);
         $bondcontroller->setClient($this->getClient($expected));
-        $val = $bondcontroller->createBond($company,1,1,1,1);
+        $val = $bondcontroller->createBond($company, 1, 1, 1, 1);
 
         $this->assertInstanceOf('Alphatrader\ApiBundle\Model\Error', $val);
     }

@@ -17,18 +17,20 @@ use Alphatrader\ApiBundle\Model\Ceo;
 class CeoTest extends TestCase
 {
 
-    public function testId(){
+    public function testId()
+    {
         $ceo = new Ceo();
         $this->assertNull($ceo->getId());
 
         $uuid = uniqid();
 
         $ceo->setId($uuid);
-        $this->assertEquals($uuid,$ceo->getId());
+        $this->assertEquals($uuid, $ceo->getId());
         $this->assertTrue(is_string($ceo->getId()));
     }
 
-    public function testUserCapabilities(){
+    public function testUserCapabilities()
+    {
         $ceo = new Ceo();
         $this->assertNull($ceo->getUserCapabilities());
 
@@ -46,35 +48,38 @@ class CeoTest extends TestCase
 
         $ceo->setUserCapabilities($usercaps);
         
-        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\UserCapabilities',$ceo->getUserCapabilities());
+        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\UserCapabilities', $ceo->getUserCapabilities());
     }
     
-    public function testUsername(){
+    public function testUsername()
+    {
         $ceo = new Ceo();
         $this->assertNull($ceo->getUsername());
         
         $username = $this->getRandomString(12);
         $ceo->setUsername($username);
-        $this->assertEquals($username,$ceo->getUsername());
+        $this->assertEquals($username, $ceo->getUsername());
         $this->assertTrue(is_string($ceo->getUsername()));
     }
 
-    public function testGravatarHash(){
+    public function testGravatarHash()
+    {
         $ceo = new Ceo();
         $this->assertNull($ceo->getGravatarHash());
         
         $gravatarHash = $this->getRandomString(32);
         $ceo->setGravatarHash($gravatarHash);
-        $this->assertEquals($gravatarHash,$ceo->getGravatarHash());
+        $this->assertEquals($gravatarHash, $ceo->getGravatarHash());
         $this->assertTrue(is_string($ceo->getGravatarHash()));
     }
     
     /*
     * @param $length
     */
-    private function getRandomString($length = 6) {
+    private function getRandomString($length = 6)
+    {
         $str = "";
-        $characters = array_merge(range('A','Z'), range('a','z'), range('0','9'));
+        $characters = array_merge(range('A', 'Z'), range('a', 'z'), range('0', '9'));
         $max = count($characters) - 1;
         for ($i = 0; $i < $length; $i++) {
             $rand = mt_rand(0, $max);

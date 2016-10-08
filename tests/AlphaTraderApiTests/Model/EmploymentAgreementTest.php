@@ -15,7 +15,8 @@ use Alphatrader\ApiBundle\Model\EmploymentAgreement;
 
 class EmploymentAgreementTest extends \PHPUnit_Framework_TestCase
 {
-    public function testId(){
+    public function testId()
+    {
         $ea = new EmploymentAgreement();
         $this->assertNull($ea->getId());
         
@@ -24,7 +25,7 @@ class EmploymentAgreementTest extends \PHPUnit_Framework_TestCase
         $ea->setId($id);
         
         $this->assertTrue(is_string($ea->getId()));
-        $this->assertEquals($id,$ea->getId());
+        $this->assertEquals($id, $ea->getId());
     }
 
     public function testDailyWage()
@@ -35,7 +36,7 @@ class EmploymentAgreementTest extends \PHPUnit_Framework_TestCase
         $wage = $this->getRandomFloat();
         $ea->setDailyWage($wage);
         $this->assertTrue(is_float($ea->getDailyWage()));
-        $this->assertEquals($wage,$ea->getDailyWage());
+        $this->assertEquals($wage, $ea->getDailyWage());
     }
 
     /**
@@ -43,16 +44,18 @@ class EmploymentAgreementTest extends \PHPUnit_Framework_TestCase
      * @param int $max
      * @return mixed
      */
-    private function getRandomFloat($min=1,$max=50000000){
-        return mt_rand($min,$max) + (rand()/mt_getrandmax());
+    private function getRandomFloat($min = 1, $max = 50000000)
+    {
+        return mt_rand($min, $max) + (rand()/mt_getrandmax());
     }
 
     /*
     * @param $length
     */
-    private function getRandomString($length = 6) {
+    private function getRandomString($length = 6)
+    {
         $str = "";
-        $characters = array_merge(range('A','Z'), range('a','z'), range('0','9'));
+        $characters = array_merge(range('A', 'Z'), range('a', 'z'), range('0', '9'));
         $max = count($characters) - 1;
         for ($i = 0; $i < $length; $i++) {
             $rand = mt_rand(0, $max);

@@ -15,7 +15,8 @@ use Alphatrader\ApiBundle\Model\Listing;
 
 class ListingTest extends \PHPUnit_Framework_TestCase
 {
-    public function testSecurityIdentifier(){
+    public function testSecurityIdentifier()
+    {
         $Listing = new Listing();
         $this->assertNull($Listing->getSecurityIdentifier());
 
@@ -23,10 +24,11 @@ class ListingTest extends \PHPUnit_Framework_TestCase
         $Listing->setSecurityIdentifier($secIdent);
 
         $this->assertTrue(is_string($Listing->getSecurityIdentifier()));
-        $this->assertEquals($secIdent,$Listing->getSecurityIdentifier());
+        $this->assertEquals($secIdent, $Listing->getSecurityIdentifier());
     }
 
-    public function testType(){
+    public function testType()
+    {
         $Listing = new Listing();
         $this->assertNull($Listing->getType());
 
@@ -34,15 +36,16 @@ class ListingTest extends \PHPUnit_Framework_TestCase
         $Listing->setType($type);
 
         $this->assertTrue(is_string($Listing->getType()));
-        $this->assertEquals($type,$Listing->getType());
+        $this->assertEquals($type, $Listing->getType());
     }
 
     /*
     * @param $length
     */
-    private function getRandomString($length = 6) {
+    private function getRandomString($length = 6)
+    {
         $str = "";
-        $characters = array_merge(range('A','Z'), range('a','z'), range('0','9'));
+        $characters = array_merge(range('A', 'Z'), range('a', 'z'), range('0', '9'));
         $max = count($characters) - 1;
         for ($i = 0; $i < $length; $i++) {
             $rand = mt_rand(0, $max);
