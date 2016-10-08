@@ -22,20 +22,8 @@ class ChatController extends ApiClient
      */
     public function getChats()
     {
-        $data = $this->request('chats');
-        $oResult = $this->getSerializer()->deserialize(
-            $data,
-            'ArrayCollection<Alphatrader\ApiBundle\Model\Chat>',
-            'json'
-        );
-        if (!is_array($oResult)) {
-            $oResult = $this->getSerializer()->deserialize(
-                $data,
-                'Alphatrader\ApiBundle\Model\Error',
-                'json'
-            );
-        }
-        return $oResult;
+        $request = $this->get('chats');
+        return $this->parseResponse($request, 'ArrayCollection<Alphatrader\ApiBundle\Model\Chat>');
     }
 
     /**
@@ -46,17 +34,8 @@ class ChatController extends ApiClient
      */
     public function addUsertoChatbyUserId(Chat $iChat, UserAccount $user)
     {
-        $data = $this->put('chats/adduser/userid', ['userId' => $user->getId(), 'chatId' => $iChat->getId()]);
-        /** @var Chat $oResult */
-        $oResult = $this->getSerializer()->deserialize($data, 'Alphatrader\ApiBundle\Model\Chat', 'json');
-        if ($oResult->getId() == null) {
-            $oResult = $this->getSerializer()->deserialize(
-                $data,
-                'Alphatrader\ApiBundle\Model\Error',
-                'json'
-            );
-        }
-        return $oResult;
+        $request = $this->put('chats/adduser/userid', ['userId' => $user->getId(), 'chatId' => $iChat->getId()]);
+        return $this->parseResponse($request, 'Alphatrader\ApiBundle\Model\Chat');
     }
 
     /**
@@ -67,17 +46,8 @@ class ChatController extends ApiClient
      */
     public function addUsertoChatbyUsername(Chat $iChat, $username)
     {
-        $data = $this->put('chats/adduser/username', ['userId' => $username, 'chatId' => $iChat->getId()]);
-        /** @var Chat $oResult */
-        $oResult = $this->getSerializer()->deserialize($data, 'Alphatrader\ApiBundle\Model\Chat', 'json');
-        if ($oResult->getId() == null) {
-            $oResult = $this->getSerializer()->deserialize(
-                $data,
-                'Alphatrader\ApiBundle\Model\Error',
-                'json'
-            );
-        }
-        return $oResult;
+        $request = $this->put('chats/adduser/username', ['userId' => $username, 'chatId' => $iChat->getId()]);
+        return $this->parseResponse($request, 'Alphatrader\ApiBundle\Model\Chat');
     }
 
     /**
@@ -90,17 +60,8 @@ class ChatController extends ApiClient
      */
     public function quitChat($iChatId)
     {
-        $data = $this->put('chats/quitchat/'.$iChatId);
-        /** @var Chat $oResult */
-        $oResult = $this->getSerializer()->deserialize($data, 'Alphatrader\ApiBundle\Model\Chat', 'json');
-        if ($oResult->getId() == null) {
-            $oResult = $this->getSerializer()->deserialize(
-                $data,
-                'Alphatrader\ApiBundle\Model\Error',
-                'json'
-            );
-        }
-        return $oResult;
+        $request = $this->put('chats/quitchat/'.$iChatId);
+        return $this->parseResponse($request, 'Alphatrader\ApiBundle\Model\Chat');
     }
 
     /**
@@ -113,17 +74,8 @@ class ChatController extends ApiClient
      */
     public function markasread($iChatId)
     {
-        $data = $this->put('chats/read/', ['chatId'=> $iChatId]);
-        /** @var Chat $oResult */
-        $oResult = $this->getSerializer()->deserialize($data, 'Alphatrader\ApiBundle\Model\Chat', 'json');
-        if ($oResult->getId() == null) {
-            $oResult = $this->getSerializer()->deserialize(
-                $data,
-                'Alphatrader\ApiBundle\Model\Error',
-                'json'
-            );
-        }
-        return $oResult;
+        $request = $this->put('chats/read/', ['chatId'=> $iChatId]);
+        return $this->parseResponse($request, 'Alphatrader\ApiBundle\Model\Chat');
     }
 
     /**
@@ -137,17 +89,8 @@ class ChatController extends ApiClient
      */
     public function removeUser(Chat $iChat, UserAccount $user)
     {
-        $data = $this->put('chats/removeuser', ['userId' => $user->getId(), 'chatId' => $iChat->getId()]);
-        /** @var Chat $oResult */
-        $oResult = $this->getSerializer()->deserialize($data, 'Alphatrader\ApiBundle\Model\Chat', 'json');
-        if ($oResult->getId() == null) {
-            $oResult = $this->getSerializer()->deserialize(
-                $data,
-                'Alphatrader\ApiBundle\Model\Error',
-                'json'
-            );
-        }
-        return $oResult;
+        $request = $this->put('chats/removeuser', ['userId' => $user->getId(), 'chatId' => $iChat->getId()]);
+        return $this->parseResponse($request, 'Alphatrader\ApiBundle\Model\Chat');
     }
 
     /**
@@ -156,20 +99,7 @@ class ChatController extends ApiClient
     public function getUnreadChats()
     {
         $data = $this->get('chats/unread');
-        /** @var CompactChat $oResult */
-        $oResult = $this->getSerializer()->deserialize(
-            $data,
-            'ArrayCollection<Alphatrader\ApiBundle\Model\CompactChat>',
-            'json'
-        );
-        if ($oResult->getId() == null) {
-            $oResult = $this->getSerializer()->deserialize(
-                $data,
-                'Alphatrader\ApiBundle\Model\Error',
-                'json'
-            );
-        }
-        return $oResult;
+        return $this->parseResponse($data, 'ArrayCollection<Alphatrader\ApiBundle\Model\CompactChat>');
     }
 
     /**
@@ -204,13 +134,12 @@ class ChatController extends ApiClient
      * @param int $iChat
      * @Method("GET")
      *
-     * @return Chats
+     * @return \Alphatrader\ApiBundle\Model\Chats
      */
     public function getChat($iChat)
     {
         $data = $this->get('chats/' . $iChat);
-        $oResult = $this->getSerializer()->deserialize($data, 'Alphatrader\ApiBundle\Model\Chats', 'json');
-        return $oResult;
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\Chats');
     }
 
     /**

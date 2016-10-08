@@ -9,6 +9,7 @@
 namespace Alphatrader\ApiBundle\Api\Methods;
 
 use Alphatrader\ApiBundle\Api\ApiClient;
+use Alphatrader\ApiBundle\Api\Exception\HttpErrorException;
 use AlphaTrader\ApiBundle\Model\Bankaccount;
 use Alphatrader\ApiBundle\Model\Bond;
 use Alphatrader\ApiBundle\Model\Company;
@@ -29,30 +30,22 @@ class BondController extends ApiClient
      * @param         $interestRate
      * @param         $maturityDate
      *
+     * @throws \Alphatrader\ApiBundle\Api\Exception\HttpErrorException
      * @return Bond|Error
      */
     public function createBond(Company $company, $numberOfBonds, $faceValue, $interestRate, $maturityDate)
     {
-        $data = $this->post(
+        $request = $this->post(
             'bonds/',
             [
-                'companyId'     => $company->getId(),
+                'companyId' => $company->getId(),
                 'numberOfBonds' => $numberOfBonds,
-                'faceValue'     => $faceValue,
-                'interestRate'  => $interestRate,
-                'maturityDate'  => $maturityDate
+                'faceValue' => $faceValue,
+                'interestRate' => $interestRate,
+                'maturityDate' => $maturityDate
             ]
         );
-        /** @var Bond $oResult */
-        $oResult = $this->getSerializer()->deserialize($data, 'Alphatrader\ApiBundle\Model\Bond', 'json');
-        if ($oResult->getListing() == null) {
-            $oResult = $this->getSerializer()->deserialize(
-                $data,
-                'Alphatrader\ApiBundle\Model\Error',
-                'json'
-            );
-        }
-        return $oResult;
+        return $this->parseResponse($request, 'Alphatrader\ApiBundle\Model\Bond');
     }
 
     /**
@@ -61,49 +54,30 @@ class BondController extends ApiClient
     public function repayBond()
     {
         $data = $this->post('bonds/');
-        $oResult = $this->getSerializer()->deserialize($data, 'array', 'json');
+        $oResult = $this->getSerializer()->deserialize($data->getBody()->getContents(), 'array', 'json');
+
         return $oResult;
     }
 
     /**
      * @param string $bondId
      *
+     * @throws \Alphatrader\ApiBundle\Api\Exception\HttpErrorException
      * @return Bond|Error
      */
     public function getBond($bondId)
     {
-        $data = $this->get('bonds/' . $bondId);
-        /** @var Bond $oResult */
-        $oResult = $this->getSerializer()->deserialize($data, 'Alphatrader\ApiBundle\Model\Bond', 'json');
-        if ($oResult->getListing() == null) {
-            $oResult = $this->getSerializer()->deserialize(
-                $data,
-                'Alphatrader\ApiBundle\Model\Error',
-                'json'
-            );
-        }
-        return $oResult;
+        $request = $this->get('bonds/' . $bondId);
+        return $this->parseResponse($request, 'Alphatrader\ApiBundle\Model\Bond');
     }
 
     /**
+     * @throws \Alphatrader\ApiBundle\Api\Exception\HttpErrorException
      * @return Bond[]|Error
      */
     public function getBonds()
     {
-        $data = $this->get('bonds/');
-        /** @var Bond[] $oResult */
-        $oResult = $this->getSerializer()->deserialize(
-            $data,
-            'ArrayCollection<Alphatrader\ApiBundle\Model\Bond>',
-            'json'
-        );
-        if (!is_array($oResult)) {
-            $oResult = $this->getSerializer()->deserialize(
-                $data,
-                'Alphatrader\ApiBundle\Model\Error',
-                'json'
-            );
-        }
-        return $oResult;
+        $request = $this->get('bonds/');
+        return $this->parseResponse($request, 'ArrayCollection<Alphatrader\ApiBundle\Model\Bond>');
     }
 }
