@@ -185,7 +185,7 @@ class ApiClient
 
     private function isGuiltyResponse($class, $result)
     {
-        if (preg_match('/<(.*?)>/',$class,$matches)){
+        if (preg_match('/<(.*?)>/', $class, $matches)) {
             $class = $matches[1];
             $result = $result[0];
         }
@@ -211,7 +211,7 @@ class ApiClient
     /**
      * @param Client $client
      */
-    private function setClient($client)
+    public function setClient($client)
     {
         $this->client = $client;
     }

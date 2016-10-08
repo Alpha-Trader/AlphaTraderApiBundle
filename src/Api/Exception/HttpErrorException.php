@@ -8,16 +8,21 @@ use Symfony\Component\HttpKernel\Exception\HttpExceptionInterface;
 class HttpErrorException extends \RuntimeException implements HttpExceptionInterface
 {
     private $statusCode;
-    
+
     private $headers;
-    
+
     /**
      * @var Error
      */
     private $error;
 
-    public function __construct($statusCode, $error = null, \Exception $previous = null, array $headers = array(), $code = 0)
-    {
+    public function __construct(
+        $statusCode,
+        $error = null,
+        \Exception $previous = null,
+        array $headers = array(),
+        $code = 0
+    ) {
         $this->statusCode = $statusCode;
         $this->headers = $headers;
         $this->error = $error;
@@ -44,12 +49,12 @@ class HttpErrorException extends \RuntimeException implements HttpExceptionInter
     {
         return $this->error->getMessagePrototype()->getMessage();
     }
-    
+
     public function getFilledString()
     {
         return $this->error->getMessagePrototype()->getFilledString();
     }
-    
+
     /**
      * Set response headers.
      *
