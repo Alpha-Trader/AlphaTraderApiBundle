@@ -8,6 +8,7 @@ namespace Tests\Model;
 
 use PHPUnit\Framework\TestCase;
 use Alphatrader\ApiBundle\Model\CompactCompany;
+
 /**
  * Class CompactCompany
  * @package Tests\Model
@@ -15,14 +16,15 @@ use Alphatrader\ApiBundle\Model\CompactCompany;
  */
 class CompactCompanyTest extends TestCase
 {
-    public function testId(){
+    public function testId()
+    {
         $company = new CompactCompany();
         $this->assertNull($company->getId());
 
         $uuid = uniqid();
 
         $company->setId($uuid);
-        $this->assertEquals($uuid,$company->getId());
+        $this->assertEquals($uuid, $company->getId());
         $this->assertTrue(is_string($company->getId()));
     }
 
@@ -50,10 +52,11 @@ class CompactCompanyTest extends TestCase
         
         $company->setCeo($ceo);
         
-        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\UserName',$company->getCeo());
+        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\UserName', $company->getCeo());
     }
     
-    public function testName(){
+    public function testName()
+    {
         $company = new CompactCompany();
         $this->assertNull($company->getName());
         
@@ -61,11 +64,12 @@ class CompactCompanyTest extends TestCase
         
         $company->setName($username);
         
-        $this->assertEquals($username,$company->getName());
+        $this->assertEquals($username, $company->getName());
         $this->assertTrue(is_string($company->getName()));
     }
     
-    public function testSecurityIdentifier(){
+    public function testSecurityIdentifier()
+    {
         $company = new CompactCompany();
         $this->assertNull($company->getSecurityIdentifier());
 
@@ -73,11 +77,12 @@ class CompactCompanyTest extends TestCase
 
         $company->setSecurityIdentifier($securityIdentifier);
 
-        $this->assertEquals($securityIdentifier,$company->getSecurityIdentifier());
+        $this->assertEquals($securityIdentifier, $company->getSecurityIdentifier());
         $this->assertTrue(is_string($company->getSecurityIdentifier()));
     }
 
-    public function testSecAccId(){
+    public function testSecAccId()
+    {
         $company = new CompactCompany();
         $this->assertNull($company->getSecuritiesAccountId());
 
@@ -85,22 +90,22 @@ class CompactCompanyTest extends TestCase
 
         $company->setSecuritiesAccountId($secAccId);
 
-        $this->assertEquals($secAccId,$company->getSecuritiesAccountId());
+        $this->assertEquals($secAccId, $company->getSecuritiesAccountId());
         $this->assertTrue(is_string($company->getSecuritiesAccountId()));
     }
 
     /*
     * @param $length
     */
-    private function getRandomString($length = 6) {
+    private function getRandomString($length = 6)
+    {
         $str = "";
-        $characters = array_merge(range('A','Z'), range('a','z'), range('0','9'));
+        $characters = array_merge(range('A', 'Z'), range('a', 'z'), range('0', '9'));
         $max = count($characters) - 1;
         for ($i = 0; $i < $length; $i++) {
             $rand = mt_rand(0, $max);
             $str .= $characters[$rand];
         }
         return $str;
-    }    
-    
+    }
 }

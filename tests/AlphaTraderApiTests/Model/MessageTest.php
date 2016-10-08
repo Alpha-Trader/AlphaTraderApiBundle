@@ -24,7 +24,7 @@ class MessageTest extends \PHPUnit_Framework_TestCase
         $message->setChatId($uuid);
 
         $this->assertTrue(is_string($message->getChatId()));
-        $this->assertEquals($uuid,$message->getChatId());
+        $this->assertEquals($uuid, $message->getChatId());
     }
 
     public function testContent()
@@ -36,7 +36,7 @@ class MessageTest extends \PHPUnit_Framework_TestCase
         $message->setContent($content);
 
         $this->assertTrue(is_string($message->getContent()));
-        $this->assertEquals($content,$message->getContent());
+        $this->assertEquals($content, $message->getContent());
     }
 
     public function testDateSent()
@@ -49,7 +49,7 @@ class MessageTest extends \PHPUnit_Framework_TestCase
         $message->setDateSent($dateSent);
 
         $this->assertTrue(is_int($message->getDateSent()));
-        $this->assertEquals($dateSent,$message->getDateSent());
+        $this->assertEquals($dateSent, $message->getDateSent());
     }
 
     public function testId()
@@ -61,7 +61,7 @@ class MessageTest extends \PHPUnit_Framework_TestCase
         $message->setId($uuid);
 
         $this->assertTrue(is_string($message->getId()));
-        $this->assertEquals($uuid,$message->getId());
+        $this->assertEquals($uuid, $message->getId());
     }
 
     public function testRead()
@@ -83,7 +83,7 @@ class MessageTest extends \PHPUnit_Framework_TestCase
         $sender = $this->createMock('\Alphatrader\ApiBundle\Model\UserName');
         $message->setSender($sender);
 
-        $this->assertInstanceOf('\Alphatrader\ApiBundle\Model\UserName',$message->getSender());
+        $this->assertInstanceOf('\Alphatrader\ApiBundle\Model\UserName', $message->getSender());
     }
 
     /**
@@ -91,17 +91,19 @@ class MessageTest extends \PHPUnit_Framework_TestCase
      * @param int $max
      * @return mixed
      */
-    private function getRandomFloat($min=1,$max=50000000){
-        return mt_rand($min,$max) + (rand()/mt_getrandmax());
+    private function getRandomFloat($min = 1, $max = 50000000)
+    {
+        return mt_rand($min, $max) + (rand()/mt_getrandmax());
     }
 
     /*
     * @param int $length
     * @return string
     */
-    private function getRandomString($length = 6) {
+    private function getRandomString($length = 6)
+    {
         $str = "";
-        $characters = array_merge(range('A','Z'), range('a','z'), range('0','9'));
+        $characters = array_merge(range('A', 'Z'), range('a', 'z'), range('0', '9'));
         $max = count($characters) - 1;
         for ($i = 0; $i < $length; $i++) {
             $rand = mt_rand(0, $max);

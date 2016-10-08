@@ -33,37 +33,41 @@ class CompanyTraitTest extends \PHPUnit_Framework_TestCase
         return $this->getObjectForTrait($traitName);
     }
     
-    public function testId(){
+    public function testId()
+    {
         $this->assertNull($this->traitObject->getId());
         $uuid = uniqid();
 
         $this->traitObject->setId($uuid);
         $this->assertTrue(is_string($this->traitObject->getId()));
-        $this->assertEquals($uuid,$this->traitObject->getId());
+        $this->assertEquals($uuid, $this->traitObject->getId());
     }
 
-    public function testBankAccount(){
+    public function testBankAccount()
+    {
         $this->assertNull($this->traitObject->getBankAccount());
 
         $bankAccount = $this->createMock('Alphatrader\ApiBundle\Model\BankAccount');
         $bankAccount->expects($this->any())->method('getId')->will($this->returnValue($this->getRandomString(12)));
-        $bankAccount->expects($this->any())->method('getCash')->will($this->returnValue(mt_rand(1,50000)+(mt_rand() / mt_getrandmax())));
+        $bankAccount->expects($this->any())->method('getCash')->will($this->returnValue(mt_rand(1, 50000)+(mt_rand() / mt_getrandmax())));
 
         $this->traitObject->setBankAccount($bankAccount);
-        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\BankAccount',$this->traitObject->getBankAccount());
+        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\BankAccount', $this->traitObject->getBankAccount());
     }
     
-    public function testSecuritiesAccountId(){
+    public function testSecuritiesAccountId()
+    {
         $this->assertNull($this->traitObject->getSecuritiesAccountId());
 
         $string = $this->getRandomString(32);
         $this->traitObject->setSecuritiesAccountId($string);
 
         $this->assertTrue(is_string($this->traitObject->getSecuritiesAccountId()));
-        $this->assertEquals($string,$this->traitObject->getSecuritiesAccountId());
+        $this->assertEquals($string, $this->traitObject->getSecuritiesAccountId());
     }
 
-    public function testSponsoredListing(){
+    public function testSponsoredListing()
+    {
 
         $this->assertNull($this->traitObject->getSponsoredListings());
 
@@ -97,7 +101,7 @@ class CompanyTraitTest extends \PHPUnit_Framework_TestCase
         $cc->expects($this->any())->method('getSecurityIdentifier')->willReturn($this->getRandomString(6));
         $cc->expects($this->any())->method('getSecuritiesAccountId')->willReturn($this->getRandomString(32));
         // DesignatedSponsorRating
-        $dsr->expects($this->any())->method('getSalary')->willReturn($this->getRandomFloat(1,500));
+        $dsr->expects($this->any())->method('getSalary')->willReturn($this->getRandomFloat(1, 500));
         $dsr->expects($this->any())->method('getValue')->willReturn($this->getRandomString(1));
         // SecuritySponsorship
         $ss->expects($this->any())->method('getDesignatedSponsor')->willReturn($cc);
@@ -106,31 +110,34 @@ class CompanyTraitTest extends \PHPUnit_Framework_TestCase
 
         $this->traitObject->setSponsoredListings($ss);
 
-        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\SecuritySponsorship',$this->traitObject->getSponsoredListings());
+        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\SecuritySponsorship', $this->traitObject->getSponsoredListings());
         // Testing subClasses
-        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\CompactCompany',$this->traitObject->getSponsoredListings()->getDesignatedSponsor());
-        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\UserName',$this->traitObject->getSponsoredListings()->getDesignatedSponsor()->getCeo());
-        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\UserCapabilities',$this->traitObject->getSponsoredListings()->getDesignatedSponsor()->getCeo()->getUserCapabilities());
-        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\Listing',$this->traitObject->getSponsoredListings()->getListing());
-        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\DesignatedSponsorRating',$this->traitObject->getSponsoredListings()->getSponsorRating());
+        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\CompactCompany', $this->traitObject->getSponsoredListings()->getDesignatedSponsor());
+        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\UserName', $this->traitObject->getSponsoredListings()->getDesignatedSponsor()->getCeo());
+        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\UserCapabilities', $this->traitObject->getSponsoredListings()->getDesignatedSponsor()->getCeo()->getUserCapabilities());
+        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\Listing', $this->traitObject->getSponsoredListings()->getListing());
+        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\DesignatedSponsorRating', $this->traitObject->getSponsoredListings()->getSponsorRating());
     }
 
-    public function testLogoUrl(){
+    public function testLogoUrl()
+    {
         $this->assertNull($this->traitObject->getLogoUrl());
         $url = $this->getRandomString(255);
         $this->traitObject->setLogoUrl($url);
 
         $this->assertTrue(is_string($this->traitObject->getLogoUrl()));
-        $this->assertEquals($url,$this->traitObject->getLogoUrl());
+        $this->assertEquals($url, $this->traitObject->getLogoUrl());
     }
 
-    public function testHasLogo(){
+    public function testHasLogo()
+    {
         $this->assertFalse($this->traitObject->hasLogo());
         $this->traitObject->setLogoUrl($this->getRandomString(255));
         $this->assertTrue($this->traitObject->hasLogo());
     }
 
-    public function testCeo(){
+    public function testCeo()
+    {
 
         $this->assertNull($this->traitObject->getCeo());
 
@@ -153,20 +160,22 @@ class CompanyTraitTest extends \PHPUnit_Framework_TestCase
 
         $this->traitObject->setCeo($ceo);
 
-        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\Ceo',$this->traitObject->getCeo());
+        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\Ceo', $this->traitObject->getCeo());
     }
 
-    public function testName(){
+    public function testName()
+    {
         $this->assertNull($this->traitObject->getName());
 
         $name = $this->getRandomString(12);
 
         $this->traitObject->setName($name);
         $this->assertTrue(is_string($this->traitObject->getName()));
-        $this->assertEquals($name,$this->traitObject->getName());
+        $this->assertEquals($name, $this->traitObject->getName());
     }
 
-    public function testIssuedBonds(){
+    public function testIssuedBonds()
+    {
         $this->assertNull($this->traitObject->getIssuedBonds());
         
         $company = $this->createMock('Alphatrader\ApiBundle\Model\CompanyName');
@@ -183,8 +192,8 @@ class CompanyTraitTest extends \PHPUnit_Framework_TestCase
         $bond = $this->createMock('Alphatrader\ApiBundle\Model\Bond');
 
         $bond->expects($this->any())->method('getId')->willReturn($this->getRandomString(12));
-        $bond->expects($this->any())->method('getFaceValue')->willReturn($this->getRandomFloat(100,1000));
-        $bond->expects($this->any())->method('getInterestRate')->willReturn($this->getRandomFloat(0,1));
+        $bond->expects($this->any())->method('getFaceValue')->willReturn($this->getRandomFloat(100, 1000));
+        $bond->expects($this->any())->method('getInterestRate')->willReturn($this->getRandomFloat(0, 1));
         $bond->expects($this->any())->method('getIssueDate')->willReturn(new \DateTime());
         $bond->expects($this->any())->method('getIssuer')->willReturn($company);
         $bond->expects($this->any())->method('getMaturityDate')->willReturn(new \DateTime());
@@ -195,15 +204,16 @@ class CompanyTraitTest extends \PHPUnit_Framework_TestCase
 
         $this->traitObject->setIssuedBonds([$bond,$bond]);
         // Main
-        $this->assertContainsOnlyInstancesOf('Alphatrader\ApiBundle\Model\Bond',$this->traitObject->getIssuedBonds());
+        $this->assertContainsOnlyInstancesOf('Alphatrader\ApiBundle\Model\Bond', $this->traitObject->getIssuedBonds());
         // Sub
-        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\Bond',$this->traitObject->getIssuedBonds()[0]);
-        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\Listing',$this->traitObject->getIssuedBonds()[0]->getListing());
-        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\Listing',$this->traitObject->getIssuedBonds()[0]->getRepurchaseListing());
-        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\CompanyName',$this->traitObject->getIssuedBonds()[0]->getIssuer());
+        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\Bond', $this->traitObject->getIssuedBonds()[0]);
+        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\Listing', $this->traitObject->getIssuedBonds()[0]->getListing());
+        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\Listing', $this->traitObject->getIssuedBonds()[0]->getRepurchaseListing());
+        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\CompanyName', $this->traitObject->getIssuedBonds()[0]->getIssuer());
     }
 
-    public function testListing(){
+    public function testListing()
+    {
         $this->assertNull($this->traitObject->getListing());
         $listing = $this->createMock('Alphatrader\ApiBundle\Model\Listing');
         $listing->expects($this->any())->method('getSecurityIdentifier')->willReturn($this->getRandomString(12));
@@ -211,39 +221,41 @@ class CompanyTraitTest extends \PHPUnit_Framework_TestCase
 
         $this->traitObject->setListing($listing);
 
-        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\Listing',$this->traitObject->getListing());
+        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\Listing', $this->traitObject->getListing());
     }
 
-    public function testLastTrades(){
+    public function testLastTrades()
+    {
         $this->assertNull($this->traitObject->getLastTrades());
 
         $sole = $this->createMock('Alphatrader\ApiBundle\Model\SecurityOrderLogEntry');
         $sole->expects($this->any())->method('getId')->willReturn($this->getRandomString(12));
-        $sole->expects($this->any())->method('getNumberOfShares')->willReturn(mt_rand(50,50000));
-        $sole->expects($this->any())->method('getPrice')->willReturn($this->getRandomFloat(10,50));
+        $sole->expects($this->any())->method('getNumberOfShares')->willReturn(mt_rand(50, 50000));
+        $sole->expects($this->any())->method('getPrice')->willReturn($this->getRandomFloat(10, 50));
         $sole->expects($this->any())->method('getSecurityIdentifier')->willReturn($this->getRandomString(12));
         $sole->expects($this->any())->method('getSellerSecuritiesAccount')->willReturn($this->getRandomString(12));
         $sole->expects($this->any())->method('getVolume')->willReturn($this->getRandomFloat(10000));
 
         $this->traitObject->setLastTrades([$sole,$sole]);
 
-        $this->assertContainsOnlyInstancesOf('Alphatrader\ApiBundle\Model\SecurityOrderLogEntry',$this->traitObject->getLastTrades());
+        $this->assertContainsOnlyInstancesOf('Alphatrader\ApiBundle\Model\SecurityOrderLogEntry', $this->traitObject->getLastTrades());
     }
     
-    public function testCeoEmployAgree(){
+    public function testCeoEmployAgree()
+    {
         $this->assertNull($this->traitObject->getCeoEmployAgree());
         
         $employAgree = $this->createMock('Alphatrader\ApiBundle\Model\EmploymentAgreement');
         $employAgree->expects($this->any())->method('getId')->willReturn($this->getRandomString(12));
-        $employAgree->expects($this->any())->method('getDailyWage')->willReturn($this->getRandomFloat(50,5000));
+        $employAgree->expects($this->any())->method('getDailyWage')->willReturn($this->getRandomFloat(50, 5000));
 
         $this->traitObject->setCeoEmployAgree($employAgree);
 
-        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\EmploymentAgreement',$this->traitObject->getCeoEmployAgree());
-
+        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\EmploymentAgreement', $this->traitObject->getCeoEmployAgree());
     }
 
-    public function testCompanyCapabilities(){
+    public function testCompanyCapabilities()
+    {
         $this->assertNull($this->traitObject->getCompanyCapabilities());
 
         $cc = $this->createMock('Alphatrader\ApiBundle\Model\CompanyCapabilities');
@@ -257,7 +269,7 @@ class CompanyTraitTest extends \PHPUnit_Framework_TestCase
 
         $this->traitObject->setCompanyCapabilities($cc);
 
-        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\CompanyCapabilities',$this->traitObject->getCompanyCapabilities());
+        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\CompanyCapabilities', $this->traitObject->getCompanyCapabilities());
     }
 
     /**
@@ -265,16 +277,18 @@ class CompanyTraitTest extends \PHPUnit_Framework_TestCase
      * @param int $max
      * @return mixed
      */
-    private function getRandomFloat($min=1,$max=50000000){
-        return mt_rand($min,$max) + (rand()/mt_getrandmax());
+    private function getRandomFloat($min = 1, $max = 50000000)
+    {
+        return mt_rand($min, $max) + (rand()/mt_getrandmax());
     }
 
     /*
     * @param $length
     */
-    private function getRandomString($length = 6) {
+    private function getRandomString($length = 6)
+    {
         $str = "";
-        $characters = array_merge(range('A','Z'), range('a','z'), range('0','9'));
+        $characters = array_merge(range('A', 'Z'), range('a', 'z'), range('0', '9'));
         $max = count($characters) - 1;
         for ($i = 0; $i < $length; $i++) {
             $rand = mt_rand(0, $max);
@@ -282,5 +296,4 @@ class CompanyTraitTest extends \PHPUnit_Framework_TestCase
         }
         return $str;
     }
-
 }

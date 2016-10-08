@@ -16,7 +16,8 @@ use phpDocumentor\Reflection\Types\This;
 
 class ListingProfileTest extends \PHPUnit_Framework_TestCase
 {
-    public function testBond(){
+    public function testBond()
+    {
         $listingProfile = new ListingProfile();
         $this->assertNull($listingProfile->getBond());
         
@@ -26,38 +27,41 @@ class ListingProfileTest extends \PHPUnit_Framework_TestCase
         $bond->expects($this->any())->method('getIssuer')->willReturn($issuer);
         $listingProfile->setBond($bond);
         
-        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\Bond',$listingProfile->getBond());
+        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\Bond', $listingProfile->getBond());
     }
 
-    public function testCompany(){
+    public function testCompany()
+    {
         $listingProfile = new ListingProfile();
         $this->assertNull($listingProfile->getCompany());
 
         $company = $this->createMock('Alphatrader\ApiBundle\Model\CompanyCompactProfile');
         $listingProfile->setCompany($company);
 
-        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\CompanyCompactProfile',$listingProfile->getCompany());
+        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\CompanyCompactProfile', $listingProfile->getCompany());
     }
 
-    public function testCurrentSpread(){
+    public function testCurrentSpread()
+    {
         $listingProfile = new ListingProfile();
         $this->assertNull($listingProfile->getCurrentSpread());
 
         $spread = $this->createMock('Alphatrader\ApiBundle\Model\PriceSpread');
 
         $spread->expects($this->any())->method('getAskPrice')->willReturn($this->getRandomFloat());
-        $spread->expects($this->any())->method('getAskSize')->willReturn(mt_rand(1,10000));
+        $spread->expects($this->any())->method('getAskSize')->willReturn(mt_rand(1, 10000));
         $spread->expects($this->any())->method('getBidPrice')->willReturn($this->getRandomFloat());
-        $spread->expects($this->any())->method('getBidSize')->willReturn(mt_rand(1,10000));
-        $spread->expects($this->any())->method('getSpreadAbs')->willReturn($this->getRandomFloat(1,200));
-        $spread->expects($this->any())->method('getSpreadPercent')->willReturn($this->getRandomFloat(0,1));
+        $spread->expects($this->any())->method('getBidSize')->willReturn(mt_rand(1, 10000));
+        $spread->expects($this->any())->method('getSpreadAbs')->willReturn($this->getRandomFloat(1, 200));
+        $spread->expects($this->any())->method('getSpreadPercent')->willReturn($this->getRandomFloat(0, 1));
 
         $listingProfile->setCurrentSpread($spread);
 
-        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\PriceSpread',$listingProfile->getCurrentSpread());
+        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\PriceSpread', $listingProfile->getCurrentSpread());
     }
 
-    public function testDesignatedSponsors(){
+    public function testDesignatedSponsors()
+    {
         $listingProfile = new ListingProfile();
         $this->assertNull($listingProfile->getDesignatedSponsors());
 
@@ -72,51 +76,55 @@ class ListingProfileTest extends \PHPUnit_Framework_TestCase
 
         $listingProfile->setDesignatedSponsors($secSpn);
 
-        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\SecuritySponsorship',$listingProfile->getDesignatedSponsors());
+        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\SecuritySponsorship', $listingProfile->getDesignatedSponsors());
     }
 
-    public function testId(){
+    public function testId()
+    {
         $listingProfile = new ListingProfile();
         $this->assertNull($listingProfile->getId());
 
         $id = uniqid();
         $listingProfile->setId($id);
 
-        $this->assertEquals($id,$listingProfile->getId());
+        $this->assertEquals($id, $listingProfile->getId());
     }
 
-    public function testLastOrderLogEntry(){
+    public function testLastOrderLogEntry()
+    {
         $listingProfile = new ListingProfile();
         $this->assertNull($listingProfile->getLastOrderLogEntry());
 
         $lole = $this->createMock('Alphatrader\ApiBundle\Model\SecurityOrderLogEntry');
 
         $lole->expects($this->any())->method('getId')->willReturn($this->getRandomString(12));
-        $lole->expects($this->any())->method('getNumberOfShares')->willReturn(mt_rand(1,500));
-        $lole->expects($this->any())->method('getPrice')->willReturn($this->getRandomFloat(1,200));
+        $lole->expects($this->any())->method('getNumberOfShares')->willReturn(mt_rand(1, 500));
+        $lole->expects($this->any())->method('getPrice')->willReturn($this->getRandomFloat(1, 200));
         $lole->expects($this->any())->method('getSecurityIdentifier')->willReturn($this->getRandomString(6));
         $lole->expects($this->any())->method('getSellerSecuritiesAccount')->willReturn(uniqid());
         $lole->expects($this->any())->method('getBuyerSecuritiesAccount')->willReturn(uniqid());
-        $lole->expects($this->any())->method('getVolume')->willReturn($this->getRandomFloat(200,50000));
+        $lole->expects($this->any())->method('getVolume')->willReturn($this->getRandomFloat(200, 50000));
 
         $listingProfile->setLastOrderLogEntry($lole);
 
-        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\SecurityOrderLogEntry',$listingProfile->getLastOrderLogEntry());
+        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\SecurityOrderLogEntry', $listingProfile->getLastOrderLogEntry());
     }
 
-    public function testLastPrice(){
+    public function testLastPrice()
+    {
         $listingProfile = new ListingProfile();
         $this->assertNull($listingProfile->getLastOrderLogEntry());
 
         $lp = $this->createMock('Alphatrader\ApiBundle\Model\SecurityPrice');
-        $lp->expects($this->any())->method('getValue')->willReturn($this->getRandomFloat(200,10000));
+        $lp->expects($this->any())->method('getValue')->willReturn($this->getRandomFloat(200, 10000));
 
         $listingProfile->setLastPrice($lp);
 
-        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\SecurityPrice',$listingProfile->getLastPrice());
+        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\SecurityPrice', $listingProfile->getLastPrice());
     }
 
-    public function testMarketCap(){
+    public function testMarketCap()
+    {
         $listingProfile = new ListingProfile();
         $this->assertNull($listingProfile->getMarketCap());
 
@@ -124,10 +132,11 @@ class ListingProfileTest extends \PHPUnit_Framework_TestCase
         $listingProfile->setMarketCap($marketCap);
 
         $this->assertTrue(is_float($listingProfile->getMarketCap()));
-        $this->assertEquals($marketCap,$listingProfile->getMarketCap());
+        $this->assertEquals($marketCap, $listingProfile->getMarketCap());
     }
 
-    public function testName(){
+    public function testName()
+    {
         $listingProfile = new ListingProfile();
         $this->assertNull($listingProfile->getName());
 
@@ -139,57 +148,59 @@ class ListingProfileTest extends \PHPUnit_Framework_TestCase
         $bond = $this->createMock('Alphatrader\ApiBundle\Model\Bond');
         $bond->expects($this->any())->method('getName')->willReturn($name);
         $listingProfile->setBond($bond);
-        $this->assertEquals($name,$listingProfile->getName());
-        $listingProfile->setBond(Null);
+        $this->assertEquals($name, $listingProfile->getName());
+        $listingProfile->setBond(null);
 
         $this->assertNull($listingProfile->getName());
 
         $company = $this->createMock('Alphatrader\ApiBundle\Model\CompanyCompactProfile');
         $company->expects($this->any())->method('getName')->willReturn($name);
         $listingProfile->setCompany($company);
-        $this->assertEquals($name,$listingProfile->getName());
-        $listingProfile->setCompany(Null);
+        $this->assertEquals($name, $listingProfile->getName());
+        $listingProfile->setCompany(null);
 
         $this->assertNull($listingProfile->getName());
 
         $systemBond = $this->createMock('Alphatrader\ApiBundle\Model\SystemBond');
         $systemBond->expects($this->any())->method('getName')->willReturn($name);
         $listingProfile->setSystemBond($systemBond);
-        $this->assertEquals($name,$listingProfile->getName());
-
+        $this->assertEquals($name, $listingProfile->getName());
     }
 
-    public function testOutstandingShares(){
+    public function testOutstandingShares()
+    {
         $listingProfile = new ListingProfile();
         $this->assertNull($listingProfile->getOutstandingShares());
 
-        $outstandingShares = mt_rand(50000,500000);
+        $outstandingShares = mt_rand(50000, 500000);
 
         $listingProfile->setOutstandingShares($outstandingShares);
         $this->assertTrue(is_int($listingProfile->getOutstandingShares()));
-        $this->assertEquals($outstandingShares,$listingProfile->getOutstandingShares());
+        $this->assertEquals($outstandingShares, $listingProfile->getOutstandingShares());
     }
 
-    public function testPrices14d(){
+    public function testPrices14d()
+    {
         $listingProfile = new ListingProfile();
         $this->assertNull($listingProfile->getPrices14d());
 
         $lole = $this->createMock('Alphatrader\ApiBundle\Model\SecurityOrderLogEntry');
 
         $lole->expects($this->any())->method('getId')->willReturn($this->getRandomString(12));
-        $lole->expects($this->any())->method('getNumberOfShares')->willReturn(mt_rand(1,500));
-        $lole->expects($this->any())->method('getPrice')->willReturn($this->getRandomFloat(1,200));
+        $lole->expects($this->any())->method('getNumberOfShares')->willReturn(mt_rand(1, 500));
+        $lole->expects($this->any())->method('getPrice')->willReturn($this->getRandomFloat(1, 200));
         $lole->expects($this->any())->method('getSecurityIdentifier')->willReturn($this->getRandomString(6));
         $lole->expects($this->any())->method('getSellerSecuritiesAccount')->willReturn(uniqid());
         $lole->expects($this->any())->method('getBuyerSecuritiesAccount')->willReturn(uniqid());
-        $lole->expects($this->any())->method('getVolume')->willReturn($this->getRandomFloat(200,50000));
+        $lole->expects($this->any())->method('getVolume')->willReturn($this->getRandomFloat(200, 50000));
 
         $listingProfile->setPrices14d([$lole,$lole]);
 
-        $this->assertContainsOnlyInstancesOf('Alphatrader\ApiBundle\Model\SecurityOrderLogEntry',$listingProfile->getPrices14d());
+        $this->assertContainsOnlyInstancesOf('Alphatrader\ApiBundle\Model\SecurityOrderLogEntry', $listingProfile->getPrices14d());
     }
 
-    public function testSecurityIdentifier(){
+    public function testSecurityIdentifier()
+    {
         $listingProfile = new ListingProfile();
         $this->assertNull($listingProfile->getSecurityIdentifier());
 
@@ -197,10 +208,11 @@ class ListingProfileTest extends \PHPUnit_Framework_TestCase
         $listingProfile->setSecurityIdentifier($secIddent);
 
         $this->assertTrue(is_string($listingProfile->getSecurityIdentifier()));
-        $this->assertEquals($secIddent,$listingProfile->getSecurityIdentifier());
+        $this->assertEquals($secIddent, $listingProfile->getSecurityIdentifier());
     }
 
-    public function testSystemBond(){
+    public function testSystemBond()
+    {
         $listingProfile = new ListingProfile();
         $this->assertNull($listingProfile->getBond());
 
@@ -210,10 +222,11 @@ class ListingProfileTest extends \PHPUnit_Framework_TestCase
         $bond->expects($this->any())->method('getIssuer')->willReturn($issuer);
         $listingProfile->setSystemBond($bond);
 
-        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\Bond',$listingProfile->getSystemBond());
+        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\Bond', $listingProfile->getSystemBond());
     }
 
-    public function testType(){
+    public function testType()
+    {
         $listingProfile = new ListingProfile();
         $this->assertNull($listingProfile->getType());
 
@@ -221,13 +234,14 @@ class ListingProfileTest extends \PHPUnit_Framework_TestCase
         $listingProfile->setType($type);
 
         $this->assertTrue(is_string($listingProfile->getType()));
-        $this->assertEquals($type,$listingProfile->getType());
+        $this->assertEquals($type, $listingProfile->getType());
     }
 
-    public function testIssuerName(){
+    public function testIssuerName()
+    {
         $listingProfile = new ListingProfile();
         $this->assertNotNull($listingProfile->getIssuerName());
-        $this->assertEquals('Central Bank',$listingProfile->getIssuerName());
+        $this->assertEquals('Central Bank', $listingProfile->getIssuerName());
 
         $name = $this->getRandomString(12);
 
@@ -239,21 +253,21 @@ class ListingProfileTest extends \PHPUnit_Framework_TestCase
         $bond->expects($this->any())->method('getIssuer')->willReturn($issuer);
         $listingProfile->setBond($bond);
 
-        $this->assertNotEquals('Central Bank',$listingProfile->getIssuerName());
-        $this->assertEquals($name,$listingProfile->getIssuerName());
-        $listingProfile->setBond(NULL);
+        $this->assertNotEquals('Central Bank', $listingProfile->getIssuerName());
+        $this->assertEquals($name, $listingProfile->getIssuerName());
+        $listingProfile->setBond(null);
 
         //Company Set
         $company = $this->createMock('\Alphatrader\ApiBundle\Model\CompanyCompactProfile');
         $company->expects($this->any())->method('getName')->willReturn($name);
         $listingProfile->setCompany($company);
 
-        $this->assertNotEquals('Central Bank',$listingProfile->getIssuerName());
-        $this->assertEquals($name,$listingProfile->getIssuerName());
-
+        $this->assertNotEquals('Central Bank', $listingProfile->getIssuerName());
+        $this->assertEquals($name, $listingProfile->getIssuerName());
     }
 
-    public function testGetIssuerSecurityIdentifier(){
+    public function testGetIssuerSecurityIdentifier()
+    {
         $listingProfile = new ListingProfile();
         $this->assertNull($listingProfile->getIssuerSecurityIdentifier());
         $secIdent = $this->getRandomString(32);
@@ -261,13 +275,13 @@ class ListingProfileTest extends \PHPUnit_Framework_TestCase
         $listingProfile->setSecurityIdentifier($secIdent);
         $company = $this->createMock('\Alphatrader\ApiBundle\Model\CompanyCompactProfile');
         $listingProfile->setCompany($company);
-        $this->assertEquals($secIdent,$listingProfile->getIssuerSecurityIdentifier());
-        $listingProfile->setCompany(NULL);
+        $this->assertEquals($secIdent, $listingProfile->getIssuerSecurityIdentifier());
+        $listingProfile->setCompany(null);
 
         $sBond = $this->createMock('\Alphatrader\ApiBundle\Model\SystemBond');
         $listingProfile->setSystemBond($sBond);
-        $this->assertEquals($secIdent,$listingProfile->getIssuerSecurityIdentifier());
-        $listingProfile->setSystemBond(NULL);
+        $this->assertEquals($secIdent, $listingProfile->getIssuerSecurityIdentifier());
+        $listingProfile->setSystemBond(null);
 
         $this->assertNull($listingProfile->getIssuerSecurityIdentifier());
 
@@ -280,38 +294,38 @@ class ListingProfileTest extends \PHPUnit_Framework_TestCase
         $bond->expects($this->any())->method('getIssuer')->willReturn($cname);
         $listingProfile->setBond($bond);
 
-        $this->assertEquals($secIdent,$listingProfile->getIssuerSecurityIdentifier());
-        
+        $this->assertEquals($secIdent, $listingProfile->getIssuerSecurityIdentifier());
     }
 
-    public function testGetBondOrSystemBond(){
+    public function testGetBondOrSystemBond()
+    {
         $listingProfile = new ListingProfile();
         $this->assertNull($listingProfile->getBondOrSystemBond());
 
         $bond = $this->createMock('\Alphatrader\ApiBundle\Model\Bond');
         $listingProfile->setBond($bond);
 
-        $this->assertInstanceOf('\Alphatrader\ApiBundle\Model\Bond',$listingProfile->getBondOrSystemBond());
-        $listingProfile->setBond(NULL);
+        $this->assertInstanceOf('\Alphatrader\ApiBundle\Model\Bond', $listingProfile->getBondOrSystemBond());
+        $listingProfile->setBond(null);
 
         $this->assertNull($listingProfile->getBondOrSystemBond());
 
         $sysbond = $this->createMock('\Alphatrader\ApiBundle\Model\SystemBond');
         $listingProfile->setSystemBond($sysbond);
 
-        $this->assertInstanceOf('\Alphatrader\ApiBundle\Model\SystemBond',$listingProfile->getBondOrSystemBond());
-
+        $this->assertInstanceOf('\Alphatrader\ApiBundle\Model\SystemBond', $listingProfile->getBondOrSystemBond());
     }
     
-    public function testPriceGain(){
+    public function testPriceGain()
+    {
         $listingProfile = new ListingProfile();
-        $this->assertEquals(0,$listingProfile->getPriceGain());
+        $this->assertEquals(0, $listingProfile->getPriceGain());
 
         $price = $this->createMock('\Alphatrader\ApiBundle\Model\SecurityPrice');
-        $price->expects($this->any())->method('getValue')->willReturn($this->getRandomFloat(1,100));
+        $price->expects($this->any())->method('getValue')->willReturn($this->getRandomFloat(1, 100));
 
         $listingProfile->setPrices14d([$price]);
-        $this->assertEquals(0,$listingProfile->getPriceGain());
+        $this->assertEquals(0, $listingProfile->getPriceGain());
 
         $prices = [$price,$price];
         $listingProfile->setPrices14d($prices);
@@ -320,11 +334,11 @@ class ListingProfileTest extends \PHPUnit_Framework_TestCase
         $lastPrice = $prices[1]->getValue();
         $res = (($currentPrice / $lastPrice) - 1) * 100;
 
-        $this->assertEquals($res,$listingProfile->getPriceGain());
-
+        $this->assertEquals($res, $listingProfile->getPriceGain());
     }
 
-    public function testPreviousPriceDate(){
+    public function testPreviousPriceDate()
+    {
         $listingProfile = new ListingProfile();
         $this->assertNull($listingProfile->getPreviousPriceDate());
 
@@ -339,13 +353,13 @@ class ListingProfileTest extends \PHPUnit_Framework_TestCase
         $prices = [$price,$price];
         $listingProfile->setPrices14d($prices);
 
-        $this->assertEquals($date,$listingProfile->getPreviousPriceDate());
-        
+        $this->assertEquals($date, $listingProfile->getPreviousPriceDate());
     }
 
-    public function testGetPrices14dDates(){
+    public function testGetPrices14dDates()
+    {
         $listingProfile = new ListingProfile();
-        $this->assertEquals('',$listingProfile->getPrices14dDates());
+        $this->assertEquals('', $listingProfile->getPrices14dDates());
 
         $d1 = new \DateTime('now');
         $d2 = new \DateTime('-1 Day');
@@ -361,14 +375,15 @@ class ListingProfileTest extends \PHPUnit_Framework_TestCase
 
         $listingProfile->setPrices14d($dates);
 
-        $result = '"'.date("d.m.",$d1->getTimestamp()).'","'.date("d.m.",$d2->getTimestamp()).'"';
+        $result = '"'.date("d.m.", $d1->getTimestamp()).'","'.date("d.m.", $d2->getTimestamp()).'"';
 
-        $this->assertEquals($result,$listingProfile->getPrices14dDates());
+        $this->assertEquals($result, $listingProfile->getPrices14dDates());
     }
 
-    public function testGetPrices14dValues(){
+    public function testGetPrices14dValues()
+    {
         $listingProfile = new ListingProfile();
-        $this->assertEquals('',$listingProfile->getPrices14dValues());
+        $this->assertEquals('', $listingProfile->getPrices14dValues());
 
         $p1 = $this->getRandomFloat();
         $p2 = $this->getRandomFloat();
@@ -386,7 +401,7 @@ class ListingProfileTest extends \PHPUnit_Framework_TestCase
 
         $result = $p1.",".$p2;
 
-        $this->assertEquals($result,$listingProfile->getPrices14dValues());
+        $this->assertEquals($result, $listingProfile->getPrices14dValues());
     }
 
     /**
@@ -394,17 +409,19 @@ class ListingProfileTest extends \PHPUnit_Framework_TestCase
      * @param int $max
      * @return mixed
      */
-    private function getRandomFloat($min=1,$max=50000000){
-        return mt_rand($min,$max) + (rand()/mt_getrandmax());
+    private function getRandomFloat($min = 1, $max = 50000000)
+    {
+        return mt_rand($min, $max) + (rand()/mt_getrandmax());
     }
 
     /*
     * @param int $length
     * @return string
     */
-    private function getRandomString($length = 6) {
+    private function getRandomString($length = 6)
+    {
         $str = "";
-        $characters = array_merge(range('A','Z'), range('a','z'), range('0','9'));
+        $characters = array_merge(range('A', 'Z'), range('a', 'z'), range('0', '9'));
         $max = count($characters) - 1;
         for ($i = 0; $i < $length; $i++) {
             $rand = mt_rand(0, $max);

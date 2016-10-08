@@ -9,31 +9,35 @@ namespace Tests\Model;
 use PHPUnit\Framework\TestCase;
 use Alphatrader\ApiBundle\Model\CashTransferLogEntry;
 
-class CashTransferLogEntryTest extends TestCase{
+class CashTransferLogEntryTest extends TestCase
+{
 
-    public function testId(){
+    public function testId()
+    {
         $cashTransferLogEntry = new CashTransferLogEntry();
         $this->assertNull($cashTransferLogEntry->getId());
 
         $uuid = uniqid();
 
         $cashTransferLogEntry->setId($uuid);
-        $this->assertEquals($uuid,$cashTransferLogEntry->getId());
+        $this->assertEquals($uuid, $cashTransferLogEntry->getId());
         $this->assertTrue(is_string($cashTransferLogEntry->getId()));
     }
 
-    public function testAmount(){
+    public function testAmount()
+    {
         $cashTransferLogEntry = new CashTransferLogEntry();
         $this->assertNull($cashTransferLogEntry->getAmount());
 
-        $amount =  mt_rand(0,50000)+(mt_rand() / mt_getrandmax());
+        $amount =  mt_rand(0, 50000)+(mt_rand() / mt_getrandmax());
         $cashTransferLogEntry->setAmount($amount);
 
-        $this->assertEquals($amount,$cashTransferLogEntry->getAmount());
+        $this->assertEquals($amount, $cashTransferLogEntry->getAmount());
         $this->assertTrue(is_float($cashTransferLogEntry->getAmount()));
     }
 
-    public function testMessage(){
+    public function testMessage()
+    {
         $cashTransferLogEntry = new CashTransferLogEntry();
         $this->assertNull($cashTransferLogEntry->getMessage());
 
@@ -46,36 +50,38 @@ class CashTransferLogEntryTest extends TestCase{
 
         $cashTransferLogEntry->setMessage($message);
 
-        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\MessagePrototype',$cashTransferLogEntry->getMessage());
-
+        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\MessagePrototype', $cashTransferLogEntry->getMessage());
     }
 
-    public function testReceiverBankAcc(){
+    public function testReceiverBankAcc()
+    {
         $cashTransferLogEntry = new CashTransferLogEntry();
         $this->assertNull($cashTransferLogEntry->getReceiverBankAccount());
 
         $string = $this->getRandomString(12);
         $cashTransferLogEntry->setReceiverBankAccount($string);
-        $this->assertEquals($string,$cashTransferLogEntry->getReceiverBankAccount());
+        $this->assertEquals($string, $cashTransferLogEntry->getReceiverBankAccount());
         $this->assertTrue(is_string($cashTransferLogEntry->getReceiverBankAccount()));
     }
 
-    public function testSenderBankAcc(){
+    public function testSenderBankAcc()
+    {
         $cashTransferLogEntry = new CashTransferLogEntry();
         $this->assertNull($cashTransferLogEntry->getSenderBankAccount());
 
         $string = $this->getRandomString(12);
         $cashTransferLogEntry->setSenderBankAccount($string);
-        $this->assertEquals($string,$cashTransferLogEntry->getSenderBankAccount());
+        $this->assertEquals($string, $cashTransferLogEntry->getSenderBankAccount());
         $this->assertTrue(is_string($cashTransferLogEntry->getSenderBankAccount()));
     }
 
     /*
     * @param $length
     */
-    private function getRandomString($length = 6) {
+    private function getRandomString($length = 6)
+    {
         $str = "";
-        $characters = array_merge(range('A','Z'), range('a','z'), range('0','9'));
+        $characters = array_merge(range('A', 'Z'), range('a', 'z'), range('0', '9'));
         $max = count($characters) - 1;
         for ($i = 0; $i < $length; $i++) {
             $rand = mt_rand(0, $max);

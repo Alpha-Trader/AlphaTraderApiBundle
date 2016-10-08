@@ -24,7 +24,7 @@ class AbstractPollTest extends TestCase
         $uuid = uniqid();
 
         $abstractPoll->setId($uuid);
-        $this->assertEquals($uuid,$abstractPoll->getId());
+        $this->assertEquals($uuid, $abstractPoll->getId());
     }
 
     public function testAbstentionRule()
@@ -33,8 +33,7 @@ class AbstractPollTest extends TestCase
         $this->assertNull($abstractPoll->getAbstentionRule());
 
         $abstractPoll->setAbstentionRule("COUNTS_AS_APPROVAL");
-        $this->assertEquals("COUNTS_AS_APPROVAL",$abstractPoll->getAbstentionRule());
-
+        $this->assertEquals("COUNTS_AS_APPROVAL", $abstractPoll->getAbstentionRule());
     }
 
     public function testCastVotesPercentage()
@@ -45,7 +44,7 @@ class AbstractPollTest extends TestCase
         $percentage = mt_rand() / mt_getrandmax();
 
         $abstractPoll->setCastVotesPercentage($percentage);
-        $this->assertEquals($percentage,$abstractPoll->getCastVotesPercentage());
+        $this->assertEquals($percentage, $abstractPoll->getCastVotesPercentage());
         $this->assertTrue(is_float($percentage));
     }
 
@@ -76,7 +75,7 @@ class AbstractPollTest extends TestCase
         $motion = $this->getRandomString();
         
         $abstractPoll->setMotion($motion);
-        $this->assertEquals($motion,$abstractPoll->getMotion());
+        $this->assertEquals($motion, $abstractPoll->getMotion());
     }
 
     
@@ -88,7 +87,7 @@ class AbstractPollTest extends TestCase
         $username = $this->createMock('Alphatrader\ApiBundle\Model\UserName');
         $username->expects($this->any())->method('getId')->will($this->returnValue($id));
         $abstractPoll->setPollInitiator($username);
-        $this->assertEquals($id,$abstractPoll->getPollInitiator()->getId());
+        $this->assertEquals($id, $abstractPoll->getPollInitiator()->getId());
     }
 
     public function testResultExpireDate()
@@ -96,9 +95,9 @@ class AbstractPollTest extends TestCase
         $abstractPoll = $this->getAbstractPoll();
         $this->assertNull($abstractPoll->getResultExpireDate());
         
-        $time = mt_rand(1262055681,1474823143);
+        $time = mt_rand(1262055681, 1474823143);
         $abstractPoll->setResultExpireDate($time);
-        $this->assertEquals($time,$abstractPoll->getResultExpireDate());
+        $this->assertEquals($time, $abstractPoll->getResultExpireDate());
         $this->assertTrue(is_int($abstractPoll->getResultExpireDate()));
     }
 
@@ -107,9 +106,9 @@ class AbstractPollTest extends TestCase
         $abstractPoll = $this->getAbstractPoll();
         $this->assertNull($abstractPoll->getTotalNumberOfVoices());
 
-        $number = mt_rand(10000,50000);
+        $number = mt_rand(10000, 50000);
         $abstractPoll->setTotalNumberOfCastVotes($number);
-        $this->assertEquals($number,$abstractPoll->getTotalNumberOfCastVotes());
+        $this->assertEquals($number, $abstractPoll->getTotalNumberOfCastVotes());
         $this->assertTrue(is_int($abstractPoll->getTotalNumberOfCastVotes()));
     }
 
@@ -118,9 +117,9 @@ class AbstractPollTest extends TestCase
         $abstractPoll = $this->getAbstractPoll();
         $this->assertNull($abstractPoll->getTotalNumberOfVoices());
 
-        $number = mt_rand(10000,50000);
+        $number = mt_rand(10000, 50000);
         $abstractPoll->setTotalNumberOfVoices($number);
-        $this->assertEquals($number,$abstractPoll->getTotalNumberOfVoices());
+        $this->assertEquals($number, $abstractPoll->getTotalNumberOfVoices());
         $this->assertTrue(is_int($abstractPoll->getTotalNumberOfVoices()));
     }
 
@@ -129,7 +128,7 @@ class AbstractPollTest extends TestCase
         $abstractPoll = $this->getAbstractPoll();
         
         $abstractPoll->setType('YES_NO');
-        $this->assertEquals('YES_NO',$abstractPoll->getType());
+        $this->assertEquals('YES_NO', $abstractPoll->getType());
         $this->assertTrue(is_string($abstractPoll->getType()));
     }
     
@@ -144,22 +143,24 @@ class AbstractPollTest extends TestCase
 
         //When
         $abstractPoll->setVotes([$vote1,$vote2]);
-        $this->assertCount(2,$abstractPoll->getVotes());
+        $this->assertCount(2, $abstractPoll->getVotes());
     }
 
     /**
      * @return AbstractPoll
      */
-    protected function getAbstractPoll(){
+    protected function getAbstractPoll()
+    {
 
         return new AbstractPoll();
     }
     /*
      * @param $length
      */
-    private function getRandomString($length = 6) {
+    private function getRandomString($length = 6)
+    {
         $str = "";
-        $characters = array_merge(range('A','Z'), range('a','z'), range('0','9'));
+        $characters = array_merge(range('A', 'Z'), range('a', 'z'), range('0', '9'));
         $max = count($characters) - 1;
         for ($i = 0; $i < $length; $i++) {
             $rand = mt_rand(0, $max);
@@ -167,5 +168,4 @@ class AbstractPollTest extends TestCase
         }
         return $str;
     }
-    
 }

@@ -14,33 +14,37 @@ use Alphatrader\ApiBundle\Model\Company;
  * @package Tests\Model
  * @author ljbergmann
  */
-class CompanyTest extends TestCase{
+class CompanyTest extends TestCase
+{
 
-    public function testId(){
+    public function testId()
+    {
         $company = new Company();
         $this->assertNull($company->getId());
 
         $uuid = uniqid();
 
         $company->setId($uuid);
-        $this->assertEquals($uuid,$company->getId());
+        $this->assertEquals($uuid, $company->getId());
         $this->assertTrue(is_string($company->getId()));
     }
 
-    public function testBankAccount(){
+    public function testBankAccount()
+    {
         $company = new Company();
         $this->assertNull($company->getBankAccount());
 
         $bankAccount = $this->createMock('Alphatrader\ApiBundle\Model\BankAccount');
         $bankAccount->expects($this->any())->method('getId')->will($this->returnValue($this->getRandomString(12)));
-        $bankAccount->expects($this->any())->method('getCash')->will($this->returnValue(mt_rand(1,50000)+(mt_rand() / mt_getrandmax())));
+        $bankAccount->expects($this->any())->method('getCash')->will($this->returnValue(mt_rand(1, 50000)+(mt_rand() / mt_getrandmax())));
 
         $company->setBankAccount($bankAccount);
 
-        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\BankAccount',$company->getBankAccount());
+        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\BankAccount', $company->getBankAccount());
     }
 
-    public function testCeo(){
+    public function testCeo()
+    {
         $company = new Company();
         $this->assertNull($company->getCeo());
 
@@ -63,11 +67,11 @@ class CompanyTest extends TestCase{
         
         $company->setCeo($ceo);
         
-        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\UserName',$company->getCeo());
-
+        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\UserName', $company->getCeo());
     }
     
-    public function testListing(){
+    public function testListing()
+    {
         $company = new Company();
         $this->assertNull($company->getListing());
         
@@ -77,36 +81,39 @@ class CompanyTest extends TestCase{
 
         $company->setListing($listing);
 
-        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\Listing',$company->getListing());
+        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\Listing', $company->getListing());
     }
 
-    public function testName(){
+    public function testName()
+    {
         $company = new Company();
         $this->assertNull($company->getName());
 
         $name = $this->getRandomString(12);
 
         $company->setName($name);
-        $this->assertEquals($name,$company->getName());
+        $this->assertEquals($name, $company->getName());
         $this->assertTrue(is_string($company->getName()));
     }
 
-    public function testSecuritiesAccountId(){
+    public function testSecuritiesAccountId()
+    {
         $company = new Company();
         $this->assertNull($company->getSecuritiesAccountId());
 
         $uuid = uniqid();
 
         $company->setSecuritiesAccountId($uuid);
-        $this->assertEquals($uuid,$company->getSecuritiesAccountId());
+        $this->assertEquals($uuid, $company->getSecuritiesAccountId());
         $this->assertTrue(is_string($company->getSecuritiesAccountId()));
     }
     /*
     * @param $length
     */
-    private function getRandomString($length = 6) {
+    private function getRandomString($length = 6)
+    {
         $str = "";
-        $characters = array_merge(range('A','Z'), range('a','z'), range('0','9'));
+        $characters = array_merge(range('A', 'Z'), range('a', 'z'), range('0', '9'));
         $max = count($characters) - 1;
         for ($i = 0; $i < $length; $i++) {
             $rand = mt_rand(0, $max);

@@ -15,7 +15,8 @@ use Alphatrader\ApiBundle\Model\LastMessage;
 
 class LastMessageTest extends \PHPUnit_Framework_TestCase
 {
-    public function testId(){
+    public function testId()
+    {
         $lastMessage = new LastMessage();
         $this->assertNull($lastMessage->getId());
 
@@ -23,10 +24,11 @@ class LastMessageTest extends \PHPUnit_Framework_TestCase
 
         $lastMessage->setId($uid);
 
-        $this->assertEquals($uid,$lastMessage->getId());
+        $this->assertEquals($uid, $lastMessage->getId());
     }
 
-    public function testContent(){
+    public function testContent()
+    {
         $lastMessage = new LastMessage();
         $this->assertNull($lastMessage->getContent());
 
@@ -34,10 +36,11 @@ class LastMessageTest extends \PHPUnit_Framework_TestCase
         $lastMessage->setContent($content);
 
         $this->assertTrue(is_string($lastMessage->getContent()));
-        $this->assertEquals($content,$lastMessage->getContent());
+        $this->assertEquals($content, $lastMessage->getContent());
     }
 
-    public function testDateSent(){
+    public function testDateSent()
+    {
         $lastMessage = new LastMessage();
         $this->assertNull($lastMessage->getDateSent());
 
@@ -45,11 +48,11 @@ class LastMessageTest extends \PHPUnit_Framework_TestCase
         $lastMessage->setDateSent($dateSent);
 
         $this->assertTrue(is_string($dateSent));
-        $this->assertEquals($dateSent,$lastMessage->getDateSent());
-
+        $this->assertEquals($dateSent, $lastMessage->getDateSent());
     }
 
-    public function testParticipants(){
+    public function testParticipants()
+    {
         $lastMessage = new LastMessage();
         $this->assertNull($lastMessage->getParticipants());
 
@@ -73,8 +76,7 @@ class LastMessageTest extends \PHPUnit_Framework_TestCase
 
         $lastMessage->setParticipants([$participants,$participants,$participants]);
 
-        $this->assertContainsOnlyInstancesOf('Alphatrader\ApiBundle\Model\UserName',$lastMessage->getParticipants());
-
+        $this->assertContainsOnlyInstancesOf('Alphatrader\ApiBundle\Model\UserName', $lastMessage->getParticipants());
     }
 
     public function testReadBy()
@@ -102,11 +104,11 @@ class LastMessageTest extends \PHPUnit_Framework_TestCase
 
         $lastMessage->setReadBy([$participants,$participants,$participants]);
 
-        $this->assertContainsOnlyInstancesOf('Alphatrader\ApiBundle\Model\UserName',$lastMessage->getReadBy());
-
+        $this->assertContainsOnlyInstancesOf('Alphatrader\ApiBundle\Model\UserName', $lastMessage->getReadBy());
     }
 
-    public function testSender(){
+    public function testSender()
+    {
         $lastMessage = new LastMessage();
         $this->assertNull($lastMessage->getSender());
 
@@ -130,15 +132,16 @@ class LastMessageTest extends \PHPUnit_Framework_TestCase
 
         $lastMessage->setSender($sender);
 
-        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\UserName',$lastMessage->getSender());
+        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\UserName', $lastMessage->getSender());
     }
     
     /*
     * @param $length
     */
-    private function getRandomString($length = 6) {
+    private function getRandomString($length = 6)
+    {
         $str = "";
-        $characters = array_merge(range('A','Z'), range('a','z'), range('0','9'));
+        $characters = array_merge(range('A', 'Z'), range('a', 'z'), range('0', '9'));
         $max = count($characters) - 1;
         for ($i = 0; $i < $length; $i++) {
             $rand = mt_rand(0, $max);

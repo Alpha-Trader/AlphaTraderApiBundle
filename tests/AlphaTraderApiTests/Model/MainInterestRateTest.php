@@ -24,7 +24,7 @@ class MainInterestRateTest extends \PHPUnit_Framework_TestCase
         $mainInterestRate->setId($uid);
 
         $this->assertTrue(is_string($mainInterestRate->getId()));
-        $this->assertEquals($uid,$mainInterestRate->getId());
+        $this->assertEquals($uid, $mainInterestRate->getId());
     }
 
     public function testGetValue()
@@ -32,12 +32,11 @@ class MainInterestRateTest extends \PHPUnit_Framework_TestCase
         $mainInterestRate = new MainInterestRate();
         $this->assertNull($mainInterestRate->getValue());
 
-        $value = $this->getRandomFloat(0,1);
+        $value = $this->getRandomFloat(0, 1);
         $mainInterestRate->setValue($value);
 
         $this->assertTrue(is_float($mainInterestRate->getValue()));
-        $this->assertEquals($value,$mainInterestRate->getValue());
-
+        $this->assertEquals($value, $mainInterestRate->getValue());
     }
 
     /**
@@ -45,9 +44,8 @@ class MainInterestRateTest extends \PHPUnit_Framework_TestCase
      * @param int $max
      * @return mixed
      */
-    private function getRandomFloat($min=1,$max=50000000){
-        return mt_rand($min,$max) + (rand()/mt_getrandmax());
+    private function getRandomFloat($min = 1, $max = 50000000)
+    {
+        return mt_rand($min, $max) + (rand()/mt_getrandmax());
     }
-
-
 }

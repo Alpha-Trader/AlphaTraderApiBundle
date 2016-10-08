@@ -12,18 +12,20 @@ use PHPUnit\Framework\TestCase;
 
 class BankingLicenseTest extends TestCase
 {
-    public function testId(){
+    public function testId()
+    {
         $bankLicense = new BankingLicense();
         $this->assertNull($bankLicense->getId());
 
         $uuid = uniqid();
 
         $bankLicense->setId($uuid);
-        $this->assertEquals($uuid,$bankLicense->getId());
+        $this->assertEquals($uuid, $bankLicense->getId());
         $this->assertTrue(is_string($bankLicense->getId()));
     }
 
-    public function testCompany(){
+    public function testCompany()
+    {
         $bankLicense = new BankingLicense();
         $this->assertNull($bankLicense->getCompany());
         
@@ -60,9 +62,10 @@ class BankingLicenseTest extends TestCase
     /*
      * @param $length
      */
-    private function getRandomString($length = 6) {
+    private function getRandomString($length = 6)
+    {
         $str = "";
-        $characters = array_merge(range('A','Z'), range('a','z'), range('0','9'));
+        $characters = array_merge(range('A', 'Z'), range('a', 'z'), range('0', '9'));
         $max = count($characters) - 1;
         for ($i = 0; $i < $length; $i++) {
             $rand = mt_rand(0, $max);

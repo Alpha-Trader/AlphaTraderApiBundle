@@ -10,6 +10,6 @@ class AlphatraderApiExtensionTest extends TestCase
     public function test_getAlias()
     {
         $extension = new AlphatraderApiExtension();
-        $this->assertEquals('alphatrader_api',$extension->getAlias());
+        $this->assertEquals('alphatrader_api', $extension->getAlias());
     }
 }
