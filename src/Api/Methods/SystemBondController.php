@@ -47,7 +47,7 @@ class SystemBondController extends ApiClient
     public function repayBond()
     {
         $data = $this->post('systembonds/');
-        $oResult = $this->getSerializer()->deserialize($data, 'array', 'json');
+        $oResult = $this->getSerializer()->deserialize($data->getBody()->getContents(), 'array', 'json');
         return $oResult;
     }
 

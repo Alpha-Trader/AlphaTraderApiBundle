@@ -47,7 +47,7 @@ class ApiClientTest extends TestCase
             if ($method == 'post'){
                 $html = $this->client->$method($this->url,['test'=>'test'],['test'=>'test']);
             }
-            $crawler = new Crawler($html);
+            $crawler = new Crawler($html->getBody()->getContents());
             if ($method == 'get' || $method == 'post') {
                 $this->assertEquals(1, $crawler->filter('body')->count());
             }
@@ -61,7 +61,7 @@ class ApiClientTest extends TestCase
     {
         $this->expectException(\Exception::class);
         $this->expectExceptionMessage('Invalid HTTP-Method: FAILMETHOD');
-        $this->client->get($this->url,'FAILMETHOD');
+        $this->client->request($this->url,'FAILMETHOD');
     }
 
 }
