@@ -21,7 +21,16 @@ trait CentralBankReservesTrait
     {
         return $this->getCentralBankReservesController()->getReserveById($reserveid);
     }
-
+    /**
+     * @param $companyId
+     *
+     * @return \Alphatrader\ApiBundle\Model\CentralBankReserve
+     */
+    public function getCentralBankReservesByCompanyId($companyId)
+    {
+        return $this->getCentralBankReservesController()->getReserveByCompanyId($companyId);
+    }
+    
     /**
      * @param Company $company
      * @param         $cashAmount
