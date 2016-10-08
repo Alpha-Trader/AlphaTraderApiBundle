@@ -9,26 +9,28 @@ namespace Tests\Model;
 use Alphatrader\ApiBundle\Model\Chat;
 use PHPUnit\Framework\TestCase;
 
-
 /**
  * Class ChatsTest
  * @package Tests\Model
  * @author ljbergmann
  */
-class ChatTest extends TestCase{
+class ChatTest extends TestCase
+{
 
-    public function testId(){
+    public function testId()
+    {
         $chat = new Chat();
         $this->assertNull($chat->getId());
 
         $uuid = uniqid();
 
         $chat->setId($uuid);
-        $this->assertEquals($uuid,$chat->getId());
+        $this->assertEquals($uuid, $chat->getId());
         $this->assertTrue(is_string($chat->getId()));
     }
     
-    public function testLastMessage(){
+    public function testLastMessage()
+    {
         $chat = new Chat();
         $this->assertNull($chat->getLastMessage());
         
@@ -67,33 +69,35 @@ class ChatTest extends TestCase{
         
         $chat->setLastMessage($lastMessage);
         
-        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\LastMessage',$chat->getLastMessage());
+        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\LastMessage', $chat->getLastMessage());
     }
     
-    public function testDateCreated(){
+    public function testDateCreated()
+    {
         $chat = new Chat();
         $this->assertNull($chat->getDateCreated());
         
         $date = $this->getRandomString(12);
         $chat->setDateCreated($date);
         
-        $this->assertEquals($date,$chat->getDateCreated());
+        $this->assertEquals($date, $chat->getDateCreated());
         $this->assertTrue(is_string($chat->getDateCreated()));
-        
     }
     
-    public function testChatName(){
+    public function testChatName()
+    {
         $chat = new Chat();
         $this->assertNull($chat->getChatName());
         
         $name = $this->getRandomString(12);
         $chat->setChatName($name);
         
-        $this->assertEquals($name,$chat->getChatName());
+        $this->assertEquals($name, $chat->getChatName());
         $this->assertTrue(is_string($chat->getChatName()));
     }
     
-    public function testParticipants(){
+    public function testParticipants()
+    {
         $chat = new Chat();
         $this->assertNull($chat->getParticipants());
 
@@ -116,20 +120,22 @@ class ChatTest extends TestCase{
 
         $chat->setParticipants($participants);
 
-        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\UserName',$chat->getParticipants());
+        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\UserName', $chat->getParticipants());
     }
 
-    public function testIsReadOnly(){
+    public function testIsReadOnly()
+    {
         $chat = new Chat();
         $this->assertNull($chat->isReadonly());
 
-        $readOnly = (bool)mt_rand(0,1);
+        $readOnly = (bool)mt_rand(0, 1);
         $chat->setReadonly($readOnly);
-        $this->assertEquals($readOnly,$chat->isReadonly());
+        $this->assertEquals($readOnly, $chat->isReadonly());
         $this->assertTrue(is_bool($chat->isReadonly()));
     }
 
-    public function testOwner(){
+    public function testOwner()
+    {
         $chat = new Chat();
         $this->assertNull($chat->getOwner());
 
@@ -152,15 +158,16 @@ class ChatTest extends TestCase{
 
         $chat->setOwner($owner);
 
-        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\UserName',$chat->getOwner());
+        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\UserName', $chat->getOwner());
     }
 
     /*
     * @param $length
     */
-    private function getRandomString($length = 6) {
+    private function getRandomString($length = 6)
+    {
         $str = "";
-        $characters = array_merge(range('A','Z'), range('a','z'), range('0','9'));
+        $characters = array_merge(range('A', 'Z'), range('a', 'z'), range('0', '9'));
         $max = count($characters) - 1;
         for ($i = 0; $i < $length; $i++) {
             $rand = mt_rand(0, $max);

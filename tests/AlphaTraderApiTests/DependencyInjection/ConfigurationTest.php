@@ -10,6 +10,6 @@ class ConfigurationTest extends TestCase
     public function test_getConfigTreeBuilder()
     {
         $configuration = new Configuration();
-        $this->assertInstanceOf('Symfony\Component\Config\Definition\Builder\NodeParentInterface',$configuration->getConfigTreeBuilder());
+        $this->assertInstanceOf('Symfony\Component\Config\Definition\Builder\NodeParentInterface', $configuration->getConfigTreeBuilder());
     }
 }

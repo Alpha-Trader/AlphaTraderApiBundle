@@ -15,7 +15,8 @@ use Alphatrader\ApiBundle\Model\DesignatedSponsorRating;
 
 class DesignatedSponsorRatingTest extends \PHPUnit_Framework_TestCase
 {
-    public function testSalery(){
+    public function testSalery()
+    {
         $dsr = new DesignatedSponsorRating();
         $this->assertNull($dsr->getSalary());
 
@@ -23,10 +24,11 @@ class DesignatedSponsorRatingTest extends \PHPUnit_Framework_TestCase
         $dsr->setSalary($salary);
 
         $this->assertTrue(is_float($dsr->getSalary()));
-        $this->assertEquals($salary,$dsr->getSalary());
+        $this->assertEquals($salary, $dsr->getSalary());
     }
 
-    public function testValue(){
+    public function testValue()
+    {
         $dsr = new DesignatedSponsorRating();
         $this->assertNull($dsr->getValue());
         
@@ -34,7 +36,7 @@ class DesignatedSponsorRatingTest extends \PHPUnit_Framework_TestCase
         $dsr->setValue($value);
         
         $this->assertTrue(is_string($dsr->getValue()));
-        $this->assertEquals($value,$dsr->getValue());
+        $this->assertEquals($value, $dsr->getValue());
     }
     
     /**
@@ -42,16 +44,18 @@ class DesignatedSponsorRatingTest extends \PHPUnit_Framework_TestCase
      * @param int $max
      * @return mixed
      */
-    private function getRandomFloat($min=1,$max=50000000){
-        return mt_rand($min,$max) + (rand()/mt_getrandmax());
+    private function getRandomFloat($min = 1, $max = 50000000)
+    {
+        return mt_rand($min, $max) + (rand()/mt_getrandmax());
     }
 
     /*
     * @param $length
     */
-    private function getRandomString($length = 6) {
+    private function getRandomString($length = 6)
+    {
         $str = "";
-        $characters = array_merge(range('A','Z'), range('a','z'), range('0','9'));
+        $characters = array_merge(range('A', 'Z'), range('a', 'z'), range('0', '9'));
         $max = count($characters) - 1;
         for ($i = 0; $i < $length; $i++) {
             $rand = mt_rand(0, $max);

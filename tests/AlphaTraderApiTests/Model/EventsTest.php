@@ -15,7 +15,8 @@ use Alphatrader\ApiBundle\Model\Events;
 
 class EventsTest extends \PHPUnit_Framework_TestCase
 {
-    public function testContent(){
+    public function testContent()
+    {
         $events = new Events();
         $this->assertNull($events->getContent());
         
@@ -24,11 +25,11 @@ class EventsTest extends \PHPUnit_Framework_TestCase
         $events->setContent($array);
         
         $this->assertTrue(is_array($events->getContent()));
-        $this->assertEquals($array,$events->getContent());
-        
+        $this->assertEquals($array, $events->getContent());
     }
 
-    public function testRealms(){
+    public function testRealms()
+    {
         $events = new Events();
         $this->assertNull($events->getRealms());
 
@@ -36,10 +37,11 @@ class EventsTest extends \PHPUnit_Framework_TestCase
 
         $events->setRealms($realms);
 
-        $this->assertEquals($realms,$events->getRealms());
+        $this->assertEquals($realms, $events->getRealms());
     }
 
-    public function testType(){
+    public function testType()
+    {
         $events = new Events();
         $this->assertNull($events->getType());
 
@@ -48,15 +50,16 @@ class EventsTest extends \PHPUnit_Framework_TestCase
         $events->setType($type);
 
         $this->assertTrue(is_string($events->getType()));
-        $this->assertEquals($type,$events->getType());
+        $this->assertEquals($type, $events->getType());
     }
 
     /*
     * @param $length
     */
-    private function getRandomString($length = 6) {
+    private function getRandomString($length = 6)
+    {
         $str = "";
-        $characters = array_merge(range('A','Z'), range('a','z'), range('0','9'));
+        $characters = array_merge(range('A', 'Z'), range('a', 'z'), range('0', '9'));
         $max = count($characters) - 1;
         for ($i = 0; $i < $length; $i++) {
             $rand = mt_rand(0, $max);

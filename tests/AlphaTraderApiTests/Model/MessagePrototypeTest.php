@@ -24,7 +24,7 @@ class MessagePrototypeTest extends \PHPUnit_Framework_TestCase
         $messagePrototype->setFilledString($content);
 
         $this->assertTrue(is_string($messagePrototype->getFilledString()));
-        $this->assertEquals($content,$messagePrototype->getFilledString());
+        $this->assertEquals($content, $messagePrototype->getFilledString());
     }
 
     public function testMessage()
@@ -36,7 +36,7 @@ class MessagePrototypeTest extends \PHPUnit_Framework_TestCase
         $messagePrototype->setMessage($content);
 
         $this->assertTrue(is_string($messagePrototype->getMessage()));
-        $this->assertEquals($content,$messagePrototype->getMessage());
+        $this->assertEquals($content, $messagePrototype->getMessage());
     }
 
     public function testSubstitutions()
@@ -47,16 +47,17 @@ class MessagePrototypeTest extends \PHPUnit_Framework_TestCase
         $substitutions = $this->createMock('\Doctrine\Common\Collections\ArrayCollection');
         $messagePrototype->setSubstitutions($substitutions);
 
-        $this->assertInstanceOf('\Doctrine\Common\Collections\ArrayCollection',$messagePrototype->getSubstitutions());
+        $this->assertInstanceOf('\Doctrine\Common\Collections\ArrayCollection', $messagePrototype->getSubstitutions());
     }
 
     /*
     * @param int $length
     * @return string
     */
-    private function getRandomString($length = 6) {
+    private function getRandomString($length = 6)
+    {
         $str = "";
-        $characters = array_merge(range('A','Z'), range('a','z'), range('0','9'));
+        $characters = array_merge(range('A', 'Z'), range('a', 'z'), range('0', '9'));
         $max = count($characters) - 1;
         for ($i = 0; $i < $length; $i++) {
             $rand = mt_rand(0, $max);

@@ -15,7 +15,8 @@ use Alphatrader\ApiBundle\Model\EmploymentAgreementCompactCompany;
 
 class EmploymentAgreementCompactCompanyTest extends \PHPUnit_Framework_TestCase
 {
-    public function testId(){
+    public function testId()
+    {
         $eacc = new EmploymentAgreementCompactCompany();
         $this->assertNull($eacc->getId());
 
@@ -23,10 +24,11 @@ class EmploymentAgreementCompactCompanyTest extends \PHPUnit_Framework_TestCase
 
         $eacc->setId($uuid);
         $this->assertTrue(is_string($eacc->getId()));
-        $this->assertEquals($uuid,$eacc->getId());
+        $this->assertEquals($uuid, $eacc->getId());
     }
 
-    public function testCompany(){
+    public function testCompany()
+    {
         $eacc = new EmploymentAgreementCompactCompany();
         $this->assertNull($eacc->getCompany());
 
@@ -41,10 +43,11 @@ class EmploymentAgreementCompactCompanyTest extends \PHPUnit_Framework_TestCase
 
         $eacc->setCompany($company);
 
-        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\CompactCompany',$eacc->getCompany());
+        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\CompactCompany', $eacc->getCompany());
     }
 
-    public function testDailyWage(){
+    public function testDailyWage()
+    {
         $eacc = new EmploymentAgreementCompactCompany();
         $this->assertNull($eacc->getDailyWage());
         
@@ -53,7 +56,7 @@ class EmploymentAgreementCompactCompanyTest extends \PHPUnit_Framework_TestCase
         $eacc->setDailyWage($wage);
         
         $this->assertTrue(is_float($eacc->getDailyWage()));
-        $this->assertEquals($wage,$eacc->getDailyWage());
+        $this->assertEquals($wage, $eacc->getDailyWage());
     }
     
     /**
@@ -61,16 +64,18 @@ class EmploymentAgreementCompactCompanyTest extends \PHPUnit_Framework_TestCase
      * @param int $max
      * @return mixed
      */
-    private function getRandomFloat($min=1,$max=50000000){
-        return mt_rand($min,$max) + (rand()/mt_getrandmax());
+    private function getRandomFloat($min = 1, $max = 50000000)
+    {
+        return mt_rand($min, $max) + (rand()/mt_getrandmax());
     }
 
     /*
     * @param $length
     */
-    private function getRandomString($length = 6) {
+    private function getRandomString($length = 6)
+    {
         $str = "";
-        $characters = array_merge(range('A','Z'), range('a','z'), range('0','9'));
+        $characters = array_merge(range('A', 'Z'), range('a', 'z'), range('0', '9'));
         $max = count($characters) - 1;
         for ($i = 0; $i < $length; $i++) {
             $rand = mt_rand(0, $max);
