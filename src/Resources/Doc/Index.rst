@@ -30,8 +30,9 @@ Composer will install the bundle to your project's ``vendor/alphatrader/apibundl
 Step 2: Enable the bundle
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Enable the bundle in the kernel::
+Enable the bundle in the kernel:
 
+.. code-block:: php
     <?php
     // app/AppKernel.php
 
