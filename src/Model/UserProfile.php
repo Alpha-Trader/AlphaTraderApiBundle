@@ -248,6 +248,10 @@ class UserProfile
     public function getDailyWage()
     {
         $dailyWage = 0.00;
+        if(!is_array($this->getEmployments())) {
+            return $dailyWage;
+        }
+
         foreach ($this->getEmployments() as $employment) {
             $dailyWage += $employment->getDailyWage();
         }
@@ -259,7 +263,7 @@ class UserProfile
      */
     public function getFirstEmploymentDate()
     {
-        if ($this->getEmployments()->first() == null) {
+        if ($this->getEmployments() == null) {
             return null;
         }
         return $this->getEmployments()->first()->getStartDate();
