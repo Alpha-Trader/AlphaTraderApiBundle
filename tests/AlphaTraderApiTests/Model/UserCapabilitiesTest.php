@@ -96,8 +96,7 @@ class UserCapabilitiesTest extends \PHPUnit_Framework_TestCase
         $date = new \DateTime('now');
         $date = $date->getTimestamp();
         $userCapabilities->setPremiumEndDate($date);
-
-
+        
         $this->assertTrue(is_int($userCapabilities->getPremiumEndDate()));
         $this->assertEquals($date, $userCapabilities->getPremiumEndDate());
     }
