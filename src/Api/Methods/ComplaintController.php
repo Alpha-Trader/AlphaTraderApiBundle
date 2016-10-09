@@ -38,7 +38,12 @@ class ComplaintController extends ApiClient
      */
     public function createComplaint($subjectMatterId, $subjectMatterType, $text)
     {
-        $data = $this->post("complaints/", ['subjectMatterId' => $subjectMatterId,'subjectMatterType' => $subjectMatterType,'text' => $text ]);
+        $data = $this->post("complaints/", [
+                'subjectMatterId' => $subjectMatterId,
+                'subjectMatterType' => $subjectMatterType,
+                'text' => $text
+            ]);
+
         return $this->parseResponse($data, "Alphatrader\ApiBundle\Model\Complaint");
     }
 }
