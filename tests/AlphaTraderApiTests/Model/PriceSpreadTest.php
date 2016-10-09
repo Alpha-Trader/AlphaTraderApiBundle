@@ -117,7 +117,7 @@ class PriceSpreadTest extends \PHPUnit_Framework_TestCase
         $priceSpread = new PriceSpread();
         $this->assertNull($priceSpread->getSpreadPercent());
 
-        $spread = $this->getRandomFloat(0,1);
+        $spread = $this->getRandomFloat(0, 1);
         $priceSpread->setSpreadPercent($spread);
 
         $this->assertTrue(is_float($priceSpread->getSpreadPercent()));
