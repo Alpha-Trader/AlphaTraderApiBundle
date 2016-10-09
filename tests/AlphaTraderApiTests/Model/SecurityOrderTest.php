@@ -46,7 +46,7 @@ class SecurityOrderTest extends \PHPUnit_Framework_TestCase
         $secOrder = new SecurityOrder();
         $this->assertNull($secOrder->getCreationDate());
 
-        $date = mt_rand(12000000,160000000);
+        $date = mt_rand(12000000, 160000000);
         $secOrder->setCreationDate($date);
 
         $this->assertTrue(is_int($secOrder->getCreationDate()));
@@ -94,7 +94,7 @@ class SecurityOrderTest extends \PHPUnit_Framework_TestCase
         $secOrder = new SecurityOrder();
         $this->assertNull($secOrder->getNumberOfShares());
 
-        $shares = mt_rand(1000,5000);
+        $shares = mt_rand(1000, 5000);
         $secOrder->setNumberOfShares($shares);
 
         $this->assertTrue(is_int($secOrder->getNumberOfShares()));
@@ -172,4 +172,3 @@ class SecurityOrderTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($type, $secOrder->getType());
     }
 }
-
