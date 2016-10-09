@@ -18,6 +18,7 @@ class AlphaTrader
     use Traits\CentralBankReservesTrait;
     use Traits\ChatTrait;
     use Traits\CompanyTrait;
+    use Traits\ComplaintTrait;
     use Traits\EventsTrait;
     use Traits\ListingTrait;
     use Traits\MainInterestRateTrait;
