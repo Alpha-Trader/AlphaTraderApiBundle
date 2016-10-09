@@ -4,7 +4,7 @@
  * Date: 08.10.16 23:02
  */
 
-namespace AlphaTraderApiTests\Model;
+namespace Tests\Model;
 
 use Alphatrader\ApiBundle\Model\MainInterestRate;
 
@@ -15,6 +15,8 @@ use Alphatrader\ApiBundle\Model\MainInterestRate;
 
 class MainInterestRateTest extends \PHPUnit_Framework_TestCase
 {
+    use RandomTrait;
+    
     public function testId()
     {
         $mainInterestRate = new MainInterestRate();
@@ -37,15 +39,5 @@ class MainInterestRateTest extends \PHPUnit_Framework_TestCase
 
         $this->assertTrue(is_float($mainInterestRate->getValue()));
         $this->assertEquals($value, $mainInterestRate->getValue());
-    }
-
-    /**
-     * @param int $min
-     * @param int $max
-     * @return mixed
-     */
-    private function getRandomFloat($min = 1, $max = 50000000)
-    {
-        return mt_rand($min, $max) + (rand()/mt_getrandmax());
     }
 }

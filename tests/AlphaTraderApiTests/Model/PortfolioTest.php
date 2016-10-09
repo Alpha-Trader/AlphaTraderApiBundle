@@ -4,7 +4,7 @@
  * Date: 09.10.16 01:02
  */
 
-namespace AlphaTraderApiTests\Model;
+namespace Tests\Model;
 
 use Alphatrader\ApiBundle\Model\Portfolio;
 
@@ -15,6 +15,8 @@ use Alphatrader\ApiBundle\Model\Portfolio;
 
 class PortfolioTest extends \PHPUnit_Framework_TestCase
 {
+    use RandomTrait;
+    
     public function testCash()
     {
         $portfolio = new Portfolio();
@@ -48,15 +50,5 @@ class PortfolioTest extends \PHPUnit_Framework_TestCase
         $portfolio->setPositions($positions);
 
         $this->assertInstanceOf('\Doctrine\Common\Collections\ArrayCollection', $portfolio->getPositions());
-    }
-
-    /**
-     * @param int $min
-     * @param int $max
-     * @return mixed
-     */
-    private function getRandomFloat($min = 1, $max = 50000000)
-    {
-        return mt_rand($min, $max) + (rand()/mt_getrandmax());
     }
 }

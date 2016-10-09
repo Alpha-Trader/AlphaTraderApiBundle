@@ -4,7 +4,7 @@
  * Date: 09.10.16 00:31
  */
 
-namespace AlphaTraderApiTests\Model;
+namespace Tests\Model;
 
 use Alphatrader\ApiBundle\Model\Notifications;
 
@@ -47,6 +47,17 @@ class NotificationsTest extends \PHPUnit_Framework_TestCase
         $notification->setReadByReceiver($username);
 
         $this->assertInstanceOf("Alphatrader\ApiBundle\Model\UserName", $notification->getReadByReceiver());
+    }
+    
+    public function testReceiver()
+    {
+        $notification = new Notifications();
+        $this->assertNull($notification->getReceiver());
+
+        $username = $this->createMock("Alphatrader\ApiBundle\Model\UserName");
+        $notification->setReceiver($username);
+
+        $this->assertInstanceOf("Alphatrader\ApiBundle\Model\UserName", $notification->getReceiver());
     }
 
     public function testSubject()

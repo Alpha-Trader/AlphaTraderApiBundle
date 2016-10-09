@@ -4,7 +4,7 @@
  * Date: 05.10.16 01:12
  */
 
-namespace AlphaTraderApiTests\Model;
+namespace Tests\Model;
 
 use Alphatrader\ApiBundle\Model\Events;
 
@@ -15,6 +15,8 @@ use Alphatrader\ApiBundle\Model\Events;
 
 class EventsTest extends \PHPUnit_Framework_TestCase
 {
+    use RandomTrait;
+    
     public function testContent()
     {
         $events = new Events();
@@ -51,20 +53,5 @@ class EventsTest extends \PHPUnit_Framework_TestCase
 
         $this->assertTrue(is_string($events->getType()));
         $this->assertEquals($type, $events->getType());
-    }
-
-    /*
-    * @param $length
-    */
-    private function getRandomString($length = 6)
-    {
-        $str = "";
-        $characters = array_merge(range('A', 'Z'), range('a', 'z'), range('0', '9'));
-        $max = count($characters) - 1;
-        for ($i = 0; $i < $length; $i++) {
-            $rand = mt_rand(0, $max);
-            $str .= $characters[$rand];
-        }
-        return $str;
     }
 }

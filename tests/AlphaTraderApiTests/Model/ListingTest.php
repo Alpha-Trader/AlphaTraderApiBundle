@@ -4,7 +4,7 @@
  * Date: 05.10.16 01:51
  */
 
-namespace AlphaTraderApiTests\Model;
+namespace Tests\Model;
 
 use Alphatrader\ApiBundle\Model\Listing;
 
@@ -15,6 +15,8 @@ use Alphatrader\ApiBundle\Model\Listing;
 
 class ListingTest extends \PHPUnit_Framework_TestCase
 {
+    use RandomTrait;
+    
     public function testSecurityIdentifier()
     {
         $Listing = new Listing();
@@ -37,20 +39,5 @@ class ListingTest extends \PHPUnit_Framework_TestCase
 
         $this->assertTrue(is_string($Listing->getType()));
         $this->assertEquals($type, $Listing->getType());
-    }
-
-    /*
-    * @param $length
-    */
-    private function getRandomString($length = 6)
-    {
-        $str = "";
-        $characters = array_merge(range('A', 'Z'), range('a', 'z'), range('0', '9'));
-        $max = count($characters) - 1;
-        for ($i = 0; $i < $length; $i++) {
-            $rand = mt_rand(0, $max);
-            $str .= $characters[$rand];
-        }
-        return $str;
     }
 }
