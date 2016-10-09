@@ -1,25 +1,25 @@
 <?php
 /**
  * User: ljbergmann
- * Date: 09.10.16 03:33
+ * Date: 09.10.16 03:41
  */
 
 namespace Tests\Model;
 
-use Alphatrader\ApiBundle\Model\UserAccount;
+use Alphatrader\ApiBundle\Model\UserAccounts;
 
 /**
- * Class UserAccountTest
+ * Class UserAccountsTest
  * @package Tests\Model
  */
 
-class UserAccountTest extends \PHPUnit_Framework_TestCase
+class UserAccountsTest extends \PHPUnit_Framework_TestCase
 {
     use RandomTrait;
 
     public function testId()
     {
-        $userAcoount = new UserAccount();
+        $userAcoount = new UserAccounts();
         $this->assertNull($userAcoount->getId());
 
         $uid = uniqid();
@@ -31,7 +31,7 @@ class UserAccountTest extends \PHPUnit_Framework_TestCase
 
     public function testEmailAddress()
     {
-        $userAcoount = new UserAccount();
+        $userAcoount = new UserAccounts();
         $this->assertNull($userAcoount->getEmailAddress());
 
         $strig = $this->getRandomString();
@@ -43,7 +43,7 @@ class UserAccountTest extends \PHPUnit_Framework_TestCase
 
     public function testUserCapabilities()
     {
-        $userAcoount = new UserAccount();
+        $userAcoount = new UserAccounts();
         $this->assertNull($userAcoount->getUserCapabilities());
 
         $uc = $this->createMock("Alphatrader\ApiBundle\Model\UserCapabilities");
@@ -54,7 +54,7 @@ class UserAccountTest extends \PHPUnit_Framework_TestCase
 
     public function testUsername()
     {
-        $userAcoount = new UserAccount();
+        $userAcoount = new UserAccounts();
         $this->assertNull($userAcoount->getUsername());
 
         $string = $this->getRandomString();
@@ -62,17 +62,5 @@ class UserAccountTest extends \PHPUnit_Framework_TestCase
 
         $this->assertTrue(is_string($userAcoount->getUsername()));
         $this->assertEquals($string, $userAcoount->getUsername());
-    }
-
-    public function testGravatarHash()
-    {
-        $userAcoount = new UserAccount();
-        $this->assertNull($userAcoount->getGravatarHash());
-
-        $string = $this->getRandomString();
-        $userAcoount->setGravatarHash($string);
-
-        $this->assertTrue(is_string($userAcoount->getGravatarHash()));
-        $this->assertEquals($string, $userAcoount->getGravatarHash());
     }
 }
