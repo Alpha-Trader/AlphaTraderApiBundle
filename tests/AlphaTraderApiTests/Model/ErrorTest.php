@@ -4,7 +4,7 @@
  * Date: 05.10.16 00:59
  */
 
-namespace AlphaTraderApiTests\Model;
+namespace Tests\Model;
 
 use Alphatrader\ApiBundle\Model\Error;
 
@@ -15,6 +15,8 @@ use Alphatrader\ApiBundle\Model\Error;
 
 class ErrorTest extends \PHPUnit_Framework_TestCase
 {
+    use RandomTrait;
+    
     public function testCode()
     {
         $error = new Error();
@@ -52,30 +54,5 @@ class ErrorTest extends \PHPUnit_Framework_TestCase
         $error->setMessagePrototype($messagePrototype);
         
         $this->assertInstanceOf('Alphatrader\ApiBundle\Model\MessagePrototype', $error->getMessagePrototype());
-    }
-    
-    /**
-     * @param int $min
-     * @param int $max
-     * @return mixed
-     */
-    private function getRandomFloat($min = 1, $max = 50000000)
-    {
-        return mt_rand($min, $max) + (rand()/mt_getrandmax());
-    }
-
-    /*
-    * @param $length
-    */
-    private function getRandomString($length = 6)
-    {
-        $str = "";
-        $characters = array_merge(range('A', 'Z'), range('a', 'z'), range('0', '9'));
-        $max = count($characters) - 1;
-        for ($i = 0; $i < $length; $i++) {
-            $rand = mt_rand(0, $max);
-            $str .= $characters[$rand];
-        }
-        return $str;
     }
 }

@@ -4,7 +4,7 @@
  * Date: 05.10.16 01:24
  */
 
-namespace AlphaTraderApiTests\Model;
+namespace Tests\Model;
 
 use Alphatrader\ApiBundle\Model\LastMessage;
 
@@ -15,6 +15,8 @@ use Alphatrader\ApiBundle\Model\LastMessage;
 
 class LastMessageTest extends \PHPUnit_Framework_TestCase
 {
+    use RandomTrait;
+    
     public function testId()
     {
         $lastMessage = new LastMessage();
@@ -133,20 +135,5 @@ class LastMessageTest extends \PHPUnit_Framework_TestCase
         $lastMessage->setSender($sender);
 
         $this->assertInstanceOf('Alphatrader\ApiBundle\Model\UserName', $lastMessage->getSender());
-    }
-    
-    /*
-    * @param $length
-    */
-    private function getRandomString($length = 6)
-    {
-        $str = "";
-        $characters = array_merge(range('A', 'Z'), range('a', 'z'), range('0', '9'));
-        $max = count($characters) - 1;
-        for ($i = 0; $i < $length; $i++) {
-            $rand = mt_rand(0, $max);
-            $str .= $characters[$rand];
-        }
-        return $str;
     }
 }

@@ -4,7 +4,7 @@
  * Date: 30.09.16 02:54
  */
 
-namespace AlphaTraderApiTests\Model;
+namespace Tests\Model;
 
 /**
  * Class CompanyTraitTest
@@ -13,6 +13,8 @@ namespace AlphaTraderApiTests\Model;
 
 class CompanyTraitTest extends \PHPUnit_Framework_TestCase
 {
+    use RandomTrait;
+    
     /**
      * @var \Alphatrader\ApiBundle\Model\CompanyTrait
      */
@@ -270,30 +272,5 @@ class CompanyTraitTest extends \PHPUnit_Framework_TestCase
         $this->traitObject->setCompanyCapabilities($cc);
 
         $this->assertInstanceOf('Alphatrader\ApiBundle\Model\CompanyCapabilities', $this->traitObject->getCompanyCapabilities());
-    }
-
-    /**
-     * @param int $min
-     * @param int $max
-     * @return mixed
-     */
-    private function getRandomFloat($min = 1, $max = 50000000)
-    {
-        return mt_rand($min, $max) + (rand()/mt_getrandmax());
-    }
-
-    /*
-    * @param $length
-    */
-    private function getRandomString($length = 6)
-    {
-        $str = "";
-        $characters = array_merge(range('A', 'Z'), range('a', 'z'), range('0', '9'));
-        $max = count($characters) - 1;
-        for ($i = 0; $i < $length; $i++) {
-            $rand = mt_rand(0, $max);
-            $str .= $characters[$rand];
-        }
-        return $str;
     }
 }

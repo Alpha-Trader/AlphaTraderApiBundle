@@ -4,7 +4,7 @@
  * Date: 09.10.16 01:31
  */
 
-namespace AlphaTraderApiTests\Model;
+namespace Tests\Model;
 
 use Alphatrader\ApiBundle\Model\PortfolioPosition;
 
@@ -15,6 +15,8 @@ use Alphatrader\ApiBundle\Model\PortfolioPosition;
 
 class PortfolioPositionTest extends \PHPUnit_Framework_TestCase
 {
+    use RandomTrait;
+    
     public function testCommittedShares()
     {
         $pp = new PortfolioPosition();
@@ -33,9 +35,9 @@ class PortfolioPositionTest extends \PHPUnit_Framework_TestCase
         $this->assertNull($pp->getCurrentAskPrice());
 
         $ask = $this->getRandomFloat(1, 10);
-        $pp->setCommittedShares($ask);
+        $pp->setCurrentAskPrice($ask);
 
-        $this->assertTrue(is_int($pp->getCurrentAskPrice()));
+        $this->assertTrue(is_float($pp->getCurrentAskPrice()));
         $this->assertEquals($ask, $pp->getCurrentAskPrice());
     }
 
@@ -45,7 +47,7 @@ class PortfolioPositionTest extends \PHPUnit_Framework_TestCase
         $this->assertNull($pp->getCurrentAskSize());
 
         $currentAskSize = mt_rand(20, 5000);
-        $pp->setCommittedShares($currentAskSize);
+        $pp->setCurrentAskSize($currentAskSize);
 
         $this->assertTrue(is_int($pp->getCurrentAskSize()));
         $this->assertEquals($currentAskSize, $pp->getCurrentAskSize());
@@ -57,9 +59,9 @@ class PortfolioPositionTest extends \PHPUnit_Framework_TestCase
         $this->assertNull($pp->getCurrentBidPrice());
 
         $bid = $this->getRandomFloat(1, 10);
-        $pp->setCommittedShares($bid);
+        $pp->setCurrentBidPrice($bid);
 
-        $this->assertTrue(is_int($pp->getCurrentBidPrice()));
+        $this->assertTrue(is_float($pp->getCurrentBidPrice()));
         $this->assertEquals($bid, $pp->getCurrentBidPrice());
     }
 
@@ -69,10 +71,10 @@ class PortfolioPositionTest extends \PHPUnit_Framework_TestCase
         $this->assertNull($pp->getCurrentBidSize());
 
         $currentBidSize = mt_rand(20, 5000);
-        $pp->setCommittedShares($currentBidSize);
+        $pp->setCurrentBidSize($currentBidSize);
 
-        $this->assertTrue(is_int($pp->getCurrentAskSize()));
-        $this->assertEquals($currentBidSize, $pp->getCurrentAskSize());
+        $this->assertTrue(is_int($pp->getCurrentBidSize()));
+        $this->assertEquals($currentBidSize, $pp->getCurrentBidSize());
     }
 
     public function testLastPrice()
@@ -91,7 +93,7 @@ class PortfolioPositionTest extends \PHPUnit_Framework_TestCase
         $pp = new PortfolioPosition();
         $this->assertNull($pp->getNumberOfShares());
 
-        $shares = mt_rand(50000);
+        $shares = mt_rand(50000, 5000000);
         $pp->setNumberOfShares($shares);
 
         $this->assertTrue(is_int($pp->getNumberOfShares()));
@@ -108,31 +110,5 @@ class PortfolioPositionTest extends \PHPUnit_Framework_TestCase
 
         $this->assertTrue(is_string($pp->getSecurityIdentifier()));
         $this->assertEquals($secIdent, $pp->getSecurityIdentifier());
-    }
-
-    /**
-     * @param int $min
-     * @param int $max
-     * @return mixed
-     */
-    private function getRandomFloat($min = 1, $max = 50000000)
-    {
-        return mt_rand($min, $max) + (rand()/mt_getrandmax());
-    }
-
-    /*
-    * @param int $length
-    * @return string
-    */
-    private function getRandomString($length = 6)
-    {
-        $str = "";
-        $characters = array_merge(range('A', 'Z'), range('a', 'z'), range('0', '9'));
-        $max = count($characters) - 1;
-        for ($i = 0; $i < $length; $i++) {
-            $rand = mt_rand(0, $max);
-            $str .= $characters[$rand];
-        }
-        return $str;
     }
 }

@@ -4,7 +4,7 @@
  * Date: 09.10.16 00:31
  */
 
-namespace AlphaTraderApiTests\Model;
+namespace Tests\Model;
 
 use Alphatrader\ApiBundle\Model\Notifications;
 
