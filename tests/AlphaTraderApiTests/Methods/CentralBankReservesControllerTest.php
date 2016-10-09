@@ -23,4 +23,17 @@ class CentralBankReservesControllerTest extends BaseTestCase
 
         $this->assertInstanceOf('Alphatrader\ApiBundle\Model\Error', $val);
     }
+
+    public function test_getReserveByCompanyId()
+    {
+        $expected = json_encode([]);
+        $request = $this->createMock('Alphatrader\ApiBundle\Api\Methods\CentralBankReservesController');
+        $request->method('getReserveByCompanyId')->will($this->returnValue($expected));
+
+        $bankaccount = new CentralBankReservesController($this->config);
+        $bankaccount->setClient($this->getClient($expected));
+        $val = $bankaccount->getReserveByCompanyId(1);
+
+        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\Error', $val);
+    }
 }
