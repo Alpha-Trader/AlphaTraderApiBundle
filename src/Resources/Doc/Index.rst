@@ -31,6 +31,7 @@ Step 2: Enable the bundle
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Enable the bundle in the kernel::
+
     <?php
     // app/AppKernel.php
 
