@@ -4,7 +4,7 @@
  * Date: 09.10.16 00:45
  */
 
-namespace AlphaTraderApiTests\Model;
+namespace Tests\Model;
 
 use Alphatrader\ApiBundle\Model\OrderCheck;
 
@@ -15,6 +15,8 @@ use Alphatrader\ApiBundle\Model\OrderCheck;
 
 class OrderCheckTest extends \PHPUnit_Framework_TestCase
 {
+    use RandomTrait;
+    
     public function testNumberOfShares()
     {
         $OrderCheck = new OrderCheck();
@@ -60,15 +62,5 @@ class OrderCheckTest extends \PHPUnit_Framework_TestCase
 
         $this->assertTrue(is_float($OrderCheck->getVolume()));
         $this->assertEquals($volume, $OrderCheck->getVolume());
-    }
-    
-    /**
-     * @param int $min
-     * @param int $max
-     * @return mixed
-     */
-    private function getRandomFloat($min = 1, $max = 50000000)
-    {
-        return mt_rand($min, $max) + (rand()/mt_getrandmax());
     }
 }

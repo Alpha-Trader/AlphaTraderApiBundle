@@ -4,10 +4,9 @@
  * Date: 05.10.16 01:56
  */
 
-namespace AlphaTraderApiTests\Model;
+namespace Tests\Model;
 
 use Alphatrader\ApiBundle\Model\ListingProfile;
-use phpDocumentor\Reflection\Types\This;
 
 /**
  * Class ListingProfileTest
@@ -16,6 +15,8 @@ use phpDocumentor\Reflection\Types\This;
 
 class ListingProfileTest extends \PHPUnit_Framework_TestCase
 {
+    use RandomTrait;
+    
     public function testBond()
     {
         $listingProfile = new ListingProfile();
@@ -402,31 +403,5 @@ class ListingProfileTest extends \PHPUnit_Framework_TestCase
         $result = $p1.",".$p2;
 
         $this->assertEquals($result, $listingProfile->getPrices14dValues());
-    }
-
-    /**
-     * @param int $min
-     * @param int $max
-     * @return mixed
-     */
-    private function getRandomFloat($min = 1, $max = 50000000)
-    {
-        return mt_rand($min, $max) + (rand()/mt_getrandmax());
-    }
-
-    /*
-    * @param int $length
-    * @return string
-    */
-    private function getRandomString($length = 6)
-    {
-        $str = "";
-        $characters = array_merge(range('A', 'Z'), range('a', 'z'), range('0', '9'));
-        $max = count($characters) - 1;
-        for ($i = 0; $i < $length; $i++) {
-            $rand = mt_rand(0, $max);
-            $str .= $characters[$rand];
-        }
-        return $str;
     }
 }

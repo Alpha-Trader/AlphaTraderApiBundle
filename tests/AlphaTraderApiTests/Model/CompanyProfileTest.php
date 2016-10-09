@@ -15,6 +15,8 @@ use Alphatrader\ApiBundle\Model\CompanyProfile;
 
 class CompanyProfileTest extends \PHPUnit_Framework_TestCase
 {
+    use RandomTrait;
+
     public function testCurrentSpread()
     {
         $company = new CompanyProfile();
@@ -162,31 +164,5 @@ class CompanyProfileTest extends \PHPUnit_Framework_TestCase
         $company->setPrices14d([$lole,$lole]);
 
         $this->assertContainsOnlyInstancesOf('Alphatrader\ApiBundle\Model\SecurityOrderLogEntry', $company->getPrices14d());
-    }
-
-    /**
-     * @param int $min
-     * @param int $max
-     * @return mixed
-     */
-    private function getRandomFloat($min = 1, $max = 50000000)
-    {
-        return mt_rand($min, $max) + (rand()/mt_getrandmax());
-    }
-
-    /*
-    * @param int $length
-    * @return string
-    */
-    private function getRandomString($length = 6)
-    {
-        $str = "";
-        $characters = array_merge(range('A', 'Z'), range('a', 'z'), range('0', '9'));
-        $max = count($characters) - 1;
-        for ($i = 0; $i < $length; $i++) {
-            $rand = mt_rand(0, $max);
-            $str .= $characters[$rand];
-        }
-        return $str;
     }
 }
