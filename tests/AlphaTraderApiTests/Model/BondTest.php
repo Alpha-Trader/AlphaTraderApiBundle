@@ -9,7 +9,6 @@ namespace Tests\Model;
 
 use PHPUnit\Framework\TestCase;
 use Alphatrader\ApiBundle\Model\Bond;
-use Symfony\Component\DependencyInjection\Tests\B;
 
 class BondTest extends TestCase
 {
