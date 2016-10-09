@@ -25,7 +25,6 @@ class VotingControllerTest extends BaseTestCase
         $VotingController->setClient($this->getClient($expected));
 
         $result = $VotingController->getMyPolls();
-        var_dump($request);
         $this->assertTrue(is_array($result));
     }
 }
