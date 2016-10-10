@@ -29,6 +29,17 @@ class UserAccountController extends ApiClient
     }
 
     /**
+     * @param $userid
+     *
+     * @return UserAccount
+     */
+    public function getUserById($userid)
+    {
+        $data = $this->get('users/' . $userid);
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\UserAccount');
+    }
+    
+    /**
      * @return UserAccount
      */
     public function getUsers()
@@ -58,18 +69,7 @@ class UserAccountController extends ApiClient
         $data = $this->get('users/' . $username);
         return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\UserAccount');
     }
-
-    /**
-     * @param $userid
-     *
-     * @return UserAccount
-     */
-    public function getUserById($userid)
-    {
-        $data = $this->get('users/' . $userid);
-        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\UserAccount');
-    }
-
+    
     /**
      * @param $username
      *

@@ -20,6 +20,15 @@ trait UserTrait
     }
 
     /**
+     * @param string $userId
+     * @return \Alphatrader\ApiBundle\Model\UserAccount
+     */
+    public function getUserById($userId)
+    {
+        return $this->getUserAccountController()->getUserById($userId);
+    }
+
+    /**
      * @return \Alphatrader\ApiBundle\Model\UserAccount
      */
     public function getUsers()
