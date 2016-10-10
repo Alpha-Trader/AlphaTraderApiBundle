@@ -181,6 +181,7 @@ class Chat
             $this->dateCreated = $date;
         }
     }
+    
     /**
      * @SuppressWarnings("unused")
      * @Annotation\PreSerialize
@@ -191,8 +192,8 @@ class Chat
             $this->dateCreated = $this->dateCreated->getTimestamp();
         }
 
-        if($this->lastMessage->dateSent instanceof \DateTime){
-            $this->lastMessage->dateSent = $this->lastMessage->dateSent->getTimestamp();
+        if($this->lastMessage->getDateSent() instanceof \DateTime){
+            $this->lastMessage->setDateSent($this->lastMessage->getDateSent()->getTimestamp());
         }
     }
 }
