@@ -98,8 +98,7 @@ class ApiClient
         } catch (\GuzzleHttp\Exception\ClientException $e) {
             $request = $e->getResponse();
         } catch (\GuzzleHttp\Exception\ServerException $e) {
-            $message = json_decode($e->getResponse()->getBody()->getContents());
-            throw new AccessDeniedHttpException($message->message, null, $message->status);
+            throw $e;
         } catch (\Exception $e) {
             throw new \Exception($e->getMessage());
         }
