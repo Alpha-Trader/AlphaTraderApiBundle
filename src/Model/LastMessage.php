@@ -43,9 +43,9 @@ class LastMessage
     /**
      * @var bool
      * @Annotation\Type("boolean")
-     * @Annotation\SerializedName("readBy")
+     * @Annotation\SerializedName("read")
      */
-    protected $readBy;
+    protected $read;
 
     /**
      * @Annotation\Type("Alphatrader\ApiBundle\Model\UserName")
@@ -135,17 +135,17 @@ class LastMessage
     /**
      * @return bool
      */
-    public function isReadBy()
+    public function isRead()
     {
-        return $this->readBy;
+        return $this->read;
     }
 
     /**
-     * @param bool $readBy
+     * @param bool $read
      */
-    public function setReadBy($readBy)
+    public function setRead($read)
     {
-        $this->readBy = $readBy;
+        $this->read = $read;
     }
 
     /**

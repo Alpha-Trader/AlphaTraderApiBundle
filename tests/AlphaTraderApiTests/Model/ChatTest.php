@@ -64,7 +64,7 @@ class ChatTest extends TestCase
         $lastMessage->expects($this->any())->method('getContent')->will($this->returnValue($this->getRandomString(200)));
         $lastMessage->expects($this->any())->method('getDateSent')->will($this->returnValue(new \DateTime()));
         $lastMessage->expects($this->any())->method('getParticipants')->will($this->returnValue([$participants]));
-        $lastMessage->expects($this->any())->method('isReadBy')->will($this->returnValue(true));
+        $lastMessage->expects($this->any())->method('isRead')->will($this->returnValue(true));
         $lastMessage->expects($this->any())->method('getSender')->will($this->returnValue($sender));
         
         $chat->setLastMessage($lastMessage);
