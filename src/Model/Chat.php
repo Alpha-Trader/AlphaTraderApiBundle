@@ -181,4 +181,18 @@ class Chat
             $this->dateCreated = $date;
         }
     }
+    /**
+     * @SuppressWarnings("unused")
+     * @Annotation\PreSerialize
+     */
+    private function preSerialization()
+    {
+        if($this->dateCreated instanceof \DateTime){
+            $this->dateCreated = $this->dateCreated->getTimestamp();
+        }
+
+        if($this->lastMessage->dateSent instanceof \DateTime){
+            $this->lastMessage->dateSent = $this->lastMessage->dateSent->getTimestamp();
+        }
+    }
 }
