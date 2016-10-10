@@ -22,6 +22,16 @@ trait EventsTrait
     }
 
     /**
+     * @param \DateTime|null $afterDate
+     *
+     * @return \Alphatrader\ApiBundle\Model\Events[]|\Alphatrader\ApiBundle\Model\Error
+     */
+    public function getEventsForCurrentUser(\DateTime $afterDate = null)
+    {
+        return $this->getEventController()->getEventsForUser($this->formatTimeStamp($afterDate));
+    }
+
+    /**
      * @param           $realms
      * @param \DateTime $afterDate
      *
@@ -42,6 +52,17 @@ trait EventsTrait
     public function getEventsByType($eventtype, $realms = '', $afterDate = null)
     {
         return $this->getEventController()->searchEventsByType($eventtype, $realms, $afterDate);
+    }
+
+    /**
+     * @param string $fullTextPart
+     * @param \DateTime $afterDate
+     * @return \Alphatrader\ApiBundle\Model\Events[]|\Alphatrader\ApiBundle\Model\Error
+     */
+    public function getEventsByFullTextPart($fullTextPart, $afterDate = null)
+    {
+        return $this->getEventController()
+                    ->searchEventsByFullTextPart($fullTextPart, $this->formatTimeStamp($afterDate));
     }
 
     /**

@@ -76,10 +76,12 @@ trait ChatTrait
     /**
      * @param Chat        $chat
      * @param UserAccount $user
+     *
+     * @return Chat
      */
     public function removeUser(Chat $chat, UserAccount $user)
     {
-        $this->getChatController()->removeUser($chat, $user);
+        return $this->getChatController()->removeUser($chat, $user);
     }
 
     /**
