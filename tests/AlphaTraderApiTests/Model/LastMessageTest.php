@@ -84,29 +84,10 @@ class LastMessageTest extends \PHPUnit_Framework_TestCase
     public function testReadBy()
     {
         $lastMessage = new LastMessage();
-        $this->assertNull($lastMessage->getReadBy());
+        $this->assertNull($lastMessage->isReadBy());
+        $lastMessage->setReadBy(true);
 
-        $date = new \DateTime();
-
-        $participants = $this->createMock('Alphatrader\ApiBundle\Model\UserName');
-        $usercaps = $this->createMock('Alphatrader\ApiBundle\Model\UserCapabilities');
-
-        $usercaps->expects($this->any())->method('isLevel2User')->will($this->returnValue(true));
-        $usercaps->expects($this->any())->method('getLevel2UserEndDate')->will($this->returnValue($date));
-        $usercaps->expects($this->any())->method('getLocale')->will($this->returnValue('en_US'));
-        $usercaps->expects($this->any())->method('isPartner')->will($this->returnValue(false));
-        $usercaps->expects($this->any())->method('getPartnerId')->will($this->returnValue($this->getRandomString()));
-        $usercaps->expects($this->any())->method('hasPremium')->will($this->returnValue(true));
-        $usercaps->expects($this->any())->method('getPremiumEndDate')->will($this->returnValue($date));
-
-        $participants->expects($this->any())->method('getId')->will($this->returnValue($this->getRandomString()));
-        $participants->expects($this->any())->method('getUsername')->will($this->returnValue($this->getRandomString()));
-        $participants->expects($this->any())->method('getGravatarHash')->will($this->returnValue($this->getRandomString(25)));
-        $participants->expects($this->any())->method('getUserCapabilities')->will($this->returnValue($usercaps));
-
-        $lastMessage->setReadBy([$participants,$participants,$participants]);
-
-        $this->assertContainsOnlyInstancesOf('Alphatrader\ApiBundle\Model\UserName', $lastMessage->getReadBy());
+        $this->assertTrue($lastMessage->isReadBy());
     }
 
     public function testSender()

@@ -105,7 +105,7 @@ class Chat
     }
 
     /**
-     * @return array
+     * @return LastMessage
      */
     public function getLastMessage()
     {
@@ -113,7 +113,7 @@ class Chat
     }
 
     /**
-     * @param array $lastMessage
+     * @param LastMessage $lastMessage
      */
     public function setLastMessage($lastMessage)
     {
@@ -137,7 +137,7 @@ class Chat
     }
 
     /**
-     * @return ArrayCollection<UserName>
+     * @return UserName[]
      */
     public function getParticipants()
     {
@@ -145,7 +145,7 @@ class Chat
     }
 
     /**
-     * @param array $participants
+     * @param UserName[] $participants
      */
     public function setParticipants($participants)
     {
