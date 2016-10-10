@@ -32,7 +32,7 @@ trait SecurityOrderTrait
      *
      * @return \Alphatrader\ApiBundle\Model\SecurityOrder
      */
-    public function createOrder($owner, $secIdent, $action, $type, $price, $numberOfShares, $counterparty)
+    public function createOrder($owner, $secIdent, $action, $type, $price, $numberOfShares, $counterparty = null)
     {
         return $this->getSecurityOrderController()->createSecurityOrder(
             $owner,
