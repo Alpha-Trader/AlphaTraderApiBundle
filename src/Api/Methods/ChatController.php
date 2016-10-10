@@ -139,7 +139,7 @@ class ChatController extends ApiClient
     public function getChat($iChat)
     {
         $data = $this->get('chats/' . $iChat);
-        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\Chats');
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\Chat');
     }
 
     /**
