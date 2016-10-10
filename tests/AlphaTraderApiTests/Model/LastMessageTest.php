@@ -84,10 +84,10 @@ class LastMessageTest extends \PHPUnit_Framework_TestCase
     public function testReadBy()
     {
         $lastMessage = new LastMessage();
-        $this->assertNull($lastMessage->isReadBy());
-        $lastMessage->setReadBy(true);
+        $this->assertNull($lastMessage->isRead());
+        $lastMessage->setRead(true);
 
-        $this->assertTrue($lastMessage->isReadBy());
+        $this->assertTrue($lastMessage->isRead());
     }
 
     public function testSender()
