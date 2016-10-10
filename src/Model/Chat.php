@@ -180,6 +180,14 @@ class Chat
             $date = new \DateTime(date('Y-m-d H:i:s.' . $micro, $dateCreated));
             $this->dateCreated = $date;
         }
+
+        if ($this->chatName == null) {
+            if ($this->participants->count() == 2) {
+                $this->chatName = $this->owner->getUsername().'* &'.$this->participants->last()->getUsername();
+            } else {
+                $this->chatName = $this->owner->getUsername().'*';
+            }
+        }
     }
     
     /**
@@ -188,11 +196,11 @@ class Chat
      */
     private function preSerialization()
     {
-        if($this->dateCreated instanceof \DateTime){
+        if ($this->dateCreated instanceof \DateTime) {
             $this->dateCreated = $this->dateCreated->getTimestamp();
         }
 
-        if($this->lastMessage->getDateSent() instanceof \DateTime){
+        if ($this->lastMessage->getDateSent() instanceof \DateTime) {
             $this->lastMessage->setDateSent($this->lastMessage->getDateSent()->getTimestamp());
         }
     }
