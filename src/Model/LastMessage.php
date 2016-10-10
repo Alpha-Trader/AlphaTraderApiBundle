@@ -41,11 +41,11 @@ class LastMessage
     protected $participants;
 
     /**
-     * @var UserName[]
-     * @Annotation\Type("ArrayCollection<Alphatrader\ApiBundle\Model\UserName>")
-     * @Annotation\SerializedName("readBy")
+     * @var bool
+     * @Annotation\Type("boolean")
+     * @Annotation\SerializedName("read")
      */
-    protected $readBy;
+    protected $read;
 
     /**
      * @Annotation\Type("Alphatrader\ApiBundle\Model\UserName")
@@ -133,19 +133,19 @@ class LastMessage
     }
 
     /**
-     * @return ArrayCollection<UserName>
+     * @return bool
      */
-    public function getReadBy()
+    public function isRead()
     {
-        return $this->readBy;
+        return $this->read;
     }
 
     /**
-     * @param UserName[] $readBy
+     * @param bool $read
      */
-    public function setReadBy($readBy)
+    public function setRead($read)
     {
-        $this->readBy = $readBy;
+        $this->read = $read;
     }
 
     /**
