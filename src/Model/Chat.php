@@ -105,7 +105,7 @@ class Chat
     }
 
     /**
-     * @return array
+     * @return LastMessage
      */
     public function getLastMessage()
     {
@@ -113,7 +113,7 @@ class Chat
     }
 
     /**
-     * @param array $lastMessage
+     * @param LastMessage $lastMessage
      */
     public function setLastMessage($lastMessage)
     {
