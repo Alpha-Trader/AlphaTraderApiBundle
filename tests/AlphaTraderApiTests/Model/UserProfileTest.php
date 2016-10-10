@@ -164,7 +164,7 @@ class UserProfileTest extends \PHPUnit_Framework_TestCase
     {
         $up = new UserProfile();
         $this->assertNull($up->getFirstEmploymentDate());
-
+        
         $date = new \DateTime("now");
         $eacc = $this->createMock('Alphatrader\ApiBundle\Model\EmploymentAgreementCompactCompany');
         $eacc->expects($this->any())->method('getStartDate')->willReturn($date);
