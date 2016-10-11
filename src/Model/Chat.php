@@ -183,13 +183,19 @@ class Chat
 
         if ($this->chatName == null) {
             if ($this->participants->count() == 2) {
-                $this->chatName = $this->owner->getUsername().'* &'.$this->participants->last()->getUsername();
-            } else {
-                $this->chatName = $this->owner->getUsername().'*';
+                $owner = $this->owner->getUsername();
+                $user = $this->participants->filter(
+                    function ($user) use ($owner) {
+                        return ($user->getUsername() != $owner) ? $user->getUsername() : '';
+                    }
+                )->last();
+                $this->chatName = $this->owner->getUsername().'* & '.$user->getUsername();
             }
+
+            $this->chatName = $this->owner->getUsername().'*';
         }
     }
-    
+
     /**
      * @SuppressWarnings("unused")
      * @Annotation\PreSerialize

@@ -5,6 +5,7 @@ namespace Tests\Methods;
 use Alphatrader\ApiBundle\Api\Methods\EventController;
 use JMS\Serializer\Serializer;
 use JMS\Serializer\SerializerBuilder;
+
 /**
  * Class EventControllerTest
  * @package Alphatrader\ApiBundle\Api\Methods
@@ -49,7 +50,7 @@ class EventControllerTest extends BaseTestCase
         $eventController = new EventController($this->config);
         $eventController->setClient($this->getClient($expected));
 
-        $value = $eventController->searchEvents('Trade',200);
+        $value = $eventController->searchEvents('Trade', 200);
 
         $this->assertContainsOnlyInstancesOf('Alphatrader\ApiBundle\Model\Error', $value);
     }
@@ -63,7 +64,7 @@ class EventControllerTest extends BaseTestCase
         $eventController = new EventController($this->config);
         $eventController->setClient($this->getClient($expected));
 
-        $value = $eventController->searchEventsByType('NEW_USER','Trade',200);
+        $value = $eventController->searchEventsByType('NEW_USER', 'Trade', 200);
 
         $this->assertContainsOnlyInstancesOf('Alphatrader\ApiBundle\Model\Error', $value);
     }
