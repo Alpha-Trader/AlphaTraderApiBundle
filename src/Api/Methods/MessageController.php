@@ -53,7 +53,7 @@ class MessageController extends ApiClient
      */
     public function deleteMessage($messageId)
     {
-        $data = $this->delete('messages/',['messageId'=>$messageId]);
+        $data = $this->delete('messages/', ['messageId' => $messageId]);
 
         return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\Error');
     }
@@ -65,11 +65,11 @@ class MessageController extends ApiClient
      */
     public function getMessage($messageId)
     {
-        $data = $this->get('messages/',['messageId'=>$messageId]);
+        $data = $this->get('messages/', ['messageId' => $messageId]);
 
         return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\Message');
     }
-    
+
     /**
      * @param $chatId
      *

@@ -60,7 +60,7 @@ trait MessageTrait
     {
         return $this->getMessageController()->getMessage($messageId);
     }
-    
+
     /**
      * @param Chat $chat
      *
@@ -68,9 +68,9 @@ trait MessageTrait
      */
     public function getMessagesFromChat(Chat $chat)
     {
-        return $this->getMessageController()->getMessagesFromChat($chat->getId());  
+        return $this->getMessageController()->getMessagesFromChat($chat->getId());
     }
-    
+
     /**
      * @return MessageController
      */
