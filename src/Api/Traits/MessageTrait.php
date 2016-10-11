@@ -61,16 +61,17 @@ trait MessageTrait
         return $this->getMessageController()->getMessage($messageId);
     }
 
+
     /**
-     * @param Chat $chat
-     * @param null $afterDate
-     * @param null $beforeDate
+     * @param string $chatId
+     * @param null   $afterDate
+     * @param null   $beforeDate
      *
      * @return \Alphatrader\ApiBundle\Model\Error||\Alphatrader\ApiBundle\Model\Message[]
      */
-    public function getMessagesFromChat(Chat $chat, $afterDate = null, $beforeDate = null)
+    public function getMessagesFromChat($chatId, $afterDate = null, $beforeDate = null)
     {
-        return $this->getMessageController()->getMessagesFromChat($chat->getId(), $afterDate, $beforeDate);
+        return $this->getMessageController()->getMessagesFromChat($chatId, $afterDate, $beforeDate);
     }
 
     /**
