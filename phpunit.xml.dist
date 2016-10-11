@@ -19,6 +19,7 @@
     <testsuites>
         <testsuite name="AlphaTraderApiBundle Test Suite">
             <directory>./tests/AlphaTraderApiTests</directory>
+            <exclude>./tests/AlphaTraderApiTests/ApiCoverageTest.php</exclude>
         </testsuite>
     </testsuites>
 

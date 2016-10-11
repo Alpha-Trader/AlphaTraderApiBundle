@@ -10,7 +10,9 @@ use PHPUnit\Framework\TestCase;
 
 class ApiCoverageTest extends TestCase
 {
-
+    /**
+     * This is the main test
+     */
     public function test()
     {
         $data = $this->getApiDefination();
@@ -37,12 +39,21 @@ class ApiCoverageTest extends TestCase
         }
     }
 
+    /**
+     * loading the json definitions of the API
+     * @return mixed
+     */
     private function getApiDefination()
     {
         $json = json_decode(file_get_contents("http://stable.alpha-trader.com/v2/api-docs"), true);
         return $json;
     }
 
+    /**
+     * getting controller of the api
+     * @param $tags
+     * @return array
+     */
     private function getController($tags)
     {
         $controller = [];
@@ -54,6 +65,12 @@ class ApiCoverageTest extends TestCase
         return $controller;
     }
 
+
+    /**
+     * counting the methods of the api controller
+     * @param $paths
+     * @return array
+     */
     private function getMethodsPerController($paths)
     {
         $methods = [];
@@ -78,6 +95,11 @@ class ApiCoverageTest extends TestCase
         return $methods;
     }
 
+    /**
+     * function to rename api controller
+     * @param $string
+     * @return mixed
+     */
     private function toCamelCase($string)
     {
         $replace = preg_replace_callback(

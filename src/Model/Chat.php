@@ -207,9 +207,11 @@ class Chat
         if ($this->dateCreated instanceof \DateTime) {
             $this->dateCreated = $this->dateCreated->getTimestamp();
         }
-
-        if ($this->lastMessage->getDateSent() instanceof \DateTime) {
-            $this->lastMessage->setDateSent($this->lastMessage->getDateSent()->getTimestamp());
+        
+        if ($this->lastMessage != null) {
+            if ($this->lastMessage->getDateSent() instanceof \DateTime) {
+                $this->lastMessage->setDateSent($this->lastMessage->getDateSent()->getTimestamp());
+            }
         }
     }
 }
