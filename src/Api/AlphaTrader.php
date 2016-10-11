@@ -22,6 +22,7 @@ class AlphaTrader
     use Traits\EventsTrait;
     use Traits\ListingTrait;
     use Traits\MainInterestRateTrait;
+    use Traits\MessageTrait;
     use Traits\NotificationTrait;
     use Traits\PortfolioTrait;
     use Traits\SecurityOrderLogTrait;
