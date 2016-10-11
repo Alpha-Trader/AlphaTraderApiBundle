@@ -32,15 +32,6 @@ class CompactChatTest extends TestCase
         $this->assertNull($chat->getLastMessage());
 
         $message = $this->createMock('Alphatrader\ApiBundle\Model\Message');
-        $participants = $this->createMock('Alphatrader\ApiBundle\Model\UserName');
-        
-        $participants->expects($this->any())->method('getId')->will($this->returnValue($this->getRandomString()));
-        $participants->expects($this->any())->method('getUsername')->will($this->returnValue($this->getRandomString()));
-        $participants->expects($this->any())->method('getGravatarHash')->will($this->returnValue($this->getRandomString(25)));
-
-        $message->expects($this->any())->method('getId')->will($this->returnValue($this->getRandomString()));
-        $message->expects($this->any())->method('getUsername')->will($this->returnValue($this->getRandomString()));
-        $message->expects($this->any())->method('getGravatarHash')->will($this->returnValue($this->getRandomString(25)));
         
         $chat->setLastMessage($message);
         
