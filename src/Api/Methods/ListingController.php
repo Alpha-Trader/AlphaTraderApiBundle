@@ -79,13 +79,12 @@ class ListingController extends ApiClient
 
     /**
      * @param $securityIdentifier
-     * 
+     *
      * @return Shareholder[]\Error
      */
-    public function getShareholders($securityIdentifier)
+    public function getShareholder($securityIdentifier)
     {
         $data = $this->get('shareholders/' . $securityIdentifier);
         return $this->parseResponse($data, 'ArrayCollection<Alphatrader\ApiBundle\Model\Shareholder>');
-
     }
 }
