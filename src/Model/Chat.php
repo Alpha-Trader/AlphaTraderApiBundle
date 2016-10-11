@@ -180,5 +180,38 @@ class Chat
             $date = new \DateTime(date('Y-m-d H:i:s.' . $micro, $dateCreated));
             $this->dateCreated = $date;
         }
+
+        if ($this->chatName == null) {
+            if ($this->participants->count() == 2) {
+                $owner = $this->owner->getUsername();
+                $user = $this->participants->filter(
+                    function ($user) use ($owner) {
+                        return ($user->getUsername() != $owner) ? $user->getUsername() : '';
+                    }
+                )->last();
+                $this->chatName = $this->owner->getUsername().'* & '.$user->getUsername();
+            }
+            
+            if ($this->participants->count() > 2) {
+                $this->chatName = $this->owner->getUsername().'*';
+            }
+        }
+    }
+
+    /**
+     * @SuppressWarnings("unused")
+     * @Annotation\PreSerialize
+     */
+    private function preSerialization()
+    {
+        if ($this->dateCreated instanceof \DateTime) {
+            $this->dateCreated = $this->dateCreated->getTimestamp();
+        }
+        
+        if ($this->lastMessage != null) {
+            if ($this->lastMessage->getDateSent() instanceof \DateTime) {
+                $this->lastMessage->setDateSent($this->lastMessage->getDateSent()->getTimestamp());
+            }
+        }
     }
 }

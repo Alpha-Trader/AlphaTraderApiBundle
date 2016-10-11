@@ -20,6 +20,7 @@ class UserName
     /**
      * @var string
      * @Annotation\Type("string")
+     * @Annotation\SerializedName("username")
      */
     private $username;
 
