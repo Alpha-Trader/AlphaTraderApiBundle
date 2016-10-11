@@ -72,12 +72,17 @@ class MessageController extends ApiClient
 
     /**
      * @param $chatId
+     * @param $afterDate
+     * @param $beforeDate
      *
      * @return \Alphatrader\ApiBundle\Model\Error|\Alphatrader\ApiBundle\Model\Message[]
      */
-    public function getMessagesFromChat($chatId)
+    public function getMessagesFromChat($chatId, $afterDate, $beforeDate)
     {
-        $data = $this->get('messages/chat/', ['chatId' => $chatId]);
+        $data = $this->get(
+            'messages/chat/',
+            ['chatId' => $chatId, 'afterDate' => $afterDate, 'beforeDate' => $beforeDate]
+        );
 
         return $this->parseResponse($data, 'ArrayCollection<Alphatrader\ApiBundle\Model\Message>');
     }
