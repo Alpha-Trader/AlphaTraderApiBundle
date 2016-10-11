@@ -71,9 +71,9 @@ class ListingController extends ApiClient
      *
      * @return Listing[]|Error
      */
-    public function getListingBySecurityIdentifierPart($securityIdentifierPart)
+    public function getListingBySecurityIdentifierPart($secIdentPart)
     {
-        $data = $this->get('listings/' . $securityIdentifierPart);
+        $data = $this->get('listings/' . $secIdentPart);
         return $this->parseResponse($data, 'ArrayCollection<Alphatrader\ApiBundle\Model\Listing>');
     }
 

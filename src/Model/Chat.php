@@ -190,9 +190,10 @@ class Chat
                     }
                 )->last();
                 $this->chatName = $this->owner->getUsername().'* & '.$user->getUsername();
-            } else {
-                $this->chatName = $this->owner->getUsername().'*';
             }
+
+            $this->chatName = $this->owner->getUsername().'*';
+
         }
     }
 
