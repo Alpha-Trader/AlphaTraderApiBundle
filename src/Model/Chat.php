@@ -193,7 +193,6 @@ class Chat
             }
 
             $this->chatName = $this->owner->getUsername().'*';
-
         }
     }
 
