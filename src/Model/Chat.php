@@ -191,8 +191,10 @@ class Chat
                 )->last();
                 $this->chatName = $this->owner->getUsername().'* & '.$user->getUsername();
             }
-
-            $this->chatName = $this->owner->getUsername().'*';
+            
+            if ($this->participants->count() > 2) {
+                $this->chatName = $this->owner->getUsername().'*';
+            }
         }
     }
 
