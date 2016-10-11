@@ -185,17 +185,15 @@ class Chat
             if ($this->participants->count() == 2) {
                 $owner = $this->owner->getUsername();
                 $user = $this->participants->filter(
-                    function ($user) use ($owner){
+                    function ($user) use ($owner) {
                         return ($user->getUsername() != $owner) ? $user->getUsername() : '';
                     }
                 )->last();
                 $this->chatName = $this->owner->getUsername().'* & '.$user->getUsername();
-
             } else {
                 $this->chatName = $this->owner->getUsername().'*';
             }
         }
-
     }
 
     /**
