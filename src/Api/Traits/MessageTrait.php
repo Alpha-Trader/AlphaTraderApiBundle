@@ -61,6 +61,7 @@ trait MessageTrait
         return $this->getMessageController()->getMessage($messageId);
     }
 
+
     /**
      * @param Chat $chat
      * @param null $afterDate

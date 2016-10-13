@@ -57,7 +57,7 @@ class ListingController extends ApiClient
     /**
      * @param $securityIdentifier
      *
-     * @return Listing[]|Error
+     * @return Listing|Error
      */
     public function getListingBySecurityIdentifier($securityIdentifier)
     {
