@@ -31,9 +31,10 @@ trait ListingTrait
     }
 
     /**
-     * @param $secIdentPart
+     * @param $secIdent
      *
-     * @return \Alphatrader\ApiBundle\Model\Listing[]
+     * @internal param $secIdentPart
+     * @return \Alphatrader\ApiBundle\Model\Listing
      */
     public function getListing($secIdent)
     {
