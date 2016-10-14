@@ -144,7 +144,7 @@ class ListingProfileTest extends \PHPUnit_Framework_TestCase
         $name = $this->getRandomString(12);
         $listingProfile->setName($name);
 
-        $this->assertNull($listingProfile->getName());
+        $this->assertEquals($name, $listingProfile->getName());
 
         $bond = $this->createMock('Alphatrader\ApiBundle\Model\Bond');
         $bond->expects($this->any())->method('getName')->willReturn($name);
@@ -152,7 +152,7 @@ class ListingProfileTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($name, $listingProfile->getName());
         $listingProfile->setBond(null);
 
-        $this->assertNull($listingProfile->getName());
+        $this->assertEquals($name, $listingProfile->getName());
 
         $company = $this->createMock('Alphatrader\ApiBundle\Model\CompanyCompactProfile');
         $company->expects($this->any())->method('getName')->willReturn($name);
@@ -160,7 +160,7 @@ class ListingProfileTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($name, $listingProfile->getName());
         $listingProfile->setCompany(null);
 
-        $this->assertNull($listingProfile->getName());
+        $this->assertEquals($name, $listingProfile->getName());
 
         $systemBond = $this->createMock('Alphatrader\ApiBundle\Model\SystemBond');
         $systemBond->expects($this->any())->method('getName')->willReturn($name);
@@ -241,8 +241,7 @@ class ListingProfileTest extends \PHPUnit_Framework_TestCase
     public function testIssuerName()
     {
         $listingProfile = new ListingProfile();
-        $this->assertNotNull($listingProfile->getIssuerName());
-        $this->assertEquals('Central Bank', $listingProfile->getIssuerName());
+        $this->assertNull($listingProfile->getIssuerName());
 
         $name = $this->getRandomString(12);
 
@@ -265,6 +264,13 @@ class ListingProfileTest extends \PHPUnit_Framework_TestCase
 
         $this->assertNotEquals('Central Bank', $listingProfile->getIssuerName());
         $this->assertEquals($name, $listingProfile->getIssuerName());
+
+        $listingProfile->setCompany(null);
+
+
+        $listingProfile->setSecurityIdentifier("SBSF8797");
+        $this->assertEquals('Central Bank', $listingProfile->getIssuerName());
+
     }
 
     public function testGetIssuerSecurityIdentifier()
