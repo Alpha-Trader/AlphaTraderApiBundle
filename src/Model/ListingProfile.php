@@ -342,6 +342,9 @@ class ListingProfile
         if (null !== $this->systemBond) {
             return $this->systemBond->getName();
         }
+        if (null !== $this->name) {
+            return $this->name;
+        }
 
         return null;
     }
