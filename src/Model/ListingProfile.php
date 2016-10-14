@@ -360,8 +360,11 @@ class ListingProfile
         if (null !== $this->bond) {
             return $this->getBond()->getIssuer()->getName();
         }
+        if (strpos($this->securityIdentifier, 'SBS') !== false) {
+            return "Central Bank";
+        }
 
-        return "Central Bank";
+        return null;
     }
 
     /**
