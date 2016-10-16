@@ -248,7 +248,7 @@ class UserProfile
     public function getDailyWage()
     {
         $dailyWage = 0.00;
-        if (!is_array($this->getEmployments())) {
+        if ($this->getEmployments() === null or !is_object($this->getEmployments())) {
             return $dailyWage;
         }
 
