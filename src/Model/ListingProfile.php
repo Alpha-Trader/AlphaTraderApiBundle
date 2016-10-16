@@ -333,6 +333,9 @@ class ListingProfile
      */
     public function getName()
     {
+        if (null !== $this->name) {
+            return $this->name;
+        }
         if (null !== $this->bond) {
             return $this->bond->getName();
         }
@@ -341,9 +344,6 @@ class ListingProfile
         }
         if (null !== $this->systemBond) {
             return $this->systemBond->getName();
-        }
-        if (null !== $this->name) {
-            return $this->name;
         }
 
         return null;
@@ -360,11 +360,8 @@ class ListingProfile
         if (null !== $this->bond) {
             return $this->getBond()->getIssuer()->getName();
         }
-        if (strpos($this->securityIdentifier, 'SBS') !== false) {
-            return "Central Bank";
-        }
 
-        return null;
+        return "Central Bank";
     }
 
     /**

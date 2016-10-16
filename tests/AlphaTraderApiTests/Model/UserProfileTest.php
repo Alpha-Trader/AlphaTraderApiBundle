@@ -156,7 +156,7 @@ class UserProfileTest extends \PHPUnit_Framework_TestCase
         $eacc->expects($this->any())->method('getDailyWage')->willReturn($wage);
         $up->setEmployments([$eacc,$eacc]);
         $this->assertTrue(is_float($up->getDailyWage()));
-        $this->assertEquals($wage*2, $up->getDailyWage());
+        $this->assertSame($wage*2, $up->getDailyWage());
     }
 
     public function testGetFirstEmploymentDate()
