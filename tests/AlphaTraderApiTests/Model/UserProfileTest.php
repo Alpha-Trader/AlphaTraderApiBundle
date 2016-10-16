@@ -154,10 +154,9 @@ class UserProfileTest extends \PHPUnit_Framework_TestCase
         $wage = $this->getRandomFloat();
         $eacc = $this->createMock('Alphatrader\ApiBundle\Model\EmploymentAgreementCompactCompany');
         $eacc->expects($this->any())->method('getDailyWage')->willReturn($wage);
-        $up->setEmployments([$eacc]);
-
+        $up->setEmployments([$eacc,$eacc]);
         $this->assertTrue(is_float($up->getDailyWage()));
-        $this->assertEquals($wage, $up->getDailyWage());
+        $this->assertEquals($wage*2, $up->getDailyWage());
     }
 
     public function testGetFirstEmploymentDate()
