@@ -26,7 +26,13 @@ class Listing
     private $type;
 
     /**
-     * @return mixed
+     * @Annotation\Type("string")
+     * @Annotation\SerializedName("name")
+     */
+    private $name;
+
+    /**
+     * @return string
      */
     public function getSecurityIdentifier()
     {
@@ -34,7 +40,7 @@ class Listing
     }
 
     /**
-     * @param mixed $securityIdentifier
+     * @param string $securityIdentifier
      */
     public function setSecurityIdentifier($securityIdentifier)
     {
@@ -42,7 +48,7 @@ class Listing
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getType()
     {
@@ -50,10 +56,26 @@ class Listing
     }
 
     /**
-     * @param mixed $type
+     * @param string $type
      */
     public function setType($type)
     {
         $this->type = $type;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
     }
 }

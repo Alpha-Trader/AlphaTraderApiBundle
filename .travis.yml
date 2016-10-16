@@ -20,7 +20,6 @@ env:
   
 script:
   - ./vendor/bin/phpunit --disallow-test-output --report-useless-tests --coverage-clover ./build/logs/clover.xml
-  - ./vendor/bin/phpunit --disallow-test-output --report-useless-tests --exclude-group=Coverage
   - ./vendor/bin/phpbench run --revs=1 --iterations=3 --warmup=1 --report=aggregate
   - ./vendor/bin/phpcs --standard=PSR2 src/
   - ./vendor/bin/phpcpd src/
