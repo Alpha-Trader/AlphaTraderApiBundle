@@ -248,11 +248,8 @@ class UserProfile
     public function getDailyWage()
     {
         $dailyWage = 0.00;
-
         if ($this->getEmployments() === null or !is_array($this->getEmployments())) {
-            if ($this->getEmployments()->isEmpty()) {
-                return $dailyWage;
-            }
+            return $dailyWage;
         }
 
         foreach ($this->getEmployments() as $employment) {
