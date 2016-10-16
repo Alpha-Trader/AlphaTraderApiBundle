@@ -149,23 +149,23 @@ class ListingProfileTest extends \PHPUnit_Framework_TestCase
         $bond = $this->createMock('Alphatrader\ApiBundle\Model\Bond');
         $bond->expects($this->any())->method('getName')->willReturn($name);
         $listingProfile->setBond($bond);
-        $this->assertEquals($name, $listingProfile->getName());
+        $this->assertSame($name, $listingProfile->getName());
         $listingProfile->setBond(null);
 
-        $this->assertEquals($name, $listingProfile->getName());
+        $this->assertSame($name, $listingProfile->getName());
 
         $company = $this->createMock('Alphatrader\ApiBundle\Model\CompanyCompactProfile');
         $company->expects($this->any())->method('getName')->willReturn($name);
         $listingProfile->setCompany($company);
-        $this->assertEquals($name, $listingProfile->getName());
+        $this->assertSame($name, $listingProfile->getName());
         $listingProfile->setCompany(null);
 
-        $this->assertEquals($name, $listingProfile->getName());
+        $this->assertSame($name, $listingProfile->getName());
 
         $systemBond = $this->createMock('Alphatrader\ApiBundle\Model\SystemBond');
         $systemBond->expects($this->any())->method('getName')->willReturn($name);
         $listingProfile->setSystemBond($systemBond);
-        $this->assertEquals($name, $listingProfile->getName());
+        $this->assertSame($name, $listingProfile->getName());
     }
 
     public function testOutstandingShares()
@@ -241,7 +241,7 @@ class ListingProfileTest extends \PHPUnit_Framework_TestCase
     public function testIssuerName()
     {
         $listingProfile = new ListingProfile();
-        $this->assertNull($listingProfile->getIssuerName());
+        $this->assertEquals('Central Bank', $listingProfile->getIssuerName());
 
         $name = $this->getRandomString(12);
 
