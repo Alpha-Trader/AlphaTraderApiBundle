@@ -66,7 +66,7 @@ class UserAccountController extends ApiClient
      */
     public function getUserByUsername($username)
     {
-        $data = $this->get('users/' . $username);
+        $data = $this->get('users/username/' . $username);
         return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\UserAccount');
     }
     
