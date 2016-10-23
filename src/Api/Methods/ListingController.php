@@ -38,7 +38,7 @@ class ListingController extends ApiClient
      */
     public function getAllListings()
     {
-        $data = $this->get('listings');
+        $data = $this->get('listings/');
         return $this->parseResponse($data, 'ArrayCollection<Alphatrader\ApiBundle\Model\Listing>');
     }
 
