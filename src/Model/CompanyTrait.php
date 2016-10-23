@@ -147,7 +147,7 @@ trait CompanyTrait
      */
     public function hasLogo()
     {
-        return null != $this->logoUrl;
+        return null !== $this->logoUrl;
     }
 
     /**
