@@ -174,18 +174,18 @@ class Chat
      */
     private function afterDeserialization()
     {
-        if ($this->dateCreated != null) {
+        if ($this->dateCreated !== null) {
             $dateCreated = substr($this->dateCreated, 0, 10) . '.' . substr($this->dateCreated, 10);
             $micro = sprintf("%06d", ($dateCreated - floor($dateCreated)) * 1000000);
             $date = new \DateTime(date('Y-m-d H:i:s.' . $micro, $dateCreated));
             $this->dateCreated = $date;
         }
 
-        if ($this->chatName == null) {
+        if ($this->chatName === null) {
             if ($this->participants->count() == 2) {
                 $owner = $this->owner->getUsername();
                 $user = $this->participants->filter(
-                    function ($user) use ($owner) {
+                    function (UserAccount $user) use ($owner) {
                         return ($user->getUsername() != $owner) ? $user->getUsername() : '';
                     }
                 )->last();
@@ -208,7 +208,7 @@ class Chat
             $this->dateCreated = $this->dateCreated->getTimestamp();
         }
         
-        if ($this->lastMessage != null) {
+        if ($this->lastMessage !== null) {
             if ($this->lastMessage->getDateSent() instanceof \DateTime) {
                 $this->lastMessage->setDateSent($this->lastMessage->getDateSent()->getTimestamp());
             }

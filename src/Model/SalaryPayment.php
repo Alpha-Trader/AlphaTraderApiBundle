@@ -111,7 +111,7 @@ class SalaryPayment
      */
     private function afterDeserialization()
     {
-        if ($this->nextPossiblePayment != null) {
+        if ($this->nextPossiblePayment !== null) {
             $date = substr($this->nextPossiblePayment, 0, 10) . '.' . substr($this->nextPossiblePayment, 10);
             $micro = sprintf("%06d", ($date - floor($date)) * 1000000);
             $date = new \DateTime(date('Y-m-d H:i:s.' . $micro, $date));

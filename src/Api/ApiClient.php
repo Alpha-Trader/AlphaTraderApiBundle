@@ -7,6 +7,7 @@ use Alphatrader\ApiBundle\Model\Error;
 use GuzzleHttp\Client;
 use JMS\Serializer\Serializer;
 use JMS\Serializer\SerializerBuilder;
+use Psr\Http\Message\ResponseInterface;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 /**
@@ -66,7 +67,7 @@ class ApiClient
                 'X-Authorization' => $this->config["authid"]
             ]
         ];
-        if ($token != null) {
+        if ($token !== null) {
             $config['headers']['Authorization'] = 'Bearer ' . $token;
         }
         return new Client($config);
@@ -159,25 +160,18 @@ class ApiClient
      * @return \Alphatrader\ApiBundle\Model\Error|mixed
      * @throws HttpErrorException
      */
-    public function parseResponse($request, $class)
+    public function parseResponse(ResponseInterface $request, $class)
     {
         $data = $request->getBody()->getContents();
 
         $oResult = $this->getSerializer()->deserialize($data, $class, 'json');
-        if ($this->isGuiltyResponse($class, $oResult) == false) {
+        if ($this->isGuiltyResponse($class, $oResult) === false) {
             /** @var Error $oResult */
             $oResult = $this->getSerializer()->deserialize(
                 $data,
                 'Alphatrader\ApiBundle\Model\Error',
                 'json'
             );
-            /*throw new HttpErrorException(
-                $oResult->getCode() != 0 ? $oResult->getCode() : 400,
-                $oResult,
-                null,
-                $request->getHeaders(),
-                $oResult->getCode()
-            );*/
         }
         return $oResult;
     }
