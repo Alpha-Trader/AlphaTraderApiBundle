@@ -21,7 +21,7 @@ class ShareholderStakeTest extends \PHPUnit_Framework_TestCase
         $secSpo = new ShareholderStake();
         $this->assertNull($secSpo->getAveragePrice());
 
-        $secSpo->setAveragePrice(2);
+        $secSpo->setAveragePrice(2.1);
 
         $this->assertTrue(is_float($secSpo->getAveragePrice()));
     }
@@ -31,7 +31,7 @@ class ShareholderStakeTest extends \PHPUnit_Framework_TestCase
         $secSpo = new ShareholderStake();
         $this->assertNull($secSpo->getNumberOfShares());
 
-        $secSpo->setNumberOfShares(1.01);
+        $secSpo->setNumberOfShares(1);
 
         $this->assertTrue(is_int($secSpo->getNumberOfShares()));
         $this->assertEquals(1, $secSpo->getNumberOfShares());
