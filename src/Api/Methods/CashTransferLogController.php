@@ -9,10 +9,7 @@
 namespace Alphatrader\ApiBundle\Api\Methods;
 
 use Alphatrader\ApiBundle\Api\ApiClient;
-use Alphatrader\ApiBundle\Api\Exception\HttpErrorException;
 use Alphatrader\ApiBundle\Model\BankAccount;
-use Alphatrader\ApiBundle\Model\CashTransferLogEntry;
-use Alphatrader\ApiBundle\Model\Error;
 
 /**
  * Class CashTransferLogController
@@ -27,8 +24,7 @@ class CashTransferLogController extends ApiClient
      * @param \Alphatrader\ApiBundle\Model\BankAccount $senderBankAcc
      * @param \Alphatrader\ApiBundle\Model\BankAccount $receiverBankAcc
      *
-     * @throws HttpErrorException
-     * @return CashTransferLogEntry[]|Error
+     * @return \Alphatrader\ApiBundle\Model\CashTransferLogEntry[]|\Alphatrader\ApiBundle\Model\Error
      */
     public function getCashTransferLogs(
         $startDate,
