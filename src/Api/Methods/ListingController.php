@@ -9,10 +9,6 @@
 namespace Alphatrader\ApiBundle\Api\Methods;
 
 use Alphatrader\ApiBundle\Api\ApiClient;
-use Alphatrader\ApiBundle\Model\Error;
-use Alphatrader\ApiBundle\Model\Listing;
-use Alphatrader\ApiBundle\Model\ListingProfile;
-use Alphatrader\ApiBundle\Model\Shareholder;
 
 /**
  * Class ListingController
@@ -25,7 +21,7 @@ class ListingController extends ApiClient
     /**
      * @param $securityIdentifier
      *
-     * @return ListingProfile|Error
+     * @return \Alphatrader\ApiBundle\Model\ListingProfile|\Alphatrader\ApiBundle\Model\Error
      */
     public function getProfile($securityIdentifier)
     {
@@ -34,7 +30,7 @@ class ListingController extends ApiClient
     }
 
     /**
-     * @return Listing[]|Error
+     * @return \Alphatrader\ApiBundle\Model\Listing[]|\Alphatrader\ApiBundle\Model\Error
      */
     public function getAllListings()
     {
@@ -57,7 +53,7 @@ class ListingController extends ApiClient
     /**
      * @param $securityIdentifier
      *
-     * @return Listing|Error
+     * @return \Alphatrader\ApiBundle\Model\Listing|\Alphatrader\ApiBundle\Model\Error
      */
     public function getListingBySecurityIdentifier($securityIdentifier)
     {
@@ -67,9 +63,9 @@ class ListingController extends ApiClient
 
 
     /**
-     * @param $securityIdentifier
+     * @param $secIdentPart
      *
-     * @return Listing[]|Error
+     * @return \Alphatrader\ApiBundle\Model\Listing[]|\Alphatrader\ApiBundle\Model\Error
      */
     public function getListingBySecurityIdentifierPart($secIdentPart)
     {
@@ -80,7 +76,7 @@ class ListingController extends ApiClient
     /**
      * @param $securityIdentifier
      *
-     * @return Shareholder[]\Error
+     * @return \Alphatrader\ApiBundle\Model\Shareholder[]|\Alphatrader\ApiBundle\Model\Error
      */
     public function getShareholder($securityIdentifier)
     {

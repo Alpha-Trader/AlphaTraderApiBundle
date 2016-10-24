@@ -263,7 +263,7 @@ class UserProfile
      */
     public function getFirstEmploymentDate()
     {
-        if ($this->getEmployments() == null or $this->getEmployments()->isEmpty()) {
+        if (null === $this->getEmployments()|| true === $this->getEmployments()->isEmpty()) {
             return null;
         }
         return $this->getEmployments()->first()->getStartDate();

@@ -113,6 +113,29 @@ class ListingProfile
     private $type;
 
     /**
+     * @var ShareholderStake
+     * @Annotation\Type("Alphatrader\ApiBundle\Model\ShareholderStake")
+     * @Annotation\SerializedName("shareholderStake")
+     */
+    private $shareholderStake;
+
+    /**
+     * @return ShareholderStake
+     */
+    public function getShareholderStake()
+    {
+        return $this->shareholderStake;
+    }
+
+    /**
+     * @param ShareholderStake $shareholderStake
+     */
+    public function setShareholderStake($shareholderStake)
+    {
+        $this->shareholderStake = $shareholderStake;
+    }
+
+    /**
      * @return Bond
      */
     public function getBond()

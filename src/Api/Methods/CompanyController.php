@@ -9,10 +9,6 @@
 namespace Alphatrader\ApiBundle\Api\Methods;
 
 use Alphatrader\ApiBundle\Api\ApiClient;
-use Alphatrader\ApiBundle\Api\Exception\HttpErrorException;
-use AlphaTrader\ApiBundle\Model\Company;
-use Alphatrader\ApiBundle\Model\CompanyProfile;
-use Alphatrader\ApiBundle\Model\Error;
 use Alphatrader\ApiBundle\Model\UserAccount;
 
 /**
@@ -24,7 +20,7 @@ use Alphatrader\ApiBundle\Model\UserAccount;
 class CompanyController extends ApiClient
 {
     /**
-     * @return Company[]|Error
+     * @return \AlphaTrader\ApiBundle\Model\Company[]|\AlphaTrader\ApiBundle\Model\Error
      */
     public function getAllCompanies()
     {
@@ -33,7 +29,7 @@ class CompanyController extends ApiClient
     }
 
     /**
-     * @return Company[]|Error
+     * @return \AlphaTrader\ApiBundle\Model\Company[]|\AlphaTrader\ApiBundle\Model\Error
      */
     public function getUserCompanies()
     {
@@ -44,7 +40,7 @@ class CompanyController extends ApiClient
     /**
      * @param $companyid
      *
-     * @return Company|Error
+     * @return \AlphaTrader\ApiBundle\Model\Company|\AlphaTrader\ApiBundle\Model\Error
      */
     public function getCompany($companyid)
     {
@@ -55,7 +51,7 @@ class CompanyController extends ApiClient
     /**
      * @param \Alphatrader\ApiBundle\Model\UserAccount $user
      *
-     * @return Company[]|Error
+     * @return \AlphaTrader\ApiBundle\Model\Company[]|\AlphaTrader\ApiBundle\Model\Error
      */
     public function getCompanyByUserId(UserAccount $user)
     {
@@ -66,7 +62,7 @@ class CompanyController extends ApiClient
     /**
      * @param $username
      *
-     * @return Company|Error
+     * @return \AlphaTrader\ApiBundle\Model\Company|\AlphaTrader\ApiBundle\Model\Error
      */
     public function getCompanyByUserName($username)
     {
@@ -77,7 +73,7 @@ class CompanyController extends ApiClient
     /**
      * @param $securityaccountid
      *
-     * @return Company|Error
+     * @return \AlphaTrader\ApiBundle\Model\Company|\AlphaTrader\ApiBundle\Model\Error
      */
     public function getCompanyBySecurityAccountId($securityaccountid)
     {
@@ -88,7 +84,7 @@ class CompanyController extends ApiClient
     /**
      * @param $securityIdentifier
      *
-     * @return Company|Error
+     * @return \AlphaTrader\ApiBundle\Model\Company|\AlphaTrader\ApiBundle\Model\Error
      */
     public function getCompanyBySecurityIdentifier($securityIdentifier)
     {
@@ -99,7 +95,7 @@ class CompanyController extends ApiClient
     /**
      * @param $companyId
      *
-     * @return CompanyProfile|Error
+     * @return \AlphaTrader\ApiBundle\Model\CompanyProfile|\AlphaTrader\ApiBundle\Model\Error
      */
     public function getCompanyProfile($companyId)
     {
@@ -111,7 +107,7 @@ class CompanyController extends ApiClient
      * @param $name
      * @param $cashDeposit
      *
-     * @return Company|Error
+     * @return \AlphaTrader\ApiBundle\Model\Company|\AlphaTrader\ApiBundle\Model\Error
      */
     public function createCompany($name, $cashDeposit)
     {
@@ -123,7 +119,7 @@ class CompanyController extends ApiClient
      * @param $companyId
      * @param $logoUrl
      *
-     * @return Company|Error
+     * @return \AlphaTrader\ApiBundle\Model\Company|\AlphaTrader\ApiBundle\Model\Error
      */
     public function addLogo($companyId, $logoUrl)
     {
@@ -133,7 +129,7 @@ class CompanyController extends ApiClient
 
     /**
      * @param $companyId
-     * @return Company|Error
+     * @return \AlphaTrader\ApiBundle\Model\Company|\AlphaTrader\ApiBundle\Model\Error
      */
     public function removeLogo($companyId)
     {

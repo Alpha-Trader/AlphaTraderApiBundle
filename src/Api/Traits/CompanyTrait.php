@@ -3,8 +3,6 @@
 namespace Alphatrader\ApiBundle\Api\Traits;
 
 use Alphatrader\ApiBundle\Api\Methods\CompanyController;
-use Alphatrader\ApiBundle\Api\Methods\UserAccountController;
-use Alphatrader\ApiBundle\Model\Company;
 
 /**
  * Class CompanyTrait
@@ -32,7 +30,7 @@ trait CompanyTrait
     /**
      * @param int $companyID
      *
-     * @return Company
+     * @return \Alphatrader\ApiBundle\Model\Company
      */
     public function getCompany($companyID)
     {
@@ -42,7 +40,7 @@ trait CompanyTrait
     /**
      * @param int $userId
      *
-     * @return Company[]
+     * @return \Alphatrader\ApiBundle\Model\Company[]
      */
     public function getCompaniesByUserId($userId)
     {
@@ -54,7 +52,7 @@ trait CompanyTrait
     /**
      * @param string $username
      *
-     * @return Company[]
+     * @return \Alphatrader\ApiBundle\Model\Company[]
      */
     public function getCompaniesByUserName($username)
     {
@@ -64,7 +62,7 @@ trait CompanyTrait
     /**
      * @param int $secAccId
      *
-     * @return Company
+     * @return \Alphatrader\ApiBundle\Model\Company
      */
     public function getCompanyBySecurityAccountId($secAccId)
     {
@@ -74,7 +72,7 @@ trait CompanyTrait
     /**
      * @param int $secIdent
      *
-     * @return Company
+     * @return \Alphatrader\ApiBundle\Model\Company
      */
     public function getCompanyBySecurityIdentifier($secIdent)
     {
@@ -95,7 +93,7 @@ trait CompanyTrait
      * @param $name
      * @param $cashDeposit
      *
-     * @return Company
+     * @return \Alphatrader\ApiBundle\Model\Company
      */
     public function createCompany($name, $cashDeposit)
     {
@@ -106,7 +104,7 @@ trait CompanyTrait
      * @param $companyId
      * @param $logoUrl
      *
-     * @return Company|\Alphatrader\ApiBundle\Model\Error
+     * @return \Alphatrader\ApiBundle\Model\Company|\Alphatrader\ApiBundle\Model\Error
      */
     public function addLogoToCompany($companyId, $logoUrl)
     {
@@ -115,7 +113,7 @@ trait CompanyTrait
 
     /**
      * @param $companyId
-     * @return Company|\Alphatrader\ApiBundle\Model\Error
+     * @return \Alphatrader\ApiBundle\Model\Company|\Alphatrader\ApiBundle\Model\Error
      */
     public function removeLogoFromCompany($companyId)
     {

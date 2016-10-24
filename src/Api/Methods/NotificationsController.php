@@ -9,8 +9,6 @@
 namespace Alphatrader\ApiBundle\Api\Methods;
 
 use Alphatrader\ApiBundle\Api\ApiClient;
-use Alphatrader\ApiBundle\Model\Error;
-use Alphatrader\ApiBundle\Model\Notifications;
 
 /**
  * Class NotificationsController
@@ -20,7 +18,7 @@ use Alphatrader\ApiBundle\Model\Notifications;
 class NotificationsController extends ApiClient
 {
     /**
-     * @return Notifications[]|Error
+     * @return \Alphatrader\ApiBundle\Model\Notifications[]|\Alphatrader\ApiBundle\Model\Error
      */
     public function getNotifications()
     {
@@ -29,7 +27,7 @@ class NotificationsController extends ApiClient
     }
 
     /**
-     * @return Notifications[]|Error
+     * @return \Alphatrader\ApiBundle\Model\Notifications[]|\Alphatrader\ApiBundle\Model\Error
      */
     public function getUnreadNotifications()
     {

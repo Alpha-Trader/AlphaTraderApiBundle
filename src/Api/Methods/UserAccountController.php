@@ -9,8 +9,6 @@
 namespace Alphatrader\ApiBundle\Api\Methods;
 
 use Alphatrader\ApiBundle\Api\ApiClient;
-use Alphatrader\ApiBundle\Model\MessagePrototype;
-use Alphatrader\ApiBundle\Model\UserAccount;
 
 /**
  * Class BankAccountController
@@ -20,7 +18,7 @@ use Alphatrader\ApiBundle\Model\UserAccount;
 class UserAccountController extends ApiClient
 {
     /**
-     * @return UserAccount
+     * @return \Alphatrader\ApiBundle\Model\UserAccount|\Alphatrader\ApiBundle\Model\Error
      */
     public function getCurrentUser()
     {
@@ -31,7 +29,7 @@ class UserAccountController extends ApiClient
     /**
      * @param $userid
      *
-     * @return UserAccount
+     * @return \Alphatrader\ApiBundle\Model\UserAccount|\Alphatrader\ApiBundle\Model\Error
      */
     public function getUserById($userid)
     {
@@ -40,7 +38,7 @@ class UserAccountController extends ApiClient
     }
     
     /**
-     * @return UserAccount
+     * @return \Alphatrader\ApiBundle\Model\UserAccount[]|\Alphatrader\ApiBundle\Model\Error
      */
     public function getUsers()
     {
@@ -51,7 +49,7 @@ class UserAccountController extends ApiClient
     /**
      * @param $part
      *
-     * @return UserAccount
+     * @return \Alphatrader\ApiBundle\Model\UserAccount[]|\Alphatrader\ApiBundle\Model\Error
      */
     public function searchUsersByNamePart($part)
     {
@@ -62,18 +60,18 @@ class UserAccountController extends ApiClient
     /**
      * @param $username
      *
-     * @return UserAccount
+     * @return \Alphatrader\ApiBundle\Model\UserAccount|\Alphatrader\ApiBundle\Model\Error
      */
     public function getUserByUsername($username)
     {
-        $data = $this->get('users/' . $username);
+        $data = $this->get('users/username/' . $username);
         return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\UserAccount');
     }
     
     /**
      * @param $username
      *
-     * @return mixed
+     * @return \Alphatrader\ApiBundle\Model\UserProfile|\Alphatrader\ApiBundle\Model\Error
      */
     public function getUserProfile($username)
     {
@@ -86,7 +84,7 @@ class UserAccountController extends ApiClient
      * @param $email
      * @param $password
      *
-     * @return UserAccount
+     * @return \Alphatrader\ApiBundle\Model\UserAccount|\Alphatrader\ApiBundle\Model\Error
      */
     public function registerUser($username, $email, $password)
     {
@@ -110,7 +108,7 @@ class UserAccountController extends ApiClient
             ['username' => $username, 'password' => $password]
         );
         $data = $request->getBody()->getContents();
-        /** @var MessagePrototype $oResult */
+        /** @var \Alphatrader\ApiBundle\Model\MessagePrototype $oResult */
         $oResult = $this->getSerializer()->deserialize(
             $data,
             'Alphatrader\ApiBundle\Model\MessagePrototype',

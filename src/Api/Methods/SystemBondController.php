@@ -9,12 +9,7 @@
 namespace Alphatrader\ApiBundle\Api\Methods;
 
 use Alphatrader\ApiBundle\Api\ApiClient;
-use AlphaTrader\ApiBundle\Model\Bankaccount;
-use Alphatrader\ApiBundle\Model\Bond;
 use Alphatrader\ApiBundle\Model\Company;
-use Alphatrader\ApiBundle\Model\Listing;
-use Alphatrader\ApiBundle\Model\SystemBond;
-use JMS\Serializer\SerializerBuilder;
 
 /**
  * Class SystemBondController
@@ -27,7 +22,7 @@ class SystemBondController extends ApiClient
      * @param Company $company
      * @param integer $numberOfBonds
      *
-     * @return Listing
+     * @return \Alphatrader\ApiBundle\Model\Listing|\Alphatrader\ApiBundle\Model\Error
      */
     public function createBond(Company $company, $numberOfBonds)
     {
@@ -54,7 +49,7 @@ class SystemBondController extends ApiClient
     /**
      * @param string $bondId
      *
-     * @return Bond
+     * @return \Alphatrader\ApiBundle\Model\Bond|\Alphatrader\ApiBundle\Model\Error
      */
     public function getBond($bondId)
     {

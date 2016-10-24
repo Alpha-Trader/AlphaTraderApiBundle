@@ -9,7 +9,6 @@
 namespace Alphatrader\ApiBundle\Api\Methods;
 
 use Alphatrader\ApiBundle\Api\ApiClient;
-use AlphaTrader\ApiBundle\Model\Bankaccount;
 use Alphatrader\ApiBundle\Model\Error;
 
 /**
@@ -20,7 +19,7 @@ use Alphatrader\ApiBundle\Model\Error;
 class BankAccountController extends ApiClient
 {
     /**
-     * @return Bankaccount|Error
+     * @return \Alphatrader\ApiBundle\Model\BankAccount|Error
      */
     public function getBankAccount()
     {
