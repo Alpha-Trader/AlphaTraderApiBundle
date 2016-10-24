@@ -3,8 +3,6 @@
 namespace Alphatrader\ApiBundle\Api\Methods;
 
 use Alphatrader\ApiBundle\Api\ApiClient;
-use Alphatrader\ApiBundle\Model\OrderCheck;
-use Alphatrader\ApiBundle\Model\SecurityOrder;
 
 /**
  * Class SecurityOrderController
@@ -15,7 +13,7 @@ class SecurityOrderController extends ApiClient
     /**
      * @param $secIdent
      *
-     * @return SecurityOrder
+     * @return \Alphatrader\ApiBundle\Model\SecurityOrder|\Alphatrader\ApiBundle\Model\Error
      */
     public function getSecurityOrder($secIdent)
     {
@@ -32,7 +30,7 @@ class SecurityOrderController extends ApiClient
      * @param $numberOfShares
      * @param $counterparty
      *
-     * @return SecurityOrder
+     * @return \Alphatrader\ApiBundle\Model\SecurityOrder|\Alphatrader\ApiBundle\Model\Error
      */
     public function createSecurityOrder($owner, $secIdent, $action, $type, $price, $numberOfShares, $counterparty)
     {
@@ -58,7 +56,7 @@ class SecurityOrderController extends ApiClient
      * @param $numberOfShares
      * @param $price
      *
-     * @return OrderCheck
+     * @return \Alphatrader\ApiBundle\Model\OrderCheck|\Alphatrader\ApiBundle\Model\Error
      */
     public function checkSecurityOrder($owner, $secIdent, $numberOfShares, $price)
     {

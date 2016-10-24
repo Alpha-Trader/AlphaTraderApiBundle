@@ -8,7 +8,6 @@ use GuzzleHttp\Client;
 use JMS\Serializer\Serializer;
 use JMS\Serializer\SerializerBuilder;
 use Psr\Http\Message\ResponseInterface;
-use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 /**
  * Class ApiClient

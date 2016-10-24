@@ -9,13 +9,9 @@
 namespace Alphatrader\ApiBundle\Api\Methods;
 
 use Alphatrader\ApiBundle\Api\ApiClient;
-use Alphatrader\ApiBundle\Api\Exception\HttpErrorException;
-use Alphatrader\ApiBundle\Api\Traits\ResponseTrait;
-use AlphaTrader\ApiBundle\Model\Bankaccount;
 use Alphatrader\ApiBundle\Model\BankingLicense;
 use Alphatrader\ApiBundle\Model\Company;
 use Alphatrader\ApiBundle\Model\Error;
-use JMS\Serializer\SerializerBuilder;
 
 /**
  * Class BankingLicenseController

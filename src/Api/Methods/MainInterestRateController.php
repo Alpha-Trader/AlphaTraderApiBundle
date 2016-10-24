@@ -9,11 +9,6 @@
 namespace Alphatrader\ApiBundle\Api\Methods;
 
 use Alphatrader\ApiBundle\Api\ApiClient;
-use AlphaTrader\ApiBundle\Model\Bankaccount;
-use Alphatrader\ApiBundle\Model\Error;
-use Alphatrader\ApiBundle\Model\Listing;
-use Alphatrader\ApiBundle\Model\MainInterestRate;
-use JMS\Serializer\SerializerBuilder;
 
 /**
  * Class MainInterestRateController
@@ -23,7 +18,7 @@ use JMS\Serializer\SerializerBuilder;
 class MainInterestRateController extends ApiClient
 {
     /**
-     * @return MainInterestRate[]|Error
+     * @return \Alphatrader\ApiBundle\Model\MainInterestRate[]|\Alphatrader\ApiBundle\Model\Error
      */
     public function getMainInterestRate()
     {
@@ -32,7 +27,7 @@ class MainInterestRateController extends ApiClient
     }
 
     /**
-     * @return MainInterestRate|Error
+     * @return \Alphatrader\ApiBundle\Model\MainInterestRate|\Alphatrader\ApiBundle\Model\Error
      */
     public function getLatestMainInterestRate()
     {

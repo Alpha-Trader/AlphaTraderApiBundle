@@ -4,7 +4,6 @@ namespace Alphatrader\ApiBundle\Api\Methods;
 
 use Alphatrader\ApiBundle\Api\ApiClient;
 use Alphatrader\ApiBundle\Model\Chat;
-use Alphatrader\ApiBundle\Model\CompactChat;
 use Alphatrader\ApiBundle\Model\UserAccount;
 
 /**
@@ -17,7 +16,7 @@ class ChatController extends ApiClient
 {
     /**
      * Lists chats in which logged in user participates
-     * @return Chat[]
+     * @return \Alphatrader\ApiBundle\Model\Chat[]
      */
     public function getChats()
     {
@@ -26,8 +25,8 @@ class ChatController extends ApiClient
     }
 
     /**
-     * @param Chat       $iChat
-     * @param UserAccount $user
+     * @param \Alphatrader\ApiBundle\Model\Chat       $iChat
+     * @param \Alphatrader\ApiBundle\Model\UserAccount $user
      *
      * @return \Alphatrader\ApiBundle\Model\Chat|\Alphatrader\ApiBundle\Model\Error
      */
@@ -38,7 +37,7 @@ class ChatController extends ApiClient
     }
 
     /**
-     * @param Chat $iChat
+     * @param \Alphatrader\ApiBundle\Model\Chat $iChat
      * @param       $username
      *
      * @return \Alphatrader\ApiBundle\Model\Chat|\Alphatrader\ApiBundle\Model\Error

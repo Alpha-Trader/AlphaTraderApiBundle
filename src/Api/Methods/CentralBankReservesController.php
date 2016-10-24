@@ -3,8 +3,6 @@
 namespace Alphatrader\ApiBundle\Api\Methods;
 
 use Alphatrader\ApiBundle\Api\ApiClient;
-use Alphatrader\ApiBundle\Api\Exception\HttpErrorException;
-use Alphatrader\ApiBundle\Model\CentralBankReserve;
 use Alphatrader\ApiBundle\Model\Company;
 use Alphatrader\ApiBundle\Model\Error;
 
@@ -19,7 +17,7 @@ class CentralBankReservesController extends ApiClient
      * @param int $reserveId
      *
      * @throws \Alphatrader\ApiBundle\Api\Exception\HttpErrorException
-     * @return CentralBankReserve|Error
+     * @return \Alphatrader\ApiBundle\Model\CentralBankReserve|Error
      */
     public function getReserveById($reserveId)
     {
@@ -28,9 +26,9 @@ class CentralBankReservesController extends ApiClient
     }
 
     /**
-     * @param string companyId
+     * @param string $companyId
      *
-     * @return CentralBankReserve|Error
+     * @return \Alphatrader\ApiBundle\Model\CentralBankReserve|Error
      */
     public function getReserveByCompanyId($companyId)
     {
@@ -42,7 +40,7 @@ class CentralBankReservesController extends ApiClient
      * @param Company $company
      * @param         $cashAmount
      *
-     * @return CentralBankReserve
+     * @return \Alphatrader\ApiBundle\Model\CentralBankReserve
      * @throws \Alphatrader\ApiBundle\Api\Exception\HttpErrorException
      */
     public function increaseReserves(Company $company, $cashAmount)
