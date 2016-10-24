@@ -3,11 +3,7 @@
 namespace Alphatrader\ApiBundle\Api\Methods;
 
 use Alphatrader\ApiBundle\Api\ApiClient;
-use Alphatrader\ApiBundle\Model\AbstractPoll;
 use Alphatrader\ApiBundle\Model\Company;
-use Alphatrader\ApiBundle\Model\EmployCeoPoll;
-use Alphatrader\ApiBundle\Model\ShareholderPoll;
-use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Class VotingController
@@ -17,7 +13,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 class VotingController extends ApiClient
 {
     /**
-     * @return AbstractPoll[]
+     * @return \Alphatrader\ApiBundle\Model\AbstractPoll[]|\Alphatrader\ApiBundle\Model\Error
      */
     public function getMyPolls()
     {
@@ -26,7 +22,7 @@ class VotingController extends ApiClient
     }
 
     /**
-     * @return AbstractPoll[]
+     * @return \Alphatrader\ApiBundle\Model\AbstractPoll[]|\Alphatrader\ApiBundle\Model\Error
      */
     public function getAllKnownPolls()
     {
@@ -37,7 +33,7 @@ class VotingController extends ApiClient
     /**
      * @param Company $company
      *
-     * @return AbstractPoll
+     * @return \Alphatrader\ApiBundle\Model\AbstractPoll|\Alphatrader\ApiBundle\Model\Error
      */
     public function setCompanyCashoutPoll(Company $company)
     {
@@ -49,7 +45,7 @@ class VotingController extends ApiClient
      * @param Company $company
      * @param         $dailyWage
      *
-     * @return AbstractPoll
+     * @return \Alphatrader\ApiBundle\Model\AbstractPoll|\Alphatrader\ApiBundle\Model\Error
      */
     public function setCompanyEmployCeo(Company $company, $dailyWage)
     {
@@ -60,7 +56,7 @@ class VotingController extends ApiClient
     /**
      * @param Company $company
      *
-     * @return AbstractPoll
+     * @return \Alphatrader\ApiBundle\Model\AbstractPoll|\Alphatrader\ApiBundle\Model\Error
      */
     public function setCompanyLiquidation(Company $company)
     {
@@ -71,7 +67,7 @@ class VotingController extends ApiClient
     /**
      * @param $pollid
      *
-     * @return AbstractPoll
+     * @return \Alphatrader\ApiBundle\Model\AbstractPoll|\Alphatrader\ApiBundle\Model\Error
      */
     public function getPoll($pollid)
     {
@@ -100,7 +96,7 @@ class VotingController extends ApiClient
      * @param $voices
      * @param $votingType
      *
-     * @return AbstractPoll
+     * @return \Alphatrader\ApiBundle\Model\AbstractPoll|\Alphatrader\ApiBundle\Model\Error
      */
     public function votePoll($pollid, $voices, $votingType)
     {

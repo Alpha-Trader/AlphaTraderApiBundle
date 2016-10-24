@@ -3,7 +3,6 @@
 namespace Alphatrader\ApiBundle\Api\Methods;
 
 use Alphatrader\ApiBundle\Api\ApiClient;
-use Alphatrader\ApiBundle\Model\SecurityOrderLogEntry;
 
 /**
  * Class SecurityOrderLogController
@@ -18,7 +17,7 @@ class SecurityOrderLogController extends ApiClient
      * @param $buyerSecAccId
      * @param $sellerSecAccId
      *
-     * @return SecurityOrderLogEntry
+     * @return \Alphatrader\ApiBundle\Model\SecurityOrderLogEntry|\Alphatrader\ApiBundle\Model\Error
      */
     public function getSecurityOrderLogs(
         $securityIdentifier,

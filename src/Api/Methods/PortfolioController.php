@@ -9,9 +9,6 @@
 namespace Alphatrader\ApiBundle\Api\Methods;
 
 use Alphatrader\ApiBundle\Api\ApiClient;
-use Alphatrader\ApiBundle\Model\Error;
-use Alphatrader\ApiBundle\Model\Portfolio;
-use JMS\Serializer\SerializerBuilder;
 
 /**
  * Class PortfolioController
@@ -23,7 +20,7 @@ class PortfolioController extends ApiClient
     /**
      * @param $securitiesAccountId
      *
-     * @return Portfolio|Error
+     * @return \Alphatrader\ApiBundle\Model\Portfolio|\Alphatrader\ApiBundle\Model\Error
      */
     public function getPortfolio($securitiesAccountId)
     {

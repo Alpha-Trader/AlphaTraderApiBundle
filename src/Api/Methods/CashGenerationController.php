@@ -9,7 +9,6 @@
 namespace Alphatrader\ApiBundle\Api\Methods;
 
 use Alphatrader\ApiBundle\Api\ApiClient;
-use Alphatrader\ApiBundle\Api\Exception\HttpErrorException;
 use Alphatrader\ApiBundle\Model\BankAccount;
 use Alphatrader\ApiBundle\Model\Error;
 
