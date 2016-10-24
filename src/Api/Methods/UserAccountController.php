@@ -9,8 +9,6 @@
 namespace Alphatrader\ApiBundle\Api\Methods;
 
 use Alphatrader\ApiBundle\Api\ApiClient;
-use Alphatrader\ApiBundle\Model\MessagePrototype;
-use Alphatrader\ApiBundle\Model\UserAccount;
 
 /**
  * Class BankAccountController
@@ -110,7 +108,7 @@ class UserAccountController extends ApiClient
             ['username' => $username, 'password' => $password]
         );
         $data = $request->getBody()->getContents();
-        /** @var MessagePrototype $oResult */
+        /** @var \Alphatrader\ApiBundle\Model\MessagePrototype $oResult */
         $oResult = $this->getSerializer()->deserialize(
             $data,
             'Alphatrader\ApiBundle\Model\MessagePrototype',
