@@ -13,10 +13,10 @@ use Alphatrader\ApiBundle\Model\BankAccount;
 trait CashTransferLogTrait
 {
     /**
-     * @param \DateTime   $startDate
-     * @param \DateTime   $endDate
-     * @param BankAccount $senderBankAcc
-     * @param BankAccount $receiverBankAcc
+     * @param \DateTime                                $startDate
+     * @param \DateTime                                $endDate
+     * @param \Alphatrader\ApiBundle\Model\BankAccount $senderBankAcc
+     * @param \Alphatrader\ApiBundle\Model\BankAccount $receiverBankAcc
      *
      * @return \Alphatrader\ApiBundle\Model\CashTransferLogEntry[]
      */
