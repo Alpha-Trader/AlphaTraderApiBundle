@@ -170,7 +170,7 @@ class LastMessage
      */
     private function afterDeserialization()
     {
-        if ($this->dateSent != null) {
+        if ($this->dateSent !== null) {
             $date = substr($this->dateSent, 0, 10) . '.' . substr($this->dateSent, 10);
             $micro = sprintf("%06d", ($date - floor($date)) * 1000000);
             $date = new \DateTime(date('Y-m-d H:i:s.' . $micro, $date));

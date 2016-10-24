@@ -87,19 +87,19 @@ trait DateTrait
      */
     private function afterDeserialization()
     {
-        if ($this->date != null) {
+        if ($this->date !== null) {
             $date = substr($this->date, 0, 10) . '.' . substr($this->date, 10);
             $micro = sprintf("%06d", ($date - floor($date)) * 1000000);
             $date = new \DateTime(date('Y-m-d H:i:s.' . $micro, $date));
             $this->date = $date;
         }
-        if ($this->startDate != null) {
+        if ($this->startDate !== null) {
             $date = substr($this->startDate, 0, 10) . '.' . substr($this->startDate, 10);
             $micro = sprintf("%06d", ($date - floor($date)) * 1000000);
             $date = new \DateTime(date('Y-m-d H:i:s.' . $micro, $date));
             $this->startDate = $date;
         }
-        if ($this->endDate != null) {
+        if ($this->endDate !== null) {
             $enddate = substr($this->endDate, 0, 10) . '.' . substr($this->endDate, 10);
             $micro = sprintf("%06d", ($enddate - floor($enddate)) * 1000000);
             $date = new \DateTime(date('Y-m-d H:i:s.' . $micro, $enddate));

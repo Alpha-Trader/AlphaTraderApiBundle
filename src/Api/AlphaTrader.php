@@ -44,7 +44,8 @@ class AlphaTrader
     public function __construct($config, SessionInterface $session = null, $jwt = null)
     {
         $this->config = $config;
-        if ($session != null) {
+        $this->jwt = $jwt ?: $config['jwt'];
+        if ($session !== null) {
             $this->jwt = $session->get('_attoken') ? : $jwt;
         }
     }

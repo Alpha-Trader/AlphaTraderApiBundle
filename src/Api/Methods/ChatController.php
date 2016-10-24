@@ -4,7 +4,6 @@ namespace Alphatrader\ApiBundle\Api\Methods;
 
 use Alphatrader\ApiBundle\Api\ApiClient;
 use Alphatrader\ApiBundle\Model\Chat;
-use Alphatrader\ApiBundle\Model\CompactChat;
 use Alphatrader\ApiBundle\Model\UserAccount;
 
 /**
@@ -17,8 +16,7 @@ class ChatController extends ApiClient
 {
     /**
      * Lists chats in which logged in user participates
-     * @Method("GET")
-     * @return Chat[]
+     * @return \Alphatrader\ApiBundle\Model\Chat[]
      */
     public function getChats()
     {
@@ -27,8 +25,8 @@ class ChatController extends ApiClient
     }
 
     /**
-     * @param Chat       $iChat
-     * @param UserAccount $user
+     * @param \Alphatrader\ApiBundle\Model\Chat       $iChat
+     * @param \Alphatrader\ApiBundle\Model\UserAccount $user
      *
      * @return \Alphatrader\ApiBundle\Model\Chat|\Alphatrader\ApiBundle\Model\Error
      */
@@ -39,7 +37,7 @@ class ChatController extends ApiClient
     }
 
     /**
-     * @param Chat $iChat
+     * @param \Alphatrader\ApiBundle\Model\Chat $iChat
      * @param       $username
      *
      * @return \Alphatrader\ApiBundle\Model\Chat|\Alphatrader\ApiBundle\Model\Error
@@ -56,7 +54,6 @@ class ChatController extends ApiClient
      * @param int $iChatId
      *
      * @return \Alphatrader\ApiBundle\Model\Chat
-     * @Method("PUT")
      */
     public function quitChat($iChatId)
     {
@@ -70,7 +67,6 @@ class ChatController extends ApiClient
      * @param int $iChatId
      *
      * @return \Alphatrader\ApiBundle\Model\Chat
-     * @Method("PUT")
      */
     public function markasread($iChatId)
     {
@@ -84,7 +80,6 @@ class ChatController extends ApiClient
      * @param \Alphatrader\ApiBundle\Model\Chat        $iChat
      * @param \Alphatrader\ApiBundle\Model\UserAccount $user
      *
-     * @Method("PUT")
      * @return \Alphatrader\ApiBundle\Model\Chat|\Alphatrader\ApiBundle\Model\Error
      */
     public function removeUser(Chat $iChat, UserAccount $user)
@@ -104,7 +99,6 @@ class ChatController extends ApiClient
 
     /**
      * Creates a new chat
-     * @Method("POST")
      */
     public function createNewChatbyUserIds($sChatName, $aUserIds, $bReadOnly)
     {
@@ -112,7 +106,6 @@ class ChatController extends ApiClient
 
     /**
      * Creates a new chat
-     * @Method("POST")
      */
     public function createNewChatbyUserNames($sChatName, $aUserNames, $bReadOnly)
     {
@@ -122,7 +115,6 @@ class ChatController extends ApiClient
      * Deletes chat
      *
      * @param int $iChatId
-     * @Method("DELETE")
      */
     public function deleteChat($iChatId)
     {
@@ -132,9 +124,8 @@ class ChatController extends ApiClient
      * Returns chat
      *
      * @param int $iChat
-     * @Method("GET")
      *
-     * @return \Alphatrader\ApiBundle\Model\Chats
+     * @return \Alphatrader\ApiBundle\Model\Chat
      */
     public function getChat($iChat)
     {
@@ -146,7 +137,6 @@ class ChatController extends ApiClient
      * Change chat properties
      *
      * @param int $iChatId
-     * @Method("PUT")
      */
     public function changeChatProperties($iChatId)
     {

@@ -237,14 +237,14 @@ trait BondTrait
      */
     private function afterDeserialization()
     {
-        if ($this->issueDate != null) {
+        if ($this->issueDate !== null) {
             $startdate = substr($this->issueDate, 0, 10) . '.' . substr($this->issueDate, 10);
             $micro = sprintf("%06d", ($startdate - floor($startdate)) * 1000000);
             $date = new \DateTime(date('Y-m-d H:i:s.' . $micro, $startdate));
             $this->issueDate = $date;
         }
 
-        if ($this->maturityDate != null) {
+        if ($this->maturityDate !== null) {
             $enddate = substr($this->maturityDate, 0, 10) . '.' . substr($this->maturityDate, 10);
             $micro = sprintf("%06d", ($enddate - floor($enddate)) * 1000000);
             $date = new \DateTime(date('Y-m-d H:i:s.' . $micro, $enddate));

@@ -9,9 +9,6 @@
 namespace Alphatrader\ApiBundle\Api\Methods;
 
 use Alphatrader\ApiBundle\Api\ApiClient;
-use Alphatrader\ApiBundle\Model\Error;
-use Alphatrader\ApiBundle\Model\Events;
-use JMS\Serializer\SerializerBuilder;
 
 /**
  * Class EventController
@@ -23,7 +20,7 @@ class EventController extends ApiClient
     /**
      * @param int $afterDate
      *
-     * @return Events[]|Error
+     * @return \Alphatrader\ApiBundle\Model\Events[]|\Alphatrader\ApiBundle\Model\Error
      */
     public function getEvents($afterDate)
     {
@@ -34,7 +31,7 @@ class EventController extends ApiClient
     /**
      * @param int $afterDate
      *
-     * @return Error[]|Error
+     * @return \Alphatrader\ApiBundle\Model\Error[]|\Alphatrader\ApiBundle\Model\Error
      */
     public function getEventsForUser($afterDate)
     {
@@ -46,7 +43,7 @@ class EventController extends ApiClient
      * @param      $realms
      * @param int $afterDate
      *
-     * @return Events[]|Error
+     * @return \Alphatrader\ApiBundle\Model\Events[]|\Alphatrader\ApiBundle\Model\Error
      */
     public function searchEvents($realms, $afterDate)
     {
@@ -59,7 +56,7 @@ class EventController extends ApiClient
      * @param $realms
      * @param $afterDate
      *
-     * @return Events[]|Error
+     * @return \Alphatrader\ApiBundle\Model\Events[]|\Alphatrader\ApiBundle\Model\Error
      */
     public function searchEventsByType($eventtype, $realms, $afterDate)
     {
@@ -70,7 +67,7 @@ class EventController extends ApiClient
     /**
      * @param $fullTextPart
      * @param $afterDate
-     * @return Error[]|Error
+     * @return \Alphatrader\ApiBundle\Model\Error[]|\Alphatrader\ApiBundle\Model\Error
      */
     public function searchEventsByFullTextPart($fullTextPart, $afterDate)
     {

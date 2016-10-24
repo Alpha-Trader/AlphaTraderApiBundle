@@ -9,8 +9,6 @@
 namespace Alphatrader\ApiBundle\Api\Methods;
 
 use Alphatrader\ApiBundle\Api\ApiClient;
-use Alphatrader\ApiBundle\Model\Complaint;
-use Alphatrader\ApiBundle\Model\Error;
 
 /**
  * Class ComplainController
@@ -22,7 +20,7 @@ class ComplaintController extends ApiClient
 {
     /**
      * @param $companyId
-     * @return Alphatrader\ApiBundle\Model|Complaint|Error
+     * @return \Alphatrader\ApiBundle\Model\Complaint|\Alphatrader\ApiBundle\Model\Error
      */
     public function getComplaintById($companyId)
     {
@@ -34,7 +32,7 @@ class ComplaintController extends ApiClient
      * @param string $subjectMatterType
      * @param string $text
      *
-     * @return Alphatrader\ApiBundle\Model|Complaint|Error
+     * @return \Alphatrader\ApiBundle\Model\Complaint|\Alphatrader\ApiBundle\Model\Error
      */
     public function createComplaint($subjectMatterId, $subjectMatterType, $text)
     {
