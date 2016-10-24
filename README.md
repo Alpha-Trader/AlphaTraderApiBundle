@@ -14,7 +14,7 @@ License
 
 This bundle is under the MIT license. See the complete license here:
 
-[LICENSE](https://github.com/Alpha-Trader/AlphatraderApiBundle/tree/master/meta/LICENSE)
+[LICENSE](https://github.com/Alpha-Trader/AlphatraderApiBundle/tree/master/Doc/LICENSE)
     
 Documentation
 -------------
