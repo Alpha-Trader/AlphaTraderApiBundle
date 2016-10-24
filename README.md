@@ -14,12 +14,12 @@ License
 
 This bundle is under the MIT license. See the complete license here:
 
-[LICENSE](https://github.com/Alpha-Trader/AlphatraderApiBundle/tree/master/src/Resources/Doc/LICENSE)
+[LICENSE](https://github.com/Alpha-Trader/AlphatraderApiBundle/tree/master/meta/LICENSE)
     
 Documentation
 -------------
 
-[Documentation](https://github.com/Alpha-Trader/AlphatraderApiBundle/tree/master/src/Resources/Doc/Index.rst)
+[Documentation](https://github.com/Alpha-Trader/AlphatraderApiBundle/tree/master/Doc/Index.rst)
 
 Reporting an issue or a feature request
 ---------------------------------------
