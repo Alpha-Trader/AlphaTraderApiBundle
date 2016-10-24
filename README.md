@@ -19,7 +19,7 @@ This bundle is under the MIT license. See the complete license here:
 Documentation
 -------------
 
-[Documentation](https://github.com/Alpha-Trader/AlphatraderApiBundle/tree/master/doc/Index.rst)
+[Documentation](https://github.com/Alpha-Trader/AlphatraderApiBundle/tree/master/Doc/Index.rst)
 
 Reporting an issue or a feature request
 ---------------------------------------
