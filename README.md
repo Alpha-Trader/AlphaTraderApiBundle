@@ -19,9 +19,9 @@ This bundle is under the MIT license. See the complete license here:
 Documentation
 -------------
 
-[Documentation](https://github.com/Tr0nYx/AlphatraderApiBundle/tree/master/doc/Index.rst)
+[Documentation](https://github.com/Alpha-Trader/AlphatraderApiBundle/tree/master/doc/Index.rst)
 
 Reporting an issue or a feature request
 ---------------------------------------
 
-Issues and feature requests are tracked in the [Github issue tracker](https://github.com/Tr0nYx/AlphatraderApiBundle/issues).
+Issues and feature requests are tracked in the [Github issue tracker](https://github.com/Alpha-Trader/AlphatraderApiBundle/issues).
