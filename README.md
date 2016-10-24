@@ -14,12 +14,12 @@ License
 
 This bundle is under the MIT license. See the complete license here:
 
-    src/Resources/meta/LICENSE
+    doc/LICENSE
     
 Documentation
 -------------
 
-[Documentation](https://github.com/Tr0nYx/AlphatraderApiBundle/tree/master/src/Resources/Doc/Index.rst)
+[Documentation](https://github.com/Tr0nYx/AlphatraderApiBundle/tree/master/doc/Index.rst)
 
 Reporting an issue or a feature request
 ---------------------------------------
