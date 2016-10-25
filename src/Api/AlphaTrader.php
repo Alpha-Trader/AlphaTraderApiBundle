@@ -57,4 +57,12 @@ class AlphaTrader
     {
         $this->jwt = $jwt;
     }
+
+    /**
+     * @param $url
+     */
+    public function setApiUrl($url)
+    {
+        $this->config['apiurl'] = $url;
+    }
 }
