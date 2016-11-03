@@ -45,8 +45,8 @@ class AlphaTrader
     {
         $this->config = $config;
         $this->jwt = $jwt ?: $config['jwt'];
-        if ($session !== null) {
-            $this->jwt = $session->get('_attoken') ? : $jwt;
+        if ($session->isStarted()) {
+            $this->jwt = $session->get('_attoken') ?: $jwt;
         }
     }
 
