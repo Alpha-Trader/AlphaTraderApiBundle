@@ -11,25 +11,26 @@ use Alphatrader\ApiBundle\Api\Methods\ComplaintController;
  */
 trait ComplaintTrait
 {
-
     /**
      * @param string $complaintId
+     *
      * @return \Alphatrader\ApiBundle\Model\Complaint|\Alphatrader\ApiBundle\Model\Error
      */
-    public function getComplaint(string $complaintId)
+    public function getComplaint($complaintId)
     {
         return $this->getComplaintController()->getComplaintById($complaintId);
     }
 
     /**
      * @param string $subjectMatterId
-     * @param string $subjectMatterTyoe
+     * @param string $subjectMatterType
      * @param string $text
+     *
      * @return \Alphatrader\ApiBundle\Model\Complaint|\Alphatrader\ApiBundle\Model\Error
      */
-    public function createComplaint(string $subjectMatterId, string $subjectMatterTyoe, string $text)
+    public function createComplaint($subjectMatterId, $subjectMatterType, $text)
     {
-        return $this->getComplaintController()->createComplaint($subjectMatterId, $subjectMatterTyoe, $text);
+        return $this->getComplaintController()->createComplaint($subjectMatterId, $subjectMatterType, $text);
     }
 
     /**
