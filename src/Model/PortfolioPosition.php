@@ -68,6 +68,13 @@ class PortfolioPosition
     private $securityIdentifier;
 
     /**
+     * @var float
+     * @Annotation\Type("float")
+     * @Annotation\SerializedName("volume")
+     */
+    private $volume;
+
+    /**
      * @return int
      */
     public function getCommittedShares()
@@ -193,5 +200,21 @@ class PortfolioPosition
     public function setSecurityIdentifier($securityIdentifier)
     {
         $this->securityIdentifier = $securityIdentifier;
+    }
+
+    /**
+     * @return float
+     */
+    public function getVolume()
+    {
+        return $this->volume;
+    }
+
+    /**
+     * @param float $volume
+     */
+    public function setVolume($volume)
+    {
+        $this->volume = $volume;
     }
 }
