@@ -75,6 +75,20 @@ class PortfolioPosition
     private $volume;
 
     /**
+     * @var string
+     * @Annotation\Type("string")
+     * @Annotation\SerializedName("type")
+     */
+    private $type;
+
+    /**
+     * @var Listing
+     * @Annotation\Type("Alphatrader\ApiBundle\Model\Listing")
+     * @Annotation\SerializedName("listing")
+     */
+    private $listing;
+
+    /**
      * @return int
      */
     public function getCommittedShares()
@@ -217,4 +231,37 @@ class PortfolioPosition
     {
         $this->volume = $volume;
     }
+
+    /**
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param string $type
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+    }
+
+    /**
+     * @return Listing
+     */
+    public function getListing()
+    {
+        return $this->listing;
+    }
+
+    /**
+     * @param Listing $listing
+     */
+    public function setListing($listing)
+    {
+        $this->listing = $listing;
+    }
+
 }
