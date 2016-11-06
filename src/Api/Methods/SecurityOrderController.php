@@ -36,7 +36,7 @@ class SecurityOrderController extends ApiClient
     {
 
         $data = $this->post(
-            'securityorders',
+            'securityorders/',
             [
                 'owner'              => $owner,
                 'securityIdentifier' => $secIdent,

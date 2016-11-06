@@ -45,8 +45,8 @@ class AlphaTrader
     {
         $this->config = $config;
         $this->jwt = $jwt ?: $config['jwt'];
-        if ($session !== null) {
-            $this->jwt = $session->get('_attoken') ? : $jwt;
+        if (null !== $session->get('_attoken')) {
+            $this->jwt = $session->get('_attoken') ?: $jwt;
         }
     }
 
@@ -56,5 +56,13 @@ class AlphaTrader
     public function setJwt($jwt)
     {
         $this->jwt = $jwt;
+    }
+
+    /**
+     * @param $url
+     */
+    public function setApiUrl($url)
+    {
+        $this->config['apiurl'] = $url;
     }
 }

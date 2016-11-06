@@ -189,11 +189,11 @@ class Chat
                         return ($user->getUsername() != $owner) ? $user->getUsername() : '';
                     }
                 )->last();
-                $this->chatName = $this->owner->getUsername().'* & '.$user->getUsername();
+                $this->chatName = $this->owner->getUsername() . '* & ' . $user->getUsername();
             }
-            
+
             if ($this->participants->count() > 2) {
-                $this->chatName = $this->owner->getUsername().'*';
+                $this->chatName = $this->owner->getUsername() . '*';
             }
         }
     }
@@ -207,7 +207,7 @@ class Chat
         if ($this->dateCreated instanceof \DateTime) {
             $this->dateCreated = $this->dateCreated->getTimestamp();
         }
-        
+
         if ($this->lastMessage !== null) {
             if ($this->lastMessage->getDateSent() instanceof \DateTime) {
                 $this->lastMessage->setDateSent($this->lastMessage->getDateSent()->getTimestamp());

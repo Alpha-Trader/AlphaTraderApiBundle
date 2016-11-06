@@ -91,6 +91,16 @@ trait ChatTrait
     {
         return $this->getChatController()->getUnreadChats();
     }
+
+    /**
+     * @param Chat $chat
+     *
+     * @return \Alphatrader\ApiBundle\Model\CompactChat|\Alphatrader\ApiBundle\Model\Error
+     */
+    public function getUnreadChatsByChat(Chat $chat)
+    {
+        return $this->getChatController()->getUnreadChats($chat);
+    }
     
     /**
      * @return ChatController

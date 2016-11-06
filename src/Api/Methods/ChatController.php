@@ -21,11 +21,12 @@ class ChatController extends ApiClient
     public function getChats()
     {
         $request = $this->get('chats');
+
         return $this->parseResponse($request, 'ArrayCollection<Alphatrader\ApiBundle\Model\Chat>');
     }
 
     /**
-     * @param \Alphatrader\ApiBundle\Model\Chat       $iChat
+     * @param \Alphatrader\ApiBundle\Model\Chat        $iChat
      * @param \Alphatrader\ApiBundle\Model\UserAccount $user
      *
      * @return \Alphatrader\ApiBundle\Model\Chat|\Alphatrader\ApiBundle\Model\Error
@@ -33,18 +34,20 @@ class ChatController extends ApiClient
     public function addUsertoChatbyUserId(Chat $iChat, UserAccount $user)
     {
         $request = $this->put('chats/adduser/userid', ['userId' => $user->getId(), 'chatId' => $iChat->getId()]);
+
         return $this->parseResponse($request, 'Alphatrader\ApiBundle\Model\Chat');
     }
 
     /**
      * @param \Alphatrader\ApiBundle\Model\Chat $iChat
-     * @param       $username
+     * @param                                   $username
      *
      * @return \Alphatrader\ApiBundle\Model\Chat|\Alphatrader\ApiBundle\Model\Error
      */
     public function addUsertoChatbyUsername(Chat $iChat, $username)
     {
         $request = $this->put('chats/adduser/username', ['userId' => $username, 'chatId' => $iChat->getId()]);
+
         return $this->parseResponse($request, 'Alphatrader\ApiBundle\Model\Chat');
     }
 
@@ -57,7 +60,8 @@ class ChatController extends ApiClient
      */
     public function quitChat($iChatId)
     {
-        $request = $this->put('chats/quitchat/'.$iChatId);
+        $request = $this->put('chats/quitchat/' . $iChatId);
+
         return $this->parseResponse($request, 'Alphatrader\ApiBundle\Model\Chat');
     }
 
@@ -70,7 +74,8 @@ class ChatController extends ApiClient
      */
     public function markasread($iChatId)
     {
-        $request = $this->put('chats/read/', ['chatId'=> $iChatId]);
+        $request = $this->put('chats/read/', ['chatId' => $iChatId]);
+
         return $this->parseResponse($request, 'Alphatrader\ApiBundle\Model\Chat');
     }
 
@@ -85,15 +90,23 @@ class ChatController extends ApiClient
     public function removeUser(Chat $iChat, UserAccount $user)
     {
         $request = $this->put('chats/removeuser', ['userId' => $user->getId(), 'chatId' => $iChat->getId()]);
+
         return $this->parseResponse($request, 'Alphatrader\ApiBundle\Model\Chat');
     }
 
     /**
+     * @param Chat $chat
+     *
      * @return \Alphatrader\ApiBundle\Model\CompactChat|\Alphatrader\ApiBundle\Model\Error
      */
-    public function getUnreadChats()
+    public function getUnreadChats(Chat $chat = null)
     {
-        $data = $this->get('chats/unread');
+        if (null !== $chat) {
+            $data = $this->get('chats/unread', ['chatId' => $chat->getId()]);
+        } else {
+            $data = $this->get('chats/unread');
+        }
+
         return $this->parseResponse($data, 'ArrayCollection<Alphatrader\ApiBundle\Model\CompactChat>');
     }
 
@@ -130,6 +143,7 @@ class ChatController extends ApiClient
     public function getChat($iChat)
     {
         $data = $this->get('chats/' . $iChat);
+
         return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\Chat');
     }
 

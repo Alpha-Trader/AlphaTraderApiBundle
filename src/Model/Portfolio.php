@@ -66,7 +66,7 @@ class Portfolio
     }
 
     /**
-     * @return ArrayCollection<PortfolioPosition>
+     * @return PortfolioPosition[]
      */
     public function getPositions()
     {
