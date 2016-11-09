@@ -35,7 +35,7 @@ trait StatisticsTrait
      */
     public function getMarketStatisticsByType($type)
     {
-      return $this->getStatisticsController()->getMarketStatisticsByType($type);
+        return $this->getStatisticsController()->getMarketStatisticsByType($type);
     }
 
     /**

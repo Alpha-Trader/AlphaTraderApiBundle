@@ -839,5 +839,4 @@ class MarketStatistics
     {
         $this->systemBondFaceVolume = $systemBondFaceVolume;
     }
-
 }
