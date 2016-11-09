@@ -42,6 +42,6 @@ trait SalaryTrait
      */
     public function getSalaryController()
     {
-        return new SalaryController($this->config,$this->jwt);
+        return new SalaryController($this->config, $this->jwt);
     }
 }
