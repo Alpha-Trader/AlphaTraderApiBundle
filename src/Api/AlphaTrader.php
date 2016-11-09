@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 /**
  * Class AlphaTrader
+ *
  * @package Alphatrader\ApiBundle\Api
  */
 class AlphaTrader
@@ -31,6 +32,7 @@ class AlphaTrader
     use Traits\UserTrait;
     use Traits\TimeStampTrait;
     use Traits\VotingTrait;
+    use Traits\SalaryTrait;
 
     protected $config;
 

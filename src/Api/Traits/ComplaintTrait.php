@@ -6,8 +6,9 @@ use Alphatrader\ApiBundle\Api\Methods\ComplaintController;
 
 /**
  * Class ComplaintTrait
+ *
  * @package Alphatrader\ApiBundle\Api\Traits
- * @author ljbergmann
+ * @author  ljbergmann
  */
 trait ComplaintTrait
 {

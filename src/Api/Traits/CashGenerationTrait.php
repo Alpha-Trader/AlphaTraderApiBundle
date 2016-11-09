@@ -6,8 +6,9 @@ use Alphatrader\ApiBundle\Api\Methods\CashGenerationController;
 
 /**
  * Class CashGenerationTrait
+ *
  * @package Alphatrader\ApiBundle\Api\Traits
- * @author Tr0nYx
+ * @author  Tr0nYx
  */
 trait CashGenerationTrait
 {

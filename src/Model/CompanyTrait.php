@@ -7,8 +7,9 @@ use JMS\Serializer\Annotation;
 
 /**
  * Trait CompanyTrait
+ *
  * @package Alphatrader\ApiBundle\Model
- * @author Tr0nYx
+ * @author  Tr0nYx
  */
 trait CompanyTrait
 {

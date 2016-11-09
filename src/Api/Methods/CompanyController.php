@@ -13,9 +13,10 @@ use Alphatrader\ApiBundle\Model\UserAccount;
 
 /**
  * Class CompanyController
+ *
  * @package AlphaTrader\API\Controller
- * @author Tr0nYx <tronyx@bric.finance>
- * @author ljbergmann <l.bergmann@sky-lab.de>
+ * @author  Tr0nYx <tronyx@bric.finance>
+ * @author  ljbergmann <l.bergmann@sky-lab.de>
  */
 class CompanyController extends ApiClient
 {

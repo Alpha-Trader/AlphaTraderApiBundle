@@ -6,8 +6,9 @@ use Alphatrader\ApiBundle\Api\Methods\CompanyController;
 
 /**
  * Class CompanyTrait
+ *
  * @package Alphatrader\ApiBundle\Api\Traits
- * @author Tr0nYx
+ * @author  Tr0nYx
  */
 trait CompanyTrait
 {

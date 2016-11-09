@@ -6,8 +6,9 @@ use JMS\Serializer\Annotation;
 
 /**
  * Trait DateTrait
+ *
  * @package Alphatrader\ApiBundle\Model
- * @author Tr0nYx
+ * @author  Tr0nYx
  */
 trait DateTrait
 {

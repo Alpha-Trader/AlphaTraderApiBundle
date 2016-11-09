@@ -12,8 +12,9 @@ use Alphatrader\ApiBundle\Api\ApiClient;
 
 /**
  * Class PortfolioController
+ *
  * @package AlphaTrader\API\Controller
- * @author Tr0nYx <tronyx@bric.finance>
+ * @author  Tr0nYx <tronyx@bric.finance>
  */
 class PortfolioController extends ApiClient
 {

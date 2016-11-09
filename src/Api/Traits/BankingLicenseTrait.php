@@ -7,8 +7,9 @@ use Alphatrader\ApiBundle\Model\Company;
 
 /**
  * Class BankingLicenseTrait
+ *
  * @package Alphatrader\ApiBundle\Api\Traits
- * @author Tr0nYx
+ * @author  Tr0nYx
  */
 trait BankingLicenseTrait
 {

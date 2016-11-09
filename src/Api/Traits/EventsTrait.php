@@ -6,8 +6,9 @@ use Alphatrader\ApiBundle\Api\Methods\EventController;
 
 /**
  * Class EventsTrait
+ *
  * @package Alphatrader\ApiBundle\Api\Traits
- * @author Tr0nYx
+ * @author  Tr0nYx
  */
 trait EventsTrait
 {
@@ -55,14 +56,14 @@ trait EventsTrait
     }
 
     /**
-     * @param string $fullTextPart
+     * @param string    $fullTextPart
      * @param \DateTime $afterDate
      * @return \Alphatrader\ApiBundle\Model\Events[]|\Alphatrader\ApiBundle\Model\Error
      */
     public function getEventsByFullTextPart($fullTextPart, $afterDate = null)
     {
         return $this->getEventController()
-                    ->searchEventsByFullTextPart($fullTextPart, $this->formatTimeStamp($afterDate));
+            ->searchEventsByFullTextPart($fullTextPart, $this->formatTimeStamp($afterDate));
     }
 
     /**

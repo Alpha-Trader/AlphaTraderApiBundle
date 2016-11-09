@@ -7,7 +7,8 @@ use JMS\Serializer\Annotation;
 
 /**
  * Class Chat
- * @package Alphatrader\ApiBundle\Model
+ *
+ * @package                            Alphatrader\ApiBundle\Model
  * @Annotation\ExclusionPolicy("none")
  */
 class Chat

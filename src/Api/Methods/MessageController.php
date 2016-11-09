@@ -6,8 +6,9 @@ use Alphatrader\ApiBundle\Api\ApiClient;
 
 /**
  * Class MessageController
+ *
  * @package AlphaTrader\API\Controller
- * @author Tr0nYx <tronyx@bric.finance>
+ * @author  Tr0nYx <tronyx@bric.finance>
  */
 class MessageController extends ApiClient
 {

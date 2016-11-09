@@ -8,8 +8,9 @@ use Alphatrader\ApiBundle\Model\Company;
 
 /**
  * Class VotingTrait
+ *
  * @package Alphatrader\ApiBundle\Api\Traits
- * @author Tr0nYx
+ * @author  Tr0nYx
  */
 trait VotingTrait
 {
@@ -40,7 +41,7 @@ trait VotingTrait
     }
 
     /**
-     * @param Company $company
+     * @param Company   $company
      * @param         $dailyWage
      *
      * @return \Alphatrader\ApiBundle\Model\AbstractPoll

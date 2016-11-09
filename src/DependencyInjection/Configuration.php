@@ -16,8 +16,9 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
 
 /**
  * Class Configuration
+ *
  * @package AlphaTrader\ApiBundle\DependencyInjection
- * @author Tr0nYx <tronyx@bric.finance>
+ * @author  Tr0nYx <tronyx@bric.finance>
  */
 class Configuration implements ConfigurationInterface
 {

@@ -15,8 +15,9 @@ use Alphatrader\ApiBundle\Model\Error;
 
 /**
  * Class BankingLicenseController
+ *
  * @package AlphaTrader\API\Controller
- * @author Tr0nYx <tronyx@bric.finance>
+ * @author  Tr0nYx <tronyx@bric.finance>
  */
 class BankingLicenseController extends ApiClient
 {

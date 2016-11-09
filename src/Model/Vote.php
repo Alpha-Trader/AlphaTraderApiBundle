@@ -6,7 +6,8 @@ use JMS\Serializer\Annotation;
 
 /**
  * Class Vote
- * @package Alphatrader\ApiBundle\Model
+ *
+ * @package                            Alphatrader\ApiBundle\Model
  * @Annotation\ExclusionPolicy("none")
  */
 class Vote
