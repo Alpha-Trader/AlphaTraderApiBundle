@@ -31,6 +31,5 @@ class SecurityPriceController extends ApiClient
             'endDate' => $endDate
         ]);
         return $this->parseResponse($data, 'ArrayCollection<Alphatrader\ApiBundle\Model\SecurityPrice>');
-
     }
 }

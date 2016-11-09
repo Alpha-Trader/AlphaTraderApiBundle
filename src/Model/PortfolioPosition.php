@@ -263,5 +263,4 @@ class PortfolioPosition
     {
         $this->listing = $listing;
     }
-
 }
