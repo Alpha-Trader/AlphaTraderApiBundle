@@ -31,6 +31,7 @@ class AlphaTrader
     use Traits\UserTrait;
     use Traits\TimeStampTrait;
     use Traits\VotingTrait;
+    use Traits\SalaryTrait;
 
     protected $config;
 
