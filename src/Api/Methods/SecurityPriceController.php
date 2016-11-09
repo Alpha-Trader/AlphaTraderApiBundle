@@ -12,8 +12,9 @@ use Alphatrader\ApiBundle\Api\ApiClient;
 
 /**
  * Class PriceSpreadController
+ *
  * @package AlphaTrader\API\Controller
- * @author ljbergmann <l.bergmann@sky-lab.de>
+ * @author  ljbergmann <l.bergmann@sky-lab.de>
  */
 class SecurityPriceController extends ApiClient
 {
@@ -25,11 +26,14 @@ class SecurityPriceController extends ApiClient
      */
     public function getSecurityPrices($secIdent, $startDate, $endDate)
     {
-        $data = $this->get('securityPrices/', [
+        $data = $this->get(
+            'securityPrices/',
+            [
             'securityIdentifier' => $secIdent,
             'startDate' => $startDate,
             'endDate' => $endDate
-        ]);
+            ]
+        );
         return $this->parseResponse($data, 'ArrayCollection<Alphatrader\ApiBundle\Model\SecurityPrice>');
     }
 }

@@ -11,8 +11,9 @@ use Psr\Http\Message\ResponseInterface;
 
 /**
  * Class ApiClient
- * @package Alphatrader\ApiBundle\Api
- * @author Tr0nYx
+ *
+ * @package                                  Alphatrader\ApiBundle\Api
+ * @author                                   Tr0nYx
  * @SuppressWarnings(PHPMD.NumberOfChildren)
  */
 class ApiClient
@@ -21,7 +22,9 @@ class ApiClient
     const METHODE_PUT = 'PUT';
     const METHODE_POST = 'POST';
     const METHODE_DELETE = 'DELETE';
-    /** @var array */
+    /**
+ * @var array
+*/
     protected $validMethods = [
         self::METHODE_GET,
         self::METHODE_PUT,
@@ -165,7 +168,9 @@ class ApiClient
 
         $oResult = $this->getSerializer()->deserialize($data, $class, 'json');
         if ($this->isGuiltyResponse($class, $oResult) === false) {
-            /** @var Error $oResult */
+            /**
+ * @var Error $oResult
+*/
             $oResult = $this->getSerializer()->deserialize(
                 $data,
                 'Alphatrader\ApiBundle\Model\Error',

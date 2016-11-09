@@ -7,8 +7,9 @@ use Alphatrader\ApiBundle\Model\Company;
 
 /**
  * Class CentralBankReservesTrait
+ *
  * @package Alphatrader\ApiBundle\Api\Traits
- * @author Tr0nYx
+ * @author  Tr0nYx
  */
 trait CentralBankReservesTrait
 {
@@ -32,7 +33,7 @@ trait CentralBankReservesTrait
     }
     
     /**
-     * @param Company $company
+     * @param Company    $company
      * @param         $cashAmount
      *
      * @return \Alphatrader\ApiBundle\Model\CentralBankReserve

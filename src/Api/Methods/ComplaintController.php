@@ -12,8 +12,9 @@ use Alphatrader\ApiBundle\Api\ApiClient;
 
 /**
  * Class ComplainController
+ *
  * @package AlphaTrader\API\Controller
- * @author ljbergmann <l.bergmann@sky-lab.de>
+ * @author  ljbergmann <l.bergmann@sky-lab.de>
  */
 
 class ComplaintController extends ApiClient
@@ -36,11 +37,14 @@ class ComplaintController extends ApiClient
      */
     public function createComplaint($subjectMatterId, $subjectMatterType, $text)
     {
-        $data = $this->post("complaints/", [
+        $data = $this->post(
+            "complaints/",
+            [
                 'subjectMatterId' => $subjectMatterId,
                 'subjectMatterType' => $subjectMatterType,
                 'text' => $text
-            ]);
+            ]
+        );
 
         return $this->parseResponse($data, "Alphatrader\ApiBundle\Model\Complaint");
     }

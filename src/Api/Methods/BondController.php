@@ -15,13 +15,14 @@ use Alphatrader\ApiBundle\Model\Error;
 
 /**
  * Class BankAccountController
+ *
  * @package AlphaTrader\API\Controller
- * @author Tr0nYx <tronyx@bric.finance>
+ * @author  Tr0nYx <tronyx@bric.finance>
  */
 class BondController extends ApiClient
 {
     /**
-     * @param Company $company
+     * @param Company       $company
      * @param         $numberOfBonds
      * @param         $faceValue
      * @param         $interestRate

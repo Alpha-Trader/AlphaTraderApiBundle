@@ -6,8 +6,9 @@ use Alphatrader\ApiBundle\Api\Methods\ListingController;
 
 /**
  * Class ListingTrait
+ *
  * @package Alphatrader\ApiBundle\Api\Traits
- * @author Tr0nYx
+ * @author  Tr0nYx
  */
 trait ListingTrait
 {

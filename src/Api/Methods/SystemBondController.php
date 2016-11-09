@@ -13,8 +13,9 @@ use Alphatrader\ApiBundle\Model\Company;
 
 /**
  * Class SystemBondController
+ *
  * @package AlphaTrader\API\Controller
- * @author Tr0nYx <tronyx@bric.finance>
+ * @author  Tr0nYx <tronyx@bric.finance>
  */
 class SystemBondController extends ApiClient
 {

@@ -6,17 +6,18 @@ use Alphatrader\ApiBundle\Model\Company;
 
 /**
  * Class BondTrait
+ *
  * @package Alphatrader\ApiBundle\Api\Traits
- * @author Tr0nYx
+ * @author  Tr0nYx
  */
 trait BondTrait
 {
     /**
-     * @param Company   $company
+     * @param Company       $company
      * @param           $numberOfBonds
      * @param           $faceValue
      * @param           $interestRate
-     * @param \DateTime $maturityDate
+     * @param \DateTime     $maturityDate
      *
      * @return \Alphatrader\ApiBundle\Model\Bond
      */

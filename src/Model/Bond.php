@@ -6,7 +6,8 @@ use JMS\Serializer\Annotation;
 
 /**
  * Class Bond
- * @package Alphatrader\ApiBundle\Model
+ *
+ * @package                            Alphatrader\ApiBundle\Model
  * @Annotation\ExclusionPolicy("none")
  */
 class Bond

@@ -12,8 +12,9 @@ use Alphatrader\ApiBundle\Api\ApiClient;
 
 /**
  * Class PriceSpreadController
+ *
  * @package AlphaTrader\API\Controller
- * @author ljbergmann <l.bergmann@sky-lab.de>
+ * @author  ljbergmann <l.bergmann@sky-lab.de>
  */
 class SalaryController extends ApiClient
 {
@@ -33,7 +34,10 @@ class SalaryController extends ApiClient
     public function getEmploymentAgreements()
     {
         $data = $this->get('employmentagreement/');
-        return $this->parseResponse($data, 'ArrayCollection<Alphatrader\ApiBundle\Model\EmploymentAgreementCompactCompany>');
+        return $this->parseResponse(
+            $data,
+            'ArrayCollection<Alphatrader\ApiBundle\Model\EmploymentAgreementCompactCompany>'
+        );
     }
 
     /**

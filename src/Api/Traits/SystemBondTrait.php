@@ -7,13 +7,14 @@ use Alphatrader\ApiBundle\Model\Listing;
 
 /**
  * Class SystemBondTrait
+ *
  * @package Alphatrader\ApiBundle\Api\Traits
- * @author Tr0nYx
+ * @author  Tr0nYx
  */
 trait SystemBondTrait
 {
     /**
-     * @param Company $company
+     * @param Company       $company
      * @param         $numberOfBonds
      *
      * @return Listing

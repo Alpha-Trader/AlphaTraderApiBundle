@@ -6,8 +6,9 @@ use Alphatrader\ApiBundle\Api\Methods\SalaryController;
 
 /**
  * Class SalaryTrait
+ *
  * @package Alphatrader\ApiBundle\Api\Traits
- * @author ljbergmann <l.bergmann@sky-lab.de>
+ * @author  ljbergmann <l.bergmann@sky-lab.de>
  */
 trait SalaryTrait
 {

@@ -13,8 +13,9 @@ use Alphatrader\ApiBundle\Model\BankAccount;
 
 /**
  * Class CashTransferLogController
+ *
  * @package AlphaTrader\API\Controller
- * @author Tr0nYx <tronyx@bric.finance>
+ * @author  Tr0nYx <tronyx@bric.finance>
  */
 class CashTransferLogController extends ApiClient
 {

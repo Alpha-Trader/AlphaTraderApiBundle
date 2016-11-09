@@ -7,8 +7,9 @@ use Alphatrader\ApiBundle\Model\Company;
 
 /**
  * Class VotingController
+ *
  * @package AlphaTrader\API\Controller
- * @author Tr0nYx <tronyx@bric.finance>
+ * @author  Tr0nYx <tronyx@bric.finance>
  */
 class VotingController extends ApiClient
 {
@@ -42,7 +43,7 @@ class VotingController extends ApiClient
     }
 
     /**
-     * @param Company $company
+     * @param Company   $company
      * @param         $dailyWage
      *
      * @return \Alphatrader\ApiBundle\Model\AbstractPoll|\Alphatrader\ApiBundle\Model\Error

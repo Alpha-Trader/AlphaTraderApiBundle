@@ -7,7 +7,8 @@ use JMS\Serializer\Annotation;
 
 /**
  * Class ListingProfile
- * @package Alphatrader\ApiBundle\Model
+ *
+ * @package                            Alphatrader\ApiBundle\Model
  * @Annotation\ExclusionPolicy("none")
  * @SuppressWarnings(PHPMD)
  */
@@ -419,7 +420,9 @@ class ListingProfile
      */
     public function getPriceGain()
     {
-        /** @var SecurityPrice[] $prices14d */
+        /**
+ * @var SecurityPrice[] $prices14d
+*/
         $prices14d = $this->prices14d;
         $size = count($prices14d);
         if ($size < 2) {
@@ -441,7 +444,9 @@ class ListingProfile
      */
     public function getPreviousPriceDate()
     {
-        /** @var SecurityPrice[] $prices14d */
+        /**
+ * @var SecurityPrice[] $prices14d
+*/
         $prices14d = $this->prices14d;
         $size = count($prices14d);
         if ($size < 2) {

@@ -8,8 +8,9 @@ use Alphatrader\ApiBundle\Model\Error;
 
 /**
  * Class CentralBankReservesController
+ *
  * @package Alphatrader\ApiBundle\Api\Methods
- * @author Tr0nYx <tronyx@bric.finance>
+ * @author  Tr0nYx <tronyx@bric.finance>
  */
 class CentralBankReservesController extends ApiClient
 {
@@ -37,7 +38,7 @@ class CentralBankReservesController extends ApiClient
     }
 
     /**
-     * @param Company $company
+     * @param Company    $company
      * @param         $cashAmount
      *
      * @return \Alphatrader\ApiBundle\Model\CentralBankReserve

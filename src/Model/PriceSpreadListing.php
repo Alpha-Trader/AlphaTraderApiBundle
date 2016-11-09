@@ -6,7 +6,8 @@ use JMS\Serializer\Annotation;
 
 /**
  * class PriceSpreadListing
- * @package Alphatrader\ApiBundle\Model
+ *
+ * @package                            Alphatrader\ApiBundle\Model
  * @Annotation\ExclusionPolicy("none")
  */
 class PriceSpreadListing

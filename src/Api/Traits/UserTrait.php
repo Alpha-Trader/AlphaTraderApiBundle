@@ -6,8 +6,9 @@ use Alphatrader\ApiBundle\Api\Methods\UserAccountController;
 
 /**
  * Class UserTrait
+ *
  * @package Alphatrader\ApiBundle\Api\Traits
- * @author Tr0nYx
+ * @author  Tr0nYx
  */
 trait UserTrait
 {

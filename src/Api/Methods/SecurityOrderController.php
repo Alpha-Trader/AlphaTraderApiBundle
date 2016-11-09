@@ -6,6 +6,7 @@ use Alphatrader\ApiBundle\Api\ApiClient;
 
 /**
  * Class SecurityOrderController
+ *
  * @package Alphatrader\ApiBundle\Api\Methods
  */
 class SecurityOrderController extends ApiClient

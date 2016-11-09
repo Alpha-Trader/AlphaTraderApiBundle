@@ -8,8 +8,9 @@ use Alphatrader\ApiBundle\Model\UserAccount;
 
 /**
  * Class ChatTrait
+ *
  * @package Alphatrader\ApiBundle\Api\Traits
- * @author Tr0nYx
+ * @author  Tr0nYx
  */
 trait ChatTrait
 {
@@ -43,7 +44,7 @@ trait ChatTrait
     }
 
     /**
-     * @param Chat $chat
+     * @param Chat     $chat
      * @param      $username
      *
      * @return Chat|\Alphatrader\ApiBundle\Model\Error

@@ -12,8 +12,9 @@ use Alphatrader\ApiBundle\Api\ApiClient;
 
 /**
  * Class EventController
+ *
  * @package AlphaTrader\API\Controller
- * @author Tr0nYx <tronyx@bric.finance>
+ * @author  Tr0nYx <tronyx@bric.finance>
  */
 class EventController extends ApiClient
 {
@@ -41,7 +42,7 @@ class EventController extends ApiClient
     
     /**
      * @param      $realms
-     * @param int $afterDate
+     * @param int    $afterDate
      *
      * @return \Alphatrader\ApiBundle\Model\Events[]|\Alphatrader\ApiBundle\Model\Error
      */

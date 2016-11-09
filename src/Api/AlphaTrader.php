@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 /**
  * Class AlphaTrader
+ *
  * @package Alphatrader\ApiBundle\Api
  */
 class AlphaTrader

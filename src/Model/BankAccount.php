@@ -6,7 +6,8 @@ use JMS\Serializer\Annotation;
 
 /**
  * Class BankAccount
- * @package Alphatrader\ApiBundle\Model
+ *
+ * @package                            Alphatrader\ApiBundle\Model
  * @Annotation\ExclusionPolicy("none")
  */
 class BankAccount
