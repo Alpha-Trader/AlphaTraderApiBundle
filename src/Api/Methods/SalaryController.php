@@ -41,6 +41,16 @@ class SalaryController extends ApiClient
     }
 
     /**
+     * @param $paymentId
+     * @return \Alphatrader\ApiBundle\Model\Error|\Alphatrader\ApiBundle\Model\SalaryPayment
+     */
+    public function getPaymentByPaymentId($paymentId)
+    {
+        $data = $this->get("salarypayments/".$paymentId);
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\SalaryPayment');
+    }
+
+    /**
      * @param $companyId
      * @return \Alphatrader\ApiBundle\Model\Error|\Alphatrader\ApiBundle\Model\SalaryPayment
      */
