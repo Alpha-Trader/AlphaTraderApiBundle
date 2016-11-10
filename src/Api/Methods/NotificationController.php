@@ -16,7 +16,7 @@ use Alphatrader\ApiBundle\Api\ApiClient;
  * @package AlphaTrader\API\Controller
  * @author  Tr0nYx <tronyx@bric.finance>
  */
-class NotificationsController extends ApiClient
+class NotificationController extends ApiClient
 {
     /**
      * @return \Alphatrader\ApiBundle\Model\Notifications[]|\Alphatrader\ApiBundle\Model\Error
