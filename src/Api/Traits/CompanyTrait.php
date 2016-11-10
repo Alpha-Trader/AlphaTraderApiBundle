@@ -92,6 +92,15 @@ trait CompanyTrait
 
     /**
      * @param $name
+     * @return \Alphatrader\ApiBundle\Model\Error|mixed
+     */
+    public function searchCompanyByName($name)
+    {
+        return $this->getCompanyController()->searchCompanyByName($name);
+    }
+
+    /**
+     * @param $name
      * @param $cashDeposit
      *
      * @return \Alphatrader\ApiBundle\Model\Company
