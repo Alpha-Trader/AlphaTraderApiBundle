@@ -41,8 +41,8 @@ class ApiCoverageTest extends TestCase
         }
         echo "\nFolgende Controller wurden noch nicht vollständig implementiert:\n";
         foreach ($coverage as $key => $cc) {
-            if ($cc['coverage'] != 1 and $cc['have'] != 0) {
-                echo $key," ",$cc['have']," ",$cc['should'],"\n";
+            if ($cc['coverage'] < 1 and $cc['have'] != 0) {
+                echo $key," ",$cc['have'],"/",$cc['should'],"\n";
             }
         }
     }

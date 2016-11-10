@@ -39,7 +39,7 @@ trait BankingLicenseTrait
      */
     public function getBankingLicenseById($id)
     {
-       return $this->getBankingLicenseController()->getBankingLicenseByBankingLicenseId($id);
+        return $this->getBankingLicenseController()->getBankingLicenseByBankingLicenseId($id);
     }
 
     /**
