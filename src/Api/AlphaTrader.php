@@ -26,16 +26,17 @@ class AlphaTrader
     use Traits\MainInterestRateTrait;
     use Traits\MessageTrait;
     use Traits\NotificationTrait;
+    use Traits\PartnerTrait;
     use Traits\PortfolioTrait;
+    use Traits\SalaryTrait;
+    use Traits\SearchTrait;
     use Traits\SecurityOrderLogTrait;
     use Traits\SecurityOrderTrait;
-    use Traits\SystemBondTrait;
-    use Traits\UserTrait;
-    use Traits\TimeStampTrait;
-    use Traits\VotingTrait;
-    use Traits\SalaryTrait;
     use Traits\StatisticsTrait;
-    use Traits\PartnerTrait;
+    use Traits\SystemBondTrait;
+    use Traits\TimeStampTrait;
+    use Traits\UserTrait;
+    use Traits\VotingTrait;
 
     protected $config;
 

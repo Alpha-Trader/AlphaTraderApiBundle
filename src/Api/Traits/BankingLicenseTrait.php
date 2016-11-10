@@ -34,6 +34,15 @@ trait BankingLicenseTrait
     }
 
     /**
+     * @param $id
+     * @return \Alphatrader\ApiBundle\Model\Error|\Alphatrader\ApiBundle\Model\BankingLicense
+     */
+    public function getBankingLicenseById($id)
+    {
+       return $this->getBankingLicenseController()->getBankingLicenseByBankingLicenseId($id);
+    }
+
+    /**
      * @return BankingLicenseController
      */
     public function getBankingLicenseController()

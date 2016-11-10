@@ -106,6 +106,16 @@ class CompanyController extends ApiClient
 
     /**
      * @param $name
+     * @return \Alphatrader\ApiBundle\Model\Error|mixed
+     */
+    public function searchCompanyByName($name)
+    {
+        $data = $this->get('search/companies/' . $name);
+        return $this->parseResponse($data, 'ArrayCollection<Alphatrader\ApiBundle\Model\CompactCompany>');
+    }
+
+    /**
+     * @param $name
      * @param $cashDeposit
      *
      * @return \AlphaTrader\ApiBundle\Model\Company|\AlphaTrader\ApiBundle\Model\Error
