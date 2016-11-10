@@ -30,6 +30,15 @@ trait SalaryTrait
     }
 
     /**
+     * @param $paymentId
+     * @return \Alphatrader\ApiBundle\Model\Error|\Alphatrader\ApiBundle\Model\SalaryPayment
+     */
+    public function getPayment($paymentId)
+    {
+        return $this->getSalaryController()->getPaymentByPaymentId($paymentId);
+    }
+    
+    /**
      * @param $companyId
      * @return \Alphatrader\ApiBundle\Model\Error|\Alphatrader\ApiBundle\Model\SalaryPayment
      */

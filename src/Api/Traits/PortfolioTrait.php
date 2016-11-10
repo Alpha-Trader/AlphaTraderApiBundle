@@ -13,13 +13,23 @@ use Alphatrader\ApiBundle\Api\Methods\PortfolioController;
 trait PortfolioTrait
 {
     /**
-     * @param $secAccId
+     * @param string $securitiesAccountId
      *
      * @return \Alphatrader\ApiBundle\Model\Portfolio
      */
-    public function getPortfolio($secAccId)
+    public function getPortfolio($securitiesAccountId)
     {
-        return $this->getPortfolioController()->getPortfolio($secAccId);
+        return $this->getPortfolioController()->getPortfolio($securitiesAccountId);
+    }
+
+    /**
+     * @param string $securitiesAccountId
+     *
+     * @return \Alphatrader\ApiBundle\Model\Error|\Alphatrader\ApiBundle\Model\Portfolio
+     */
+    public function getFixedIncomeSecurities($securitiesAccountId)
+    {
+        return $this->getPortfolioController()->getFixedIncomeSecurities($securitiesAccountId);
     }
 
     /**

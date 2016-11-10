@@ -1,5 +1,4 @@
 <?php
-
 /*
  * This file is part of the AlphaTraderApiBundle package.
  *
@@ -10,6 +9,7 @@ namespace Alphatrader\ApiBundle\Api\Methods;
 
 use Alphatrader\ApiBundle\Api\ApiClient;
 use Alphatrader\ApiBundle\Model\Company;
+use Alphatrader\ApiBundle\Model\SystemBond;
 
 /**
  * Class SystemBondController
@@ -19,6 +19,38 @@ use Alphatrader\ApiBundle\Model\Company;
  */
 class SystemBondController extends ApiClient
 {
+    /**
+     * @throws \Alphatrader\ApiBundle\Api\Exception\HttpErrorException
+     * @return SystemBond[]|Error
+     */
+    public function getBonds()
+    {
+        $request = $this->get('systembonds/');
+        return $this->parseResponse($request, 'ArrayCollection<Alphatrader\ApiBundle\Model\SystemBond>');
+    }
+
+    /**
+     * @param string $bondId
+     *
+     * @return \Alphatrader\ApiBundle\Model\SystemBond|\Alphatrader\ApiBundle\Model\Error
+     */
+    public function getBond($bondId)
+    {
+        $data = $this->get('systembonds/' . $bondId);
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\SystemBond');
+    }
+
+    /**
+     * @param string $bondId
+     *
+     * @return \Alphatrader\ApiBundle\Model\SystemBond|\Alphatrader\ApiBundle\Model\Error
+     */
+    public function getBondBySecurityIdentifier($securityIdentifier)
+    {
+        $data = $this->get("systembonds/securityidentifier/" . $securityIdentifier);
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\SystemBond');
+    }
+
     /**
      * @param Company $company
      * @param integer $numberOfBonds
@@ -34,27 +66,6 @@ class SystemBondController extends ApiClient
                 'numberOfBonds' => $numberOfBonds
             ]
         );
-        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\SystemBond');
-    }
-
-    /**
-     * @return array
-     */
-    public function repayBond()
-    {
-        $data = $this->post('systembonds/');
-        $oResult = $this->getSerializer()->deserialize($data->getBody()->getContents(), 'array', 'json');
-        return $oResult;
-    }
-
-    /**
-     * @param string $bondId
-     *
-     * @return \Alphatrader\ApiBundle\Model\Bond|\Alphatrader\ApiBundle\Model\Error
-     */
-    public function getBond($bondId)
-    {
-        $data = $this->get('systembonds/' . $bondId);
         return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\SystemBond');
     }
 }

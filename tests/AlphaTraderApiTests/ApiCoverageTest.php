@@ -16,9 +16,10 @@ class ApiCoverageTest extends TestCase
     public function test()
     {
         $data = $this->getApiDefination();
+
         $controller = $this->getController($data['tags']);
-        
         $coverage = $this->getMethodsPerController($data['paths']);
+
         $coverageComplete = ['should'=>0,'have'=>0];
         foreach ($controller as $class) {
             $methods = count(get_class_methods('Alphatrader\ApiBundle\Api\Methods\\'.$class));
@@ -30,11 +31,18 @@ class ApiCoverageTest extends TestCase
             $coverageComplete['have']   += $methods;
             $coverageComplete['should'] += $coverage[$class]['should'];
         }
+
         echo "Es werden ".$coverageComplete['have']." von ".$coverageComplete['should']." ( ".(round($coverageComplete['have']/$coverageComplete['should'], 4)*100)." %) API Methoden abgedeckt.\n";
-        echo "Following Controller havent been implemented yet:\n";
+        echo "Folgende Controller wurden noch nicht implementiert:\n";
         foreach ($coverage as $key => $cc) {
             if ($cc['have'] == 0) {
                 echo $key,"\n";
+            }
+        }
+        echo "\nFolgende Controller wurden noch nicht vollständig implementiert:\n";
+        foreach ($coverage as $key => $cc) {
+            if ($cc['coverage'] < 1 and $cc['have'] != 0) {
+                echo $key," ",$cc['have'],"/",$cc['should'],"\n";
             }
         }
     }

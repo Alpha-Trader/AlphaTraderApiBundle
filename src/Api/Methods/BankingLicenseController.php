@@ -42,4 +42,14 @@ class BankingLicenseController extends ApiClient
         $request = $this->get('bankinglicense/', ['companyId' => $company->getId()]);
         return $this->parseResponse($request, 'Alphatrader\ApiBundle\Model\BankingLicense');
     }
+
+    /**
+     * @param $bankingLicenseId
+     * @return Error|BankingLicense
+     */
+    public function getBankingLicenseByBankingLicenseId($bankingLicenseId)
+    {
+        $request = $this->get('bankinglicense/'.$bankingLicenseId);
+        return $this->parseResponse($request, 'Alphatrader\ApiBundle\Model\BankingLicense');
+    }
 }
