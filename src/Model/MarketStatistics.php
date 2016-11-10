@@ -8,7 +8,7 @@ namespace Alphatrader\ApiBundle\Model;
  * @package Alphatrader\ApiBundle\Model
  * @Annotation\ExclusionPolicy("none")
  * @author ljbergmann <l.bergmann@sky-lab.de>
- * @SuppressWarnings(PHPMD.ExcessiveClassComplexity)
+ * @SuppressWarnings(PHPMD)
  */
 class MarketStatistics
 {
