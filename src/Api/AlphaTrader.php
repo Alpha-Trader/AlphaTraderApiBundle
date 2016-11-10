@@ -2,6 +2,7 @@
 
 namespace Alphatrader\ApiBundle\Api;
 
+use Alphatrader\ApiBundle\Api\Traits\PartnerTrait;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 /**
@@ -34,6 +35,7 @@ class AlphaTrader
     use Traits\VotingTrait;
     use Traits\SalaryTrait;
     use Traits\StatisticsTrait;
+    use Traits\PartnerTrait;
 
     protected $config;
 
