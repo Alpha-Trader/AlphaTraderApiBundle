@@ -2,6 +2,8 @@
 
 namespace Alphatrader\ApiBundle\Model;
 
+use JMS\Serializer\Annotation;
+
 /**
  * Class Message
  *
