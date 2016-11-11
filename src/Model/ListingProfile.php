@@ -421,8 +421,8 @@ class ListingProfile
     public function getPriceGain()
     {
         /**
- * @var SecurityPrice[] $prices14d
-*/
+         * @var SecurityPrice[] $prices14d
+         */
         $prices14d = $this->prices14d;
         $size = count($prices14d);
         if ($size < 2) {
