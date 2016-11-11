@@ -12,7 +12,6 @@ use Alphatrader\ApiBundle\Model\SalaryPayment;
  * Class SalaryPaymentTest
  * @package Tests\Model
  */
-
 class SalaryPaymentTest extends \PHPUnit_Framework_TestCase
 {
     use RandomTrait;
