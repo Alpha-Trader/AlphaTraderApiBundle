@@ -8,7 +8,6 @@ namespace Tests\Model;
 
 use Alphatrader\ApiBundle\Model\Shareholder;
 
-
 /**
  * Class SecuritySponsorshipTest
  * @package Tests\Model
@@ -24,7 +23,7 @@ class ShareholderTest extends \PHPUnit_Framework_TestCase
 
         $shareholder->setCompany($compactcompany);
 
-        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\CompactCompany',$shareholder->getCompany());
+        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\CompactCompany', $shareholder->getCompany());
     }
 
     public function testNumberOfShares()
