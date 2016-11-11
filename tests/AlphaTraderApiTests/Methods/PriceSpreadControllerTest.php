@@ -8,7 +8,6 @@ namespace Tests\Methods;
 
 use Alphatrader\ApiBundle\Api\Methods\PriceSpreadController;
 
-
 /**
  * Class PriceSpreadControllerTest
  * @package Tests\Methods
