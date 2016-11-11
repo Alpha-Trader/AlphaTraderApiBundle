@@ -53,7 +53,7 @@ class ApiCoverageTest extends TestCase
      */
     private function getApiDefination()
     {
-        $json = json_decode(file_get_contents("http://stable.alpha-trader.com/v2/api-docs"), true);
+        $json = json_decode(file_get_contents("http://dev.alpha-trader.com/v2/api-docs"), true);
         return $json;
     }
 
