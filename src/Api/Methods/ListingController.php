@@ -46,7 +46,7 @@ class ListingController extends ApiClient
     public function getOutstandingShares($securityIdentifier)
     {
         $data = $this->get('listings/outstandingshares/'.$securityIdentifier);
-        $oResult = $this->getSerializer()->deserialize($data->getBody()->getContents(), 'int', 'json');
+        $oResult = $this->getSerializer()->deserialize($data->getBody()->getContents(), 'integer', 'json');
 
         return $oResult;
     }
