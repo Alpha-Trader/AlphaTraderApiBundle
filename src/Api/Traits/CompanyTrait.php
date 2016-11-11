@@ -46,7 +46,6 @@ trait CompanyTrait
     public function getCompaniesByUserId($userId)
     {
         $user = $this->getUserAccountController()->getUserById($userId);
-
         return $this->getCompanyController()->getCompanyByUserId($user);
     }
 
