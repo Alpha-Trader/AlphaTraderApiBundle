@@ -28,6 +28,10 @@ class DateTraitTest extends \PHPUnit_Framework_TestCase
     {
         $expected = new \DateTime();
         $this->traitObject->setDate($expected);
+        $reflection = new \ReflectionClass($this->traitObject);
+        $reflection_property = $reflection->getProperty('startDate');
+        $reflection_property->setAccessible(true);
+        $reflection_property->setValue($this->traitObject, 1427371836);
 
         $this->assertInstanceOf('DateTime', $this->traitObject->getDate());
     }
