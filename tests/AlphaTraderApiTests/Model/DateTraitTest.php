@@ -59,4 +59,52 @@ class DateTraitTest extends \PHPUnit_Framework_TestCase
         $this->assertNotEquals($expected, $this->createObjectForTrait()->getStartDate());
         $this->assertNotEquals($expected, $this->createObjectForTrait()->getEndDate());
     }
+    
+    public function testAfterDeserialization()
+    {
+        $time = 1474099171103;
+        $this->traitObject->setDate($time);
+        $this->traitObject->setStartDate($time);
+        $this->traitObject->setEndDate($time);
+
+        $date = substr($time, 0, 10) . '.' . substr($time, 10);
+        $micro = sprintf("%06d", ($date - floor($date)) * 1000000);
+        $date = new \DateTime(date('Y-m-d H:i:s.' . $micro, $date));
+
+        $this->invokeMethod($this->traitObject, 'afterDeserialization');
+        $this->assertEquals($date, $this->traitObject->getDate());
+    }
+    
+    public function testPreSerialization()
+    {
+        $date = new \DateTime('now');
+        $this->traitObject->setDate($date);
+        $this->traitObject->setStartDate($date);
+        $this->traitObject->setEndDate($date);
+
+        $expected = $date->getTimestamp();
+        $this->invokeMethod($this->traitObject, 'preSerialization');
+
+        $this->assertEquals($expected, $this->traitObject->getDate());
+        $this->assertEquals($expected, $this->traitObject->getStartDate());
+        $this->assertEquals($expected, $this->traitObject->getEndDate());
+    }
+
+    /**
+     * Call protected/private method of a class.
+     *
+     * @param object &$object    Instantiated object that we will run method on.
+     * @param string $methodName Method name to call
+     * @param array  $parameters Array of parameters to pass into method.
+     *
+     * @return mixed Method return.
+     */
+    public function invokeMethod(&$object, $methodName, array $parameters = array())
+    {
+        $reflection = new \ReflectionClass(get_class($object));
+        $method = $reflection->getMethod($methodName);
+        $method->setAccessible(true);
+
+        return $method->invokeArgs($object, $parameters);
+    }
 }
