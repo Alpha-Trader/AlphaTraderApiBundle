@@ -6,8 +6,9 @@ use Alphatrader\ApiBundle\Api\ApiClient;
 
 /**
  * Class PriceSpreadController
+ *
  * @package AlphaTrader\API\Controller
- * @author Tr0nYx <tronyx@bric.finance>
+ * @author  Tr0nYx <tronyx@bric.finance>
  */
 class PriceSpreadController extends ApiClient
 {

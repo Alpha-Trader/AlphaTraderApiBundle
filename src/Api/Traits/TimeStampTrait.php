@@ -4,8 +4,9 @@ namespace Alphatrader\ApiBundle\Api\Traits;
 
 /**
  * Class TimeStampTrait
+ *
  * @package Alphatrader\ApiBundle\Api\Traits
- * @author Tr0nYx
+ * @author  Tr0nYx
  */
 trait TimeStampTrait
 {

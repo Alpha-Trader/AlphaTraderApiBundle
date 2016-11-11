@@ -7,8 +7,9 @@ use Alphatrader\ApiBundle\Model\BankAccount;
 
 /**
  * Class CashTransferLogTrait
+ *
  * @package Alphatrader\ApiBundle\Api\Traits
- * @author Tr0nYx
+ * @author  Tr0nYx
  */
 trait CashTransferLogTrait
 {

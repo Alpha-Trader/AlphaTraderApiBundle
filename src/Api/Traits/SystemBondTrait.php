@@ -7,13 +7,43 @@ use Alphatrader\ApiBundle\Model\Listing;
 
 /**
  * Class SystemBondTrait
+ *
  * @package Alphatrader\ApiBundle\Api\Traits
- * @author Tr0nYx
+ * @author  Tr0nYx
  */
 trait SystemBondTrait
 {
     /**
-     * @param Company $company
+     * @param $bondid
+     *
+     * @return \Alphatrader\ApiBundle\Model\SystemBond
+     */
+    public function getSystemBonds()
+    {
+        return $this->getSystemBondController()->getBonds();
+    }
+    
+    /**
+     * @param $bondid
+     *
+     * @return \Alphatrader\ApiBundle\Model\SystemBond
+     */
+    public function getSystemBond($bondid)
+    {
+        return $this->getSystemBondController()->getBond($bondid);
+    }
+
+    /**
+     * @param $secIdent
+     * @return \Alphatrader\ApiBundle\Model\SystemBond|\Alphatrader\ApiBundle\Model\Error
+     */
+    public function getSystemBondBySecIdent($secIdent)
+    {
+        return $this->getSystemBondController()->getBondBySecurityIdentifier($secIdent);
+    }
+    
+    /**
+     * @param Company       $company
      * @param         $numberOfBonds
      *
      * @return Listing
@@ -28,24 +58,7 @@ trait SystemBondTrait
         );
     }
 
-    /**
-     * @return array
-     */
-    public function repaySystemBond()
-    {
-        return $this->getSystemBondController()->repayBond();
-    }
-
-    /**
-     * @param $bondid
-     *
-     * @return \Alphatrader\ApiBundle\Model\Bond
-     */
-    public function getSystemBond($bondid)
-    {
-        return $this->getSystemBondController()->getBond($bondid);
-    }
-
+    
     /**
      * @return SystemBondController
      */

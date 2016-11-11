@@ -13,9 +13,10 @@ use Alphatrader\ApiBundle\Model\UserAccount;
 
 /**
  * Class CompanyController
+ *
  * @package AlphaTrader\API\Controller
- * @author Tr0nYx <tronyx@bric.finance>
- * @author ljbergmann <l.bergmann@sky-lab.de>
+ * @author  Tr0nYx <tronyx@bric.finance>
+ * @author  ljbergmann <l.bergmann@sky-lab.de>
  */
 class CompanyController extends ApiClient
 {
@@ -101,6 +102,16 @@ class CompanyController extends ApiClient
     {
         $data = $this->get('companyprofiles/' . $companyId);
         return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\CompanyProfile');
+    }
+
+    /**
+     * @param $name
+     * @return \Alphatrader\ApiBundle\Model\Error|mixed
+     */
+    public function searchCompanyByName($name)
+    {
+        $data = $this->get('search/companies/' . $name);
+        return $this->parseResponse($data, 'ArrayCollection<Alphatrader\ApiBundle\Model\CompactCompany>');
     }
 
     /**

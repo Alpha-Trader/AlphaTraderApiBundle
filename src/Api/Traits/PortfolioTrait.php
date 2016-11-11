@@ -6,19 +6,30 @@ use Alphatrader\ApiBundle\Api\Methods\PortfolioController;
 
 /**
  * Class PortfolioTrait
+ *
  * @package Alphatrader\ApiBundle\Api\Traits
- * @author Tr0nYx
+ * @author  Tr0nYx
  */
 trait PortfolioTrait
 {
     /**
-     * @param $secAccId
+     * @param string $securitiesAccountId
      *
      * @return \Alphatrader\ApiBundle\Model\Portfolio
      */
-    public function getPortfolio($secAccId)
+    public function getPortfolio($securitiesAccountId)
     {
-        return $this->getPortfolioController()->getPortfolio($secAccId);
+        return $this->getPortfolioController()->getPortfolio($securitiesAccountId);
+    }
+
+    /**
+     * @param string $securitiesAccountId
+     *
+     * @return \Alphatrader\ApiBundle\Model\Error|\Alphatrader\ApiBundle\Model\Portfolio
+     */
+    public function getFixedIncomeSecurities($securitiesAccountId)
+    {
+        return $this->getPortfolioController()->getFixedIncomeSecurities($securitiesAccountId);
     }
 
     /**

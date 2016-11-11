@@ -7,8 +7,9 @@ use Alphatrader\ApiBundle\Model\Company;
 
 /**
  * Class BankingLicenseTrait
+ *
  * @package Alphatrader\ApiBundle\Api\Traits
- * @author Tr0nYx
+ * @author  Tr0nYx
  */
 trait BankingLicenseTrait
 {
@@ -30,6 +31,15 @@ trait BankingLicenseTrait
     public function getBankingLicense(Company $company)
     {
         return $this->getBankingLicenseController()->getBankingLicense($company);
+    }
+
+    /**
+     * @param $id
+     * @return \Alphatrader\ApiBundle\Model\Error|\Alphatrader\ApiBundle\Model\BankingLicense
+     */
+    public function getBankingLicenseById($id)
+    {
+        return $this->getBankingLicenseController()->getBankingLicenseByBankingLicenseId($id);
     }
 
     /**

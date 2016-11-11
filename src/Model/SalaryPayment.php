@@ -6,8 +6,9 @@ use JMS\Serializer\Annotation;
 
 /**
  * Class SalaryPayment
+ *
  * @package Alphatrader\ApiBundle\Model
- * @author Tr0nYx
+ * @author  Tr0nYx
  */
 class SalaryPayment
 {

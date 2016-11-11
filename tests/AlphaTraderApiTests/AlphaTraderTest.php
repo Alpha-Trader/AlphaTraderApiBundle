@@ -256,12 +256,7 @@ class AlphaTraderTest extends BaseTestCase
         $this->alphatrader->createSystemBond($company, 1);
     }
 
-    public function test_repaySystemBond()
-    {
-        $this->expectException(RuntimeException::class);
-        $this->alphatrader->repaySystemBond();
-    }
-
+    
     public function test_getSystemBond()
     {
         $this->expectException(RuntimeException::class);

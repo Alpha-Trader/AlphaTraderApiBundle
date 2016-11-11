@@ -15,8 +15,9 @@ use Alphatrader\ApiBundle\Model\Error;
 
 /**
  * Class BankingLicenseController
+ *
  * @package AlphaTrader\API\Controller
- * @author Tr0nYx <tronyx@bric.finance>
+ * @author  Tr0nYx <tronyx@bric.finance>
  */
 class BankingLicenseController extends ApiClient
 {
@@ -39,6 +40,16 @@ class BankingLicenseController extends ApiClient
     public function getBankingLicense(Company $company)
     {
         $request = $this->get('bankinglicense/', ['companyId' => $company->getId()]);
+        return $this->parseResponse($request, 'Alphatrader\ApiBundle\Model\BankingLicense');
+    }
+
+    /**
+     * @param $bankingLicenseId
+     * @return Error|BankingLicense
+     */
+    public function getBankingLicenseByBankingLicenseId($bankingLicenseId)
+    {
+        $request = $this->get('bankinglicense/'.$bankingLicenseId);
         return $this->parseResponse($request, 'Alphatrader\ApiBundle\Model\BankingLicense');
     }
 }

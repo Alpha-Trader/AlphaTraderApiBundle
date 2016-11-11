@@ -12,8 +12,9 @@ use Alphatrader\ApiBundle\Api\ApiClient;
 
 /**
  * Class BankAccountController
+ *
  * @package AlphaTrader\API\Controller
- * @author Tr0nYx <tronyx@bric.finance>
+ * @author  Tr0nYx <tronyx@bric.finance>
  */
 class UserAccountController extends ApiClient
 {
@@ -108,7 +109,9 @@ class UserAccountController extends ApiClient
             ['username' => $username, 'password' => $password]
         );
         $data = $request->getBody()->getContents();
-        /** @var \Alphatrader\ApiBundle\Model\MessagePrototype $oResult */
+        /**
+ * @var \Alphatrader\ApiBundle\Model\MessagePrototype $oResult
+*/
         $oResult = $this->getSerializer()->deserialize(
             $data,
             'Alphatrader\ApiBundle\Model\MessagePrototype',

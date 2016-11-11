@@ -18,8 +18,9 @@ use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 
 /**
  * Class AlphatraderApiExtension
+ *
  * @package Alphatrader\ApiBundle\DependencyInjection
- * @author Tr0nYx <tronyx@bric.finance>
+ * @author  Tr0nYx <tronyx@bric.finance>
  */
 class AlphatraderApiExtension extends Extension
 {
@@ -27,7 +28,7 @@ class AlphatraderApiExtension extends Extension
     /**
      * Loads a specific configuration.
      *
-     * @param array            $configs An array of configuration values
+     * @param array            $configs   An array of configuration values
      * @param ContainerBuilder $container A ContainerBuilder instance
      *
      * @throws \InvalidArgumentException When provided tag is not defined in this extension
@@ -46,6 +47,7 @@ class AlphatraderApiExtension extends Extension
     /**
      * Returns the recommended alias to use in XML.
      * This alias is also the mandatory prefix to use when using YAML.
+     *
      * @return string The alias
      */
     public function getAlias()

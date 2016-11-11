@@ -6,6 +6,7 @@ use JMS\Serializer\Annotation;
 
 /**
  * Class Message
+ *
  * @package Alphatrader\ApiBundle\Model
  * @Annotation\ExclusionPolicy("none")
  */

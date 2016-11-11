@@ -6,6 +6,7 @@ use Alphatrader\ApiBundle\Api\ApiClient;
 
 /**
  * Class SecurityOrderController
+ *
  * @package Alphatrader\ApiBundle\Api\Methods
  */
 class SecurityOrderController extends ApiClient
@@ -36,7 +37,7 @@ class SecurityOrderController extends ApiClient
     {
 
         $data = $this->post(
-            'securityorders',
+            'securityorders/',
             [
                 'owner'              => $owner,
                 'securityIdentifier' => $secIdent,

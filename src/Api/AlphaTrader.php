@@ -2,10 +2,12 @@
 
 namespace Alphatrader\ApiBundle\Api;
 
+use Alphatrader\ApiBundle\Api\Traits\PartnerTrait;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 /**
  * Class AlphaTrader
+ *
  * @package Alphatrader\ApiBundle\Api
  */
 class AlphaTrader
@@ -24,12 +26,16 @@ class AlphaTrader
     use Traits\MainInterestRateTrait;
     use Traits\MessageTrait;
     use Traits\NotificationTrait;
+    use Traits\PartnerTrait;
     use Traits\PortfolioTrait;
+    use Traits\SalaryTrait;
+    use Traits\SearchTrait;
     use Traits\SecurityOrderLogTrait;
     use Traits\SecurityOrderTrait;
+    use Traits\StatisticsTrait;
     use Traits\SystemBondTrait;
-    use Traits\UserTrait;
     use Traits\TimeStampTrait;
+    use Traits\UserTrait;
     use Traits\VotingTrait;
 
     protected $config;

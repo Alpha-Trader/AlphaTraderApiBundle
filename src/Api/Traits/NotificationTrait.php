@@ -2,12 +2,13 @@
 
 namespace Alphatrader\ApiBundle\Api\Traits;
 
-use Alphatrader\ApiBundle\Api\Methods\NotificationsController;
+use Alphatrader\ApiBundle\Api\Methods\NotificationController;
 
 /**
  * Class NotificationTrait
+ *
  * @package Alphatrader\ApiBundle\Api\Traits
- * @author Tr0nYx
+ * @author  Tr0nYx
  */
 trait NotificationTrait
 {
@@ -36,10 +37,10 @@ trait NotificationTrait
     }
     
     /**
-     * @return NotificationsController
+     * @return NotificationController
      */
     public function getNotificationsController()
     {
-        return new NotificationsController($this->config, $this->jwt);
+        return new NotificationController($this->config, $this->jwt);
     }
 }

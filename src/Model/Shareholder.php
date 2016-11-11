@@ -10,7 +10,8 @@ use JMS\Serializer\Annotation;
 
 /**
  * Class Shareholder
- * @package Alphatrader\ApiBundle\Model
+ *
+ * @package                            Alphatrader\ApiBundle\Model
  * @Annotation\ExclusionPolicy("none")
  */
 class Shareholder

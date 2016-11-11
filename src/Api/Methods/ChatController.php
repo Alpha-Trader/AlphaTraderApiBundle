@@ -8,14 +8,16 @@ use Alphatrader\ApiBundle\Model\UserAccount;
 
 /**
  * Class ChatController
- * @package AlphaTrader\ApiBundle\Controller
- * @author Tr0nYx <tronyx@bric.finance>
+ *
+ * @package                 AlphaTrader\ApiBundle\Controller
+ * @author                  Tr0nYx <tronyx@bric.finance>
  * @SuppressWarnings(PHPMD)
  */
 class ChatController extends ApiClient
 {
     /**
      * Lists chats in which logged in user participates
+     *
      * @return \Alphatrader\ApiBundle\Model\Chat[]
      */
     public function getChats()
