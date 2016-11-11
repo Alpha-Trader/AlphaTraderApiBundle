@@ -168,9 +168,7 @@ class ApiClient
 
         $oResult = $this->getSerializer()->deserialize($data, $class, 'json');
         if ($this->isGuiltyResponse($class, $oResult) === false) {
-            /**
- * @var Error $oResult
-*/
+            /** @var Error $oResult */
             $oResult = $this->getSerializer()->deserialize(
                 $data,
                 'Alphatrader\ApiBundle\Model\Error',

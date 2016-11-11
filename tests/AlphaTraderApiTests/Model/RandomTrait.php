@@ -15,11 +15,23 @@ trait RandomTrait
     /**
      * @param int $min
      * @param int $max
+     *
      * @return mixed
      */
     protected function getRandomFloat($min = 1, $max = 50000000)
     {
-        return mt_rand($min, $max) + (rand()/mt_getrandmax());
+        return mt_rand($min, $max) + (rand() / mt_getrandmax());
+    }
+
+    /**
+     * @param int $min
+     * @param int $max
+     *
+     * @return mixed
+     */
+    protected function getRandomInteger($min = 1, $max = 50000000)
+    {
+        return (int)$this->getRandomFloat($min, $max);
     }
 
     /*
@@ -35,6 +47,7 @@ trait RandomTrait
             $rand = mt_rand(0, $max);
             $str .= $characters[$rand];
         }
+
         return $str;
     }
 }
