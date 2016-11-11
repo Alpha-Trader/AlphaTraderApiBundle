@@ -8,7 +8,6 @@ namespace Tests\Model;
 
 use Alphatrader\ApiBundle\Model\ShareholderStake;
 
-
 /**
  * Class SecuritySponsorshipTest
  * @package Tests\Model

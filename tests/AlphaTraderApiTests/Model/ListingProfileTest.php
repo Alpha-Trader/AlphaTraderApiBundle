@@ -270,7 +270,6 @@ class ListingProfileTest extends \PHPUnit_Framework_TestCase
 
         $listingProfile->setSecurityIdentifier("SBSF8797");
         $this->assertEquals('Central Bank', $listingProfile->getIssuerName());
-
     }
 
     public function testGetIssuerSecurityIdentifier()
