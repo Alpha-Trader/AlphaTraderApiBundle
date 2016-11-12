@@ -56,6 +56,4 @@ class HashTag
     {
         $this->tag = $tag;
     }
-    
-    
 }

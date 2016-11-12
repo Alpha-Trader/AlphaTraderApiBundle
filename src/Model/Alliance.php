@@ -104,6 +104,4 @@ class Alliance
     {
         $this->name = $name;
     }
-    
-    
 }
