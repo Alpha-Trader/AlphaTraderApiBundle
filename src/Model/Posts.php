@@ -403,4 +403,6 @@ class Posts
     {
         $this->title = $title;
     }
+    
+    
 }
