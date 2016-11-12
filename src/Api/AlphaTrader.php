@@ -28,6 +28,7 @@ class AlphaTrader
     use Traits\NotificationTrait;
     use Traits\PartnerTrait;
     use Traits\PortfolioTrait;
+    use Traits\PriceSpreadTrait;
     use Traits\SalaryTrait;
     use Traits\SearchTrait;
     use Traits\SecurityOrderLogTrait;
