@@ -41,6 +41,18 @@ class LastMessageTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($content, $lastMessage->getContent());
     }
 
+    public function testChatId()
+    {
+        $lastMessage = new LastMessage();
+        $this->assertNull($lastMessage->getChatId());
+
+        $uid = uniqid();
+
+        $lastMessage->setChatId($uid);
+
+        $this->assertEquals($uid, $lastMessage->getChatId());
+    }
+
     public function testDateSent()
     {
         $lastMessage = new LastMessage();
@@ -116,5 +128,37 @@ class LastMessageTest extends \PHPUnit_Framework_TestCase
         $lastMessage->setSender($sender);
 
         $this->assertInstanceOf('Alphatrader\ApiBundle\Model\UserName', $lastMessage->getSender());
+    }
+
+    public function testAfterDeserialization()
+    {
+        $time = 1474099171103;
+        $lastMessage = new LastMessage();
+        $lastMessage->setDateSent($time);
+
+        $date = substr($time, 0, 10) . '.' . substr($time, 10);
+        $micro = sprintf("%06d", ($date - floor($date)) * 1000000);
+        $date = new \DateTime(date('Y-m-d H:i:s.' . $micro, $date));
+
+        $this->invokeMethod($lastMessage, 'afterDeserialization');
+        $this->assertEquals($date, $lastMessage->getDateSent());
+    }
+
+    /**
+     * Call protected/private method of a class.
+     *
+     * @param object &$object    Instantiated object that we will run method on.
+     * @param string $methodName Method name to call
+     * @param array  $parameters Array of parameters to pass into method.
+     *
+     * @return mixed Method return.
+     */
+    public function invokeMethod(&$object, $methodName, array $parameters = array())
+    {
+        $reflection = new \ReflectionClass(get_class($object));
+        $method = $reflection->getMethod($methodName);
+        $method->setAccessible(true);
+
+        return $method->invokeArgs($object, $parameters);
     }
 }

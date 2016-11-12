@@ -111,4 +111,39 @@ class PortfolioPositionTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue(is_string($pp->getSecurityIdentifier()));
         $this->assertEquals($secIdent, $pp->getSecurityIdentifier());
     }
+
+    public function testVolume()
+    {
+        $pp = new PortfolioPosition();
+        $this->assertNull($pp->getVolume());
+
+        $volume = $this->getRandomFloat();
+        $pp->setVolume($volume);
+
+        $this->assertTrue(is_float($pp->getVolume()));
+        $this->assertEquals($volume, $pp->getVolume());
+    }
+
+    public function testType()
+    {
+        $pp = new PortfolioPosition();
+        $this->assertNull($pp->getType());
+
+        $value = $this->getRandomString();
+        $pp->setType($value);
+
+        $this->assertTrue(is_string($pp->getType()));
+        $this->assertEquals($value, $pp->getType());
+    }
+
+    public function testListing()
+    {
+        $pp = new PortfolioPosition();
+        $this->assertNull($pp->getType());
+
+        $value = $this->createMock('Alphatrader\ApiBundle\Model\Listing');
+        $pp->setListing($value);
+
+        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\Listing', $pp->getListing());
+    }
 }
