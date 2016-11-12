@@ -10,6 +10,7 @@ use JMS\Serializer\Annotation;
  * @package Alphatrader\ApiBundle\Model
  * @Annotation\ExclusionPolicy("none")
  * @author ljbergmann <l.bergmann@sky-lab.de>
+ * @SuppressWarnings(PHPMD)
  */
 class Posts
 {
