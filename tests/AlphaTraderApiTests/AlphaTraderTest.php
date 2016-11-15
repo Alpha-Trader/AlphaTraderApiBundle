@@ -29,17 +29,21 @@ class AlphaTraderTest extends BaseTestCase
     {
         self::assertInstanceOf(AlphaTrader::class, $this->alphatrader);
     }
-    
+
     public function test_formatTimeStamp()
     {
-        $timestamp = $this->invokeMethod($this->alphatrader, 'formatTimeStamp', array(new \DateTime()));
-        $this->assertInstanceOf('\DateTime', $timestamp);
+        $time = mt_rand(1262055681, 1474823143);
+        $date = new \DateTime();
+        $date->setTimestamp($time);
+        $timestamp = $this->invokeMethod($this->alphatrader, 'formatTimeStamp', array($date));
+        $this->assertTrue(is_int($timestamp));
         $timestamp = $this->invokeMethod($this->alphatrader, 'formatTimeStamp', array(null));
         $this->assertNull($timestamp);
-        $time = mt_rand(1262055681, 1474823143);
+
         $timestamp = $this->invokeMethod($this->alphatrader, 'formatTimeStamp', array($time));
         $this->assertTrue(is_int($timestamp));
     }
+
 
     /**
      * @return Bankaccount
