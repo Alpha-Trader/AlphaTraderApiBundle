@@ -17,6 +17,6 @@ trait TimeStampTrait
      */
     protected function formatTimeStamp($time)
     {
-        return $time ?: ($time instanceof \DateTime ? ($time->getTimestamp() * 1000) : ((int)$time * 1000)) ?: null;
+        return ($time instanceof \DateTime ? ($time->getTimestamp() * 1000) : ((int)$time * 1000)) ?: null;
     }
 }
