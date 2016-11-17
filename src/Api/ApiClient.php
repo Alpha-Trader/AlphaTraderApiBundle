@@ -101,7 +101,7 @@ class ApiClient
         } catch (\GuzzleHttp\Exception\ClientException $e) {
             $request = $e->getResponse();
         } catch (\GuzzleHttp\Exception\ServerException $e) {
-            throw $e;
+            $request = $e->getResponse();
         } catch (\Exception $e) {
             throw new \Exception($e->getMessage());
         }
