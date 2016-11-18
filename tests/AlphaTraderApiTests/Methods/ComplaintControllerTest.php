@@ -21,10 +21,11 @@ class ComplaintControllerTest extends BaseTestCase
 
         $complaint = new ComplaintController($this->config);
         $complaint->setClient($this->getClient($expected));
-
-        $value = $complaint->getComplaintById(1);
-
-        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\Error', $value);
+        try {
+            $val = $complaint->getComplaintById(1);
+        } catch (\RuntimeException $val) {
+            $this->assertInstanceOf('Alphatrader\ApiBundle\Api\Exception\AlphaTraderApiException', $val);
+        }
     }
 
     public function testCreateComplaint()
@@ -35,9 +36,10 @@ class ComplaintControllerTest extends BaseTestCase
 
         $complaint = new ComplaintController($this->config);
         $complaint->setClient($this->getClient($expected));
-
-        $value = $complaint->createComplaint(uniqid(), 'TEST', 'Comment');
-
-        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\Error', $value);
+        try {
+            $value = $complaint->createComplaint(uniqid(), 'TEST', 'Comment');
+        } catch (\RuntimeException $val) {
+            $this->assertInstanceOf('Alphatrader\ApiBundle\Api\Exception\AlphaTraderApiException', $val);
+        }
     }
 }

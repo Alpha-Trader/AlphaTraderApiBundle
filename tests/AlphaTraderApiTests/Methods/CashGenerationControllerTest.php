@@ -33,8 +33,11 @@ class CashGenerationControllerTest extends BaseTestCase
 
         $bondcontroller = new CashGenerationController($this->config);
         $bondcontroller->setClient($this->getClient($expected));
-        $val = $bondcontroller->generateCash(1);
-
-        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\Error', $val);
+        try {
+            $val = $bondcontroller->generateCash(1);
+        }catch (\RuntimeException $val) {
+            $this->assertInstanceOf('Alphatrader\ApiBundle\Api\Exception\AlphaTraderApiException', $val);
+        }
+        
     }
 }

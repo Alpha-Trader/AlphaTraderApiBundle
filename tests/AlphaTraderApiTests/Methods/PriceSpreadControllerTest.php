@@ -37,9 +37,10 @@ class PriceSpreadControllerTest extends BaseTestCase
 
         $priceSpreadController = new PriceSpreadController($this->config);
         $priceSpreadController->setClient($this->getClient($expected));
-
-        $value = $priceSpreadController->getPriceSpread('ST34566');
-
-        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\Error', $value);
+        try {
+                $value = $priceSpreadController->getPriceSpread('ST34566');
+        } catch (\RuntimeException $value) {
+            $this->assertInstanceOf('Alphatrader\ApiBundle\Api\Exception\AlphaTraderApiException', $value);
+        }
     }
 }

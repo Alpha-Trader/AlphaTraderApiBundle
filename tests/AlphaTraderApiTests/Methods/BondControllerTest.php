@@ -37,9 +37,11 @@ class BondControllerTest extends BaseTestCase
         $company->setId(1);
         $bondcontroller = new BondController($this->config);
         $bondcontroller->setClient($this->getClient($expected));
-        $val = $bondcontroller->createBond($company, 1, 1, 1, 1);
-
-        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\Error', $val);
+        try {
+            $val = $bondcontroller->createBond($company, 1, 1, 1, 1);
+        } catch (\RuntimeException $val) {
+            $this->assertInstanceOf('Alphatrader\ApiBundle\Api\Exception\AlphaTraderApiException', $val);
+        }
     }
 
     public function test_getBond()
@@ -50,9 +52,11 @@ class BondControllerTest extends BaseTestCase
 
         $bondcontroller = new BondController($this->config);
         $bondcontroller->setClient($this->getClient($expected));
-        $val = $bondcontroller->getBond(1);
-
-        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\Error', $val);
+        try {
+            $val = $bondcontroller->getBond(1);
+        } catch (\RuntimeException $val) {
+            $this->assertInstanceOf('Alphatrader\ApiBundle\Api\Exception\AlphaTraderApiException', $val);
+        }
     }
 
     public function test_repayBond()
