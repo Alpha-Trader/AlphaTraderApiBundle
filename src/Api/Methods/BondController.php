@@ -60,12 +60,24 @@ class BondController extends ApiClient
     /**
      * @param string $bondId
      *
-     * @throws \Alphatrader\ApiBundle\Api\Exception\HttpErrorException
+     * @throws \Alphatrader\ApiBundle\Api\Exception\AlphaTraderApiException
      * @return Bond|Error
      */
     public function getBond($bondId)
     {
         $request = $this->get('bonds/' . $bondId);
+        return $this->parseResponse($request, 'Alphatrader\ApiBundle\Model\Bond');
+    }
+
+    /**
+     * @param string $secIdent
+     * 
+     * @throws \Alphatrader\ApiBundle\Api\Exception\AlphaTraderApiException
+     * @return Bond
+     */
+    public function getBondBySecurityIdentifier($secIdent)
+    {
+        $request = $this->get('bonds/securityidentifier/' . $secIdent);
         return $this->parseResponse($request, 'Alphatrader\ApiBundle\Model\Bond');
     }
 
