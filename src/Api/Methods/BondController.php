@@ -71,7 +71,7 @@ class BondController extends ApiClient
 
     /**
      * @param string $secIdent
-     * 
+     *
      * @throws \Alphatrader\ApiBundle\Api\Exception\AlphaTraderApiException
      * @return Bond
      */
