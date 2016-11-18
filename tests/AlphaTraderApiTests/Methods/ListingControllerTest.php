@@ -62,10 +62,11 @@ class ListingControllerTest extends BaseTestCase
 
         $listingController = new ListingController($this->config);
         $listingController->setClient($this->getClient($expected));
-
-        $value = $listingController->getListingBySecurityIdentifier('ST345661');
-
-        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\Error', $value);
+        try {
+            $value = $listingController->getListingBySecurityIdentifier('ST345661');
+        } catch (\RuntimeException $value) {
+            $this->assertInstanceOf('Alphatrader\ApiBundle\Api\Exception\AlphaTraderApiException', $value);
+        }
     }
 
     public function test_getListingBySecurityIdentifierPart()

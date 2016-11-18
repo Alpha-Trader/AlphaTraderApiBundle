@@ -23,10 +23,11 @@ class LocaleControllerTest extends BaseTestCase
 
         $localeController = new LocaleController($this->config);
         $localeController->setClient($this->getClient($expected));
-
-        $value = $localeController->getLocaleFromCurrentUser();
-
-        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\Error', $value);
+        try {
+            $value = $localeController->getLocaleFromCurrentUser();
+        } catch (\RuntimeException $value) {
+            $this->assertInstanceOf('Alphatrader\ApiBundle\Api\Exception\AlphaTraderApiException', $value);
+        }
     }
 
     public function testSetLocale()
@@ -37,10 +38,11 @@ class LocaleControllerTest extends BaseTestCase
 
         $localeController = new LocaleController($this->config);
         $localeController->setClient($this->getClient($expected));
-
-        $value = $localeController->setLocale('de_DE');
-
-        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\Error', $value);
+        try {
+            $value = $localeController->setLocale('de_DE');
+        }catch (\RuntimeException $value){
+            $this->assertInstanceOf('Alphatrader\ApiBundle\Api\Exception\AlphaTraderApiException', $value);
+        }
     }
 
     public function testGetLocales()
@@ -51,9 +53,11 @@ class LocaleControllerTest extends BaseTestCase
 
         $localeController = new LocaleController($this->config);
         $localeController->setClient($this->getClient($expected));
-
-        $value = $localeController->getLocales();
-
+        try {
+                $value = $localeController->getLocales();
+        } catch (\RuntimeException $value) {
+            $this->assertInstanceOf('Alphatrader\ApiBundle\Model\Error', $value);
+        }
         $this->assertTrue(is_array($value));
     }
 }
