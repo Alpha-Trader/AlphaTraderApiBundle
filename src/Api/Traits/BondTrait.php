@@ -60,7 +60,7 @@ trait BondTrait
 
     /**
      * @param $secIdent
-     * 
+     *
      * @throws \Alphatrader\ApiBundle\Api\Exception\AlphaTraderApiException
      * @return Bond
      */
