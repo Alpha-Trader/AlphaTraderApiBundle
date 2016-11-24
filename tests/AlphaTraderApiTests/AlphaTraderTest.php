@@ -32,11 +32,14 @@ class AlphaTraderTest extends BaseTestCase
     
     public function test_formatTimeStamp()
     {
-        $timestamp = $this->invokeMethod($this->alphatrader, 'formatTimeStamp', array(new \DateTime()));
-        $this->assertInstanceOf('\DateTime', $timestamp);
+        $time = mt_rand(1262055681, 1474823143);
+        $date = new \DateTime();
+        $date->setTimestamp($time);
+        $timestamp = $this->invokeMethod($this->alphatrader, 'formatTimeStamp', array($date));
+        $this->assertTrue(is_int($timestamp));
         $timestamp = $this->invokeMethod($this->alphatrader, 'formatTimeStamp', array(null));
         $this->assertNull($timestamp);
-        $time = mt_rand(1262055681, 1474823143);
+
         $timestamp = $this->invokeMethod($this->alphatrader, 'formatTimeStamp', array($time));
         $this->assertTrue(is_int($timestamp));
     }
@@ -106,6 +109,18 @@ class AlphaTraderTest extends BaseTestCase
     {
         $this->expectException(RuntimeException::class);
         $this->alphatrader->getUserByUsername('test');
+    }
+    
+    public function test_getUserById()
+    {
+        $this->expectException(RuntimeException::class);
+        $this->alphatrader->getUserById('test');
+    }
+
+    public function test_getUserJwt()
+    {
+        $this->expectException(RuntimeException::class);
+        $this->alphatrader->getUserJwt("UnitTest", "password");
     }
 
     public function test_getMyCompanies()
@@ -279,6 +294,13 @@ class AlphaTraderTest extends BaseTestCase
         $this->alphatrader->getBankingLicense($company);
     }
 
+    public function test_getBankingLicenseById()
+    {
+
+        $this->expectException(RuntimeException::class);
+        $this->alphatrader->getBankingLicenseById("id");
+    }
+
     public function test_getMainInterestRate()
     {
         $this->expectException(RuntimeException::class);
@@ -361,5 +383,71 @@ class AlphaTraderTest extends BaseTestCase
         $this->assertInstanceOf(Company::class, $company);
         $this->assertEquals($company, $response['company']);
         $this->assertEquals(1, $company->getId());
+    }
+
+    public function testGetMarketStatistics()
+    {
+        $this->expectException(RuntimeException::class);
+        $this->alphatrader->getMarketStatistics();
+    }
+
+    public function testGetMarketStatisticsAsArray()
+    {
+        $this->expectException(RuntimeException::class);
+        $this->alphatrader->getMarketStatisticsAsArray();
+    }
+
+    public function testGetMarketStatisticsByType()
+    {
+        $this->expectException(RuntimeException::class);
+        $this->alphatrader->getMarketStatisticsByType('type');
+    }
+
+    public function testSearch()
+    {
+        $this->expectException(RuntimeException::class);
+        $this->alphatrader->search("UnitTest");
+    }
+
+    public function testGetEmployment()
+    {
+        $this->expectException(RuntimeException::class);
+        $this->alphatrader->getEmployment("id");
+    }
+
+    public function testGetEmployments()
+    {
+        $this->expectException(RuntimeException::class);
+        $this->alphatrader->getEmployments();
+    }
+
+    public function testGetPayment()
+    {
+        $this->expectException(RuntimeException::class);
+        $this->alphatrader->getPayment(1);
+    }
+
+    public function testPaySalary()
+    {
+        $this->expectException(RuntimeException::class);
+        $this->alphatrader->paySalary("33");
+    }
+
+    public function testGetFixedIncomeSecurities()
+    {
+        $this->expectException(RuntimeException::class);
+        $this->alphatrader->getFixedIncomeSecurities("secIdent");
+    }
+
+    public function testGetSystemBonds()
+    {
+        $this->expectException(RuntimeException::class);
+        $this->alphatrader->getSystemBonds();
+    }
+    
+    public function testGetPost()
+    {
+        $this->expectException(RuntimeException::class);
+        $this->alphatrader->getPost("id");
     }
 }

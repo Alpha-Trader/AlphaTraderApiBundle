@@ -5,7 +5,7 @@ namespace Alphatrader\ApiBundle\Api\Exception;
 use Alphatrader\ApiBundle\Model\Error;
 use Symfony\Component\HttpKernel\Exception\HttpExceptionInterface;
 
-class HttpErrorException extends \RuntimeException implements HttpExceptionInterface
+class AlphaTraderApiException extends \RuntimeException implements HttpExceptionInterface
 {
     private $statusCode;
 
@@ -53,6 +53,11 @@ class HttpErrorException extends \RuntimeException implements HttpExceptionInter
     public function getFilledString()
     {
         return $this->error->getMessagePrototype()->getFilledString();
+    }
+
+    public function getError()
+    {
+        return $this->error;
     }
 
     /**

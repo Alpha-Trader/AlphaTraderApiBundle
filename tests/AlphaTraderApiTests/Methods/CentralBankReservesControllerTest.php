@@ -20,9 +20,11 @@ class CentralBankReservesControllerTest extends BaseTestCase
 
         $bankaccount = new CentralBankReservesController($this->config);
         $bankaccount->setClient($this->getClient($expected));
-        $val = $bankaccount->getReserveById(1);
-
-        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\Error', $val);
+        try {
+            $val = $bankaccount->getReserveById(1);
+        } catch (\RuntimeException $val) {
+            $this->assertInstanceOf('Alphatrader\ApiBundle\Api\Exception\AlphaTraderApiException', $val);
+        }
     }
 
     public function test_getReserveByCompanyId()
@@ -33,9 +35,11 @@ class CentralBankReservesControllerTest extends BaseTestCase
 
         $bankaccount = new CentralBankReservesController($this->config);
         $bankaccount->setClient($this->getClient($expected));
-        $val = $bankaccount->getReserveByCompanyId(1);
-
-        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\Error', $val);
+        try {
+            $val = $bankaccount->getReserveByCompanyId(1);
+        } catch (\RuntimeException $val) {
+            $this->assertInstanceOf('Alphatrader\ApiBundle\Api\Exception\AlphaTraderApiException', $val);
+        }
     }
 
     public function test_increaseReserves()
@@ -48,8 +52,11 @@ class CentralBankReservesControllerTest extends BaseTestCase
 
         $bankaccount = new CentralBankReservesController($this->config);
         $bankaccount->setClient($this->getClient($expected));
-        $val = $bankaccount->increaseReserves($company, 1);
+        try {
+            $val = $bankaccount->increaseReserves($company, 1);
+        } catch (\RuntimeException $val) {
+            $this->assertInstanceOf('Alphatrader\ApiBundle\Api\Exception\AlphaTraderApiException', $val);
+        }
 
-        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\Error', $val);
     }
 }

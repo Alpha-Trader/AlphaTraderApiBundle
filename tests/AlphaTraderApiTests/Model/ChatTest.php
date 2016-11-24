@@ -7,6 +7,7 @@
 namespace Tests\Model;
 
 use Alphatrader\ApiBundle\Model\Chat;
+use Alphatrader\ApiBundle\Model\LastMessage;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -16,7 +17,8 @@ use PHPUnit\Framework\TestCase;
  */
 class ChatTest extends TestCase
 {
-
+    use RandomTrait;
+    
     public function testId()
     {
         $chat = new Chat();
@@ -161,18 +163,54 @@ class ChatTest extends TestCase
         $this->assertInstanceOf('Alphatrader\ApiBundle\Model\UserName', $chat->getOwner());
     }
 
-    /*
-    * @param $length
-    */
-    private function getRandomString($length = 6)
+    public function testAfterDeserialization()
     {
-        $str = "";
-        $characters = array_merge(range('A', 'Z'), range('a', 'z'), range('0', '9'));
-        $max = count($characters) - 1;
-        for ($i = 0; $i < $length; $i++) {
-            $rand = mt_rand(0, $max);
-            $str .= $characters[$rand];
-        }
-        return $str;
+        $time = 1474099171103;
+        $date = substr($time, 0, 10) . '.' . substr($time, 10);
+        $micro = sprintf("%06d", ($date - floor($date)) * 1000000);
+        $date = new \DateTime(date('Y-m-d H:i:s.' . $micro, $date));
+
+        $chat = new Chat();
+        $chat->setDateCreated($time);
+        $chat->setChatName("Test");
+        
+        $this->invokeMethod($chat, 'afterDeserialization');
+        $this->assertEquals($date, $chat->getDateCreated());
+    }
+
+    public function testPreSerialization()
+    {
+        $chat = new Chat();
+
+        $date = new \DateTime('now');
+        $chat->setDateCreated($date);
+
+        $lastMessage = new LastMessage();
+        $lastMessage->setDateSent($date);
+        $chat->setLastMessage($lastMessage);
+
+        $expected = $date->getTimestamp();
+        $this->invokeMethod($chat, 'preSerialization');
+
+        $this->assertEquals($expected, $chat->getDateCreated());
+        $this->assertEquals($expected, $chat->getLastMessage()->getDateSent());
+    }
+
+    /**
+     * Call protected/private method of a class.
+     *
+     * @param object &$object    Instantiated object that we will run method on.
+     * @param string $methodName Method name to call
+     * @param array  $parameters Array of parameters to pass into method.
+     *
+     * @return mixed Method return.
+     */
+    public function invokeMethod(&$object, $methodName, array $parameters = array())
+    {
+        $reflection = new \ReflectionClass(get_class($object));
+        $method = $reflection->getMethod($methodName);
+        $method->setAccessible(true);
+
+        return $method->invokeArgs($object, $parameters);
     }
 }
