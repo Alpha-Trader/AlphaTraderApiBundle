@@ -7,8 +7,8 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 /**
  * Class AlphaTrader
- *
  * @package Alphatrader\ApiBundle\Api
+ * @author Tr0nYx
  */
 class AlphaTrader
 {
