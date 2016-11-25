@@ -29,7 +29,7 @@ class AlphaTraderTest extends BaseTestCase
     {
         self::assertInstanceOf(AlphaTrader::class, $this->alphatrader);
     }
-    
+
     public function test_formatTimeStamp()
     {
         $time = mt_rand(1262055681, 1474823143);
@@ -43,6 +43,7 @@ class AlphaTraderTest extends BaseTestCase
         $timestamp = $this->invokeMethod($this->alphatrader, 'formatTimeStamp', array($time));
         $this->assertTrue(is_int($timestamp));
     }
+
 
     /**
      * @return Bankaccount
