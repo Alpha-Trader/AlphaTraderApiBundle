@@ -16,7 +16,7 @@ use Alphatrader\ApiBundle\Model\PortfolioPosition;
 class PortfolioPositionTest extends \PHPUnit_Framework_TestCase
 {
     use RandomTrait;
-    
+
     public function testCommittedShares()
     {
         $pp = new PortfolioPosition();

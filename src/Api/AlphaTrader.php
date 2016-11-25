@@ -7,8 +7,8 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 /**
  * Class AlphaTrader
- *
  * @package Alphatrader\ApiBundle\Api
+ * @author Tr0nYx
  */
 class AlphaTrader
 {
@@ -28,6 +28,7 @@ class AlphaTrader
     use Traits\NotificationTrait;
     use Traits\PartnerTrait;
     use Traits\PortfolioTrait;
+    use Traits\PostsTrait;
     use Traits\PriceSpreadTrait;
     use Traits\SalaryTrait;
     use Traits\SearchTrait;

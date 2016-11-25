@@ -16,7 +16,7 @@ use Alphatrader\ApiBundle\Model\LastMessage;
 class LastMessageTest extends \PHPUnit_Framework_TestCase
 {
     use RandomTrait;
-    
+
     public function testId()
     {
         $lastMessage = new LastMessage();

@@ -121,7 +121,7 @@ class AlphaTraderTest extends BaseTestCase
     public function test_getUserJwt()
     {
         $this->expectException(RuntimeException::class);
-        $this->alphatrader->getUserJwt("UnitTest","password");
+        $this->alphatrader->getUserJwt("UnitTest", "password");
     }
 
     public function test_getMyCompanies()
@@ -444,5 +444,11 @@ class AlphaTraderTest extends BaseTestCase
     {
         $this->expectException(RuntimeException::class);
         $this->alphatrader->getSystemBonds();
+    }
+    
+    public function testGetPost()
+    {
+        $this->expectException(RuntimeException::class);
+        $this->alphatrader->getPost("id");
     }
 }

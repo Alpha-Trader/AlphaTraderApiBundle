@@ -2,6 +2,7 @@
 
 namespace Alphatrader\ApiBundle\Api;
 
+use Alphatrader\ApiBundle\Api\Exception\AlphaTraderApiException;
 use Alphatrader\ApiBundle\Api\Exception\HttpErrorException;
 use Alphatrader\ApiBundle\Model\Error;
 use GuzzleHttp\Client;
@@ -101,7 +102,7 @@ class ApiClient
         } catch (\GuzzleHttp\Exception\ClientException $e) {
             $request = $e->getResponse();
         } catch (\GuzzleHttp\Exception\ServerException $e) {
-            throw $e;
+            $request = $e->getResponse();
         } catch (\Exception $e) {
             throw new \Exception($e->getMessage());
         }
@@ -174,6 +175,8 @@ class ApiClient
                 'Alphatrader\ApiBundle\Model\Error',
                 'json'
             );
+
+            throw new AlphaTraderApiException($request->getStatusCode(), $oResult);
         }
         return $oResult;
     }

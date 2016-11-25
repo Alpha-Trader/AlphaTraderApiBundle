@@ -28,9 +28,11 @@ class BankingLicenseControllerTest extends BaseTestCase
         $company->setId(1);
         $bankaccount = new BankingLicenseController($this->config);
         $bankaccount->setClient($this->getClient($expected));
-        $val = $bankaccount->createBankingLicense($company);
-
-        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\Error', $val);
+        try {
+            $val = $bankaccount->createBankingLicense($company);
+        } catch (\RuntimeException $val) {
+            $this->assertInstanceOf('Alphatrader\ApiBundle\Api\Exception\AlphaTraderApiException', $val);
+        }
     }
 
     public function test_getBankingLicenseWithError()
@@ -43,8 +45,10 @@ class BankingLicenseControllerTest extends BaseTestCase
         $company->setId(1);
         $bankaccount = new BankingLicenseController($this->config);
         $bankaccount->setClient($this->getClient($expected));
-        $val = $bankaccount->getBankingLicense($company);
-
-        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\Error', $val);
+        try {
+            $val = $bankaccount->getBankingLicense($company);
+        } catch (\RuntimeException $val) {
+            $this->assertInstanceOf('Alphatrader\ApiBundle\Api\Exception\AlphaTraderApiException', $val);
+        }
     }
 }

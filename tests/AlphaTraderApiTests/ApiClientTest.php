@@ -3,6 +3,7 @@
 namespace Tests;
 
 use Alphatrader\ApiBundle\Api\ApiClient;
+use GuzzleHttp\Psr7\Response;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\DomCrawler\Crawler;
 
