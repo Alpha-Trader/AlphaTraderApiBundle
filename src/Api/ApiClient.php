@@ -161,6 +161,7 @@ class ApiClient
      * @param                                     $class
      *
      * @return \Alphatrader\ApiBundle\Model\Error|mixed
+     * @throws HttpErrorException
      */
     public function parseResponse(ResponseInterface $request, $class)
     {
@@ -175,7 +176,7 @@ class ApiClient
                 'json'
             );
 
-            //throw new AlphaTraderApiException($request->getStatusCode(), $oResult);
+            throw new AlphaTraderApiException($request->getStatusCode(), $oResult);
         }
         return $oResult;
     }
