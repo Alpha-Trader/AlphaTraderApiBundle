@@ -30,7 +30,7 @@ class PortfolioController extends ApiClient
 
     /**
      * @param $securitiesAccountId
-     * @return \Alphatrader\ApiBundle\Model\FixedIncomeSecurity{}|\Alphatrader\ApiBundle\Model\Error
+     * @return \Alphatrader\ApiBundle\Model\FixedIncomeSecurity[]|\Alphatrader\ApiBundle\Model\Error
      */
     public function getFixedIncomeSecurities($securitiesAccountId)
     {
