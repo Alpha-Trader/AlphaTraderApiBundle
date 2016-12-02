@@ -35,6 +35,6 @@ class PortfolioController extends ApiClient
     public function getFixedIncomeSecurities($securitiesAccountId)
     {
         $data = $this->get('portfolios/fixedincome/'.$securitiesAccountId);
-        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\Portfolio');
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\FixedIncomeSecurity');
     }
 }
