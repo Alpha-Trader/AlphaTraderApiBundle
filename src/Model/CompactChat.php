@@ -36,7 +36,7 @@ class CompactChat
     /**
      * @var Message
      * @Annotation\Type("Alphatrader\ApiBundle\Model\Message")
-     * @Annotation\SerializedName("group")
+     * @Annotation\SerializedName("lastMessage")
      */
     private $lastMessage;
 
