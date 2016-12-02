@@ -2,6 +2,7 @@
 namespace Alphatrader\ApiBundle\Api\Traits;
 
 use Alphatrader\ApiBundle\Api\Methods\BondController;
+use Alphatrader\ApiBundle\Model\Bond;
 use Alphatrader\ApiBundle\Model\Company;
 
 /**
@@ -57,6 +58,17 @@ trait BondTrait
         return $this->getBondController()->getBond($bondid);
     }
 
+    /**
+     * @param $secIdent
+     *
+     * @throws \Alphatrader\ApiBundle\Api\Exception\AlphaTraderApiException
+     * @return Bond
+     */
+    public function getBondBySecurityIdentifier($secIdent)
+    {
+        return $this->getBondController()->getBondBySecurityIdentifier($secIdent);
+    }
+    
     /**
      * @return \Alphatrader\ApiBundle\Model\Bond[]|\Alphatrader\ApiBundle\Model\Error
      */

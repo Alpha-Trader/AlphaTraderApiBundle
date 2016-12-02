@@ -40,7 +40,7 @@ class LocaleControllerTest extends BaseTestCase
         $localeController->setClient($this->getClient($expected));
         try {
             $value = $localeController->setLocale('de_DE');
-        }catch (\RuntimeException $value){
+        } catch (\RuntimeException $value) {
             $this->assertInstanceOf('Alphatrader\ApiBundle\Api\Exception\AlphaTraderApiException', $value);
         }
     }
