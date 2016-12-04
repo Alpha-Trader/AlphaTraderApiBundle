@@ -10,8 +10,7 @@ namespace Tests\Methods;
 
 use Alphatrader\ApiBundle\Api\Methods\BankAccountController;
 use AlphaTrader\ApiBundle\Model\BankAccount;
-use Alphatrader\ApiBundle\Model\Error;
-
+use JMS\Serializer\Annotation;
 /**
  * Class BankAccountController
  * @package AlphaTrader\API\Controller
