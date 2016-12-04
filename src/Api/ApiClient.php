@@ -176,7 +176,7 @@ class ApiClient
                 'json'
             );
 
-            throw new AlphaTraderApiException($request->getStatusCode(), $oResult);
+            //throw new AlphaTraderApiException($request->getStatusCode(), $oResult);
         }
         return $oResult;
     }
