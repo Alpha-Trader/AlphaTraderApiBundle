@@ -23,7 +23,7 @@ class ListingControllerTest extends BaseTestCase
 
         $value = $listingController->getProfile('ST345661');
 
-        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\ListingProfile', $value);
+        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\Error', $value);
     }
 
     public function test_getAllListings()
