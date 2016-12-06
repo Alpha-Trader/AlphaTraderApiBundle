@@ -2,6 +2,7 @@
 
 namespace Tests\Methods;
 
+use Alphatrader\ApiBundle\Api\Exception\AlphaTraderApiException;
 use Alphatrader\ApiBundle\Api\Methods\ListingController;
 
 /**
@@ -20,10 +21,11 @@ class ListingControllerTest extends BaseTestCase
 
         $listingController = new ListingController($this->config);
         $listingController->setClient($this->getClient($expected));
-
-        $value = $listingController->getProfile('ST345661');
-
-        $this->assertInstanceOf('Alphatrader\ApiBundle\Model\ListingProfile', $value);
+        try {
+            $value = $listingController->getProfile('ST345661');
+        }catch(AlphaTraderApiException $e){
+            $this->assertInstanceOf('Alphatrader\ApiBundle\Api\Exception\AlphaTraderApiException', $e);
+        }
     }
 
     public function test_getAllListings()
