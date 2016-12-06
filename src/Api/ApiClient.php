@@ -175,8 +175,6 @@ class ApiClient
                 'Alphatrader\ApiBundle\Model\Error',
                 'json'
             );
-
-            throw new AlphaTraderApiException($request->getStatusCode(), $oResult);
         }
         return $oResult;
     }
