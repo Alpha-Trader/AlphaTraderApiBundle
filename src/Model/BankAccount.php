@@ -3,6 +3,7 @@
 namespace Alphatrader\ApiBundle\Model;
 
 use JMS\Serializer\Annotation;
+use JMS\Serializer\Annotation\ExclusionPolicy;
 
 /**
  * Class BankAccount

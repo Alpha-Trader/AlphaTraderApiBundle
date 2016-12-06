@@ -57,6 +57,5 @@ class CentralBankReservesControllerTest extends BaseTestCase
         } catch (\RuntimeException $val) {
             $this->assertInstanceOf('Alphatrader\ApiBundle\Api\Exception\AlphaTraderApiException', $val);
         }
-
     }
 }

@@ -5,6 +5,8 @@ namespace Tests;
 use Alphatrader\ApiBundle\Api\ApiClient;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\DomCrawler\Crawler;
+use Symfony\Component\Finder\Finder;
+
 
 class ApiClientTest extends TestCase
 {
@@ -62,5 +64,57 @@ class ApiClientTest extends TestCase
         $this->expectException(\Exception::class);
         $this->expectExceptionMessage('Invalid HTTP-Method: FAILMETHOD');
         $this->client->request($this->url, 'FAILMETHOD');
+    }
+
+    public function testIsGuiltyResponse()
+    {
+        // load all Modls we have
+        $files = $this->_get_filenames("src/Model");
+
+        $objects = array();
+
+        foreach($files as $file)
+        {
+            $class = "\\Alphatrader\\ApiBundle\\Model\\".$file;
+            /*
+             * creating a new empty instance of every Model and checking it with the isGuiltyResponse method
+             * the result should be false with every model
+             */
+            $this->assertFalse($this->invokeMethod($this->client, "isGuiltyResponse", array($class,new $class())), "Model $file passed the isGuiltyResponse dispite it is empty.");
+
+        }
+
+    }
+
+    function _get_filenames($path) {
+        $finderFiles = Finder::create()->files()->in($path)->name('*.php');
+        $filenames = array();
+        foreach ($finderFiles as $finderFile) {
+            $name = str_replace(".php","",$finderFile->getFilename());
+            if(strpos($name,"Trait")  === false) {
+                $filenames[] = $name;
+            }
+    }
+
+        return $filenames;
+    }
+
+
+    /**
+     * Call protected/private method of a class.
+     *
+     * @param object &$object    Instantiated object that we will run method on.
+     * @param string $methodName Method name to call
+     * @param array  $parameters Array of parameters to pass into method.
+     *
+     * @return mixed Method return.
+     */
+    public function invokeMethod(&$object, $methodName, array $parameters = array())
+    {
+        $reflection = new \ReflectionClass(get_class($object));
+        $method = $reflection->getMethod($methodName);
+        $method->setAccessible(true);
+
+        return $method->invokeArgs($object, $parameters);
     }
 }
