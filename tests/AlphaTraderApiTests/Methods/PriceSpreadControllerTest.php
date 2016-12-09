@@ -54,7 +54,7 @@ class PriceSpreadControllerTest extends BaseTestCase
         $priceSpreadController->setClient($this->getClient($expected));
 
         $value = $priceSpreadController->getPriceSpreadV2(1,1,1);
-
+        var_dump($value->getContent()[0]->getDate());
         $this->assertInstanceOf('Alphatrader\ApiBundle\Model\PriceSpreadPage', $value);
         $this->assertContainsOnlyInstancesOf('Alphatrader\ApiBundle\Model\PriceSpreadListing', $value->getContent());
 

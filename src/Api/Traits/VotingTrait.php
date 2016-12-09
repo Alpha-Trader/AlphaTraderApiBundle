@@ -100,6 +100,14 @@ trait VotingTrait
     }
 
     /**
+     * @param $pollId
+     */
+    public function executePoll($pollId)
+    {
+        return $this->getVotingController()->executePoll($pollId);
+    }
+
+    /**
      * @return VotingController
      */
     public function getVotingController()
