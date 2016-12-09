@@ -147,4 +147,15 @@ class CompanyController extends ApiClient
          $data = $this->delete('companies/logo/'.$companyId, ['companyId' => $companyId]);
         return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\Company');
     }
+
+    public function getMyCompanies($page, $size, $sort)
+    {
+        $data = $this->get('v2/my/companies', [
+            "page" => $page,
+            "size" => $size,
+            "sort" => $sort
+        ]);
+
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\CompanyPage');
+    }
 }
