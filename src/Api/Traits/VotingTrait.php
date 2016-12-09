@@ -101,6 +101,7 @@ trait VotingTrait
 
     /**
      * @param $pollId
+     * @return \Alphatrader\ApiBundle\Model\Error|\Alphatrader\ApiBundle\Model\Message
      */
     public function executePoll($pollId)
     {
