@@ -94,7 +94,7 @@ trait VotingTrait
      *
      * @return AbstractPoll
      */
-    public function setvotePoll($pollid, $voices, $votingType)
+    public function castVote($pollid, $voices, $votingType)
     {
         return $this->getVotingController()->votePoll($pollid, $voices, $votingType);
     }

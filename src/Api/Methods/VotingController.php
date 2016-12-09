@@ -101,7 +101,7 @@ class VotingController extends ApiClient
      */
     public function votePoll($pollid, $voices, $votingType)
     {
-        $data = $this->post('polls/', ['pollId' => $pollid, 'voices' => $voices, 'votingType' => $votingType]);
+        $data = $this->post('polls/'.$pollid, ['voices' => $voices, 'votingType' => $votingType]);
         return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\AbstractPoll');
     }
 }
