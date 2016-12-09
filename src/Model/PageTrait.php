@@ -57,7 +57,7 @@ trait PageTrait
     /**
      * @var integer
      * @Annotation\Type("integer")
-     * @Annotation\SerializedName("totaleElements")
+     * @Annotation\SerializedName("totalElements")
      */
     private $totalElements;
 
