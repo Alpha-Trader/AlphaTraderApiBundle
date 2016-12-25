@@ -35,5 +35,4 @@ class HashTagInterest
     {
         $this->hashTag = $hashTag;
     }
-
 }

@@ -35,5 +35,4 @@ class AuthorInterest
     {
         $this->authorId = $authorId;
     }
-
 }
