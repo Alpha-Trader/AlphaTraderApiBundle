@@ -31,4 +31,23 @@ class PriceSpreadController extends ApiClient
         $data = $this->get('pricespreads/'.$secIdent);
         return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\PriceSpreadListing');
     }
+
+    /**
+     * @param integer $page
+     * @param integer $size
+     * @param string $sort
+     *
+     * @return \Alphatrader\ApiBundle\Model\Error|\Alphatrader\ApiBundle\Model\PriceSpreadPage
+     */
+    public function getPriceSpreadV2($page, $size, $sort)
+    {
+
+        $data = $this->get('v2/pricespreads', array(
+            'page' => $page,
+            'size' => $size,
+            'sort' => $sort
+        ));
+
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\PriceSpreadPage');
+    }
 }

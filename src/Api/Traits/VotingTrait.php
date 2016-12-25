@@ -94,9 +94,18 @@ trait VotingTrait
      *
      * @return AbstractPoll
      */
-    public function setvotePoll($pollid, $voices, $votingType)
+    public function castVote($pollid, $voices, $votingType)
     {
         return $this->getVotingController()->votePoll($pollid, $voices, $votingType);
+    }
+
+    /**
+     * @param $pollId
+     * @return \Alphatrader\ApiBundle\Model\Error|\Alphatrader\ApiBundle\Model\Message
+     */
+    public function executePoll($pollId)
+    {
+        return $this->getVotingController()->executePoll($pollId);
     }
 
     /**

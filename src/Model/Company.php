@@ -7,7 +7,7 @@ use JMS\Serializer\Annotation;
 /**
  * Class Company
  *
- * @package                            Alphatrader\ApiBundle\Model
+ * @package Alphatrader\ApiBundle\Model
  * @Annotation\ExclusionPolicy("none")
  */
 class Company

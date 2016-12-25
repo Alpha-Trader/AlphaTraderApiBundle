@@ -78,10 +78,12 @@ class VotingController extends ApiClient
 
     /**
      * @param $pollid
+     * @return \Alphatrader\ApiBundle\Model\Error|\Alphatrader\ApiBundle\Model\Message
      */
     public function executePoll($pollid)
     {
-        $this->post('polls/execute' . $pollid);
+        $data = $this->post('polls/execute/' . $pollid);
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\Message');
     }
 
     /**
@@ -101,7 +103,7 @@ class VotingController extends ApiClient
      */
     public function votePoll($pollid, $voices, $votingType)
     {
-        $data = $this->post('polls/', ['pollId' => $pollid, 'voices' => $voices, 'votingType' => $votingType]);
+        $data = $this->post('polls/'.$pollid, ['voices' => $voices, 'votingType' => $votingType]);
         return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\AbstractPoll');
     }
 }

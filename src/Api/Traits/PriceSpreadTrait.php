@@ -31,6 +31,17 @@ trait PriceSpreadTrait
     }
 
     /**
+     * @param $page
+     * @param $size
+     * @param $sort
+     * @return \Alphatrader\ApiBundle\Model\Error|\Alphatrader\ApiBundle\Model\PriceSpreadPage
+     */
+    public function getPriceSpreadsV2($page, $size, $sort)
+    {
+        return $this->getPriceSpreadController()->getPriceSpreadV2($page, $size, $sort);
+    }
+
+    /**
      * @return PriceSpreadController
      */
     public function getPriceSpreadController()
