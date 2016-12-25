@@ -1,8 +1,4 @@
 <?php
-/**
- * User: ljbergmann
- * Date: 11.11.16 22:02
- */
 
 namespace Tests\Methods;
 

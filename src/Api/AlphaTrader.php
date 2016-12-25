@@ -9,6 +9,8 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
  * Class AlphaTrader
  *
  * @package Alphatrader\ApiBundle\Api
+ * @author Tr0nYx
+ * @author ljbergmann <l.bergmann@sky-lab.de>
  */
 class AlphaTrader
 {
@@ -22,9 +24,11 @@ class AlphaTrader
     use Traits\CompanyTrait;
     use Traits\ComplaintTrait;
     use Traits\EventsTrait;
+    use Traits\InterestTrait;
     use Traits\ListingTrait;
     use Traits\MainInterestRateTrait;
     use Traits\MessageTrait;
+    use Traits\NewsTrait;
     use Traits\NotificationTrait;
     use Traits\PartnerTrait;
     use Traits\PortfolioTrait;
