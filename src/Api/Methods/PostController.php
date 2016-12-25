@@ -23,7 +23,37 @@ class PostController extends ApiClient
      */
     public function getPostById($postId)
     {
-        $data = $this->get('posts/'.$postId);
+        $data = $this->get('/v2/posts/'.$postId);
         return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\Posts');
+    }
+
+    /**
+     * @param $postId
+     * @return \Alphatrader\ApiBundle\Model\Error|\Alphatrader\ApiBundle\Model\Message
+     */
+    public function deletePost($postId)
+    {
+        $data = $this->delete('/v2/posts/'.$postId);
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\Message');
+    }
+
+    /**
+     * @param $postId
+     * @return \Alphatrader\ApiBundle\Model\Error|\Alphatrader\ApiBundle\Model\Message
+     */
+    public function likePost($postId)
+    {
+        $data = $this->put('/v2/posts/'.$postId);
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\Message');
+    }
+
+    /**
+     * @param $postId
+     * @return \Alphatrader\ApiBundle\Model\Error|\Alphatrader\ApiBundle\Model\Message
+     */
+    public function dislikePost($postId)
+    {
+        $data = $this->delete('/v2/posts/'.$postId);
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\Message');
     }
 }
