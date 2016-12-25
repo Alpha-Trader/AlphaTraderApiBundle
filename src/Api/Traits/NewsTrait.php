@@ -24,7 +24,7 @@ trait NewsTrait
      * @param $postId
      * @return \Alphatrader\ApiBundle\Model\Error|mixed
      */
-    public function getPost($postId)
+    public function getNewsPost($postId)
     {
         return $this->getNewsController()->getPost($postId);
     }
