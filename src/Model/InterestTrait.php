@@ -79,6 +79,4 @@ trait InterestTrait
     {
         $this->userId = $userId;
     }
-
-
 }

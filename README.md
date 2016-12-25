@@ -4,8 +4,8 @@ AlphaTraderApiBundle
 [![Latest Unstable Version](https://poser.pugx.org/alphatrader/api-bundle/v/unstable)](https://packagist.org/packages/alphatrader/api-bundle)
 [![License](https://poser.pugx.org/alphatrader/api-bundle/license)](https://packagist.org/packages/alphatrader/api-bundle)
 [![Dependency Status](https://www.versioneye.com/user/projects/57ea3a2579806f002f4aec89/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/57ea3a2579806f002f4aec89)
-[![Build Status](https://travis-ci.org/Alpha-Trader/AlphaTraderApiBundle.svg?branch=1.1)](https://travis-ci.org/Alpha-Trader/AlphaTraderApiBundle)
-[![Coverage Status](https://coveralls.io/repos/github/Alpha-Trader/AlphaTraderApiBundle/badge.svg?branch=1.1)](https://coveralls.io/github/Alpha-Trader/AlphaTraderApiBundle?branch=1.1)
+[![Build Status](https://travis-ci.org/Alpha-Trader/AlphaTraderApiBundle.svg?branch=master)](https://travis-ci.org/Alpha-Trader/AlphaTraderApiBundle)
+[![Coverage Status](https://coveralls.io/repos/github/Alpha-Trader/AlphaTraderApiBundle/badge.svg?branch=1.1)](https://coveralls.io/github/Alpha-Trader/AlphaTraderApiBundle?branch=master)
 
 Symfony ApiBundle for [AlphaTrader](http://www.alpha-trader.com)
 

@@ -35,6 +35,4 @@ class CompanyInterest
     {
         $this->companyId = $companyId;
     }
-
-
 }
