@@ -20,9 +20,9 @@ trait SubscriptionTrait
      * @param $authorId
      * @return \Alphatrader\ApiBundle\Model\AuthorInterest|\Alphatrader\ApiBundle\Model\Error
      */
-    public function deleteSubscription($authorId)
+    public function deleteAuthorSubscription($authorId)
     {
-        return $this->getSubscriptionController()->deleteSubscription($authorId);
+        return $this->getSubscriptionController()->deleteAuthorSubscription($authorId);
     }
 
     /**
@@ -33,6 +33,25 @@ trait SubscriptionTrait
     public function setAuthorSubscription($authorId, $action)
     {
         return $this->getSubscriptionController()->setAuthorSubscriptionStatus($authorId, $action);
+    }
+
+    /**
+     * @param $companyId
+     * @return \Alphatrader\ApiBundle\Model\CompanyInterest|\Alphatrader\ApiBundle\Model\Error
+     */
+    public function deleteCompanySubscription($companyId)
+    {
+        return $this->getSubscriptionController()->deleteCompanySubscription($companyId);
+    }
+
+    /**
+     * @param $companyId
+     * @param $action
+     * @return \Alphatrader\ApiBundle\Model\CompanyInterest|\Alphatrader\ApiBundle\Model\Error
+     */
+    public function setCompanySubscription($companyId, $action)
+    {
+        return $this->getSubscriptionController()->setAuthorSubscriptionStatus($companyId, $action);
     }
 
     /**
