@@ -192,8 +192,8 @@ class ApiClient
         foreach ($reflectionclass->getMethods() as $method) {
             if (substr($method->name, 0, 3) == 'get') {
                 $methodname = $method->name;
-                if ($result->$methodname() !== null and
-                    !empty($result->$methodname()) and
+                if ($result->$methodname() !== null &&
+                    !empty($result->$methodname()) &&
                     $result->$methodname() !== "Central Bank") {
                     return true;
                 }

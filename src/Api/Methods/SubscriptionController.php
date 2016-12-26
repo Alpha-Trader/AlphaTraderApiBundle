@@ -20,11 +20,12 @@ class SubscriptionController extends ApiClient
      * @param authorId
      * @return \Alphatrader\ApiBundle\Model\Error|\Alphatrader\ApiBundle\Model\AuthorInterest
      */
-    public function deleteSubscription($authorId)
+    public function deleteAuthorSubscription($authorId)
     {
         $data = $this->delete("v2/my/subscriptions/authors/".$authorId);
         return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\AuthorInterest');
     }
+
     /**
      * @param $authorId
      * @param $action
@@ -34,5 +35,47 @@ class SubscriptionController extends ApiClient
     {
         $data = $this->put("v2/my/subscriptions/authors/".$authorId, array('action' => $action));
         return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\AuthorInterest');
+    }
+
+    /**
+     * @param $companyId
+     * @return \Alphatrader\ApiBundle\Model\Error|\Alphatrader\ApiBundle\Model\CompanyInterest
+     */
+    public function deleteCompanySubscription($companyId)
+    {
+        $data = $this->delete("v2/my/subscriptions/companies/".$companyId);
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\CompanyInterest');
+    }
+
+    /**
+     * @param $companyId
+     * @param $action
+     * @return \Alphatrader\ApiBundle\Model\Error|\Alphatrader\ApiBundle\Model\CompanyInterest
+     */
+    public function setCompanySubscriptionStatus($companyId, $action)
+    {
+        $data = $this->delete("v2/my/subscriptions/companies/".$companyId, array('action' => $action));
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\CompanyInterest');
+    }
+
+    /**
+     * @param $hashTag
+     * @return \Alphatrader\ApiBundle\Model\Error|\Alphatrader\ApiBundle\Model\HashTagInterest
+     */
+    public function deleteHashTagSubscription($hashTag)
+    {
+        $data = $this->delete("v2/my/subscriptions/hashtags/".$hashTag);
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\CompanyInterest');
+    }
+
+    /**
+     * @param $hashTag
+     * @param $action
+     * @return \Alphatrader\ApiBundle\Model\Error|\Alphatrader\ApiBundle\Model\HashTagInterest
+     */
+    public function setHashTagSubscriptionStatus($hashTag, $action)
+    {
+        $data = $this->delete("v2/my/subscriptions/hashtags/".$hashTag, array('action' => $action));
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\CompanyInterest');
     }
 }
