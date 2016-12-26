@@ -7,7 +7,6 @@ use PHPUnit\Framework\TestCase;
 use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Component\Finder\Finder;
 
-
 class ApiClientTest extends TestCase
 {
     const TEST_URL = 'http://127.0.0.1:8008';
@@ -73,28 +72,26 @@ class ApiClientTest extends TestCase
 
         $objects = array();
 
-        foreach($files as $file)
-        {
+        foreach ($files as $file) {
             $class = "\\Alphatrader\\ApiBundle\\Model\\".$file;
             /*
              * creating a new empty instance of every Model and checking it with the isGuiltyResponse method
              * the result should be false with every model
              */
             $this->assertFalse($this->invokeMethod($this->client, "isGuiltyResponse", array($class,new $class())), "Model $file passed the isGuiltyResponse dispite it is empty.");
-
         }
-
     }
 
-    function _get_filenames($path) {
+    function _get_filenames($path)
+    {
         $finderFiles = Finder::create()->files()->in($path)->name('*.php');
         $filenames = array();
         foreach ($finderFiles as $finderFile) {
-            $name = str_replace(".php","",$finderFile->getFilename());
-            if(strpos($name,"Trait")  === false) {
+            $name = str_replace(".php", "", $finderFile->getFilename());
+            if (strpos($name, "Trait")  === false) {
                 $filenames[] = $name;
             }
-    }
+        }
 
         return $filenames;
     }

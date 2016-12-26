@@ -37,7 +37,7 @@ class Posts
 
     /**
      * @var CompactCompany
-     * @Annotation\Type("Alphatrader\ApiBundle\Model\CompactCompany"")
+     * @Annotation\Type("Alphatrader\ApiBundle\Model\CompactCompany")
      * @Annotation\SerializedName("company")
      */
     private $company;
