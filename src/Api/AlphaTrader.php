@@ -40,6 +40,7 @@ class AlphaTrader
     use Traits\SecurityOrderLogTrait;
     use Traits\SecurityOrderTrait;
     use Traits\StatisticsTrait;
+    use Traits\SubscriptionTrait;
     use Traits\SystemBondTrait;
     use Traits\TimeStampTrait;
     use Traits\UserTrait;
