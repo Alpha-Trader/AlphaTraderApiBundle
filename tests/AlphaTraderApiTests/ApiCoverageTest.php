@@ -124,4 +124,22 @@ class ApiCoverageTest extends TestCase
             return ucfirst($replace);
         }
     }
+
+    /**
+     * @param $paths
+     * @param $controller
+     */
+    private function getPathsFromController($paths, $controller)
+    {
+        $result = array();
+        foreach ($paths as $key => $path) {
+            foreach ($path as $method => $methods) {
+                if ($this->toCamelCase($methods['tags']) == $controller) {
+                    $result[] = $method." ".str_replace("/api", "", $key);
+                }
+            }
+        }
+
+        print_r($result);
+    }
 }

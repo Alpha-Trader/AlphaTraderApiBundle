@@ -84,4 +84,21 @@ class ListingController extends ApiClient
         $data = $this->get('shareholders/' . $securityIdentifier);
         return $this->parseResponse($data, 'ArrayCollection<Alphatrader\ApiBundle\Model\Shareholder>');
     }
+
+    /**
+     * @param $page
+     * @param $size
+     * @param $sort
+     * @return \Alphatrader\ApiBundle\Model\Error|\Alphatrader\ApiBundle\Model\ListingPage
+     */
+    public function getListings($page, $size, $sort)
+    {
+        $data = $this->get('v2/listings', [
+            "page" => $page,
+            "size" => $size,
+            "sort" => $sort
+        ]);
+
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\ListingPage');
+    }
 }

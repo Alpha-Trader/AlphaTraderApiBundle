@@ -148,6 +148,29 @@ class CompanyController extends ApiClient
         return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\Company');
     }
 
+    /**
+     * @param $page
+     * @param $size
+     * @param $sort
+     * @return \Alphatrader\ApiBundle\Model\Error|\Alphatrader\ApiBundle\Model\CompanyPage
+     */
+    public function getCompanies($page, $size, $sort)
+    {
+        $data = $this->get('v2/companies', [
+            "page" => $page,
+            "size" => $size,
+            "sort" => $sort
+        ]);
+
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\CompanyPage');
+    }
+
+    /**
+     * @param $page
+     * @param $size
+     * @param $sort
+     * @return \Alphatrader\ApiBundle\Model\Error|\Alphatrader\ApiBundle\Model\CompanyPage
+     */
     public function getMyCompanies($page, $size, $sort)
     {
         $data = $this->get('v2/my/companies', [
