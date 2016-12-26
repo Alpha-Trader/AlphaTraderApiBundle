@@ -17,7 +17,7 @@ class NewsController extends ApiClient
      */
     public function getHotNews($count)
     {
-        $data = $this->post('/v2/news/hot', ['count' => $count]);
+        $data = $this->get('/v2/news/hot', ['count' => $count]);
         return $this->parseResponse($data, 'ArrayCollection<Alphatrader\ApiBundle\Model\Posts>');
     }
 
@@ -27,7 +27,7 @@ class NewsController extends ApiClient
      */
     public function getPost($postId)
     {
-        $data = $this->post('/v2/news/'.$postId);
+        $data = $this->get('/v2/news/'.$postId);
         return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\Posts');
     }
 }
