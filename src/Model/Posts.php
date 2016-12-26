@@ -51,21 +51,21 @@ class Posts
 
     /**
      * @var \DateTime
-     * @Annotation\Type("\DateTime")
+     * @Annotation\Type("integer")
      * @Annotation\SerializedName("dateCreated")
      */
     private $dateCreated;
 
     /**
      * @var \DateTime
-     * @Annotation\Type("\DateTime")
+     * @Annotation\Type("integer")
      * @Annotation\SerializedName("dateDeleted")
      */
     private $dateDeleted;
 
     /**
      * @var \DateTime
-     * @Annotation\Type("\DateTime")
+     * @Annotation\Type("integer")
      * @Annotation\SerializedName("dateEdited")
      */
     private $dateEdited;
@@ -403,5 +403,48 @@ class Posts
     public function setTitle($title)
     {
         $this->title = $title;
+    }
+
+    /**
+     * @SuppressWarnings("unused")
+     * @Annotation\PostDeserialize
+     */
+    private function afterDeserialization()
+    {
+        if ($this->dateCreated !== null) {
+            $date = substr($this->dateCreated, 0, 10) . '.' . substr($this->dateCreated, 10);
+            $micro = sprintf("%06d", ($date - floor($date)) * 1000000);
+            $date = new \DateTime(date('Y-m-d H:i:s.' . $micro, $date));
+            $this->dateCreated = $date;
+        }
+        if ($this->dateEdited !== null) {
+            $date = substr($this->dateEdited, 0, 10) . '.' . substr($this->dateEdited, 10);
+            $micro = sprintf("%06d", ($date - floor($date)) * 1000000);
+            $date = new \DateTime(date('Y-m-d H:i:s.' . $micro, $date));
+            $this->dateEdited = $date;
+        }
+        if ($this->dateDeleted !== null) {
+            $enddate = substr($this->dateDeleted, 0, 10) . '.' . substr($this->dateDeleted, 10);
+            $micro = sprintf("%06d", ($enddate - floor($enddate)) * 1000000);
+            $date = new \DateTime(date('Y-m-d H:i:s.' . $micro, $enddate));
+            $this->dateDeleted = $date;
+        }
+    }
+
+    /**
+     * @SuppressWarnings("unused")
+     * @Annotation\PreSerialize
+     */
+    private function preSerialization()
+    {
+        if ($this->dateCreated instanceof \DateTime) {
+            $this->dateCreated = $this->dateCreated->getTimestamp();
+        }
+        if ($this->dateEdited instanceof \DateTime) {
+            $this->dateEdited = $this->dateEdited->getTimestamp();
+        }
+        if ($this->dateDeleted instanceof \DateTime) {
+            $this->dateDeleted = $this->dateDeleted->getTimestamp();
+        }
     }
 }
