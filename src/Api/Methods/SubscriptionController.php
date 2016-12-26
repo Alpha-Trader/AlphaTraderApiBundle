@@ -57,4 +57,25 @@ class SubscriptionController extends ApiClient
         $data = $this->delete("v2/my/subscriptions/companies/".$companyId, array('action' => $action));
         return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\CompanyInterest');
     }
+
+    /**
+     * @param $hashTag
+     * @return \Alphatrader\ApiBundle\Model\Error|\Alphatrader\ApiBundle\Model\HashTagInterest
+     */
+    public function deleteHashTagSubscription($hashTag)
+    {
+        $data = $this->delete("v2/my/subscriptions/hashtags/".$hashTag);
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\CompanyInterest');
+    }
+
+    /**
+     * @param $hashTag
+     * @param $action
+     * @return \Alphatrader\ApiBundle\Model\Error|\Alphatrader\ApiBundle\Model\HashTagInterest
+     */
+    public function setHashTagSubscriptionStatus($hashTag, $action)
+    {
+        $data = $this->delete("v2/my/subscriptions/hashtags/".$hashTag, array('action' => $action));
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\CompanyInterest');
+    }
 }

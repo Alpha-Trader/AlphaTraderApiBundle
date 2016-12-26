@@ -55,6 +55,25 @@ trait SubscriptionTrait
     }
 
     /**
+     * @param $hashTag
+     * @return \Alphatrader\ApiBundle\Model\HashTagInterest|\Alphatrader\ApiBundle\Model\Error
+     */
+    public function deleteHashTagSubscription($hashTag)
+    {
+        return $this->getSubscriptionController()->deleteHashTagSubscription($hashTag);
+    }
+
+    /**
+     * @param $hashTag
+     * @param $action
+     * @return \Alphatrader\ApiBundle\Model\HashTagInterest|\Alphatrader\ApiBundle\Model\Error
+     */
+    public function setHashTagSubscription($hashTag, $action)
+    {
+        return $this->getSubscriptionController()->setHashTagSubscriptionStatus($hashTag, $action);
+    }
+
+    /**
      * @return SubscriptionController
      */
     public function getSubscriptionController()
