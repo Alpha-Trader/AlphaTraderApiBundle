@@ -23,7 +23,7 @@ class ListingControllerTest extends BaseTestCase
         $listingController->setClient($this->getClient($expected));
         try {
             $value = $listingController->getProfile('ST345661');
-        }catch(AlphaTraderApiException $e){
+        } catch (AlphaTraderApiException $e) {
             $this->assertInstanceOf('Alphatrader\ApiBundle\Api\Exception\AlphaTraderApiException', $e);
         }
     }

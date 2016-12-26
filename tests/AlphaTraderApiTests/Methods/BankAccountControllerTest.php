@@ -11,6 +11,7 @@ namespace Tests\Methods;
 use Alphatrader\ApiBundle\Api\Methods\BankAccountController;
 use AlphaTrader\ApiBundle\Model\BankAccount;
 use JMS\Serializer\Annotation;
+
 /**
  * Class BankAccountController
  * @package AlphaTrader\API\Controller

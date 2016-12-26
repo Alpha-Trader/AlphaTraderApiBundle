@@ -8,10 +8,8 @@
 
 namespace Tests\Methods;
 
-
 use Alphatrader\ApiBundle\Api\Exception\AlphaTraderApiException;
 use Alphatrader\ApiBundle\Api\Methods\CompanyController;
-
 
 class CompanyControllerTest extends BaseTestCase
 {
@@ -23,14 +21,12 @@ class CompanyControllerTest extends BaseTestCase
 
         $CompanyController = new CompanyController($this->config);
         $CompanyController->setClient($this->getClient($json));
-        try{
-            $val = $CompanyController->getMyCompanies(1,1,1);
-            $this->assertInstanceOf('Alphatrader\ApiBundle\Model\CompanyPage',$val);
-            $this->assertContainsOnlyInstancesOf('Alphatrader\ApiBundle\Model\Company',$val->getContent());
-
-        }catch (AlphaTraderApiException $e){
-            $this->assertInstanceOf('Alphatrader\ApiBundle\Model\Error',$e->getError());
+        try {
+            $val = $CompanyController->getMyCompanies(1, 1, 1);
+            $this->assertInstanceOf('Alphatrader\ApiBundle\Model\CompanyPage', $val);
+            $this->assertContainsOnlyInstancesOf('Alphatrader\ApiBundle\Model\Company', $val->getContent());
+        } catch (AlphaTraderApiException $e) {
+            $this->assertInstanceOf('Alphatrader\ApiBundle\Model\Error', $e->getError());
         }
-
     }
 }
