@@ -25,6 +25,7 @@ class AlphaTrader
     use Traits\ComplaintTrait;
     use Traits\EventsTrait;
     use Traits\InterestTrait;
+    use Traits\LikeTrait;
     use Traits\ListingTrait;
     use Traits\MainInterestRateTrait;
     use Traits\MessageTrait;
