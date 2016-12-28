@@ -30,7 +30,7 @@ class Posts
 
     /**
      * @var boolean
-     * @Annotation\Type("boolen")
+     * @Annotation\Type("boolean")
      * @Annotation\SerializedName("comment")
      */
     private $comment;
