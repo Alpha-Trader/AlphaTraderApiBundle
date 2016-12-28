@@ -2,6 +2,8 @@
 
 namespace Alphatrader\ApiBundle\Model;
 
+use JMS\Serializer\Annotation;
+
 /**
  * Class PostsPage
  * @package Alphatrader\ApiBundle\Model
