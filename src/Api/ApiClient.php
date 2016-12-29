@@ -166,7 +166,6 @@ class ApiClient
     public function parseResponse(ResponseInterface $request, $class)
     {
         $data = $request->getBody()->getContents();
-        echo $class;
         $oResult = $this->getSerializer()->deserialize($data, $class, 'json');
         if ($this->isGuiltyResponse($class, $oResult) === false) {
             /** @var Error $oResult */
