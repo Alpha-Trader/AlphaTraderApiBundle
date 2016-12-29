@@ -47,4 +47,15 @@ class LikeController extends ApiClient
         $data = $this->put("v2/my/likes/".$postId, array('type' => $type));
         return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\Message');
     }
+
+    /**
+     * @param $postId
+     * @param $type string LIKE|DISLIKE
+     * @return string
+     */
+    public function setLikeJsonResult($postId, $type)
+    {
+        $data = $this->put("v2/my/likes/".$postId, array('type' => $type));
+        return $data->getBody()->getContents();
+    }
 }

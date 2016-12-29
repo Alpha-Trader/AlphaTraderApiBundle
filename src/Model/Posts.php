@@ -85,11 +85,18 @@ class Posts
     private $id;
 
     /**
-     * @var PostLike[]
-     * @Annotation\Type("ArrayCollection<Alphatrader\ApiBundle\Model\PostLike>")
-     * @Annotation\SerializedName("likes")
+     * @var integer
+     * @Annotation\Type("integer")
+     * @Annotation\SerializedName("numberOfLikes")
      */
-    private $likes;
+    private $numberOfLikes;
+
+    /**
+     * @var integer
+     * @Annotation\Type("integer")
+     * @Annotation\SerializedName("numberOfDislikes")
+     */
+    private $numberOfDislikes;
 
     /**
      * @var string
@@ -403,6 +410,38 @@ class Posts
     public function setTitle($title)
     {
         $this->title = $title;
+    }
+
+    /**
+     * @return int
+     */
+    public function getNumberOfLikes()
+    {
+        return $this->numberOfLikes;
+    }
+
+    /**
+     * @param int $numberOfLikes
+     */
+    public function setNumberOfLikes($numberOfLikes)
+    {
+        $this->numberOfLikes = $numberOfLikes;
+    }
+
+    /**
+     * @return int
+     */
+    public function getNumberOfDislikes()
+    {
+        return $this->numberOfDislikes;
+    }
+
+    /**
+     * @param int $numberOfDislikes
+     */
+    public function setNumberOfDislikes($numberOfDislikes)
+    {
+        $this->numberOfDislikes = $numberOfDislikes;
     }
 
     /**
