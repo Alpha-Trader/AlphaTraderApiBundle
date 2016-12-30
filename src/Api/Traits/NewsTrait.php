@@ -55,7 +55,7 @@ trait NewsTrait
      */
     public function getNewsByHashTag($hashTag, $page, $size, $sort)
     {
-        return $this->$this->getNewsController()->getNewsByHashTag($hashTag, $page, $size, $sort);
+        return $this->getNewsController()->getNewsByHashTag($hashTag, $page, $size, $sort);
     }
 
     /**
