@@ -34,7 +34,7 @@ class LikeController extends ApiClient
     public function deleteLike($postId)
     {
         $data = $this->delete("v2/my/likes/".$postId);
-        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\Message');
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\PostLike');
     }
 
     /**
@@ -45,7 +45,7 @@ class LikeController extends ApiClient
     public function setLike($postId, $type)
     {
         $data = $this->put("v2/my/likes/".$postId, array('type' => $type));
-        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\Message');
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\PostLike');
     }
 
     /**
