@@ -122,16 +122,6 @@ class PostsTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($value, $post->getId());
     }
 
-    public function testLikes()
-    {
-        $post = new Posts();
-        $this->assertNull($post->getLikes());
-
-        $value = [$this->createMock('Alphatrader\ApiBundle\Model\PostLike')];
-        $post->setLikes($value);
-
-        $this->assertContainsOnlyInstancesOf('Alphatrader\ApiBundle\Model\PostLike', $value);
-    }
 
     public function testLocale()
     {
