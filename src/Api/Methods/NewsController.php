@@ -73,7 +73,7 @@ class NewsController extends ApiClient
      */
     public function getNewsByHashTag($hashTag, $page, $size, $sort)
     {
-        $data = $this->get('v2/companies/'.$hashTag."/news", [
+        $data = $this->get('v2/hashtag/'.$hashTag."/news", [
             'page' => $page,
             'size' => $size,
             'sort' => $sort
