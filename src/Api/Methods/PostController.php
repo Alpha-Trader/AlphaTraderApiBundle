@@ -21,39 +21,97 @@ class PostController extends ApiClient
      * @param $postId
      * @return \Alphatrader\ApiBundle\Model\Error|\Alphatrader\ApiBundle\Model\Posts
      */
-    public function getPostById($postId)
+    public function getPost($postId)
     {
         $data = $this->get('v2/posts/'.$postId);
         return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\Posts');
     }
 
     /**
+     * @param $title
+     * @param $content
+     * @param null $locale
+     * @param null $companyId
+     * @return \Alphatrader\ApiBundle\Model\Error|\Alphatrader\ApiBundle\Model\Posts
+     */
+    public function newPost($title, $content, $locale = null, $companyId = null)
+    {
+        $data = $this->post('v2/posts', [
+            'title' => $title,
+            'content' => $content,
+            'locale' => $locale,
+            'companyId' => $companyId
+        ]);
+
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\Posts');
+    }
+
+    /**
      * @param $postId
-     * @return \Alphatrader\ApiBundle\Model\Error|\Alphatrader\ApiBundle\Model\Message
+     * @param $title
+     * @param $content
+     * @param null $locale
+     * @param null $companyId
+     * @return \Alphatrader\ApiBundle\Model\Error|\Alphatrader\ApiBundle\Model\Posts
+     */
+    public function editPost($postId, $title, $content, $locale = null, $companyId = null)
+    {
+        $data = $this->put('v2/posts/'.$postId, [
+            'title' => $title,
+            'content' => $content,
+            'locale' => $locale,
+            'companyId' => $companyId
+        ]);
+
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\Posts');
+    }
+
+    /**
+     * @param $postId
+     * @return \Alphatrader\ApiBundle\Model\Error|\Alphatrader\ApiBundle\Model\MessagePrototype
      */
     public function deletePost($postId)
     {
         $data = $this->delete('v2/posts/'.$postId);
-        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\Message');
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\MessagePrototype');
     }
 
     /**
      * @param $postId
-     * @return \Alphatrader\ApiBundle\Model\Error|\Alphatrader\ApiBundle\Model\Message
+     * @param $page
+     * @param $size
+     * @param $sort
+     * @return \Alphatrader\ApiBundle\Model\Error|\Alphatrader\ApiBundle\Model\Posts
      */
-    public function likePost($postId)
+    public function getPostComment($postId, $page, $size, $sort)
     {
-        $data = $this->put('v2/posts/'.$postId);
-        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\Message');
+        $data = $this->post('v2/posts/'.$postId.'/comments', [
+            'page' => $page,
+            'size' => $size,
+            'sort' => $sort
+        ]);
+
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\Posts');
     }
 
     /**
      * @param $postId
-     * @return \Alphatrader\ApiBundle\Model\Error|\Alphatrader\ApiBundle\Model\Message
+     * @param $title
+     * @param $content
+     * @param null $locale
+     * @param null $companyId
+     * @return \Alphatrader\ApiBundle\Model\Error|\Alphatrader\ApiBundle\Model\Posts
      */
-    public function dislikePost($postId)
+    public function newPostComment($postId, $title, $content, $locale = null, $companyId = null)
     {
-        $data = $this->delete('v2/posts/'.$postId);
-        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\Message');
+        $data = $this->post('v2/posts/'.$postId.'/comments', [
+            'title' => $title,
+            'content' => $content,
+            'locale' => $locale,
+            'companyId' => $companyId
+        ]);
+
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\Posts');
     }
+
 }
