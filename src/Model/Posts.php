@@ -301,22 +301,6 @@ class Posts
     }
 
     /**
-     * @return PostLike[]
-     */
-    public function getLikes()
-    {
-        return $this->likes;
-    }
-
-    /**
-     * @param PostLike[] $likes
-     */
-    public function setLikes($likes)
-    {
-        $this->likes = $likes;
-    }
-
-    /**
      * @return string
      */
     public function getLocale()
