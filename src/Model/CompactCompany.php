@@ -44,6 +44,12 @@ class CompactCompany
     protected $secAccId;
 
     /**
+     * @Annotation\Type("string")
+     * @Annotation\SerializedName("logoUrl")
+     */
+    private $logoUrl;
+
+    /**
      * @return mixed
      */
     public function getId()
@@ -122,4 +128,21 @@ class CompactCompany
     {
         $this->secAccId = $secAccId;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getLogoUrl()
+    {
+        return $this->logoUrl;
+    }
+
+    /**
+     * @param mixed $logoUrl
+     */
+    public function setLogoUrl($logoUrl)
+    {
+        $this->logoUrl = $logoUrl;
+    }
+
 }
