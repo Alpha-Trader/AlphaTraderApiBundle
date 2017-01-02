@@ -38,9 +38,10 @@ class PostController extends ApiClient
     {
         $data = $this->post('v2/posts', [
             'title' => $title,
-            'content' => $content,
             'locale' => $locale,
             'companyId' => $companyId
+        ], [
+            'content' => $content
         ]);
 
         return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\Posts');
@@ -58,9 +59,10 @@ class PostController extends ApiClient
     {
         $data = $this->put('v2/posts/'.$postId, [
             'title' => $title,
-            'content' => $content,
             'locale' => $locale,
             'companyId' => $companyId
+        ], [
+            'content' => $content
         ]);
 
         return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\Posts');
@@ -106,10 +108,11 @@ class PostController extends ApiClient
     {
         $data = $this->post('v2/posts/'.$postId.'/comments', [
             'title' => $title,
-            'content' => $content,
             'locale' => $locale,
             'companyId' => $companyId
-        ]);
+            ],[
+                'content' => $content
+            ]);
 
         return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\Posts');
     }
