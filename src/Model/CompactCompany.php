@@ -144,5 +144,4 @@ class CompactCompany
     {
         $this->logoUrl = $logoUrl;
     }
-
 }
