@@ -40,9 +40,7 @@ class PostController extends ApiClient
             'title' => $title,
             'locale' => $locale,
             'companyId' => $companyId
-        ], [
-            'content' => $content
-        ]);
+            ], $content);
 
         return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\Posts');
     }
@@ -61,9 +59,7 @@ class PostController extends ApiClient
             'title' => $title,
             'locale' => $locale,
             'companyId' => $companyId
-        ], [
-            'content' => $content
-        ]);
+            ], $content);
 
         return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\Posts');
     }
@@ -110,9 +106,7 @@ class PostController extends ApiClient
             'title' => $title,
             'locale' => $locale,
             'companyId' => $companyId
-            ],[
-                'content' => $content
-            ]);
+            ], $content);
 
         return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\Posts');
     }
