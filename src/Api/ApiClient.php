@@ -98,7 +98,11 @@ class ApiClient
         $url = $url . $queryString;
 
         try {
-            $request = $this->getClient()->request($method, $url, ['body' => $data]);
+            if (null !== $data) {
+                $request = $this->getClient()->request($method, $url, ['body' => $data]);
+            } else {
+                $request = $this->getClient()->request($method, $url);
+            }
         } catch (\GuzzleHttp\Exception\ClientException $e) {
             $request = $e->getResponse();
         } catch (\GuzzleHttp\Exception\ServerException $e) {
