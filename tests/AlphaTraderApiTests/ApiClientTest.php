@@ -46,7 +46,7 @@ class ApiClientTest extends TestCase
         foreach ($valid_methods as $method) {
             $html = $this->client->$method($this->url);
             if ($method == 'post') {
-                $html = $this->client->$method($this->url,['test'=>'test'],['test'=>'test']);
+                $html = $this->client->$method($this->url,['test'=>'test'],'test');
             }
             $crawler = new Crawler($html->getBody()->getContents());
             if ($method == 'get' || $method == 'post') {

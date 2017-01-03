@@ -98,7 +98,7 @@ class ApiClient
         $url = $url . $queryString;
 
         try {
-            if (null !== $data) {
+            if (!empty($data)) {
                 $request = $this->getClient()->request($method, $url, ['body' => $data]);
             } else {
                 $request = $this->getClient()->request($method, $url);
