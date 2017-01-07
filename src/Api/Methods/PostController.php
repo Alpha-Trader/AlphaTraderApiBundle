@@ -83,7 +83,7 @@ class PostController extends ApiClient
      */
     public function getPostComment($postId, $page, $size, $sort)
     {
-        $data = $this->post('v2/posts/'.$postId.'/comments', [
+        $data = $this->get('v2/posts/'.$postId.'/comments', [
             'page' => $page,
             'size' => $size,
             'sort' => $sort
