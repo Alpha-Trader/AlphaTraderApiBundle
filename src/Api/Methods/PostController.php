@@ -76,20 +76,23 @@ class PostController extends ApiClient
 
     /**
      * @param $postId
-     * @param $page
-     * @param $size
-     * @param $sort
      * @return \Alphatrader\ApiBundle\Model\Error|\Alphatrader\ApiBundle\Model\Posts
      */
-    public function getPostComment($postId, $page, $size, $sort)
+    public function getPostComment($postId)
     {
-        $data = $this->get('v2/posts/'.$postId.'/comments', [
-            'page' => $page,
-            'size' => $size,
-            'sort' => $sort
-        ]);
+        $data = $this->get('v2/posts/'.$postId.'/comments');
 
         return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\Posts');
+    }
+
+    /**
+     * @param $postId
+     * @return array
+     */
+    public function getPostCommentsAsArray($postId)
+    {
+        $data = $this->get('v2/posts/'.$postId.'/comments');
+        return json_decode($data->getBody()->getContents(), true);
     }
 
     /**
