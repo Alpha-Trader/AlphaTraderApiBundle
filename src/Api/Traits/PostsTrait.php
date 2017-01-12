@@ -56,14 +56,20 @@ trait PostsTrait
 
     /**
      * @param $postId
-     * @param $page
-     * @param $size
-     * @param null $sort
      * @return \Alphatrader\ApiBundle\Model\Error|\Alphatrader\ApiBundle\Model\Posts
      */
-    public function getPostComments($postId, $page, $size, $sort = null)
+    public function getPostComments($postId)
     {
-        return $this->getPostController()->getPostComment($postId, $page, $size, $sort);
+        return $this->getPostController()->getPostComment($postId);
+    }
+
+    /**
+     * @param $postId
+     * @return array
+     */
+    public function getPostCommentsAsArray($postId)
+    {
+        return $this->getPostController()->getPostCommentsAsArray($postId);
     }
 
     /**
