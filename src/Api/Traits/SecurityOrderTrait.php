@@ -65,6 +65,24 @@ trait SecurityOrderTrait
     }
 
     /**
+     * @param $secIdent
+     * @return \Alphatrader\ApiBundle\Model\Error|\Alphatrader\ApiBundle\Model\SecurityOrder[]
+     */
+    public function getUnfilledOTCOrdersBySecuritiesAccount($secIdent)
+    {
+        return $this->getSecurityOrderController()->getUnfilledOTCOrdersBySecuritiesAccount($secIdent);
+    }
+
+    /**
+     * @param $secIdent
+     * @return \Alphatrader\ApiBundle\Model\Error|\Alphatrader\ApiBundle\Model\SecurityOrder[]
+     */
+    public function getUnfilledOTCOrdersForSecuritiesAccount($secIdent)
+    {
+        return $this->getSecurityOrderController()->getUnfilledOTCOrdersForSecuritiesAccount($secIdent);
+    }
+
+    /**
      * @return SecurityOrderController
      */
     public function getSecurityOrderController()
