@@ -59,7 +59,7 @@ class SecurityOrderController extends ApiClient
      */
     public function getUnfilledOTCOrdersBySecuritiesAccount($secAccId)
     {
-        $data = $this->get('securityorders/counterparty/'.$secAccId);
+        $data = $this->get('securityorders/securitiesaccount/'.$secAccId);
         return $this->parseResponse($data, 'ArrayCollection<Alphatrader\ApiBundle\Model\SecurityOrder>');
     }
 
