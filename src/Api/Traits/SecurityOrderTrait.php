@@ -68,9 +68,9 @@ trait SecurityOrderTrait
      * @param $secIdent
      * @return \Alphatrader\ApiBundle\Model\Error|\Alphatrader\ApiBundle\Model\SecurityOrder[]
      */
-    public function getUnfilledOTCOrdersBySecuritiesAccount($secIdent)
+    public function getUnfilledOrders($secIdent)
     {
-        return $this->getSecurityOrderController()->getUnfilledOTCOrdersBySecuritiesAccount($secIdent);
+        return $this->getSecurityOrderController()->getUnfilledOrdersBySecuritiesAccount($secIdent);
     }
 
     /**
