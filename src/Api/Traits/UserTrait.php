@@ -91,10 +91,20 @@ trait UserTrait
     }
 
     /**
+     * @return \Alphatrader\ApiBundle\Model\Error|mixed
+     */
+    public function deleteUser()
+    {
+        return $this->getUserAccountController()->deleteUser();
+    }
+
+    /**
      * @return UserAccountController
      */
     public function getUserAccountController()
     {
         return new UserAccountController($this->config, $this->jwt);
     }
+
+
 }
