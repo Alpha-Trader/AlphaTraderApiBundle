@@ -110,8 +110,8 @@ class UserAccountController extends ApiClient
         );
         $data = $request->getBody()->getContents();
         /**
- * @var \Alphatrader\ApiBundle\Model\MessagePrototype $oResult
-*/
+         * @var \Alphatrader\ApiBundle\Model\MessagePrototype $oResult
+         */
         $oResult = $this->getSerializer()->deserialize(
             $data,
             'Alphatrader\ApiBundle\Model\MessagePrototype',
@@ -119,5 +119,14 @@ class UserAccountController extends ApiClient
         );
 
         return $oResult->getMessage();
+    }
+
+    /**
+     * @return \Alphatrader\ApiBundle\Model\Error|mixed
+     */
+    public function deleteUser()
+    {
+        $data = $this->delete("v2/my/user");
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\MessagePrototype');
     }
 }
