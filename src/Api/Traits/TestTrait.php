@@ -2,7 +2,7 @@
 
 namespace Alphatrader\ApiBundle\Api\Traits;
 
-use Api\Methods\TestController;
+use Alphatrader\ApiBundle\Api\Methods\TestController;
 
 /**
  * Trait TestTrait
