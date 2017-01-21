@@ -16,7 +16,7 @@ class TestController extends ApiClient
      * @param $username
      * @param $email
      * @param $password
-     * @return \Alphatrader\ApiBundle\Model\BankAccountView|AlphaTraderApiException
+     * @return \Alphatrader\ApiBundle\Model\UserAccount|AlphaTraderApiException
      */
     public function registerUserWithCompany($username, $email, $password)
     {
@@ -26,6 +26,7 @@ class TestController extends ApiClient
             'password' => $password
         ]);
 
-        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\BankAccountView');
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\UserAccount');
+
     }
 }
