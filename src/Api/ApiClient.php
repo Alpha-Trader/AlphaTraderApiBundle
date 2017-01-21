@@ -84,6 +84,7 @@ class ApiClient
      *
      * @return mixed|null|\Psr\Http\Message\ResponseInterface
      * @throws \Exception
+     * @SuppressWarnings(PHPMD)
      */
     public function request($url, $method = self::METHODE_GET, $data = array(), $params = null)
     {
