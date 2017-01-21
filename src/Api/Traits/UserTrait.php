@@ -105,6 +105,4 @@ trait UserTrait
     {
         return new UserAccountController($this->config, $this->jwt);
     }
-
-
 }
