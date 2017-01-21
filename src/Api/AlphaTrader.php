@@ -3,6 +3,7 @@
 namespace Alphatrader\ApiBundle\Api;
 
 use Alphatrader\ApiBundle\Api\Traits\PartnerTrait;
+use Api\Traits\TestTrait;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 /**
@@ -42,6 +43,7 @@ class AlphaTrader
     use Traits\StatisticsTrait;
     use Traits\SubscriptionTrait;
     use Traits\SystemBondTrait;
+    use Traits\TestTrait;
     use Traits\TimeStampTrait;
     use Traits\UserTrait;
     use Traits\VotingTrait;
