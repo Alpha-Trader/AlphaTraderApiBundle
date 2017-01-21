@@ -5,7 +5,6 @@ namespace Alphatrader\ApiBundle\Api\Methods;
 use Alphatrader\ApiBundle\Api\ApiClient;
 use Alphatrader\ApiBundle\Api\Exception\AlphaTraderApiException;
 
-
 /**
  * Class TestController
  * @package Api\Methods
