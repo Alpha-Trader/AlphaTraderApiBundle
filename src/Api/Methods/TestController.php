@@ -21,9 +21,9 @@ class TestController extends ApiClient
      */
     public function registerUserWithCompany($username, $email, $password)
     {
-        $data = $this->post('test/registeruserwithcompany', [
+        $data = $this->post($this->config['apiurl'].'/test/registeruserwithcompany', [
             'username' => $username,
-            'email' => $email,
+            'emailAddress' => $email,
             'password' => $password
         ]);
 
