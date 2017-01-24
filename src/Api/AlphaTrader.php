@@ -3,6 +3,7 @@
 namespace Alphatrader\ApiBundle\Api;
 
 use Alphatrader\ApiBundle\Api\Traits\PartnerTrait;
+use Api\Traits\LocaleTrait;
 use Api\Traits\TestTrait;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
@@ -28,6 +29,7 @@ class AlphaTrader
     use Traits\InterestTrait;
     use Traits\LikeTrait;
     use Traits\ListingTrait;
+    use Traits\LocaleTrait;
     use Traits\MainInterestRateTrait;
     use Traits\MessageTrait;
     use Traits\NewsTrait;

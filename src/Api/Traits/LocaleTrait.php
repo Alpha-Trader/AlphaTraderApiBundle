@@ -1,6 +1,6 @@
 <?php
 
-namespace Api\Traits;
+namespace Alphatrader\ApiBundle\Api\Traits;
 
 use Alphatrader\ApiBundle\Api\Methods\LocaleController;
 
