@@ -34,7 +34,7 @@ class LocaleController extends ApiClient
     public function setLocale($locale)
     {
         $data = $this->put('locale', ['locale' => $locale]);
-        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\MessagePrototype');
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\Error');
     }
 
     /**
