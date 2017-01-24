@@ -20,6 +20,15 @@ trait LocaleTrait
     }
 
     /**
+     * @param $locale
+     * @return \Alphatrader\ApiBundle\Model\Error|\Alphatrader\ApiBundle\Model\Message
+     */
+    public function setLocale($locale)
+    {
+        return $this->getLocaleController()->setLocale($locale);
+    }
+
+    /**
      * @return LocaleController
      */
     public function getLocaleController()
