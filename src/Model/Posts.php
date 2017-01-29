@@ -87,6 +87,13 @@ class Posts
     /**
      * @var integer
      * @Annotation\Type("integer")
+     * @Annotation\SerializedName("numberOfComments")
+     */
+    private $numberOfComments;
+
+    /**
+     * @var integer
+     * @Annotation\Type("integer")
      * @Annotation\SerializedName("numberOfLikes")
      */
     private $numberOfLikes;
@@ -394,6 +401,22 @@ class Posts
     public function setTitle($title)
     {
         $this->title = $title;
+    }
+
+    /**
+     * @return int
+     */
+    public function getNumberOfComments()
+    {
+        return $this->numberOfComments;
+    }
+
+    /**
+     * @param int $numberOfComments
+     */
+    public function setNumberOfComments($numberOfComments)
+    {
+        $this->numberOfComments = $numberOfComments;
     }
 
     /**
