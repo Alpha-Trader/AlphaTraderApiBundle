@@ -27,6 +27,5 @@ class TestController extends ApiClient
         ]);
 
         return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\UserAccount');
-
     }
 }

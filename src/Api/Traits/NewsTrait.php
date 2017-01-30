@@ -64,7 +64,7 @@ trait NewsTrait
      */
     public function getHotNews($count, $lastPostId = null)
     {
-        return $this->getNewsController()->getHotNews($count,$lastPostId);
+        return $this->getNewsController()->getHotNews($count, $lastPostId);
     }
 
     /**

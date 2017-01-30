@@ -88,7 +88,7 @@ class NewsController extends ApiClient
      */
     public function getHotNews($count, $lastPostId)
     {
-        $data = $this->get('v2/news/hot',[
+        $data = $this->get('v2/news/hot', [
             'count' => $count,
             'lastPostId' => $lastPostId
         ]);
