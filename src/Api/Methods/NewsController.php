@@ -86,9 +86,12 @@ class NewsController extends ApiClient
      * @param $count
      * @return \Alphatrader\ApiBundle\Model\Error|\Alphatrader\ApiBundle\Model\Posts[]
      */
-    public function getHotNews($count)
+    public function getHotNews($count, $lastPostId)
     {
-        $data = $this->get('v2/news/hot', ['count' => $count]);
+        $data = $this->get('v2/news/hot',[
+            'count' => $count,
+            'lastPostId' => $lastPostId
+        ]);
         return $this->parseResponse($data, 'ArrayCollection<Alphatrader\ApiBundle\Model\Posts>');
     }
 

@@ -62,9 +62,9 @@ trait NewsTrait
      * @param $count
      * @return \Alphatrader\ApiBundle\Model\Error|\Alphatrader\ApiBundle\Model\Posts[]
      */
-    public function getHotNews($count)
+    public function getHotNews($count, $lastPostId = null)
     {
-        return $this->getNewsController()->getHotNews($count);
+        return $this->getNewsController()->getHotNews($count,$lastPostId);
     }
 
     /**
