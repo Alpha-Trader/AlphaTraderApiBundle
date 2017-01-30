@@ -22,7 +22,7 @@ class NewsControllerTest extends BaseTestCase
         $newsController = new NewsController($this->config);
         $newsController->setClient($this->getClient($expected));
 
-        $data = $newsController->getHotNews(10);
+        $data = $newsController->getHotNews(10,"1a1667c5-00b6-4e90-9215-50f849f581e3");
         $this->assertContainsOnlyInstancesOf('Alphatrader\ApiBundle\Model\Posts',$data);
     }
 }
