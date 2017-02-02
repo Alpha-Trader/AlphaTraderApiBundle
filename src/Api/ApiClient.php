@@ -23,6 +23,7 @@ class ApiClient
     const METHODE_PUT = 'PUT';
     const METHODE_POST = 'POST';
     const METHODE_DELETE = 'DELETE';
+    const METHOD_PATCH = "PATCH";
     /**
  * @var array
 */
@@ -30,7 +31,8 @@ class ApiClient
         self::METHODE_GET,
         self::METHODE_PUT,
         self::METHODE_POST,
-        self::METHODE_DELETE
+        self::METHODE_DELETE,
+        self::METHOD_PATCH
     ];
 
     /**
@@ -159,6 +161,17 @@ class ApiClient
     public function delete($url, $params = array())
     {
         return $this->request($url, self::METHODE_DELETE, array(), $params);
+    }
+
+    /**
+     * @param $url
+     * @param array $params
+     *
+     * @return mixed|null|ResponseInterface
+     */
+    public function patch($url, $params = array())
+    {
+        return $this->request($url, self::METHOD_PATCH, array(), $params);
     }
 
     /**

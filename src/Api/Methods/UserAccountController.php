@@ -129,4 +129,30 @@ class UserAccountController extends ApiClient
         $data = $this->delete("v2/my/user");
         return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\MessagePrototype');
     }
+
+    /**
+     * @param $emailAddress
+     * @return \Alphatrader\ApiBundle\Model\Error|\Alphatrader\ApiBundle\Model\MessagePrototype
+     */
+    public function resetPassword($emailAddress)
+    {
+        $data = $this->put("user/passwordreset", ['emailaddress' => $emailAddress]);
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\MessagePrototype');
+    }
+
+    /**
+     * @param $password
+     * @param $username
+     * @param $email
+     * @return \Alphatrader\ApiBundle\Model\Error|\Alphatrader\ApiBundle\Model\MessagePrototype
+     */
+    public function changeUserProperties($password, $username, $email)
+    {
+        $data = $this->patch("v2/my/user",[
+            'password' => $password,
+            'username' => $username,
+            'email' => $email
+        ]);
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\MessagePrototype');
+    }
 }

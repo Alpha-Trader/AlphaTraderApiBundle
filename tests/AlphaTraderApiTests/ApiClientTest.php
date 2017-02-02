@@ -67,7 +67,7 @@ class ApiClientTest extends TestCase
 
     public function testIsGuiltyResponse()
     {
-        // load all Modls we have
+        // load all models we have
         $files = $this->_get_filenames("src/Model");
 
         $objects = array();
