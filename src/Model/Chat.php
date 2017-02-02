@@ -183,6 +183,10 @@ class Chat
         }
 
         if ($this->chatName === null) {
+	    if ($this->participants === null) {
+	    	return;
+	    }
+
             if ($this->participants->count() == 2) {
                 $owner = $this->owner->getUsername();
                 $user = $this->participants->filter(
