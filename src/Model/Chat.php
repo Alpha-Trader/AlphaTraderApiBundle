@@ -56,6 +56,13 @@ class Chat
      * @Annotation\SerializedName("owner")
      */
     protected $owner;
+    
+    
+    /**
+     * @Annotation\Type("integer")
+     * @Annotation\SerializedName("numOfUnreadMessages")
+     */
+    protected $numOfUnreadMessages;
 
     /**
      * @return int
@@ -167,6 +174,14 @@ class Chat
     public function setReadonly($readonly)
     {
         $this->readonly = $readonly;
+    }
+    
+    /**
+     * @param integer $numOfUnreadMessages
+     */
+    public function setNumOfUnreadMessages($numOfUnreadMessages)
+    {
+        $this->numOfUnreadMessages = $numOfUnreadMessages;
     }
 
     /**
