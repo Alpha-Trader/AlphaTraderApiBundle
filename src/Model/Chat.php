@@ -177,6 +177,14 @@ class Chat
     }
     
     /**
+     * @return integer
+     */
+    public function getNumOfUnreadMessages()
+    {
+        return $this->numOfUnreadMessages;
+    }
+    
+    /**
      * @param integer $numOfUnreadMessages
      */
     public function setNumOfUnreadMessages($numOfUnreadMessages)
