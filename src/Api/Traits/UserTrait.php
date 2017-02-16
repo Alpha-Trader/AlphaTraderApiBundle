@@ -110,6 +110,15 @@ trait UserTrait
     }
 
     /**
+     * @param $emailAddress
+     * @return \Alphatrader\ApiBundle\Model\Error|\Alphatrader\ApiBundle\Model\MessagePrototype
+     */
+    public function resetPassword($emailAddress)
+    {
+        return $this->getUserAccountController()->resetPassword($emailAddress);
+    }
+
+    /**
      * @return UserAccountController
      */
     public function getUserAccountController()
