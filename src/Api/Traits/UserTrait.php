@@ -99,6 +99,17 @@ trait UserTrait
     }
 
     /**
+     * @param $password
+     * @param $username
+     * @param $email
+     * @return \Alphatrader\ApiBundle\Model\Error|\Alphatrader\ApiBundle\Model\MessagePrototype
+     */
+    public function changeUserProperties($password, $username, $email)
+    {
+        return $this->getUserAccountController()->changeUserProperties($password, $username, $email);
+    }
+
+    /**
      * @return UserAccountController
      */
     public function getUserAccountController()

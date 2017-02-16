@@ -65,12 +65,6 @@ class Chat
     protected $numOfUnreadMessages;
 
     /**
-     * @Annotation\Type("integer")
-     * @Annotation\SerializedName("numOfUnreadMessages")
-     */
-    protected $numOfUnreadMessages;
-
-    /**
      * @return int
      */
     public function getId()
@@ -192,22 +186,6 @@ class Chat
     
     /**
      * @param integer $numOfUnreadMessages
-     */
-    public function setNumOfUnreadMessages($numOfUnreadMessages)
-    {
-        $this->numOfUnreadMessages = $numOfUnreadMessages;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getNumOfUnreadMessages()
-    {
-        return $this->numOfUnreadMessages;
-    }
-
-    /**
-     * @param mixed $numOfUnreadMessages
      */
     public function setNumOfUnreadMessages($numOfUnreadMessages)
     {
