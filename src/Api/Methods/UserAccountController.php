@@ -148,7 +148,7 @@ class UserAccountController extends ApiClient
      */
     public function changeUserProperties($password, $username, $email)
     {
-        $data = $this->patch("v2/my/user",[
+        $data = $this->patch("v2/my/user", [
             'password' => $password,
             'username' => $username,
             'email' => $email

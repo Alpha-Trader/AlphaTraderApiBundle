@@ -3,11 +3,10 @@
 namespace Tests;
 
 use Alphatrader\ApiBundle\Api\ApiClient;
-use PHPUnit\Framework\TestCase;
 use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Component\Finder\Finder;
 
-class ApiClientTest extends TestCase
+class ApiClientTest extends \PHPUnit_Framework_TestCase
 {
     const TEST_URL = 'http://127.0.0.1:8008';
     const TEST_URL_400 = 'http://127.0.0.1:8008/400';

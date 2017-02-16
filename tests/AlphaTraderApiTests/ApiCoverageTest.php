@@ -6,9 +6,8 @@
 
 namespace Tests;
 
-use PHPUnit\Framework\TestCase;
 
-class ApiCoverageTest extends TestCase
+class ApiCoverageTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * This is the main test

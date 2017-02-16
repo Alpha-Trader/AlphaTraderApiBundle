@@ -6,9 +6,8 @@ use Alphatrader\ApiBundle\Api\ApiClient;
 use Doctrine\Common\Annotations\AnnotationReader;
 use GuzzleHttp\Psr7\Response;
 use JMS\Serializer\SerializerBuilder;
-use PHPUnit\Framework\TestCase;
 
-abstract class BaseTestCase extends TestCase
+abstract class BaseTestCase extends \PHPUnit_Framework_TestCase
 {
     protected $config = [
         'apiurl'   => 'http://example.com',

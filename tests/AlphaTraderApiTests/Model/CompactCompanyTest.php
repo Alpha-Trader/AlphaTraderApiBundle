@@ -6,7 +6,6 @@
 
 namespace Tests\Model;
 
-use PHPUnit\Framework\TestCase;
 use Alphatrader\ApiBundle\Model\CompactCompany;
 
 /**
@@ -14,7 +13,7 @@ use Alphatrader\ApiBundle\Model\CompactCompany;
  * @package Tests\Model
  * @author ljbergmann
  */
-class CompactCompanyTest extends TestCase
+class CompactCompanyTest extends \PHPUnit_Framework_TestCase
 {
     public function testId()
     {

@@ -14,7 +14,7 @@ use Alphatrader\ApiBundle\Model\Company;
  * @package Tests\Model
  * @author ljbergmann
  */
-class CompanyTest extends TestCase
+class CompanyTest extends \PHPUnit_Framework_TestCase
 {
 
     use RandomTrait;
