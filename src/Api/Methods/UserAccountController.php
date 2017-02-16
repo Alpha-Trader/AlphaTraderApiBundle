@@ -127,7 +127,7 @@ class UserAccountController extends ApiClient
     public function deleteUser()
     {
         $data = $this->delete("v2/my/user");
-        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\Error');
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\MessagePrototype');
     }
 
     /**
@@ -136,8 +136,8 @@ class UserAccountController extends ApiClient
      */
     public function resetPassword($emailAddress)
     {
-        $data = $this->put("user/passwordreset", ['emailaddress' => $emailAddress]);
-        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\Error');
+        $data = $this->put($this->config['apiurl'] ."/user/passwordreset", ['emailaddress' => $emailAddress]);
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\MessagePrototype');
     }
 
     /**
@@ -153,6 +153,6 @@ class UserAccountController extends ApiClient
             'username' => $username,
             'email' => $email
         ]);
-        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\Error');
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\MessagePrototype');
     }
 }
