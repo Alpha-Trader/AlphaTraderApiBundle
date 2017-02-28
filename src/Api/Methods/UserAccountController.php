@@ -151,7 +151,7 @@ class UserAccountController extends ApiClient
         $data = $this->patch("v2/my/user", [
             'password' => $password,
             'username' => $username,
-            'email' => $email
+            'emailaddress' => $email
         ]);
         return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\MessagePrototype');
     }
