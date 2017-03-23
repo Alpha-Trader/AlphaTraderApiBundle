@@ -83,7 +83,7 @@ class VotingController extends ApiClient
     public function executePoll($pollid)
     {
         $data = $this->post('polls/execute/' . $pollid);
-        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\Message');
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\MessagePrototype');
     }
 
     /**
