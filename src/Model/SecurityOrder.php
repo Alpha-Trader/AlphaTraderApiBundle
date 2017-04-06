@@ -90,7 +90,11 @@ class SecurityOrder
      * @Annotation\Type("string")
      */
     protected $type;
-
+    /**
+     * @var float
+     * @Annotation\Type("float")
+     */
+    protected $volume;
     /**
      * @return string
      */
@@ -297,5 +301,21 @@ class SecurityOrder
     public function setCreationDate($creationDate)
     {
         $this->creationDate = $creationDate;
+    }
+
+    /**
+     * @return float
+     */
+    public function getVolume(): float
+    {
+        return $this->volume;
+    }
+
+    /**
+     * @param float $volume
+     */
+    public function setVolume(float $volume)
+    {
+        $this->volume = $volume;
     }
 }
