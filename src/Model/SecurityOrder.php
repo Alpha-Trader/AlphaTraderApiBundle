@@ -306,7 +306,7 @@ class SecurityOrder
     /**
      * @return float
      */
-    public function getVolume(): float
+    public function getVolume()
     {
         return $this->volume;
     }
