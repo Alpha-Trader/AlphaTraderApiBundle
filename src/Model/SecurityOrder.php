@@ -314,7 +314,7 @@ class SecurityOrder
     /**
      * @param float $volume
      */
-    public function setVolume(float $volume)
+    public function setVolume($volume)
     {
         $this->volume = $volume;
     }
