@@ -10,6 +10,7 @@ class SecurityOrder
     /**
      * @var string
      * @Annotation\Type("string")
+     * @Annotation\SerializedName("counterPartyName")
      */
     protected $counterPartyName;
 
