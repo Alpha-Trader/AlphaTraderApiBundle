@@ -28,7 +28,7 @@ trait ListingTrait
      * @param null $name
      * @return \Alphatrader\ApiBundle\Model\Error|\Alphatrader\ApiBundle\Model\ListingProfile
      */
-    public function getListingProfileV2($secIdent,$name = null)
+    public function getListingProfileV2($secIdent = null,$name = null)
     {
         return $this->getListingController()->getProfileV2($secIdent,$name);
     }
