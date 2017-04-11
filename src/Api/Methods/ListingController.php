@@ -31,6 +31,20 @@ class ListingController extends ApiClient
     }
 
     /**
+     * @param $securityIdentifier
+     * @param $name
+     * @return \Alphatrader\ApiBundle\Model\Error|\Alphatrader\ApiBundle\Model\ListingProfile
+     */
+    public function getProfileV2($securityIdentifier,$name)
+    {
+        $data = $this->get('v2/listingprofiles/',[
+            'securityIdentifier' => $securityIdentifier,
+            'name'               => $name
+        ]);
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\ListingProfile');
+    }
+
+    /**
      * @return \Alphatrader\ApiBundle\Model\Listing[]|\Alphatrader\ApiBundle\Model\Error
      */
     public function getAllListings()

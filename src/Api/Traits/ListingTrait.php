@@ -24,6 +24,16 @@ trait ListingTrait
     }
 
     /**
+     * @param $secIdent
+     * @param null $name
+     * @return \Alphatrader\ApiBundle\Model\Error|\Alphatrader\ApiBundle\Model\ListingProfile
+     */
+    public function getListingProfileV2($secIdent,$name = null)
+    {
+        return $this->getListingController()->getProfileV2($secIdent,$name);
+    }
+
+    /**
      * @return \Alphatrader\ApiBundle\Model\Error|\Alphatrader\ApiBundle\Model\Listing[]
      */
     public function getAllListings()
@@ -41,6 +51,7 @@ trait ListingTrait
     {
         return $this->getListingController()->getListingBySecurityIdentifier($secIdent);
     }
+
 
     /**
      * @param $securityIdentifier
