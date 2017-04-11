@@ -24,13 +24,12 @@ trait ListingTrait
     }
 
     /**
-     * @param $secIdent
-     * @param null $name
+     * @param $name
      * @return \Alphatrader\ApiBundle\Model\Error|\Alphatrader\ApiBundle\Model\ListingProfile
      */
-    public function getListingProfileV2($secIdent = null,$name = null)
+    public function getListingProfileByName($name)
     {
-        return $this->getListingController()->getProfileV2($secIdent,$name);
+        return $this->getListingController()->getProfileV2(null,$name);
     }
 
     /**
