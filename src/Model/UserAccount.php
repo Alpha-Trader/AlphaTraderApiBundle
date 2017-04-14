@@ -46,6 +46,13 @@ class UserAccount
     private $gravatarHash;
 
     /**
+     * @var \DateTime
+     * @Annotation\Type("integer")
+     * @Annotation\SerializedName("registrationDate")
+     */
+    private $registrationDate;
+
+    /**
      * @return mixed
      */
     public function getEmailAddress()
@@ -123,5 +130,47 @@ class UserAccount
     public function setGravatarHash($gravatarHash)
     {
         $this->gravatarHash = $gravatarHash;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getRegistrationDate()
+    {
+        return $this->registrationDate;
+    }
+
+    /**
+     * @param \DateTime $registrationDate
+     */
+    public function setRegistrationDate($registrationDate)
+    {
+        $this->registrationDate = $registrationDate;
+    }
+
+
+    /**
+     * @SuppressWarnings("unused")
+     * @Annotation\PostDeserialize
+     */
+    private function afterDeserialization()
+    {
+        if ($this->registrationDate !== null) {
+            $date = substr($this->registrationDate, 0, 10) . '.' . substr($this->registrationDate, 10);
+            $micro = sprintf("%06d", ($date - floor($date)) * 1000000);
+            $date = new \DateTime(date('Y-m-d H:i:s.' . $micro, $date));
+            $this->registrationDate = $date;
+        }
+    }
+
+    /**
+     * @SuppressWarnings("unused")
+     * @Annotation\PreSerialize
+     */
+    private function preSerialization()
+    {
+        if ($this->registrationDate instanceof \DateTime) {
+            $this->registrationDate = $this->registrationDate->getTimestamp();
+        }
     }
 }

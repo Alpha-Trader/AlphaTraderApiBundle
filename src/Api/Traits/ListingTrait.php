@@ -29,7 +29,7 @@ trait ListingTrait
      */
     public function getListingProfileByName($name)
     {
-        return $this->getListingController()->getProfileV2(null,$name);
+        return $this->getListingController()->getProfileV2(null, $name);
     }
 
     /**
