@@ -249,11 +249,11 @@ class UserProfile
     public function getDailyWage()
     {
         $dailyWage = 0.00;
-        if (!is_array($this->getEmployments())) {
+        if (!$this->getEmployments() instanceof  ArrayCollection) {
             return $dailyWage;
         }
 
-        foreach ($this->getEmployments() as $employment) {
+        foreach ($this->getEmployments()->toArray() as $employment) {
             $dailyWage += $employment->getDailyWage();
         }
         return $dailyWage;
