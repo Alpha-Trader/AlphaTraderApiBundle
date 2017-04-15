@@ -70,7 +70,7 @@ class SecurityOrderController extends ApiClient
     public function deleteAllOrders($secAccId)
     {
         $data = $this->delete('securityorders/', ['owner' => $secAccId]);
-        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\Message');
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\MessagePrototype');
     }
 
     /**
@@ -80,7 +80,7 @@ class SecurityOrderController extends ApiClient
     public function deleteOrder($orderId)
     {
         $data = $this->delete('securityorders/'.$orderId);
-        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\Message');
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\MessagePrototype');
     }
 
     /**
