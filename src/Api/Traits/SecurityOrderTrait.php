@@ -83,6 +83,14 @@ trait SecurityOrderTrait
     }
 
     /**
+     * @param $orderId
+     * @return \Alphatrader\ApiBundle\Model\Error|\Alphatrader\ApiBundle\Model\Message
+     */
+    public function deleteOrder($orderId){
+        return $this->getSecurityOrderController()->deleteOrder($orderId);
+    }
+
+    /**
      * @return SecurityOrderController
      */
     public function getSecurityOrderController()
