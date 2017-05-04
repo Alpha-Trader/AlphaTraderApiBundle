@@ -95,7 +95,7 @@ trait SecurityOrderTrait
      * @return \Alphatrader\ApiBundle\Model\Error|\Alphatrader\ApiBundle\Model\Message
      */
     public function deleteAllOrders($secAccId){
-        return $this->getSecurityOrderController()->deleteAllOrder($secAccId);
+        return $this->getSecurityOrderController()->deleteAllOrders($secAccId);
     }
 
     /**
