@@ -9,6 +9,7 @@ use Alphatrader\ApiBundle\Api\ApiClient;
  *
  * @package AlphaTrader\API\Controller
  * @author  Tr0nYx <tronyx@bric.finance>
+ * @author ljbergmann <l.bergmann@sky-lab.de>
  */
 class PriceSpreadController extends ApiClient
 {
@@ -49,5 +50,44 @@ class PriceSpreadController extends ApiClient
         ));
 
         return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\PriceSpreadPage');
+    }
+
+    /**
+     * @return string
+     */
+    public function getPriceSpreadFilterDefinitions()
+    {
+        $request = $this->get($this->config['apiurl'] . '/v2/filterdefinition/pricespreads');
+        return $request->getBody()->getContents();
+    }
+
+    /**
+     * @return string
+     */
+    public function getUserPriceSpreadFilter()
+    {
+        $request = $this->get($this->config['apiurl'] . '/v2/filter/pricespreads');
+        return $request->getBody()->getContents();
+    }
+
+    /**
+     * @param $filter
+     * @param $filterId
+     * @return \Alphatrader\ApiBundle\Model\Error|\Alphatrader\ApiBundle\Model\PriceSpreadListing[]
+     */
+    public function filterPriceSpreads($filter, $filterId)
+    {
+        $data = $this->post($this->config['apiurl'] . '/v2/filter/pricespreads', ['filterId' => $filterId], $filter);
+        return $this->parseResponse($data, 'ArrayCollection<Alphatrader\ApiBundle\Model\PriceSpreadListing>');
+    }
+
+    /**
+     * @param $filterId
+     * @return \Alphatrader\ApiBundle\Model\Error|\Alphatrader\ApiBundle\Model\MessagePrototype
+     */
+    public function deleteFilter($filterId)
+    {
+        $data = $this->delete('v2/filter/pricespreads/'.$filterId);
+        return $this->parseResponse($data, 'Alphatrader\ApiBundle\Model\MessagePrototype');
     }
 }

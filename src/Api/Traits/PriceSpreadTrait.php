@@ -42,6 +42,32 @@ trait PriceSpreadTrait
     }
 
     /**
+     * @return string
+     */
+    public function getPriceSpreadFilterDefinitions()
+    {
+        return $this->getPriceSpreadController()->getPriceSpreadFilterDefinitions();
+    }
+
+    /**
+     * @return string
+     */
+    public function getUserPriceSpreadFilter()
+    {
+        return $this->getPriceSpreadController()->getUserPriceSpreadFilter();
+    }
+
+    /**
+     * @param $filter
+     * @param null $filterId
+     * @return \Alphatrader\ApiBundle\Model\Error|\Alphatrader\ApiBundle\Model\PriceSpreadListing[]
+     */
+    public function filterPriceSpreads($filter, $filterId = null)
+    {
+        return $this->getPriceSpreadController()->filterPriceSpreads($filter, $filterId);
+    }
+
+    /**
      * @return PriceSpreadController
      */
     public function getPriceSpreadController()
